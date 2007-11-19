@@ -1,0 +1,16 @@
+﻿<Canvas xmlns="http://schemas.microsoft.com/client/2007" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Width="1"
+        Height="1"
+        Background="#FFEEDCDC"
+        Opacity="0.9"
+        >
+	<Canvas.Resources>   
+	<Storyboard x:Name="timer">      
+		<DoubleAnimation x:Name="animation" Duration="00:00:0.08"            
+		Storyboard.TargetName="InvisibleRect"          
+		Storyboard.TargetProperty="Width" />   
+	</Storyboard>
+	</Canvas.Resources>
+	<Rectangle  x:Name="InvisibleRect" Width="0" Height="0" Canvas.Left="0" Canvas.Top="0" Opacity="0.2" Fill="#FF000000" Visibility="Collapsed" />
+</Canvas>

@@ -1,0 +1,39 @@
+﻿<Canvas xmlns="http://schemas.microsoft.com/client/2007"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="118"
+        Height="65"
+        x:Name="_tooltipCanvas" Visibility="Visible">
+  <Canvas.Resources>
+    <Storyboard x:Name="Timeline1">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_tooltipCanvas" Storyboard.TargetProperty="(UIElement.Opacity)">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:01.5000000" Value="1E-05"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:02" Value="1"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+  </Canvas.Resources>
+
+  <Rectangle Width="113" Height="62.333" StrokeThickness="4" RadiusX="5" RadiusY="5" Canvas.Left="2.002" Canvas.Top="2.002" Fill="#FF000000" Opacity="0.23" Visibility="Visible" x:Name="shadow"/>
+
+  <Rectangle Width="113" Height="62.333" Stroke="#FF000000" StrokeThickness="4" RadiusX="5" RadiusY="5" Visibility="Visible" x:Name="rectangle">
+    <Rectangle.Fill>
+      <LinearGradientBrush EndPoint="0.959,0.941" StartPoint="-0.009,-0.043">
+        <GradientStop Color="#FFFAF3F3" Offset="0"/>
+        <GradientStop Color="#FFEAE8E8" Offset="1"/>
+      </LinearGradientBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+
+  <Rectangle Width="113" Height="11" RadiusX="5" RadiusY="5" Canvas.Left="-0.001" Canvas.Top="0.667" Visibility="Visible" x:Name="rectangle1">
+    <Rectangle.Fill>
+      <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF000000" Offset="0"/>
+        <GradientStop Color="#FF0A0000" Offset="1"/>
+        <GradientStop Color="#FEB5B5B5" Offset="0.534"/>
+        <GradientStop Color="#FE3B3B3B" Offset="0.274"/>
+        <GradientStop Color="#FE3F3E3E" Offset="0.817"/>
+      </LinearGradientBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+  <TextBlock Width="101.875" Height="44" Canvas.Left="5.832" Canvas.Top="12.166" Text="TextBlock" TextWrapping="Wrap" FontFamily="Verdana" FontSize="9" x:Name="_toolTipBlock" Visibility="Visible"/>
+</Canvas>

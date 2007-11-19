@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.CodePlex.com/Dashboarding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.CodePlex.com/Dashboarding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.CodePlex.com/Dashboarding/">
+      <s:element name="GetDashboardValueNoParams">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDashboardValueNoParamsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDashboardValueNoParamsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDashboardValueSingleIntegerAsRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="range" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDashboardValueSingleIntegerAsRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDashboardValueSingleIntegerAsRangeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDashboardValueNoParamsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDashboardValueNoParams" />
+  </wsdl:message>
+  <wsdl:message name="GetDashboardValueNoParamsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDashboardValueNoParamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDashboardValueSingleIntegerAsRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDashboardValueSingleIntegerAsRange" />
+  </wsdl:message>
+  <wsdl:message name="GetDashboardValueSingleIntegerAsRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDashboardValueSingleIntegerAsRangeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DashboardWebserviceSoap">
+    <wsdl:operation name="GetDashboardValueNoParams">
+      <wsdl:input message="tns:GetDashboardValueNoParamsSoapIn" />
+      <wsdl:output message="tns:GetDashboardValueNoParamsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboardValueSingleIntegerAsRange">
+      <wsdl:input message="tns:GetDashboardValueSingleIntegerAsRangeSoapIn" />
+      <wsdl:output message="tns:GetDashboardValueSingleIntegerAsRangeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DashboardWebserviceSoap" type="tns:DashboardWebserviceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDashboardValueNoParams">
+      <soap:operation soapAction="http://www.CodePlex.com/Dashboarding/GetDashboardValueNoParams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboardValueSingleIntegerAsRange">
+      <soap:operation soapAction="http://www.CodePlex.com/Dashboarding/GetDashboardValueSingleIntegerAsRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DashboardWebserviceSoap12" type="tns:DashboardWebserviceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDashboardValueNoParams">
+      <soap12:operation soapAction="http://www.CodePlex.com/Dashboarding/GetDashboardValueNoParams" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboardValueSingleIntegerAsRange">
+      <soap12:operation soapAction="http://www.CodePlex.com/Dashboarding/GetDashboardValueSingleIntegerAsRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DashboardWebservice">
+    <wsdl:port name="DashboardWebserviceSoap" binding="tns:DashboardWebserviceSoap">
+      <soap:address location="http://localhost:52114/WebServices/DashboardWebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DashboardWebserviceSoap12" binding="tns:DashboardWebserviceSoap12">
+      <soap12:address location="http://localhost:52114/WebServices/DashboardWebservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

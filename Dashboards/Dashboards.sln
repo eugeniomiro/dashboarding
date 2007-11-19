@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "David.Black.Bashboarding", "David.Black.Bashboarding\David.Black.Bashboarding.csproj", "{28EEE781-B1C4-406E-B53A-C34B41F6DBDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodePlex.Dashboarding.Silverlight", "CodePlex.Dashboarding.Silverlight\CodePlex.Dashboarding.Silverlight.csproj", "{86CCE097-0EA6-40F9-9AC3-B92A7879F2F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Bashboard\Dashboard.csproj", "{15A2580D-AEAD-4D82-818F-17408277C2DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28EEE781-B1C4-406E-B53A-C34B41F6DBDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28EEE781-B1C4-406E-B53A-C34B41F6DBDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28EEE781-B1C4-406E-B53A-C34B41F6DBDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28EEE781-B1C4-406E-B53A-C34B41F6DBDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86CCE097-0EA6-40F9-9AC3-B92A7879F2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CCE097-0EA6-40F9-9AC3-B92A7879F2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CCE097-0EA6-40F9-9AC3-B92A7879F2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CCE097-0EA6-40F9-9AC3-B92A7879F2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A2580D-AEAD-4D82-818F-17408277C2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A2580D-AEAD-4D82-818F-17408277C2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A2580D-AEAD-4D82-818F-17408277C2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A2580D-AEAD-4D82-818F-17408277C2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

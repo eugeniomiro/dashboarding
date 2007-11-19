@@ -1,0 +1,100 @@
+﻿<Canvas
+        xmlns="http://schemas.microsoft.com/client/2007"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:CodePlex_Dashboarding_Silverlight_Thermometers="clr-namespace:CodePlex.Dashboarding.Silverlight.Thermometers;assembly=ClientBin/CodePlex.Dashboarding.Silverlight.dll"
+        x:Name="parentCanvas"
+        Loaded="Page_Loaded"
+        x:Class="David.Black.Bashboarding.Page;assembly=ClientBin/David.Black.Bashboarding.dll"
+        Width="1000"
+        Height="440"
+        Background="White"
+        xmlns:CodePlex_Dashboarding_Silverlight_Dials="clr-namespace:CodePlex.Dashboarding.Silverlight.Dials;assembly=ClientBin/CodePlex.Dashboarding.Silverlight.dll"
+        >
+
+
+  <CodePlex_Dashboarding_Silverlight_Thermometers:FatThermometer
+  Width="100" Height="100"  Canvas.Left="0" Canvas.Top="8"
+  WebServiceLocalIdentifier="noParams"
+  x:Name="_default"
+  Tooltip="This is the default thermometer with no properties set."/>
+
+  <CodePlex_Dashboarding_Silverlight_Thermometers:FatThermometer
+  Width="100" Height="100" Canvas.Left="150" Canvas.Top="8"
+  Text="Death Valley USA"
+  LowerBoundText="0°"
+  UpperBoundText="100°"
+  Value="100"
+  x:Name="_rangeText"
+  Tooltip="This thermometer has the text, lower and upper bound string set." />
+
+  <CodePlex_Dashboarding_Silverlight_Thermometers:FatThermometer
+  Width="100" Height="100"  Canvas.Left="300" Canvas.Top="8"
+  WebServiceLocalIdentifier="noParams"
+  ColourRange="[0:#FF00FF00,#FFFFFFFF]" x:Name="_basicColour"
+  Tooltip="This thermometer has a single non-default color specified"/>
+
+
+
+  <CodePlex_Dashboarding_Silverlight_Thermometers:FatThermometer
+  Width="100" Height="100" Canvas.Left="450" Canvas.Top="8"
+  Value="100"
+  ColourRange="[0:#FFFF0000,#FFFFFFFF][33:#FFFFFF00,#FFFFFFFF][66:#FF00FF00,#FFFFFFFF]"
+  x:Name="_rangeColour"
+  Tooltip="This thermometer is red below 33%, yellow up to 66% and then green thereafter"
+  />
+
+  <CodePlex_Dashboarding_Silverlight_Thermometers:ThinThermometer
+    Width="100" Height="100" Canvas.Left="600" Canvas.Top="4"
+    x:Name="_thinThermometer1"
+    WebServiceLocalIdentifier="noParams"
+    Text="ThinThermometer"
+    />
+
+  <CodePlex_Dashboarding_Silverlight_Thermometers:ThinThermometer
+  Width="100" Height="100" Canvas.Left="750" Canvas.Top="4"
+  x:Name="_thinThermometer2"
+  Value ="100"
+  Text="Varicoloured"
+  ColourRange="[0:#FF00FF00,#FFFFFFFF][33:#FFFFFF00,#FFFFFFFF][66:#FFFF0000,#FFFFFFFF]"
+    Tooltip="This thermometer is green below 33%, yellow up to 66% and then red thereafter"
+    />
+
+
+  <CodePlex_Dashboarding_Silverlight_Dials:White360
+    Width="100" Height="100" Canvas.Left="0" Canvas.Top="220"
+    Tooltip="This is a default 360 Dial"
+    x:Name="_basic360Dial" 
+    WebServiceLocalIdentifier="oneParam" 
+
+    />
+
+  <CodePlex_Dashboarding_Silverlight_Dials:White360
+    Width="100" Height="100" Canvas.Left="160" Canvas.Top="220"
+    Tooltip="This is 360 Dial with a single color range"
+    x:Name="_basic360Dial2"
+    ColourRange="[0:#FF00FF00,#FFFFFFFF]"
+     Value="50"/>
+
+  <CodePlex_Dashboarding_Silverlight_Dials:White360
+    Width="100" Height="100" Canvas.Left="320" Canvas.Top="220"
+    Tooltip="This is 360 Dial where the needle is is red below 33%, yellow up to 66% and then green thereafter"
+    x:Name="_basic360Dial3"
+    ColourRange="[0:#FFFF0000,#FF888888][33:#FFFFFF00,#FF888888][66:#FF00FF00,#FF888888]"
+    
+    
+    WebServiceLocalIdentifier="noParams" 
+    >
+
+ 
+
+  </CodePlex_Dashboarding_Silverlight_Dials:White360>
+
+
+
+
+
+
+  <Rectangle  Width="62" Height="35" Fill="#FFFFFFFF" Stroke="#FF000000" Canvas.Left="16" Canvas.Top="400" x:Name="ButtonClick"/>
+	
+
+</Canvas>

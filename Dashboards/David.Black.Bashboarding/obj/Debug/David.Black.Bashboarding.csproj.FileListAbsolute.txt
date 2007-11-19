@@ -1,0 +1,16 @@
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\ClientBin\David.Black.Bashboarding.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\ClientBin\David.Black.Bashboarding.pdb
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.pdb
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\Page.g.cs
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\ClientBin\CodePlex.Dashboarding.Silverlight.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\David.Black.Bashboarding\ClientBin\CodePlex.Dashboarding.Silverlight.pdb
+C:\Projects\Dashboards\David.Black.Bashboarding\ClientBin\David.Black.Bashboarding.dll
+C:\Projects\Dashboards\David.Black.Bashboarding\ClientBin\David.Black.Bashboarding.pdb
+C:\Projects\Dashboards\David.Black.Bashboarding\ClientBin\CodePlex.Dashboarding.Silverlight.dll
+C:\Projects\Dashboards\David.Black.Bashboarding\ClientBin\CodePlex.Dashboarding.Silverlight.pdb
+C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\Page.g.cs
+C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.dll
+C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.pdb

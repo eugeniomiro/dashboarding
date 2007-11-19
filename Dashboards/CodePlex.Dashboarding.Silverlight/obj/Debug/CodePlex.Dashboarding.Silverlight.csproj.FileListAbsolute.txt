@@ -1,0 +1,5 @@
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\CodePlex.Dashboarding.Silverlight\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\CodePlex.Dashboarding.Silverlight\ClientBin\CodePlex.Dashboarding.Silverlight.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\CodePlex.Dashboarding.Silverlight\ClientBin\CodePlex.Dashboarding.Silverlight.pdb
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\CodePlex.Dashboarding.Silverlight\obj\Debug\CodePlex.Dashboarding.Silverlight.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\CodePlex.Dashboarding.Silverlight\obj\Debug\CodePlex.Dashboarding.Silverlight.pdb

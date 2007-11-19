@@ -1,0 +1,10 @@
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\Bashboard\bin\Dashboard.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\Bashboard\bin\Dashboard.pdb
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\Bashboard\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\Bashboard\obj\Debug\Dashboard.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\Bashboard\obj\Debug\Dashboard.pdb
+C:\Projects\Dashboards\Bashboard\bin\Dashboard.dll
+C:\Projects\Dashboards\Bashboard\bin\Dashboard.pdb
+C:\Projects\Dashboards\Bashboard\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Dashboards\Bashboard\obj\Debug\Dashboard.dll
+C:\Projects\Dashboards\Bashboard\obj\Debug\Dashboard.pdb

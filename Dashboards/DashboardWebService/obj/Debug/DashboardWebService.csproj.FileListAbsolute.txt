@@ -1,0 +1,5 @@
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\DashboardWebService\bin\DashboardWebService.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\DashboardWebService\bin\DashboardWebService.pdb
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\DashboardWebService\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\DashboardWebService\obj\Debug\DashboardWebService.dll
+C:\Users\davidb\Documents\Visual Studio 2008\Projects\Dashboards\DashboardWebService\obj\Debug\DashboardWebService.pdb
