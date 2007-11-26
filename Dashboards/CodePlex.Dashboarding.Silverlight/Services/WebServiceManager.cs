@@ -17,7 +17,10 @@ namespace CodePlex.Dashboarding.Silverlight.Services
         public static void Register(WebServiceDefinition def)
         {
             def.Validate();
-            _registeredMethods.Add(def.LocalIdentifier, def);
+            if (!_registeredMethods.ContainsKey(def.LocalIdentifier))
+            {
+                _registeredMethods.Add(def.LocalIdentifier, def);
+            }
         }
 
         public static WebServiceDefinition Retrieve(string localIdentifier)

@@ -46,7 +46,7 @@ namespace CodePlex.Dashboarding.Silverlight.Common
             var bound = _bounds[0];
             foreach (var b in _bounds)
             {
-                if (percentage > b.LowerBound)
+                if (percentage >= b.LowerBound)
                 {
                     bound = b;
                 }

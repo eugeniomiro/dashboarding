@@ -22,6 +22,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>ClientBin\CodePlex.Dashboarding.Silverlight.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,11 +43,23 @@
     <Reference Include="system.silverlight" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binary\BaseBinaryControl.xaml.cs">
+      <DependentUpon>BaseBinaryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Binary\RedGreenLed.xaml.cs">
+      <DependentUpon>RedGreenLed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Binary\TickCross.xaml.cs">
+      <DependentUpon>TickCross.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\Bound.cs" />
     <Compile Include="Common\ColourRange.cs" />
     <Compile Include="Dashboard.cs" />
-    <Compile Include="Dials\White360.xaml.cs">
-      <DependentUpon>White360.xaml</DependentUpon>
+    <Compile Include="Dials\Dial360.xaml.cs">
+      <DependentUpon>Dial360.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dynamic\ProgressMonitor.xaml.cs">
+      <DependentUpon>ProgressMonitor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DashboardWebServiceException.cs" />
@@ -86,12 +99,32 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dials\White360.xaml">
+    <EmbeddedResource Include="Services\WebserviceControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Services\WebserviceControl.xaml">
+    <EmbeddedResource Include="Dynamic\ProgressMonitor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Binary\BaseBinaryControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dials\Dial360.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Binary\TickCross.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Binary\RedGreenLed.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

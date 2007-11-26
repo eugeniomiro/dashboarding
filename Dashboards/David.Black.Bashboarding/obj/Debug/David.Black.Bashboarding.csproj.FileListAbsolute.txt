@@ -14,3 +14,12 @@ C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\ResolveAssemblyReferen
 C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\Page.g.cs
 C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.dll
 C:\Projects\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.pdb
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\ClientBin\David.Black.Bashboarding.dll
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\ClientBin\David.Black.Bashboarding.pdb
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\ClientBin\CodePlex.Dashboarding.Silverlight.dll
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\ClientBin\CodePlex.Dashboarding.Silverlight.pdb
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\obj\Debug\Page.g.cs
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.dll
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\obj\Debug\David.Black.Bashboarding.pdb
+C:\Projects\codeplex\Dashboards\David.Black.Bashboarding\ClientBin\CodePlex.Dashboarding.Silverlight.xml

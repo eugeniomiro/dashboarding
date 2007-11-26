@@ -1,0 +1,9 @@
+﻿<Canvas xmlns="http://schemas.microsoft.com/client/2007" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Width="200"
+        Height="200"
+        xmlns:CodePlex_Dashboarding_Silverlight_Dynamic="clr-namespace:CodePlex.Dashboarding.Silverlight.Dynamic;assembly=ClientBin/CodePlex.Dashboarding.Silverlight.dll"
+		x:Name="_mainCanvas"
+        >
+	<CodePlex_Dashboarding_Silverlight_Dynamic:ProgressMonitor Width="200" Height="100" WebServiceLocalIdentifier="network.noParams" InitialMaximumValue="100"/>
+</Canvas>

@@ -39,7 +39,7 @@ namespace CodePlex.Dashboarding.Silverlight.Common
             };
         }
 
-        private static Color GetColour(string hex)
+        public static Color GetColour(string hex)
         {
             hex = hex.Replace("#", "").Trim();
             int asInteger = Int32.Parse(hex, System.Globalization.NumberStyles.HexNumber);

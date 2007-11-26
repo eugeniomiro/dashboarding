@@ -22,6 +22,8 @@ namespace CodePlex.Dashboarding.Silverlight.Tooltips
 
         public Tooltip(Canvas parent, string text, string manifestResource)
         {
+            Loaded += new EventHandler(TooltipLoaded);
+            
             _text = text;
             _parent = parent;
             Visibility = Visibility.Collapsed;
@@ -30,12 +32,12 @@ namespace CodePlex.Dashboarding.Silverlight.Tooltips
             parent.MouseEnter += new MouseEventHandler(Show);
             parent.MouseLeave += new EventHandler(Hide);
             parent.MouseMove += new MouseEventHandler(Move);
-
+ 
             using (Stream s = this.GetType().Assembly.GetManifestResourceStream(manifestResource))
             {
                 Root = this.InitializeFromXaml(new System.IO.StreamReader(s).ReadToEnd());
             }
-            Loaded += new EventHandler(TooltipLoaded);
+
         }
 
         protected FrameworkElement Root { get; set; }
@@ -44,9 +46,11 @@ namespace CodePlex.Dashboarding.Silverlight.Tooltips
 
         void Show(object sender, MouseEventArgs e)
         {
-
-            Visibility = Visibility.Visible;
-            SetFromMousePostition(sender, e);
+            if (Text != null && Text != "")
+            {
+                Visibility = Visibility.Visible;
+                SetFromMousePostition(sender, e);
+            }
         }
 
 
@@ -62,7 +66,7 @@ namespace CodePlex.Dashboarding.Silverlight.Tooltips
 
 
 
-        void TooltipLoaded(object sender, EventArgs e)
+        protected void TooltipLoaded(object sender, EventArgs e)
         {
             IsLoaded = true;
             BaseAnimate();

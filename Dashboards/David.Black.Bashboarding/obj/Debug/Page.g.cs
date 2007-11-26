@@ -21,30 +21,26 @@ namespace David.Black.Bashboarding {
 public partial class Page
 {
     // variable declarations
-    CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer _default;
-    CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer _rangeText;
-    CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer _basicColour;
-    CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer _rangeColour;
-    CodePlex.Dashboarding.Silverlight.Thermometers.ThinThermometer _thinThermometer1;
-    CodePlex.Dashboarding.Silverlight.Thermometers.ThinThermometer _thinThermometer2;
-    CodePlex.Dashboarding.Silverlight.Dials.White360 _basic360Dial;
-    CodePlex.Dashboarding.Silverlight.Dials.White360 _basic360Dial2;
-    CodePlex.Dashboarding.Silverlight.Dials.White360 _basic360Dial3;
-    Rectangle ButtonClick;
+    Rectangle _buttonBack;
+    TextBlock _btnBoardLevel;
+    TextBlock _btnManagement;
+    TextBlock _btnProduction;
+    TextBlock _btnServers;
+    TextBlock _btnNetwork;
+    TextBlock _btnApplications;
+    Canvas _dashboardContainer;
       
     
     private void InitializeComponent()
     {
-      _default= this.FindName("_default") as CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer;
-      _rangeText= this.FindName("_rangeText") as CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer;
-      _basicColour= this.FindName("_basicColour") as CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer;
-      _rangeColour= this.FindName("_rangeColour") as CodePlex.Dashboarding.Silverlight.Thermometers.FatThermometer;
-      _thinThermometer1= this.FindName("_thinThermometer1") as CodePlex.Dashboarding.Silverlight.Thermometers.ThinThermometer;
-      _thinThermometer2= this.FindName("_thinThermometer2") as CodePlex.Dashboarding.Silverlight.Thermometers.ThinThermometer;
-      _basic360Dial= this.FindName("_basic360Dial") as CodePlex.Dashboarding.Silverlight.Dials.White360;
-      _basic360Dial2= this.FindName("_basic360Dial2") as CodePlex.Dashboarding.Silverlight.Dials.White360;
-      _basic360Dial3= this.FindName("_basic360Dial3") as CodePlex.Dashboarding.Silverlight.Dials.White360;
-      ButtonClick= this.FindName("ButtonClick") as Rectangle;
+      _buttonBack= this.FindName("_buttonBack") as Rectangle;
+      _btnBoardLevel= this.FindName("_btnBoardLevel") as TextBlock;
+      _btnManagement= this.FindName("_btnManagement") as TextBlock;
+      _btnProduction= this.FindName("_btnProduction") as TextBlock;
+      _btnServers= this.FindName("_btnServers") as TextBlock;
+      _btnNetwork= this.FindName("_btnNetwork") as TextBlock;
+      _btnApplications= this.FindName("_btnApplications") as TextBlock;
+      _dashboardContainer= this.FindName("_dashboardContainer") as Canvas;
       
     }
 }        

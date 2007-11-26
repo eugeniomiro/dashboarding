@@ -1,10 +1,9 @@
 ﻿<Canvas xmlns="http://schemas.microsoft.com/client/2007"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:CodePlex_Dashboarding_Silverlight_Services="clr-namespace:CodePlex.Dashboarding.Silverlight.Services;assembly=ClientBin/CodePlex.Dashboarding.Silverlight.dll"
         Width="160"
         Height="163"
-        Background="White"
         x:Name="_mainCanvas"
-        xmlns:CodePlex_Dashboarding_Silverlight_Services="clr-namespace:CodePlex.Dashboarding.Silverlight.Services;assembly=ClientBin/CodePlex.Dashboarding.Silverlight.dll"
         >
 
 
@@ -18,14 +17,14 @@
   </Canvas.Resources>
 
 
-  <Canvas Width="160.417" Height="164.167" Canvas.Left="0.519" Canvas.Top="-0.281">
+  <Canvas Width="160.417" Height="164.167" Canvas.Left="1.852" Canvas.Top="-0.614">
 
 
     <Ellipse Width="156.584" Height="156.166" Canvas.Left="0.999" Canvas.Top="2.666">
       <Ellipse.Fill>
         <LinearGradientBrush EndPoint="0.742,0.946" StartPoint="0.258,0.054">
-          <GradientStop Color="#FFF2F0F0" Offset="0"/>
-          <GradientStop Color="#FFCEC9C9" Offset="1"/>
+          <GradientStop x:Name="_colourRangeStart" Color="#FF100F0F" Offset="0"/>
+          <GradientStop x:Name="_colourRangeEnd" Color="#FF625454" Offset="1"/>
         </LinearGradientBrush>
       </Ellipse.Fill>
     </Ellipse>
@@ -42,111 +41,144 @@
 
   </Canvas>
 
-  <TextBlock Width="9.416" Height="19" Canvas.Left="42.668" Canvas.Top="127.178" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="9.416" Height="19" Canvas.Left="42.668" Canvas.Top="127.178" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="210"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="0"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="0"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="13.951" Canvas.Top="103.205" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="13.951" Canvas.Top="103.205" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="240"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="10"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="10"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="5.182" Canvas.Top="70.64" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="5.182" Canvas.Top="70.64" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="270"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="20"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="20"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="13.453" Canvas.Top="38.741" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="13.453" Canvas.Top="38.741" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="300"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="30"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="30"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="37.235" Canvas.Top="14.646" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="37.235" Canvas.Top="14.646" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="330"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="40"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="40"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="69.901" Canvas.Top="5.645" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="69.901" Canvas.Top="5.645" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="0"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="50"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="50"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="102.336" Canvas.Top="14.786" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="102.336" Canvas.Top="14.786" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="30"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="60"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="60"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="126.046" Canvas.Top="38.201" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="126.046" Canvas.Top="38.201" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="60"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="70"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="70"/>
+  </TextBlock>
 
-  <TextBlock Width="19.999" Height="19" Canvas.Left="134.718" Canvas.Top="70.521" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.999" Height="19" Canvas.Left="134.718" Canvas.Top="70.521" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="90"/>
         <TranslateTransform X="0" Y="0"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="80"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="80"/>
+  </TextBlock>
 
 
-  <TextBlock Width="19.544" Height="19" Canvas.Left="128.652" Canvas.Top="101.989" TextWrapping="Wrap" RenderTransformOrigin="0.584,0.586" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="19.544" Height="19" Canvas.Left="128.652" Canvas.Top="101.989" TextWrapping="Wrap" RenderTransformOrigin="0.584,0.586" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="120"/>
         <TranslateTransform X="-5.787" Y="0.075"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="90"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="90"/>
+  </TextBlock>
 
-  <TextBlock Width="28.806" Height="19" Canvas.Left="98.595" Canvas.Top="124.895" TextWrapping="Wrap" RenderTransformOrigin="0.584,0.586" FontFamily="Verdana"><TextBlock.RenderTransform>
+  <TextBlock Width="28.806" Height="19" Canvas.Left="98.595" Canvas.Top="124.895" TextWrapping="Wrap" RenderTransformOrigin="0.584,0.586" FontFamily="Verdana" Foreground="#FFF2ECEC">
+    <TextBlock.RenderTransform>
       <TransformGroup>
         <ScaleTransform ScaleX="1" ScaleY="1"/>
         <SkewTransform AngleX="0" AngleY="0"/>
         <RotateTransform Angle="150"/>
         <TranslateTransform X="-5.787" Y="0.075"/>
       </TransformGroup>
-    </TextBlock.RenderTransform><Run Text="100"/></TextBlock>
+    </TextBlock.RenderTransform>
+    <Run Text="100"/>
+  </TextBlock>
 
 
   <Path RenderTransformOrigin="0.498,0.999" Width="7" Height="56.667" Stretch="Fill" Canvas.Left="76.536" Canvas.Top="23.333" Data="M3.32,0.33333333 L6.5,52.5 0.5,52.5 z" x:Name="path">
     <Path.Fill>
       <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-        <GradientStop Color="#FF000000" x:Name="rangeHighColour1" Offset="0"/>
+        <GradientStop Color="#FF615A5A" x:Name="rangeHighColour1" Offset="0"/>
         <GradientStop Color="#FFFFFFFF" x:Name="rangeLowColour1"  Offset="1"/>
       </LinearGradientBrush>
     </Path.Fill>
@@ -169,14 +201,6 @@
   </Ellipse>
 
 
-  <TextBlock Width="34.667" Height="23.333" Canvas.Left="66.333" Canvas.Top="105.997" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_percentage"/>
-
-
-
-
-	<CodePlex_Dashboarding_Silverlight_Services:WebserviceControl Width="21" Height="23" Canvas.Left="0" Canvas.Top="0" x:Name="_webServiceControl" Visibility="Visible"/>
-
-
-
+  <TextBlock Width="34.667" Height="23.333" Canvas.Left="66.333" Canvas.Top="105.997" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_percentage" Foreground="#FFF2ECEC"/>
 
 </Canvas>

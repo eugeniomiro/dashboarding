@@ -1,48 +1,64 @@
 ﻿<Canvas xmlns="http://schemas.microsoft.com/client/2007"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Width="153"
-        Height="220"
-        Background="White"
+        xmlns:CodePlex_Dashboarding_Silverlight_Services="clr-namespace:CodePlex.Dashboarding.Silverlight.Services;assembly=ClientBin/CodePlex.Dashboarding.Silverlight.dll"
+        Width="109"
+        Height="181.333"
         
 		Clip="M0,0 L0,0 L153,0 L153,220 L0,220 z"
         
-		x:Name="_mainCanvas" xmlns:CodePlex_Dashboarding_Silverlight_Services="clr-namespace:CodePlex.Dashboarding.Silverlight.Services;assembly=ClientBin/CodePlex.Dashboarding.Silverlight.dll">
+		x:Name="_mainCanvas">
   
-  <Canvas.Resources>
-    <Storyboard x:Name="_moveMerc">
-      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-        <SplineDoubleKeyFrame KeyTime="00:00:01" Value="-10.922" x:Name="_mercPos"/>
-      </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
-  </Canvas.Resources>
+	<Canvas.Resources>
+		<Storyboard x:Name="_moveMerc">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+				<SplineDoubleKeyFrame KeyTime="00:00:01.5000000" Value="-100" x:Name="_mercPosScale"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:01.5000000" Value="-50" x:Name="_mercPosTrans"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Canvas.Resources>
 
-  <Rectangle Width="20.895" Height="135.667" StrokeThickness="1" Canvas.Left="50.105" Canvas.Top="125.839" RenderTransformOrigin="0.5,0.5" x:Name="rectangle">
-    <Rectangle.Fill>
-      <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-        <GradientStop x:Name="rangeHighColour1" Color="#FFCA3F3F" Offset="0"/>
-        <GradientStop x:Name="rangeHighColour2" Color="#FFCA3F3F" Offset="1"/>
-        <GradientStop x:Name="rangeLowColour1" Color="#FFFFFFFF" Offset="0.524"/>
-      </LinearGradientBrush>
-    </Rectangle.Fill>
-    <Rectangle.RenderTransform>
-      <TransformGroup>
-        <ScaleTransform ScaleX="1" ScaleY="1"/>
-        <SkewTransform AngleX="0" AngleY="0"/>
-        <RotateTransform Angle="0"/>
-        <TranslateTransform X="0" Y="0"/>
-      </TransformGroup>
-    </Rectangle.RenderTransform>
-  </Rectangle>
+  <TextBlock Width="44" Height="18" Canvas.Left="64.667" Canvas.Top="6.819" TextWrapping="Wrap" x:Name="_upperBoundText"><Run Text="100%"/></TextBlock>
 
-  <TextBlock Width="44" Height="18" Canvas.Left="92" Canvas.Top="6.5" TextWrapping="Wrap" x:Name="_upperBoundText"><Run Text="100%"/></TextBlock>
+  <Path Width="10" Height="1" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Canvas.Left="50.667" Canvas.Top="15.319" Data="M50.333333,19.666667 L59.5,19.666667"/>
 
-  <Path Width="10" Height="1" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Canvas.Left="78" Canvas.Top="15" Data="M50.333333,19.666667 L59.5,19.666667"/>
+	<Path Width="10" Height="1" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Canvas.Left="50.667" Canvas.Top="115" Data="M50.333333,19.666667 L59.5,19.666667"/>
 
-  <Path Width="10" Height="1" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Canvas.Left="78" Canvas.Top="114.667" Data="M50.333333,19.666667 L59.5,19.666667"/>
+	<TextBlock Width="47" Height="20" Canvas.Left="60.667" Canvas.Top="104.653" TextWrapping="Wrap" Text="0%" x:Name="_lowerBoundText"/>
 
-  <TextBlock Width="47" Height="20" Canvas.Left="88" Canvas.Top="105" TextWrapping="Wrap" Text="0%" x:Name="_lowerBoundText"/>
+  <Path Width="5" Height="5" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF4AC347" StrokeThickness="5" Canvas.Left="42.167" Canvas.Top="281.167" Data="M72,298"/>
 
-  <Canvas Width="54" Height="178.5" Canvas.Left="34">
+	<Path Width="54" Height="178.5" Stretch="Fill" Data="F1 M14.531001,0.5 C22.111872,0.5 28.288546,6.498807 28.511486,13.999999 L28.519999,13.999999 28.519999,14.08427 28.562,14.499999 28.519999,14.915728 28.519999,128.81126 C36.326313,133.34647 41.52,141.81671 41.52,151.5 41.52,166.13554 29.655546,178 15.02,178 0.38445339,178 -11.48,166.13554 -11.48,151.5 -11.48,142.22423 -6.7142639,134.06155 0.51999927,129.35405 L0.51999927,14.697942 C0.50046015,14.632242 0.5,14.566175 0.50000077,14.499999 L0.51999927,14.302056 0.51999927,13.999999 0.55051666,13.999999 C0.7734549,6.498807 6.9501281,0.5 14.531001,0.5 z" StrokeThickness="5" Canvas.Left="1.333" Clip="M-8,0.5 L57.5,0.5 L57.5,178 L-8,178 z" Stroke="#FFA19494" x:Name="_tooltipEnvelope" Canvas.Top="1.001">
+		<Path.Fill>
+			<LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+				<GradientStop Color="#FFD2CFCF" Offset="0"/>
+				<GradientStop Color="#FFDEDADA" Offset="1"/>
+				<GradientStop Color="#FF978B8B" Offset="0.534"/>
+			</LinearGradientBrush>
+		</Path.Fill>
+	</Path>
+
+	
+	<Rectangle Width="20.895" Height="1" StrokeThickness="1" Canvas.Left="17.5" Canvas.Top="115.201" RenderTransformOrigin="0.5,0.5" x:Name="rectangle">
+		<Rectangle.Fill>
+			<LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+				<GradientStop x:Name="rangeHighColour1" Color="#FFCA3F3F" Offset="0"/>
+				<GradientStop x:Name="rangeHighColour2" Color="#FFCA3F3F" Offset="1"/>
+				<GradientStop x:Name="rangeLowColour1" Color="#FFFFFFFF" Offset="0.524"/>
+			</LinearGradientBrush>
+		</Rectangle.Fill>
+		<Rectangle.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform ScaleX="1" ScaleY="-1"/>
+				<SkewTransform AngleX="0" AngleY="0"/>
+				<RotateTransform Angle="0"/>
+				<TranslateTransform X="0" Y="0"/>
+			</TransformGroup>
+		</Rectangle.RenderTransform>
+	</Rectangle>
+
+  <Canvas Width="54" Height="178.5" Canvas.Top="2.333" Canvas.Left="2.002">
 
     <Path Width="45.25" Height="47.506" Stretch="Fill" StrokeThickness="1" Data="F1 M31.917,2.2444255 C39.788692,6.1026087 45.25,14.787601 45.25,24.875 C45.25,38.613083 35.120441,49.75 22.625,49.75 10.129558,49.75 0,38.613083 -2.8565751E-07,24.875 C0,14.979089 5.2559323,6.4328475 12.90473,2.5 L31.917,2.5 31.917,2.2444255 z" Canvas.Left="4.25" Canvas.Top="126.744">
       <Path.Fill>
@@ -55,14 +71,24 @@
 
   </Canvas>
 
-  <Path Width="5" Height="5" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF4AC347" StrokeThickness="5" Canvas.Left="69.5" Canvas.Top="295.5" Data="M72,298"/>
+  <TextBlock Width="33.75" Height="18" Canvas.Left="15.107" Canvas.Top="143.333" TextWrapping="Wrap" x:Name="_percentage"><Run Text="000"/></TextBlock>
 
-  <Rectangle Width="33.75" Height="45.167" StrokeThickness="1" Canvas.Left="43.747" Canvas.Top="175.836" Fill="#FFFFFFFF"/>
+	<Rectangle Width="20.895" Height="14.917" StrokeThickness="1" Canvas.Left="17.499" Canvas.Top="115.153" RenderTransformOrigin="0.5,0.5" x:Name="_resRect">
+		<Rectangle.Fill>
+			<LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+				<GradientStop x:Name="rangeHighColour4" Color="#FFCA3F3F" Offset="0"/>
+				<GradientStop x:Name="rangeHighColour5" Color="#FFCA3F3F" Offset="1"/>
+				<GradientStop x:Name="rangeLowColour3" Color="#FFFFFFFF" Offset="0.524"/>
+			</LinearGradientBrush>
+		</Rectangle.Fill>
+		<Rectangle.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform ScaleX="1" ScaleY="1"/>
+				<SkewTransform AngleX="0" AngleY="0"/>
+				<RotateTransform Angle="0"/>
+				<TranslateTransform X="0" Y="0"/>
+			</TransformGroup>
+		</Rectangle.RenderTransform>
+	</Rectangle>
 
-  <Path Width="54" Height="178.5" Stretch="Fill" Data="F1 M14.531001,0.5 C22.111872,0.5 28.288546,6.498807 28.511486,13.999999 L28.519999,13.999999 28.519999,14.08427 28.562,14.499999 28.519999,14.915728 28.519999,128.81126 C36.326313,133.34647 41.52,141.81671 41.52,151.5 41.52,166.13554 29.655546,178 15.02,178 0.38445339,178 -11.48,166.13554 -11.48,151.5 -11.48,142.22423 -6.7142639,134.06155 0.51999927,129.35405 L0.51999927,14.697942 C0.50046015,14.632242 0.5,14.566175 0.50000077,14.499999 L0.51999927,14.302056 0.51999927,13.999999 0.55051666,13.999999 C0.7734549,6.498807 6.9501281,0.5 14.531001,0.5 z" StrokeThickness="5" Canvas.Left="34" Clip="M-8,0.5 L57.5,0.5 L57.5,178 L-8,178 z" Stroke="#FFA19494" x:Name="_tooltipEnvelope"/>
-
-  <TextBlock Width="117.49" Height="29.5" Canvas.Top="182.5" TextWrapping="Wrap" FontSize="12" x:Name="_message" FontFamily="Verdana" Canvas.Left="13.51"><Run Text=""/></TextBlock>
-
-  <TextBlock Width="33.75" Height="18" Canvas.Left="47.105" Canvas.Top="141" TextWrapping="Wrap" x:Name="_percentage"><Run Text="000"/></TextBlock>
-	<CodePlex_Dashboarding_Silverlight_Services:WebserviceControl Width="13" Height="15" x:Name="_webServiceControl"/>
 </Canvas>

@@ -10,6 +10,7 @@ using System.Windows.Shapes;
 using CodePlex.Dashboarding.Silverlight.Common;
 using CodePlex.Dashboarding.Silverlight.Tooltips;
 using CodePlex.Dashboarding.Silverlight.Services;
+using System.Diagnostics;
 
 namespace CodePlex.Dashboarding.Silverlight
 {
@@ -18,7 +19,7 @@ namespace CodePlex.Dashboarding.Silverlight
         #region private members
         
         private Tooltip _tooltip;
-        private int _value;
+        private object _value;
         private Canvas _mainCanvas;
         private ColourRange _range;
 
@@ -46,24 +47,35 @@ namespace CodePlex.Dashboarding.Silverlight
 
      
 
-        public int Value
+        public object Value
         {
             get { return _value; }
             set
             {
-
-                if (value < 0) value = 0;
-                if (value > 100) value = 100;
-
                 _value = value;
-
-                PercentageText = String.Format("{0:000}", value);
-
                 Animate();
             }
         }
 
-        Canvas MainCanvas
+        public int ValueAsInteger
+        {
+            get 
+            {
+                Debug.Assert(_value.GetType().IsAssignableFrom(typeof(System.Int32)));
+                return (int) _value; 
+            }
+        }
+
+        public bool ValueAsBool
+        {
+            get
+            {
+                Debug.Assert(_value.GetType().IsAssignableFrom(typeof(System.Boolean)));
+                return (bool)_value;
+            }
+        }
+
+        protected Canvas MainCanvas
         {
             get
             {
@@ -110,7 +122,7 @@ namespace CodePlex.Dashboarding.Silverlight
         {
             if (_range != null)
             {
-                Bound b = _range.GetBound(Value);
+                Bound b = _range.GetBound(GetValueForSettingRange());
                 for (int i = 0; i < 20; i++)
                 {
                     GradientStop hiStop = Root.FindName("rangeHighColour" + i) as GradientStop;
@@ -125,6 +137,15 @@ namespace CodePlex.Dashboarding.Silverlight
                     }
                 }
             }
+        }
+
+        private int GetValueForSettingRange()
+        {
+            if (typeof(bool) == Value.GetType())
+            {
+                return ValueAsBool ? 1 : 0;
+            }
+            return ValueAsInteger;
         }
 
         protected abstract void Animate();

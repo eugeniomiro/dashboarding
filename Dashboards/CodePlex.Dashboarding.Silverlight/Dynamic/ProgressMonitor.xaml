@@ -1,0 +1,71 @@
+﻿<Canvas xmlns="http://schemas.microsoft.com/client/2007" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Width="200"
+        Height="100"
+        Background="#FF000000"
+		x:Name="_mainCanvas"
+        >
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="0" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="10" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="20" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="30" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="40" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="50" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="60" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="70" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="80" Data="M0,0 L200,0"/>
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="90" Data="M0,0 L200,0"/>
+
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="10" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="20" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="30" Canvas.Top="0" Data="M0,0 L0,100"/>
+
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="40" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="50" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="60" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="70" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="80" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="90" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="100" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="110" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="120" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="130" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="140" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="150" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="160" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="170" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="180" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="190" Canvas.Top="0" Data="M0,0 L0,100"/>
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="199" Canvas.Top="0" Data="M0,0 L0,100"/>
+
+
+
+	<Path x:Name="_path" Width="201" Height="100" Stretch="None" Stroke="#FF81D434" StrokeThickness="1" Canvas.Left="0.166" Canvas.Top="-0.5" Data="M14.666667,95.333333 L16.999667,67.667003 21.666331,54.999846 29.332299,41.333015 40.66568,29.666613 45.331836,36.666356 52.665305,48.666489 59.331401,60.999958 62.664974,90.666951 91.663618,48.666489 105.99605,32.666312 137.66147,36.333019 142.66092,45.999793 157.65991,56.999914 170.32565,55.666566 181.32549,41.999748 189.32547,28.666268 195.9922,22.332499 196.32552,95.333669" Opacity="0.95" Visibility="Collapsed">
+		<Path.Fill>
+			<RadialGradientBrush GradientOrigin="0.57,0.359">
+				<RadialGradientBrush.RelativeTransform>
+					<TransformGroup>
+						<ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.295" ScaleY="1.295"/>
+						<SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+						<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+						<TranslateTransform X="0" Y="0"/>
+					</TransformGroup>
+				</RadialGradientBrush.RelativeTransform>
+				<GradientStop Color="#FF43A0FB" Offset="0.01"/>
+				<GradientStop Color="#FF195D52" Offset="1"/>
+			</RadialGradientBrush>
+		</Path.Fill>
+	</Path>
+  
+  <Path Width="200" Height="1" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="99" Data="M0,0 L200,0"/>
+
+  <Path Width="1" Height="100" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF009900" Canvas.Left="0" Canvas.Top="0" Data="M0,0 L0,100"/>
+
+
+	<TextBlock Width="131" Height="21" Canvas.Left="205" Canvas.Top="93.995" TextWrapping="Wrap" x:Name="_lowWaterMark" Foreground="#FF81D434" FontSize="8"/>
+
+
+	<TextBlock Width="131" Height="21" Canvas.Left="205" Canvas.Top="-5.005" TextWrapping="Wrap" x:Name="_highWaterMark" Foreground="#FF81D434" FontSize="8"/>
+
+
+</Canvas>

@@ -16,8 +16,8 @@
 		    parentElement: document.getElementById("SilverlightControlHost"),
 		    id: "SilverlightControl",
 		    properties: {
-			    width: "1000px",
-			    height: "440px",
+			    width: "800px",
+			    height: "600px",
 			    version: "1.1",
 			    enableHtmlAccess: "true"
 		    },
@@ -35,35 +35,17 @@
 
     </script>
     <style type="text/css">
-        .silverlightHost { width: 1000px; height: 440px; }
+        .silverlightHost { width: 800px; height: 600px; }
     </style>
     
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    <p>What you are seeing here are several  basic 
-    dashboard controls. Half of them update client side when you click the white rectange  below,
-    the others periodically update using a web service. All controls have configuarble properties to modify their appearance </p>
-    
-    <p>Web service are configurable and invoked asynchronously through reflection. Hopefully this project canmove forward from this basic
-    framework. Next steps</p>
-    <ul>
-        <li>Put some of those comment thingies in the code. Apparently some people like em :-)</li>
-        <li>Test and extend the web-service configuration. Is there an app.config in silverlight??</li>
-        <li>Add more dashboard items, dials, thermometers, boolean displays, progress bars, you name it</li>
-    </ul>
-    
     <div id="SilverlightControlHost" class="silverlightHost" >
         <script type="text/javascript">
             createSilverlight();
         </script>
-    </div>
-    
-    </div>
+    </div>    
     </form>
-    <p>
-        That's the 'button' up there. No point doing anything better until Microsoft fuel our addictions with a new Beta release is there?</p>
 </body>
 </html>

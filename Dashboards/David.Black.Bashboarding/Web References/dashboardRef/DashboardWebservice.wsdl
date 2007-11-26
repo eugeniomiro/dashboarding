@@ -26,6 +26,46 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetDashboardValueBool">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDashboardValueBoolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDashboardValueBoolResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCpuLoad">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCpuLoadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCpuLoadResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSawTooth">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSawToothResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSawToothResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSquareWave">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSquareWaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSquareWaveResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetDashboardValueNoParamsSoapIn">
@@ -40,6 +80,30 @@
   <wsdl:message name="GetDashboardValueSingleIntegerAsRangeSoapOut">
     <wsdl:part name="parameters" element="tns:GetDashboardValueSingleIntegerAsRangeResponse" />
   </wsdl:message>
+  <wsdl:message name="GetDashboardValueBoolSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDashboardValueBool" />
+  </wsdl:message>
+  <wsdl:message name="GetDashboardValueBoolSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDashboardValueBoolResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCpuLoadSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCpuLoad" />
+  </wsdl:message>
+  <wsdl:message name="GetCpuLoadSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCpuLoadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSawToothSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSawTooth" />
+  </wsdl:message>
+  <wsdl:message name="GetSawToothSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSawToothResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSquareWaveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSquareWave" />
+  </wsdl:message>
+  <wsdl:message name="GetSquareWaveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSquareWaveResponse" />
+  </wsdl:message>
   <wsdl:portType name="DashboardWebserviceSoap">
     <wsdl:operation name="GetDashboardValueNoParams">
       <wsdl:input message="tns:GetDashboardValueNoParamsSoapIn" />
@@ -48,6 +112,22 @@
     <wsdl:operation name="GetDashboardValueSingleIntegerAsRange">
       <wsdl:input message="tns:GetDashboardValueSingleIntegerAsRangeSoapIn" />
       <wsdl:output message="tns:GetDashboardValueSingleIntegerAsRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboardValueBool">
+      <wsdl:input message="tns:GetDashboardValueBoolSoapIn" />
+      <wsdl:output message="tns:GetDashboardValueBoolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCpuLoad">
+      <wsdl:input message="tns:GetCpuLoadSoapIn" />
+      <wsdl:output message="tns:GetCpuLoadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSawTooth">
+      <wsdl:input message="tns:GetSawToothSoapIn" />
+      <wsdl:output message="tns:GetSawToothSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSquareWave">
+      <wsdl:input message="tns:GetSquareWaveSoapIn" />
+      <wsdl:output message="tns:GetSquareWaveSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DashboardWebserviceSoap" type="tns:DashboardWebserviceSoap">
@@ -70,6 +150,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetDashboardValueBool">
+      <soap:operation soapAction="http://www.CodePlex.com/Dashboarding/GetDashboardValueBool" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCpuLoad">
+      <soap:operation soapAction="http://www.CodePlex.com/Dashboarding/GetCpuLoad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSawTooth">
+      <soap:operation soapAction="http://www.CodePlex.com/Dashboarding/GetSawTooth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSquareWave">
+      <soap:operation soapAction="http://www.CodePlex.com/Dashboarding/GetSquareWave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DashboardWebserviceSoap12" type="tns:DashboardWebserviceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -84,6 +200,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetDashboardValueSingleIntegerAsRange">
       <soap12:operation soapAction="http://www.CodePlex.com/Dashboarding/GetDashboardValueSingleIntegerAsRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboardValueBool">
+      <soap12:operation soapAction="http://www.CodePlex.com/Dashboarding/GetDashboardValueBool" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCpuLoad">
+      <soap12:operation soapAction="http://www.CodePlex.com/Dashboarding/GetCpuLoad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSawTooth">
+      <soap12:operation soapAction="http://www.CodePlex.com/Dashboarding/GetSawTooth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSquareWave">
+      <soap12:operation soapAction="http://www.CodePlex.com/Dashboarding/GetSquareWave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

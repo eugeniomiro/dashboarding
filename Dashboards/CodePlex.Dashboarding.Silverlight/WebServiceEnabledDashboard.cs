@@ -33,6 +33,9 @@ namespace CodePlex.Dashboarding.Silverlight
         protected override void DashboardLoaded(object sender, EventArgs e)
         {
             base.DashboardLoaded(sender, e);
+            _serviceControl = new WebserviceControl();
+            MainCanvas.Children.Add(_serviceControl);
+            
             if (IsWebserviceEnabled)
             {
                 _webServiceDefinition = WebServiceManager.Retrieve(WebServiceLocalIdentifier);
@@ -52,8 +55,8 @@ namespace CodePlex.Dashboarding.Silverlight
 
         private void WebServiceComplete(IAsyncResult async)
         {
-            int newValue = _webServiceDefinition.EndAsyncCall(async, _webServiceObject);
-            Value = newValue;
+            Value = _webServiceDefinition.EndAsyncCall(async, _webServiceObject);
+
             IDisposable disp = _webServiceObject as IDisposable;
 
             // if it implements IDisposable, let's be a good citizen

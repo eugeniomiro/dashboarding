@@ -60,6 +60,74 @@ namespace David.Black.Bashboarding.dashboardRef {
             object[] results = this.EndInvoke(asyncResult);
             return ((int)(results[0]));
         }
+        
+        /// <remarks/>
+        public bool GetDashboardValueBool() {
+            object[] results = this.Invoke("GetDashboardValueBool", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(bool));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public System.IAsyncResult BeginGetDashboardValueBool(System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("GetDashboardValueBool", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(bool), callback, asyncState);
+        }
+        
+        /// <remarks/>
+        public bool EndGetDashboardValueBool(System.IAsyncResult asyncResult) {
+            object[] results = this.EndInvoke(asyncResult);
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public int GetCpuLoad() {
+            object[] results = this.Invoke("GetCpuLoad", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(int));
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public System.IAsyncResult BeginGetCpuLoad(System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("GetCpuLoad", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(int), callback, asyncState);
+        }
+        
+        /// <remarks/>
+        public int EndGetCpuLoad(System.IAsyncResult asyncResult) {
+            object[] results = this.EndInvoke(asyncResult);
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public int GetSawTooth() {
+            object[] results = this.Invoke("GetSawTooth", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(int));
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public System.IAsyncResult BeginGetSawTooth(System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("GetSawTooth", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(int), callback, asyncState);
+        }
+        
+        /// <remarks/>
+        public int EndGetSawTooth(System.IAsyncResult asyncResult) {
+            object[] results = this.EndInvoke(asyncResult);
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public int GetSquareWave() {
+            object[] results = this.Invoke("GetSquareWave", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(int));
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public System.IAsyncResult BeginGetSquareWave(System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("GetSquareWave", new System.Windows.Browser.Net.SoapHttpClientProtocol.ServiceParameter[0], typeof(int), callback, asyncState);
+        }
+        
+        /// <remarks/>
+        public int EndGetSquareWave(System.IAsyncResult asyncResult) {
+            object[] results = this.EndInvoke(asyncResult);
+            return ((int)(results[0]));
+        }
     }
 }
 

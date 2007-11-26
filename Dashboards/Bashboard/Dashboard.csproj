@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Silverlight.js" />
   </ItemGroup>
   <ItemGroup>

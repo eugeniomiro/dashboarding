@@ -46,11 +46,11 @@ namespace CodePlex.Dashboarding.Silverlight.Services
             return o;
         }
 
-        public int EndAsyncCall(IAsyncResult res, object ws)
+        public object EndAsyncCall(IAsyncResult res, object ws)
         {
             Validate();
             object ret = _EndMethod.Invoke(ws, new object [] {res});
-            return (int)ret;
+            return ret;
         }
 
 
@@ -61,16 +61,17 @@ namespace CodePlex.Dashboarding.Silverlight.Services
                 CheckMethodExists();
                 CheckReturnValueOfFunction();
                 CheckParameters();
+                validated = true;
             }
         }
 
         private void CheckReturnValueOfFunction()
         {
-            Type returnValue = _targetMethod.ReturnType;
-            if (!typeof(Int32).IsAssignableFrom(returnValue))
-            {
-                throw new DashboardWebServiceException("Web service class '" + Class.Name + "' method '" + MethodName + "' the return value of the method '"+returnValue.Name+ " is not assignable to the Value of the guage or dial (int)");
-            }
+        //    Type returnValue = _targetMethod.ReturnType;
+        //    if (!typeof(Int32).IsAssignableFrom(returnValue))
+        //    {
+        //        throw new DashboardWebServiceException("Web service class '" + Class.Name + "' method '" + MethodName + "' the return value of the method '" + returnValue.Name + " is not assignable to the Value of the guage or dial (int)");
+        //    }
         }
 
         private void CheckParameters()

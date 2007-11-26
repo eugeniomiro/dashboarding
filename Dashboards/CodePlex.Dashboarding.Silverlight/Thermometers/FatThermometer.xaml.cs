@@ -22,23 +22,7 @@ namespace CodePlex.Dashboarding.Silverlight.Thermometers
 
         }
 
-        public string Text
-        {
-            get
-            {
-                TextBlock tb = Root.FindName("_message") as TextBlock;
-                return tb.Text;
-            }
-            set
-            {
-                TextBlock tb = Root.FindName("_message") as TextBlock;
-                if (tb != null)
-                {
-                    tb.Text = value;
-                }
-            }
-        }
-
+        
         public string LowerBoundText
         {
             get
@@ -71,13 +55,17 @@ namespace CodePlex.Dashboarding.Silverlight.Thermometers
         {
             if (IsLoaded)
             {
-                SetColourFromRange();
-                int animateTo = Value + 11;
-
-                Storyboard sb = Root.FindName("_moveMerc") as Storyboard;
-                SplineDoubleKeyFrame endFrame = sb.FindName("_mercPos") as SplineDoubleKeyFrame;
-                endFrame.Value = -animateTo;
-                sb.Begin();
+                if (Value != null)
+                {
+                    PercentageText = String.Format("{0:000}", ValueAsInteger);
+                    SetColourFromRange();
+                    Storyboard sb = Root.FindName("_moveMerc") as Storyboard;
+                    SplineDoubleKeyFrame scaleFrame = sb.FindName("_mercPosScale") as SplineDoubleKeyFrame;
+                    scaleFrame.Value = -ValueAsInteger;
+                    SplineDoubleKeyFrame transFrame = sb.FindName("_mercPosTrans") as SplineDoubleKeyFrame;
+                    transFrame.Value = -(ValueAsInteger / 2);
+                    sb.Begin();
+                }
             }
         }
 
