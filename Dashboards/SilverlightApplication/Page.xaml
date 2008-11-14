@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="SilverlightApplication.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="800" Height="600" 
+     xmlns:dl="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding"
+     xmlns:cm="clr-namespace:Codeplex.Dashboarding.Common;assembly=Codeplex.Dashboarding"        
+     xmlns:h="clr-namespace:SilverlightApplication.DemoPages"        
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="_tick"        
+            
+             >
+    <Grid x:Name="LayoutRoot" Background="White">
+
+ 
+        <h:GraphPaper Title="Home" Subtitle="Overview " Grid.Column="0" Grid.Row="0"/>
+
+ 
+        <dl:Dial360 x:Name="_dial" Value="67" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Margin="87,154,0,286" Width="160" RenderTransformOrigin="0.5,0.5">
+        	<dl:Dial360.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+        			<SkewTransform/>
+        			<RotateTransform/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</dl:Dial360.RenderTransform>
+            <dl:Dial360.FaceColorRange>
+                    <cm:ColorPoint HiColor="#2A242C" LowColor="#6C0680" Value="0" />
+            </dl:Dial360.FaceColorRange>
+        </dl:Dial360>
+    	<dl:RoundLed x:Name="_roundLed" HorizontalAlignment="Left" Margin="133,0,0,267" VerticalAlignment="Bottom" Width="32" Height="32" d:LayoutOverrides="VerticalAlignment"/>
+    	<dl:TickCross Value="51" HorizontalAlignment="Left" Margin="170,338,0,0" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" Width="32" Height="32" x:Name="_tickCrossLed"/>
+    	<TextBox Height="69" Margin="233,197,37,0" VerticalAlignment="Top" Text="Dials show values on circular gauges. Positively quintessential when it comes to dashboards :-).&#xa;" TextWrapping="Wrap" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
+    		<TextBox.Background>
+    			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    				<GradientStop Color="#FFBEBA9F"/>
+    				<GradientStop Color="#DDFDF7C8" Offset="1"/>
+    			</LinearGradientBrush>
+    		</TextBox.Background>
+    	</TextBox>
+    	<TextBox Height="69" Margin="233,0,37,230" VerticalAlignment="Bottom" Text="Boolean gauges show yes / no values. &#xa;" TextWrapping="Wrap" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
+    		<TextBox.Background>
+    			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    				<GradientStop Color="#FFBEBA9F"/>
+    				<GradientStop Color="#DDFDF7C8" Offset="1"/>
+    			</LinearGradientBrush>
+    		</TextBox.Background>
+    	</TextBox>
+    	<dl:DecadeVuMeter Value="66" HorizontalAlignment="Left" Margin="260,0,0,137" VerticalAlignment="Bottom"/>
+    
+    </Grid>
+</UserControl>
