@@ -59,7 +59,6 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientBin\SilverlightApplication.xap" />
     <Content Include="css\csharp.css" />
     <Content Include="css\style.css" />
     <Content Include="Navigation\Footer.ascx" />
@@ -109,6 +108,13 @@
     </Compile>
     <Compile Include="Pages\Dial360.aspx.designer.cs">
       <DependentUpon>Dial360.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DiamondSlider.aspx.cs">
+      <DependentUpon>DiamondSlider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DiamondSlider.aspx.designer.cs">
+      <DependentUpon>DiamondSlider.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\FiveStarRanking.aspx.cs">
       <DependentUpon>FiveStarRanking.aspx</DependentUpon>
@@ -183,10 +189,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientBin\SilverlightApplication.xap" />
     <Content Include="Default.aspx" />
     <Content Include="Extras\Contacts.aspx" />
     <Content Include="Pages\DecadeVuMeter.aspx" />
     <Content Include="Pages\Dial360.aspx" />
+    <Content Include="Pages\DiamondSlider.aspx" />
     <Content Include="Pages\FiveStarRanking.aspx" />
     <Content Include="Pages\Odometer.aspx" />
     <Content Include="Pages\PerformanceMonitor.aspx" />

@@ -75,6 +75,8 @@ namespace SilverlightApplication
                 case "Wall3": return new Wall3();
                 case "Prog1": return new Prog1();
                 case "Prog2": return new Prog2();
+                case "Diam1": return new Diam1();
+                case "Diam2": return new Diam2();
 
             }
             return null;

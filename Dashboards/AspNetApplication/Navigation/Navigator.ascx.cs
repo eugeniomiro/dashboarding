@@ -32,6 +32,8 @@ namespace AspNetApplication.Navigation
             new NavigationItem("PlainThermometer", "~/Pages/PlainThermometer.aspx"),
             new NavigationItem("WallThermometer", "~/Pages/WallThermometer.aspx"),
             new NavigationItem("ProgressBar", "~/Pages/ProgressBar.aspx"),
+            new NavigationItem("DiamondSlider", "~/Pages/DiamondSlider.aspx"),
+
         };
         
         #endregion

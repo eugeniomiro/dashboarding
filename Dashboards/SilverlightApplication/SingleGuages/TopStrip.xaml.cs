@@ -12,41 +12,77 @@ using System.Windows.Shapes;
 
 namespace SilverlightApplication.SingleGuages
 {
-    public partial class TopStrip : SingleGauge
+    public partial class TopStrip : UserControl
     {
         int pos = 0;
-        public TopStrip(IDictionary<string, string> parameters): base(parameters)
+        private Random _random = new Random();
+        private Storyboard _timer = new Storyboard();
+
+        public TopStrip(IDictionary<string, string> parameters)
         {
             InitializeComponent();
+            _timer.Duration = new Duration(new TimeSpan(0, 0, 1));
+            _timer.Completed += new EventHandler(timer_Completed);
+            Loaded += new RoutedEventHandler(IAmLoaded);
         }
+
+        /// <summary>
+        /// On load show value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void IAmLoaded(object sender, RoutedEventArgs e)
+        {
+            SetValues();
+        }
+
+        /// <summary>
+        /// Timer has ticked
+        /// </summary>
+        void timer_Completed(object sender, EventArgs e)
+        {
+            SetValues();
+        }
+
+        /// <summary>
+        /// Set the value and display
+        /// </summary>
+        private void SetValues()
+        {
+            Animate();
+            _timer.Begin();
+
+        }
+
+
 
         /// <summary>
         /// Display the control according the the current value
         /// </summary>
-        protected override void Animate()
+        protected void Animate()
         {
             if (pos == 0)
             {
-                _c1.Value = Random.Next(100);
-                _c3.Value = Random.Next(100);
-                _c4.Value = Random.Next(100);
+                _c1.Value = _random.Next(100);
+                _c3.Value = _random.Next(100);
+                _c4.Value = _random.Next(100);
 
 
-                _prog1.Value = Random.Next(100);
-                _prog2.Value = Random.Next(100);
+                _prog1.Value = _random.Next(100);
+
+                _slider.Value = _random.Next(100);
              
 
             }
-            _c2.Value = Random.Next(100);
-            _c12.Value = Random.Next(100);
-            _c13.Value = Random.Next(100);
-           
-            
-            _perf.Value = Random.Next(100);
+            _c2.Value = _random.Next(100);
+            _c12.Value = _random.Next(100);
+            _c13.Value = _random.Next(100);
 
 
-            _o1.Value = Random.Next(100);
-            _o2.Value = Random.Next(100);
+            _perf.Value = _random.Next(100);
+
+
+            _o1.Value = _random.Next(100);
 
 
             string  t = DateTime.Now.ToString("hhmmsstt");
@@ -60,8 +96,8 @@ namespace SilverlightApplication.SingleGuages
             _sD1.DisplayCharacter = "" + t[6];
             _sD2.DisplayCharacter = "" + t[7];
 
-            _ther2.Value = Random.Next(100);
-            _wall1.Value = Random.Next(100);
+            _ther2.Value = _random.Next(100);
+            _wall1.Value = _random.Next(100);
             _odometer.Increment();
             
 

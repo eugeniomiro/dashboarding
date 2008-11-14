@@ -56,6 +56,9 @@
     <Compile Include="ColorPoint.cs" />
     <Compile Include="ColorPointCollection.cs" />
     <Compile Include="Dashboard.cs" />
+    <Compile Include="DiamondSlider.xaml.cs">
+      <DependentUpon>DiamondSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Odometer.xaml.cs">
       <DependentUpon>Odometer.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DiamondSlider.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
     <Page Include="Odometer.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>

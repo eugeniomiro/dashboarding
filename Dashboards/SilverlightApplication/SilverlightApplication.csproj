@@ -50,10 +50,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codeplex.Dashboarding, Version=0.5.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Codeplex\Dashboards\Codeplex.Dashboarding\Bin\Debug\Codeplex.Dashboarding.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
@@ -72,6 +68,12 @@
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Diam1.xaml.cs">
+      <DependentUpon>Diam1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Diam2.xaml.cs">
+      <DependentUpon>Diam2.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleGuages\Prog1.xaml.cs">
       <DependentUpon>Prog1.xaml</DependentUpon>
@@ -183,6 +185,14 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="SingleGuages\Diam1.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Diam2.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
     <Page Include="SingleGuages\Prog1.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
@@ -327,6 +337,12 @@
     <Resource Include="Images\booleans.png" />
     <Resource Include="Images\dials.png" />
     <Resource Include="Images\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding.csproj">
+      <Project>{4AC50D91-3409-41EC-B09B-4B15F82F731A}</Project>
+      <Name>Codeplex.Dashboarding</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v2.0\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

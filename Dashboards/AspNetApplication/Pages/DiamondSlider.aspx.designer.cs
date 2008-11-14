@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AspNetApplication.Navigation {
+namespace AspNetApplication.Pages {
     
     
-    public partial class Footer {
+    public partial class DiamondSlider {
     }
 }
