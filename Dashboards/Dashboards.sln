@@ -1,12 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding", "Codeplex.Dashboarding\Codeplex.Dashboarding.csproj", "{4AC50D91-3409-41EC-B09B-4B15F82F731A}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 1
+		SccNumberOfProjects = 2
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs05.codeplex.com/
 		SccLocalPath0 = .
+		SccProjectUniqueName1 = Codeplex.Dashboarding\\Codeplex.Dashboarding.csproj
+		SccProjectName1 = Codeplex.Dashboarding
+		SccLocalPath1 = Codeplex.Dashboarding
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
