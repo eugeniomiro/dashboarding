@@ -1,1 +1,0 @@
-﻿<%@ WebService Language="C#" CodeBehind="DashboardService.asmx.cs" Class="DashboardWebService.DashboardService" %>
