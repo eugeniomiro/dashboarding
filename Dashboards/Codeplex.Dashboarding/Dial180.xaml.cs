@@ -10,19 +10,17 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-
 namespace Codeplex.Dashboarding
 {
     /// <summary>
-    /// A Dial360  displays as a traditional circular guage with numbers from 0 to 100
+    /// A Dial180 
     /// </summary>
-    public partial class Dial360 : Dashboard
+    public partial class Dial180 : UserControl
     {
-
         /// <summary>
-        /// Constructs a Dial360
+        /// constructs a dial 180 
         /// </summary>
-        public Dial360()
+        public Dial180()
         {
             InitializeComponent();
             SetValue(FaceColorRangeProperty, new ColorPointCollection());
@@ -30,23 +28,22 @@ namespace Codeplex.Dashboarding
 
         }
 
+
         #region FaceColorRange property
 
         /// <summary>
-        /// Our dependany property FaceColor has changed, deal with it
+        /// Dependancy property for the face color of our dial
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
         public static readonly DependencyProperty FaceColorRangeProperty =
-            DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
+            DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
 
         /// <summary>
         /// The point in the range (0..100) where this color takes effect
         /// </summary>
         public ColorPointCollection FaceColorRange
         {
-            get 
-            { 
+            get
+            {
                 ColorPointCollection res = (ColorPointCollection)GetValue(FaceColorRangeProperty);
                 return res;
             }
@@ -58,19 +55,29 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Our dependany property has changed, update the face color
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
         private static void FaceColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Dial180 instance = dependancy as Dial180;
             if (instance != null)
             {
                 instance.SetFaceColor();
             }
         }
 
+        private void SetFaceColor()
+        {
+
+            ColorPoint c = FaceColorRange.GetColor(Value);
+            if (c != null)
+            {
+                _colourRangeStart.Color = c.HiColor;
+                _colourRangeEnd.Color = c.LowColor;
+            }
+        }
 
         #endregion
 
@@ -80,7 +87,7 @@ namespace Codeplex.Dashboarding
         /// The NeedleColor Dependancy property
         /// </summary>
         public static readonly DependencyProperty NeedleColorRangeProperty =
-            DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
+            DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
 
         /// <summary>
         /// The point in the range (0..100) where this color takes effect
@@ -106,22 +113,32 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Dial180 instance = dependancy as Dial180;
             if (instance != null)
             {
                 instance.SetNeedleColor();
             }
         }
 
+        private void SetNeedleColor()
+        {
+            ColorPoint c = NeedleColorRange.GetColor(Value);
+            if (c != null)
+            {
+                _needleHighColour.Color = c.HiColor;
+                _needleLowColour.Color = c.LowColor;
+            }
+        }
+
         #endregion
 
         #region TextColor
-
+       
         /// <summary>
         /// The TextColor Dependancy property
         /// </summary>
         public static readonly DependencyProperty TextColorProperty =
-            DependencyProperty.Register("TextColor", typeof(Color), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
+            DependencyProperty.Register("TextColor", typeof(Color), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
 
         /// <summary>
         /// The color of the text used to show the percentage
@@ -147,10 +164,10 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Dial180 instance = dependancy as Dial180;
             if (instance != null)
             {
-                instance._percentage.Foreground = new SolidColorBrush(instance.TextColor);
+                instance._text.Foreground = new SolidColorBrush(instance.TextColor);
             }
         }
 
@@ -161,7 +178,7 @@ namespace Codeplex.Dashboarding
         /// The dependancy property for theTextVisibilityiColor property
         /// </summary>
         public static readonly DependencyProperty TextVisibilityProperty =
-            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
+            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
 
         /// <summary>
         /// Show or hide the text
@@ -182,55 +199,37 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void TextVisibilityPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Dial180 instance = dependancy as Dial180;
 
 
             if (instance != null)
             {
-                instance._percentage.Visibility = instance.TextVisibility;
+                instance._text.Visibility = instance.TextVisibility;
             }
         }
 
         #endregion
 
 
-      
         /// <summary>
-        /// Animate our Dial360. We calculate the needle position, color and the face color
+        /// 
         /// </summary>
-        protected override void Animate()
+        public  double Value 
+        {
+            get { return _t; }
+            set { _t = value; Animate(); }
+        }
+        private double _t;
+
+        void Animate()
         {
             SetFaceColor();
             SetNeedleColor();
-            
-            _percentage.Text = String.Format("{0:000}", Value);
-            //SetColourFromRange();
-            double animateTo = -150 + (3 * Value);
-            _needlePos.Value = animateTo;
-            _moveNeedle.Begin();
+            _text.Text = "" + Value;
+            double point = -90 + ((Value / 100) * 180);
+            _value.Value = point;
+            _swipe.Begin();
         }
 
-        private void SetFaceColor()
-        {
-
-            ColorPoint c = FaceColorRange.GetColor(Value);
-            if (c != null)
-            {
-                _colourRangeStart.Color = c.HiColor;
-                _colourRangeEnd.Color = c.LowColor;
-            }
-        }
-
-        private void SetNeedleColor()
-        {
-            ColorPoint c = NeedleColorRange.GetColor(Value);
-            if (c != null)
-            {
-                _needleHighColour.Color = c.HiColor;
-                _needleLowColour.Color = c.LowColor;
-            }
-        }
-
-        
     }
 }

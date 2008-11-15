@@ -69,31 +69,6 @@ that looks just like this. </p>
 </td>
 </tr>
 
-<tr>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-</tr>
-
 
  </table>
 

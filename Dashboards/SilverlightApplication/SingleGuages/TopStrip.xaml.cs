@@ -54,7 +54,7 @@ namespace SilverlightApplication.SingleGuages
 
         }
 
-
+        
 
         /// <summary>
         /// Display the control according the the current value
@@ -63,26 +63,27 @@ namespace SilverlightApplication.SingleGuages
         {
             if (pos == 0)
             {
-                _c1.Value = _random.Next(100);
-                _c3.Value = _random.Next(100);
-                _c4.Value = _random.Next(100);
+                _tickCross.Value = _random.Next(100);
+                _roundLed.Value = _random.Next(100);
+                _dial360.Value = _random.Next(100);
 
 
                 _prog1.Value = _random.Next(100);
 
                 _slider.Value = _random.Next(100);
-             
+
+                _dial180.Value = _random.Next(100);
 
             }
-            _c2.Value = _random.Next(100);
-            _c12.Value = _random.Next(100);
-            _c13.Value = _random.Next(100);
+            _dvu1.Value = _random.Next(100);
+            _dvu2.Value = _random.Next(100);
+            _dvu3.Value = _random.Next(100);
 
 
             _perf.Value = _random.Next(100);
 
 
-            _o1.Value = _random.Next(100);
+            _fiveStar.Value = _random.Next(100);
 
 
             string  t = DateTime.Now.ToString("hhmmsstt");

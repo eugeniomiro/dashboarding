@@ -77,7 +77,8 @@ namespace SilverlightApplication
                 case "Prog2": return new Prog2();
                 case "Diam1": return new Diam1();
                 case "Diam2": return new Diam2();
-
+                case "Dial180_1": return new Dial180_1();
+                case "Dial180_2": return new Dial180_2();
             }
             return null;
         }

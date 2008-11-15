@@ -50,7 +50,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="0"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="13.951" Canvas.Top="103.205" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -62,7 +62,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="10"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="5.182" Canvas.Top="70.64" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -74,7 +74,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="20"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="13.453" Canvas.Top="38.741" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -86,7 +86,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="30"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="37.235" Canvas.Top="14.646" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -98,7 +98,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="40"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="69.901" Canvas.Top="5.645" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -110,7 +110,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="50"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="102.336" Canvas.Top="14.786" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -122,7 +122,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="60"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="126.046" Canvas.Top="38.201" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -134,7 +134,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="70"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="19.999" Height="19" Canvas.Left="134.718" Canvas.Top="70.521" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -146,7 +146,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="80"/>
-  </TextBlock>
+            </TextBlock>
 
 
             <TextBlock Width="19.544" Height="19" Canvas.Left="128.652" Canvas.Top="101.989" TextWrapping="Wrap" RenderTransformOrigin="0.584,0.586" FontFamily="Verdana" Foreground="#FFF2ECEC">
@@ -159,7 +159,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="90"/>
-  </TextBlock>
+            </TextBlock>
 
             <TextBlock Width="28.806" Height="19" Canvas.Left="98.595" Canvas.Top="124.895" TextWrapping="Wrap" RenderTransformOrigin="0.584,0.586" FontFamily="Verdana" Foreground="#FFF2ECEC">
     <TextBlock.RenderTransform>
@@ -171,7 +171,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform>
     <Run Text="100"/>
-  </TextBlock>
+            </TextBlock>
 
 
             <Path RenderTransformOrigin="0.498,0.999" Width="7" Height="56.667" Stretch="Fill" Canvas.Left="76.536" Canvas.Top="23.333" Data="M3.32,0.33333333 L6.5,52.5 0.5,52.5 z" x:Name="path">
@@ -200,9 +200,24 @@
             </Ellipse>
 
 
-            <TextBlock Width="34.667" Height="23.333" Canvas.Left="66.333" Canvas.Top="105.997" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_percentage" Foreground="#FFF2ECEC"/>
+            <TextBlock Width="21.167" Height="13.083" Canvas.Left="69.583" Canvas.Top="105.997" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_percentage" Foreground="#FFF2ECEC" TextAlignment="Center"/>
 
-            
+            <Path Margin="6.832,5.999,0,0" Stretch="Fill" Data="M152.5,76 C152.5,96.39447 112.62733,78.363838 75.472977,78.80822 C36.66341,79.2724 0.5,97.303032 0.5,76 C0.5,34.302502 34.52636,0.5 76.5,0.5 C118.47364,0.5 152.5,34.302502 152.5,76 z" Opacity="0.4" VerticalAlignment="Top" Height="83.343" Width="148" HorizontalAlignment="Left">
+                <Path.Fill>
+                    <RadialGradientBrush GradientOrigin="1.005,1.129">
+                        <RadialGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.403" ScaleY="2.403"/>
+                                <SkewTransform CenterX="0.5" CenterY="0.5" AngleX="10.48"/>
+                                <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                                <TranslateTransform X="-0.159"/>
+                            </TransformGroup>
+                        </RadialGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FFFFFFFF"/>
+                        <GradientStop Color="#4CFFFFFF" Offset="1"/>
+                    </RadialGradientBrush>
+                </Path.Fill>
+            </Path>
         </Canvas>
     </Grid>
 </db:Dashboard>

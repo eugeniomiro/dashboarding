@@ -23,6 +23,7 @@ namespace AspNetApplication.Navigation
         {
             new NavigationItem("DecadeVuMeter","~/Pages/DecadeVuMeter.aspx"),
             new NavigationItem("Dial360", "~/Pages/Dial360.aspx"),
+            new NavigationItem("Dial180", "~/Pages/Dial180.aspx"),
             new NavigationItem("RoundLed","~/Pages/RoundLed.aspx"),
             new NavigationItem("TickCross","~/Pages/TickCross.aspx"),
             new NavigationItem("PerformanceMonitor", "~/Pages/PerformanceMonitor.aspx"),

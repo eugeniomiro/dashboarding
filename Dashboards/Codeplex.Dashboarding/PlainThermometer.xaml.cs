@@ -139,7 +139,7 @@ namespace Codeplex.Dashboarding
             DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(PlainThermometer), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
 
         /// <summary>
-        /// Color of the text that shows the percentage
+        /// Visibility of the text that shows the percentage
         /// </summary>
         public Visibility TextVisibility
         {

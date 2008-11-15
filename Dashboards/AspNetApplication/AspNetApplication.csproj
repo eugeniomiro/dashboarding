@@ -102,6 +102,13 @@
     <Compile Include="Pages\DecadeVuMeter.aspx.designer.cs">
       <DependentUpon>DecadeVuMeter.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dial180.aspx.cs">
+      <DependentUpon>Dial180.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Dial180.aspx.designer.cs">
+      <DependentUpon>Dial180.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dial360.aspx.cs">
       <DependentUpon>Dial360.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -193,6 +200,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Extras\Contacts.aspx" />
     <Content Include="Pages\DecadeVuMeter.aspx" />
+    <Content Include="Pages\Dial180.aspx" />
     <Content Include="Pages\Dial360.aspx" />
     <Content Include="Pages\DiamondSlider.aspx" />
     <Content Include="Pages\FiveStarRanking.aspx" />

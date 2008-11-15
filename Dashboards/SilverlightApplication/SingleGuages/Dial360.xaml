@@ -14,14 +14,14 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
-<db:Dial360 x:Name="_dial0" Grid.Row="0">
+<db:Dial360 x:Name="_dial0" Grid.Row="0" TextColor="Yellow">
     <db:Dial360.FaceColorRange>
         <db:ColorPoint HiColor="#2A242C" LowColor="#6C0680" Value="0" />
         <db:ColorPoint HiColor="#2A242C" LowColor="#6C0000" Value="55" />
     </db:Dial360.FaceColorRange>
 </db:Dial360>
 
-<db:Dial360 x:Name="_dial1" Grid.Row="1">
+<db:Dial360 x:Name="_dial1" Grid.Row="1" TextVisibility="Collapsed">
     <db:Dial360.NeedleColorRange>
         <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
         <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />

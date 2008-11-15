@@ -14,11 +14,13 @@ this control has properties to specify:</p>
 <ul>
 <li>The dial face color</li>
 <li>The needle color</li>
+<li>The TextColor</li>
+<li>The TextVisibility</li>
 </ul>
 
 <h3>Color ranges</h3>
 
-<p>Both of the color properties for the dial are color ranges. A color range specifies the color used
+<p>The face and needle color properties for the dial are color ranges. A color range specifies the color used
 to render an item based on its current value. Color ranges are dependancy properties and are specifed
 in line in the XAML.
 </p>
@@ -52,6 +54,9 @@ to red above 85<sup>o</sup> The following peace of XAL specifies a color range w
 <p>The preceding code assumes that two namespaces are declared to allow the XAML to 
     function, these are definied on the  <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Default.aspx">main page</asp:HyperLink>.</p>
 
+<p>TextColor takes a standard silverlight color and TextVisibility can be Visibility.Collapsed or Visibility.Visible</p>
+
+
 <p>Showing is better than telling so here are the color ranges in action</p>
 
 <table>
@@ -66,10 +71,10 @@ to red above 85<sup>o</sup> The following peace of XAL specifies a color range w
 
 <td>
 
-<p>First here is our example changing the back ground of the dial to red above 55<sup>o</sup></p>
+<p>First here is our example changing the back ground of the dial to red above 55<sup>o</sup> and the Text color to Yellow</p>
 
 <pre class="csharpcode">
-<span class="kwrd">&lt;</span><span class="html">db:Dial360</span> <span class="attr">x:Name</span><span class="kwrd">="_dial0"</span> <span class="attr">Grid</span>.<span class="attr">Row</span><span class="kwrd">="0"</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;</span><span class="html">db:Dial360</span> <span class="attr">x:Name</span><span class="kwrd">="_dial0"</span> <span class="attr">Grid</span>.<span class="attr">Row</span><span class="kwrd">="0"</span><span class="kwrd">  <span class="attr">TextColor</span><span class="kwrd">="Yellow"</span> &gt;</span>
     <span class="kwrd">&lt;</span><span class="html">db:Dial360.FaceColorRange</span><span class="kwrd">&gt;</span>
         <span class="kwrd">&lt;</span><span class="html">db:ColorPoint</span> <span class="attr">HiColor</span><span class="kwrd">="#2A242C"</span> <span class="attr">LowColor</span><span class="kwrd">="#6C0680"</span> <span class="attr">Value</span><span class="kwrd">="0"</span> <span class="kwrd">/&gt;</span>
         <span class="kwrd">&lt;</span><span class="html">db:ColorPoint</span> <span class="attr">HiColor</span><span class="kwrd">="#2A242C"</span> <span class="attr">LowColor</span><span class="kwrd">="#6C0000"</span> <span class="attr">Value</span><span class="kwrd">="55"</span> <span class="kwrd">/&gt;</span>
@@ -79,10 +84,10 @@ to red above 85<sup>o</sup> The following peace of XAL specifies a color range w
 <br />
 <br />
 <br />
-<p>Ladies and gentlemen, for my next gauge... We change the needle color to be green 0..32, yellow 33..64 and red 65+</p>
+<p>Ladies and gentlemen, for my next gauge... We change the needle color to be green 0..32, yellow 33..64 and red 65+, and hold the text</p>
 
 <pre class="csharpcode">
-<span class="kwrd">&lt;</span><span class="html">db:Dial360</span> <span class="attr">x:Name</span><span class="kwrd">="_dial1"</span> <span class="attr">Grid</span>.<span class="attr">Row</span><span class="kwrd">="1"</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;</span><span class="html">db:Dial360</span> <span class="attr">x:Name</span><span class="kwrd">="_dial1"</span> <span class="attr">Grid</span>.<span class="attr">Row</span><span class="kwrd">="1"</span><span class="kwrd">  <span class="attr">TextVisibility</span><span class="kwrd">="Collapsed"</span>  &gt;</span>
     <span class="kwrd">&lt;</span><span class="html">db:Dial360.NeedleColorRange</span><span class="kwrd">&gt;</span>
         <span class="kwrd">&lt;</span><span class="html">db:ColorPoint</span> <span class="attr">HiColor</span><span class="kwrd">="#009900"</span> <span class="attr">LowColor</span><span class="kwrd">="#44DD00"</span> <span class="attr">Value</span><span class="kwrd">="0"</span> <span class="kwrd">/&gt;</span>
         <span class="kwrd">&lt;</span><span class="html">db:ColorPoint</span> <span class="attr">HiColor</span><span class="kwrd">="#9DC800"</span> <span class="attr">LowColor</span><span class="kwrd">="#DDCC00"</span> <span class="attr">Value</span><span class="kwrd">="33"</span> <span class="kwrd">/&gt;</span>

@@ -69,11 +69,20 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleGuages\Dial180_1.xaml.cs">
+      <DependentUpon>Dial180_1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Dial180_2.xaml.cs">
+      <DependentUpon>Dial180_2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleGuages\Diam1.xaml.cs">
       <DependentUpon>Diam1.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleGuages\Diam2.xaml.cs">
       <DependentUpon>Diam2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\PlayArea.xaml.cs">
+      <DependentUpon>PlayArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleGuages\Prog1.xaml.cs">
       <DependentUpon>Prog1.xaml</DependentUpon>
@@ -185,11 +194,23 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="SingleGuages\Dial180_1.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Dial180_2.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
     <Page Include="SingleGuages\Diam1.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="SingleGuages\Diam2.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\PlayArea.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
