@@ -137,5 +137,15 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
                 </TransformGroup>
             </db:Dial180.RenderTransform>
         </db:Dial180>
+        
+        <db:MatrixLedMarquee HorizontalAlignment="Left" Margin="12,0,0,7"  VerticalAlignment="Bottom"
+            Panels="30" 
+            TimerDuration="00:00:0.1"
+            LedOnColor="#FF00FF00"
+            LedOffColor="#2200FF00"
+            Mode="Continious"                             
+            Text="Welcome to the Silverlight Dashboard and gauges project. This MatrixLedMarquee control is one of many in the growing library hosted at Codeplex."
+        />
+        
     </Grid>
 </UserControl>

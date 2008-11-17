@@ -50,11 +50,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Windows.Controls, Version=2.0.21027.1502, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Silverlight tootlkit\Binaries\Microsoft.Windows.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
     <Page Include="SingleGuages\UserControl1.xaml">
@@ -69,6 +74,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FontEditor\FontEditor.xaml.cs">
+      <DependentUpon>FontEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FontEditor\GiantLed.xaml.cs">
+      <DependentUpon>GiantLed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FontEditor\RightHandPanel.xaml.cs">
+      <DependentUpon>RightHandPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FontEditor\SingleCharacter.xaml.cs">
+      <DependentUpon>SingleCharacter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleGuages\Dial180_1.xaml.cs">
       <DependentUpon>Dial180_1.xaml</DependentUpon>
     </Compile>
@@ -80,6 +97,24 @@
     </Compile>
     <Compile Include="SingleGuages\Diam2.xaml.cs">
       <DependentUpon>Diam2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Mat1.xaml.cs">
+      <DependentUpon>Mat1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Mat2.xaml.cs">
+      <DependentUpon>Mat2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Mat3.xaml.cs">
+      <DependentUpon>Mat3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Mat4.xaml.cs">
+      <DependentUpon>Mat4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Mat5.xaml.cs">
+      <DependentUpon>Mat5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\Mat6.xaml.cs">
+      <DependentUpon>Mat6.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleGuages\PlayArea.xaml.cs">
       <DependentUpon>PlayArea.xaml</DependentUpon>
@@ -194,6 +229,22 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="FontEditor\FontEditor.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="FontEditor\GiantLed.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="FontEditor\RightHandPanel.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="FontEditor\SingleCharacter.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
     <Page Include="SingleGuages\Dial180_1.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
@@ -207,6 +258,30 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="SingleGuages\Diam2.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Mat1.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Mat2.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Mat3.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Mat4.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Mat5.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Mat6.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

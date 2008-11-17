@@ -80,6 +80,13 @@
     <Compile Include="Extras\Contacts.aspx.designer.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Extras\FontEditor.aspx.cs">
+      <DependentUpon>FontEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Extras\FontEditor.aspx.designer.cs">
+      <DependentUpon>FontEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Navigation\Footer.ascx.cs">
       <DependentUpon>Footer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +136,13 @@
     </Compile>
     <Compile Include="Pages\FiveStarRanking.aspx.designer.cs">
       <DependentUpon>FiveStarRanking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MatrixLedMarquee.aspx.cs">
+      <DependentUpon>MatrixLedMarquee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MatrixLedMarquee.aspx.designer.cs">
+      <DependentUpon>MatrixLedMarquee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Odometer.aspx.cs">
       <DependentUpon>Odometer.aspx</DependentUpon>
@@ -199,11 +213,13 @@
     <Content Include="ClientBin\SilverlightApplication.xap" />
     <Content Include="Default.aspx" />
     <Content Include="Extras\Contacts.aspx" />
+    <Content Include="Extras\FontEditor.aspx" />
     <Content Include="Pages\DecadeVuMeter.aspx" />
     <Content Include="Pages\Dial180.aspx" />
     <Content Include="Pages\Dial360.aspx" />
     <Content Include="Pages\DiamondSlider.aspx" />
     <Content Include="Pages\FiveStarRanking.aspx" />
+    <Content Include="Pages\MatrixLedMarquee.aspx" />
     <Content Include="Pages\Odometer.aspx" />
     <Content Include="Pages\PerformanceMonitor.aspx" />
     <Content Include="Pages\PlainThermometer.aspx" />

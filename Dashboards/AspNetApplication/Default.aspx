@@ -9,7 +9,7 @@
     <p>
         There are 11 dials and gauges in the Codeplex.Dashboarding library. This tutorial
         will show you how to embed the Silverlight guages and dials into your own silverlight
-        applications.
+        applications.</p>
     </p>get the latest version of the controls from the Codeplx project 
     <asp:HyperLink ID="HyperLink2" NavigateUrl="http://www.codeplex.com/dashboarding" runat="server">David's Silverlight Dashboards</asp:HyperLink>.
 

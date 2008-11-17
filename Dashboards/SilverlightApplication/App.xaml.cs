@@ -79,6 +79,16 @@ namespace SilverlightApplication
                 case "Diam2": return new Diam2();
                 case "Dial180_1": return new Dial180_1();
                 case "Dial180_2": return new Dial180_2();
+                case "Mat1": return new Mat1();
+                case "Mat2": return new Mat2();
+                case "Mat3": return new Mat3();
+                case "Mat4": return new Mat4();
+                case "Mat5": return new Mat5();
+                case "Mat6": return new Mat6();
+
+
+
+                case "FontEditor": return new FontEditor.FontEditor();
             }
             return null;
         }

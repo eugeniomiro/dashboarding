@@ -62,6 +62,13 @@
     <Compile Include="DiamondSlider.xaml.cs">
       <DependentUpon>DiamondSlider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MatrixLedCharacter.xaml.cs">
+      <DependentUpon>MatrixLedCharacter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MatrixLedCharacterDefintions.cs" />
+    <Compile Include="MatrixLedMarquee.xaml.cs">
+      <DependentUpon>MatrixLedMarquee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Odometer.xaml.cs">
       <DependentUpon>Odometer.xaml</DependentUpon>
     </Compile>
@@ -106,6 +113,14 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="DiamondSlider.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="MatrixLedCharacter.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="MatrixLedMarquee.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

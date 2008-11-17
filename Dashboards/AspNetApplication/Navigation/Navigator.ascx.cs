@@ -34,6 +34,7 @@ namespace AspNetApplication.Navigation
             new NavigationItem("WallThermometer", "~/Pages/WallThermometer.aspx"),
             new NavigationItem("ProgressBar", "~/Pages/ProgressBar.aspx"),
             new NavigationItem("DiamondSlider", "~/Pages/DiamondSlider.aspx"),
+            new NavigationItem("MatrixLedMarquee", "~/Pages/MatrixLedMarquee.aspx"),
 
         };
         
@@ -44,6 +45,7 @@ namespace AspNetApplication.Navigation
         List<NavigationItem> extrasPages = new List<NavigationItem> 
         {
             new NavigationItem("Contacts and pages","~/Extras/Contacts.aspx"),
+            new NavigationItem("Matrix font editor","~/Extras/FontEditor.aspx"),
         };
 
         #endregion
