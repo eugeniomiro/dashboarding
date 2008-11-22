@@ -1,4 +1,23 @@
-﻿using System;
+﻿/* -------------------------------------------------------------------------
+ *     
+ *  Copyright 2008 David Black
+ *  
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *     
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *    
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  -------------------------------------------------------------------------
+ */
+
+using System;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,12 +37,11 @@ namespace Codeplex.Dashboarding
     /// 
     /// <para>This allow us to have a needle red at below 33%, yellow 
     /// up till 66% and green after that</para>
-    /// <para>We derive from control because we can't from dependancy control</para>
     /// </summary>
     public class ColorPoint: Control
     {
         /// <summary>
-        /// Constructs a ClorPoint
+        /// Constructs a ColorPoint
         /// </summary>
         public ColorPoint()
         {
@@ -35,7 +53,7 @@ namespace Codeplex.Dashboarding
         #region HiColor property
 
         /// <summary>
-        /// The dependancy property for the HiColor property
+        /// The dependancy property for the HiColor attached property
         /// </summary>
         public static readonly DependencyProperty HiColorProperty =
             DependencyProperty.Register("HiColor", typeof(Color), typeof(ColorPoint), null);
@@ -57,7 +75,7 @@ namespace Codeplex.Dashboarding
         #region LowColor property
 
         /// <summary>
-        /// The dependancy property for the LowColor property
+        /// The dependancy property for the LowColor attached property
         /// </summary>
         public static readonly DependencyProperty LowColorProperty =
             DependencyProperty.Register("LowColor", typeof(Color), typeof(ColorPoint), null);
@@ -79,7 +97,7 @@ namespace Codeplex.Dashboarding
         #region Value property
 
         /// <summary>
-        /// The dependancy property for Value as a property
+        /// The dependancy property for Value attached property
         /// </summary>
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(ColorPoint), null);

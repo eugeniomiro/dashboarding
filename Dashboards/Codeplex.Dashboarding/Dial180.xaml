@@ -1,6 +1,7 @@
-﻿<UserControl x:Class="Codeplex.Dashboarding.Dial180"
+﻿<db:Dashboard x:Class="Codeplex.Dashboarding.Dial180"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:db="clr-namespace:Codeplex.Dashboarding"
      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 	<UserControl.Resources>
 		<Storyboard x:Name="_swipe">
@@ -136,4 +137,4 @@
         <TextBlock x:Name="_text" Text="000" Margin="74.938,0,80.062,1.864" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="8" d:LayoutOverrides="Width, Height" />
         
     </Grid>
-</UserControl>
+</db:Dashboard>

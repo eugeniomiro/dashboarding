@@ -1,4 +1,23 @@
-﻿using System;
+﻿/* -------------------------------------------------------------------------
+ *     
+ *  Copyright 2008 David Black
+ *  
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *     
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *    
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  -------------------------------------------------------------------------
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,9 +32,9 @@ using System.Windows.Shapes;
 namespace Codeplex.Dashboarding
 {
     /// <summary>
-    /// A Dial180 
+    /// A needle and dial face control where the needle sweeps a 180 degree path. 
     /// </summary>
-    public partial class Dial180 : UserControl
+    public partial class Dial180 : Dashboard
     {
         /// <summary>
         /// constructs a dial 180 
@@ -32,13 +51,14 @@ namespace Codeplex.Dashboarding
         #region FaceColorRange property
 
         /// <summary>
-        /// Dependancy property for the face color of our dial
+        /// Dependancy property for the FaceColor attached property
         /// </summary>
         public static readonly DependencyProperty FaceColorRangeProperty =
             DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
 
         /// <summary>
-        /// The point in the range (0..100) where this color takes effect
+        /// Specifies the face color at points in the range. A single color point with
+        /// a value of 0 specifies the color for all
         /// </summary>
         public ColorPointCollection FaceColorRange
         {
@@ -68,6 +88,9 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Sets the face color from the color range
+        /// </summary>
         private void SetFaceColor()
         {
 
@@ -84,13 +107,13 @@ namespace Codeplex.Dashboarding
         #region NeedleColorRange property
 
         /// <summary>
-        /// The NeedleColor Dependancy property
+        /// The  Dependancy property for the NeedleColor attached property
         /// </summary>
         public static readonly DependencyProperty NeedleColorRangeProperty =
             DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
 
         /// <summary>
-        /// The point in the range (0..100) where this color takes effect
+        /// Specifies what color the needle is a various point is the range
         /// </summary>
         public ColorPointCollection NeedleColorRange
         {
@@ -107,7 +130,7 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Our needle color has changed, deal with it
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
@@ -120,6 +143,9 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Sets the needle color from the color range
+        /// </summary>
         private void SetNeedleColor()
         {
             ColorPoint c = NeedleColorRange.GetColor(Value);
@@ -135,7 +161,7 @@ namespace Codeplex.Dashboarding
         #region TextColor
        
         /// <summary>
-        /// The TextColor Dependancy property
+        /// The Dependancy property for the TextColor attached property
         /// </summary>
         public static readonly DependencyProperty TextColorProperty =
             DependencyProperty.Register("TextColor", typeof(Color), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
@@ -158,7 +184,7 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Our TextColor dependany property has changed, deal with it
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
@@ -175,13 +201,13 @@ namespace Codeplex.Dashboarding
 
         #region TextVisibility property
         /// <summary>
-        /// The dependancy property for theTextVisibilityiColor property
+        /// The dependancy property for theTextVisibility attached property
         /// </summary>
         public static readonly DependencyProperty TextVisibilityProperty =
             DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(Dial180), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
 
         /// <summary>
-        /// Show or hide the text
+        /// Show or hide the text according to the visibility
         /// </summary>
         public Visibility TextVisibility
         {
@@ -193,7 +219,7 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Our TextVivibility dependany property has changed, deal with it
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
@@ -211,17 +237,12 @@ namespace Codeplex.Dashboarding
         #endregion
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public  double Value 
-        {
-            get { return _t; }
-            set { _t = value; Animate(); }
-        }
-        private double _t;
 
-        void Animate()
+
+        /// <summary>
+        /// Move the needle and set the needle and face colors to suite the value
+        /// </summary>
+        protected override void Animate()
         {
             SetFaceColor();
             SetNeedleColor();
@@ -229,7 +250,7 @@ namespace Codeplex.Dashboarding
             double point = -90 + ((Value / 100) * 180);
             _value.Value = point;
             _swipe.Begin();
-        }
 
+        }
     }
 }

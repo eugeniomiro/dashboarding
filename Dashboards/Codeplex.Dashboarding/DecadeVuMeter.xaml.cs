@@ -1,4 +1,23 @@
-﻿using System;
+﻿/* -------------------------------------------------------------------------
+ *     
+ *  Copyright 2008 David Black
+ *  
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *     
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *    
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  -------------------------------------------------------------------------
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -31,6 +50,10 @@ namespace Codeplex.Dashboarding
             SetTimerDelay();
         }
 
+        #region initialize
+        /// <summary>
+        /// Sets the default colors into the attached properties
+        /// </summary>
         private void SetDefaultColours()
         {
             LedOffColor = Color.FromArgb(0xFF, 0x26, 0x41, 0x08);
@@ -38,10 +61,12 @@ namespace Codeplex.Dashboarding
             BorderColor = Color.FromArgb(0xFF, 0x27, 0x53, 0x18);
             _text.Foreground = new SolidColorBrush(LedOnColor);
         }
+        #endregion
 
-
+        #region Animation
         /// <summary>
-        /// Display the control according the the current value
+        /// Display the control according the the current value. That means
+        /// lighting the necessary LEDS
         /// </summary>
         protected override void Animate()
         {
@@ -49,9 +74,6 @@ namespace Codeplex.Dashboarding
             for (int i = 0; i < NumberOfLeds; i++)
             {
                 Storyboard sb = LayoutRoot.FindName("TimelineLed" + (NumberOfLeds - (i + 1))) as Storyboard;
-
-
-
                 if (sb != null)
                 {
                     double pos = ((i + 1) / (double)NumberOfLeds) * 100;
@@ -67,16 +89,17 @@ namespace Codeplex.Dashboarding
                 }
             }
         }
+        #endregion
 
         #region BorderColor property
         /// <summary>
-        /// The dependancy color for the BorderColor property
+        /// The dependancy property for the BorderColor attached property
         /// </summary>
         public static readonly DependencyProperty BorderColorProperty =
             DependencyProperty.Register("BorderColor", typeof(Color), typeof(DecadeVuMeter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)) );
 
         /// <summary>
-        /// Hi colour in the blend
+        /// Color of the border around each led in the control
         /// </summary>
         public Color BorderColor
         {
@@ -88,7 +111,7 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// BorderColor property has changed, deal with it
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
@@ -114,13 +137,13 @@ namespace Codeplex.Dashboarding
 
         #region LedOnColor property
         /// <summary>
-        /// The dependancy property for the LedOn colr
+        /// The dependancy property for the LedOn attached property
         /// </summary>
         public static readonly DependencyProperty LedOnColorProperty =
             DependencyProperty.Register("LedOnColor", typeof(Color), typeof(DecadeVuMeter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
-        /// Hi colour in the blend
+        /// The LedOnColor is the color of a lit LED
         /// </summary>
         public Color LedOnColor
         {
@@ -136,13 +159,13 @@ namespace Codeplex.Dashboarding
         #region LedOffColor property
 
         /// <summary>
-        /// THe dependancy property for the LedOffColor
+        /// THe dependancy property for the LedOffColor attached property
         /// </summary>
         public static readonly DependencyProperty LedOffColorProperty =
             DependencyProperty.Register("LedOffColor", typeof(Color), typeof(DecadeVuMeter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
-        /// Hi colour in the blend
+        /// Color of the LED when not lit
         /// </summary>
         public Color LedOffColor
         {
@@ -155,9 +178,12 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
-
         #region initialize timers
 
+        /// <summary>
+        /// In order to ripple the value up we claculate the time
+        /// to on for each block
+        /// </summary>
         private void SetTimerDelay()
         {
             int step = 0;
@@ -180,6 +206,10 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Sets the color according to On or off of a single LED
+        /// </summary>
+        /// <param name="i"></param>
         private void SetLedColours(int i)
         {
             SplineColorKeyFrame start = LayoutRoot.FindName("_startColour" + i) as SplineColorKeyFrame;

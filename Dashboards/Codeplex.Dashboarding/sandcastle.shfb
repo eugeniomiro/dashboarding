@@ -2,17 +2,21 @@
     <assemblies>
         <assembly assemblyPath=".\Bin\Debug\Codeplex.Dashboarding.dll" xmlCommentsPath=".\Bin\Debug\Codeplex.Dashboarding.XML" commentsOnly="False" />
     </assemblies>
+    <namespaceSummaries>
+        <namespaceSummaryItem name="" isDocumented="False" />
+        <namespaceSummaryItem name="Codeplex.Dashboarding" isDocumented="True">Contains Dashboard gauges and controls.</namespaceSummaryItem>
+    </namespaceSummaries>
     <dependencies>
-        <dependencyItem depPath="..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Core.dll" />
-        <dependencyItem depPath="..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\system.dll" />
-        <dependencyItem depPath="..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Net.dll" />
-        <dependencyItem depPath="..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Windows.Browser.dll" />
-        <dependencyItem depPath="..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Windows.dll" />
-        <dependencyItem depPath="..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Xml.dll" />
+        <dependencyItem depPath="..\..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Core.dll" />
+        <dependencyItem depPath="..\..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\system.dll" />
+        <dependencyItem depPath="..\..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Net.dll" />
+        <dependencyItem depPath="..\..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Windows.Browser.dll" />
+        <dependencyItem depPath="..\..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Windows.dll" />
+        <dependencyItem depPath="..\..\..\..\Program Files\Microsoft Silverlight\2.0.31005.0\System.Xml.dll" />
     </dependencies>
     <ProjectSummary />
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter</MissingTags>
-    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Internals, Protected, SealedProtected</VisibleItems>
     <HtmlHelp1xCompilerPath path="" />
     <HtmlHelp2xCompilerPath path="" />
     <OutputPath>.\Help\</OutputPath>
@@ -32,7 +36,7 @@
     <HtmlHelpName>Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <CopyrightHref />
-    <CopyrightText />
+    <CopyrightText>© 2008 David Black</CopyrightText>
     <FeedbackEMailAddress />
     <FeedbackEMailLinkText />
     <HeaderText />

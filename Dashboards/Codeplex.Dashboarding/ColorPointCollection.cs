@@ -1,4 +1,23 @@
-﻿using System;
+﻿/* -------------------------------------------------------------------------
+ *     
+ *  Copyright 2008 David Black
+ *  
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *     
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *    
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  -------------------------------------------------------------------------
+ */
+
+using System;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,8 +32,8 @@ using System.Collections.Generic;
 namespace Codeplex.Dashboarding
 {
     /// <summary>
-    /// ColorPoints allow you to set the color of an item at a start point in the range
-    /// of values. A ColorPointCollection aggregates these ColorPoints.
+    /// A ColorPoint allows you to set the color of an item at a start point. A 
+    /// ColorPointCollection aggregates these ColorPoints.
     /// </summary>
     public class ColorPointCollection : List<ColorPoint>
     {
@@ -26,7 +45,14 @@ namespace Codeplex.Dashboarding
 
         }
 
-        internal ColorPoint GetColor(double position)
+        /// <summary>
+        /// Get the Range with which to render an item at the specified 
+        /// point in the range 
+        /// </summary>
+        /// <param name="position">The value in the range at which you want to get 
+        /// color to render an item</param>
+        /// <returns>The color point for the psition</returns>
+        public ColorPoint GetColor(double position)
         {
             ColorPoint res = null;
             foreach (ColorPoint point in this)
