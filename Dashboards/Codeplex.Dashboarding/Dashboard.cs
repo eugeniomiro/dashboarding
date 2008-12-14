@@ -33,6 +33,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Codeplex.Dashboarding
 {
@@ -42,8 +43,13 @@ namespace Codeplex.Dashboarding
     /// 
     /// <para>Orchectrates initial render through the abstract render method</para>
     /// </summary>
-    public abstract class Dashboard : UserControl
+    public abstract class Dashboard : UserControl, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event raised when the value changes
+        /// </summary>
+        public event EventHandler<DashboardValueChangedEventArgs> ValueChanged;
+
         /// <summary>
         /// Constructs a Dashboard and initializes animation etc
         /// </summary>
@@ -81,9 +87,24 @@ namespace Codeplex.Dashboarding
         {
             get { return (double)GetValue(ValueProperty); }
             set 
-            { 
-                SetValue(ValueProperty, value); 
-             
+            {
+                double old = Value;
+                SetValue(ValueProperty, value);
+                OnValueChanged(old, value);
+                OnPropertyChanged("Value");
+            }
+        }
+
+        /// <summary>
+        /// The value has changed, if anyone is listening let em know
+        /// </summary>
+        /// <param name="old">Initial value</param>
+        /// <param name="value">New value</param>
+        private void OnValueChanged(double old, double value)
+        {
+            if (ValueChanged != null)
+            {
+                ValueChanged(this, new DashboardValueChangedEventArgs { OldValue  = old, NewValue = value});
             }
         }
 
@@ -110,5 +131,43 @@ namespace Codeplex.Dashboarding
         /// has changed and that they should update their appearance appropriately
         /// </summary>
         protected abstract void Animate();
+
+        #region INotifyPropertyChanged Members
+
+        /// <summary>
+        /// One of my properties has changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notify any listeners that a property has changed
+        /// </summary>
+        /// <param name="propName">Name of the property</param>
+        protected virtual void OnPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
+
+        #endregion
     }
+
+    /// <summary>
+    /// Event args for the ValueChangedEvent
+    /// </summary>
+    public class DashboardValueChangedEventArgs: EventArgs
+    {
+        /// <summary>
+        /// Value of the dashboard prior to the change
+        /// </summary>
+        public double OldValue { get; set; }
+
+        /// <summary>
+        /// new value of the dashboard
+        /// </summary>
+        public double NewValue { get; set; }
+    }
+
 }

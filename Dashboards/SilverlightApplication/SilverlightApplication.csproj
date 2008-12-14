@@ -89,6 +89,15 @@
     <Compile Include="FontEditor\SingleCharacter.xaml.cs">
       <DependentUpon>SingleCharacter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleGuages\BiDiamond1.xaml.cs">
+      <DependentUpon>BiDiamond1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\BiDiamond2.xaml.cs">
+      <DependentUpon>BiDiamond2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\BiDiamond3.xaml.cs">
+      <DependentUpon>BiDiamond3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleGuages\Dial180_1.xaml.cs">
       <DependentUpon>Dial180_1.xaml</DependentUpon>
     </Compile>
@@ -249,6 +258,18 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="FontEditor\SingleCharacter.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\BiDiamond1.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\BiDiamond2.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\BiDiamond3.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

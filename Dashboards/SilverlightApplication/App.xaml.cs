@@ -85,7 +85,9 @@ namespace SilverlightApplication
                 case "Mat4": return new Mat4();
                 case "Mat5": return new Mat5();
                 case "Mat6": return new Mat6();
-
+                case "BiDiamond1": return new BiDiamond1();
+                case "BiDiamond2": return new BiDiamond2();
+                case "BiDiamond3": return new BiDiamond3();
 
 
                 case "FontEditor": return new FontEditor.FontEditor();

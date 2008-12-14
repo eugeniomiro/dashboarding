@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace AspNetApplication.Extras
 {
-    public partial class BidirectionalControls : System.Web.UI.Page
+    public partial class Bidirection : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -19,7 +19,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
                 <ToolTip Content="This is a ProgressBar, control"/>
             </ToolTipService.ToolTip> 
         </db:ProgressBar>
-        <db:DiamondSlider x:Name="_slider" IsBidirectional="True"  Height="23" Margin="0,134,253,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
+        <db:DiamondSlider x:Name="_slider"  Height="23" Margin="0,134,253,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a DiamondSlider, control"/>
             </ToolTipService.ToolTip>
