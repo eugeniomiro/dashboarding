@@ -1,4 +1,4 @@
-﻿<db:Dashboard x:Class="Codeplex.Dashboarding.FiveStarRanking"
+﻿<db:BidirectionalDashboard x:Class="Codeplex.Dashboarding.FiveStarRanking"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:db="clr-namespace:Codeplex.Dashboarding"
@@ -150,4 +150,4 @@
 	 	
 
 		
-</db:Dashboard>
+</db:BidirectionalDashboard>

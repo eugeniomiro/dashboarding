@@ -52,6 +52,7 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BidirectionalDashboard.cs" />
     <Compile Include="BinaryDashboard.cs" />
     <Compile Include="ColorPoint.cs" />
     <Compile Include="ColorPointCollection.cs" />

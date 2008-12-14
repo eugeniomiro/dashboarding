@@ -73,6 +73,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Extras\BidirectionalControls.aspx.cs">
+      <DependentUpon>BidirectionalControls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Extras\BidirectionalControls.aspx.designer.cs">
+      <DependentUpon>BidirectionalControls.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Extras\Contacts.aspx.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,6 +219,7 @@
   <ItemGroup>
     <Content Include="ClientBin\SilverlightApplication.xap" />
     <Content Include="Default.aspx" />
+    <Content Include="Extras\BidirectionalControls.aspx" />
     <Content Include="Extras\Contacts.aspx" />
     <Content Include="Extras\FontEditor.aspx" />
     <Content Include="Pages\DecadeVuMeter.aspx" />

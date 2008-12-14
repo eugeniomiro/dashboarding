@@ -9,7 +9,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         
   Width="800" Height="200" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <Grid x:Name="LayoutRoot" >
-        <db:FiveStarRanking x:Name="_fiveStar" Value="100" Height="24" Margin="0,136,144,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
+        <db:FiveStarRanking x:Name="_fiveStar" IsBidirectional="True" ShowFocus="True" Value="100" Height="24" Margin="0,136,144,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
             <ToolTipService.ToolTip>
                 <ToolTip Content="A FiveStarRanking control"/>
             </ToolTipService.ToolTip>
@@ -17,9 +17,9 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         <db:ProgressBar x:Name="_prog1" Margin="0,137,30,0" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" VerticalAlignment="Top" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a ProgressBar, control"/>
-            </ToolTipService.ToolTip>
+            </ToolTipService.ToolTip> 
         </db:ProgressBar>
-        <db:DiamondSlider x:Name="_slider" Height="23" Margin="0,134,253,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
+        <db:DiamondSlider x:Name="_slider" IsBidirectional="True"  Height="23" Margin="0,134,253,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a DiamondSlider, control"/>
             </ToolTipService.ToolTip>

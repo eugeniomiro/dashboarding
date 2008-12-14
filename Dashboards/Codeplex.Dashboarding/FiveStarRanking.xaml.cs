@@ -37,15 +37,18 @@ namespace Codeplex.Dashboarding
     /// set by the Character property.
     /// <para>The colors specifed are the InRank and OutRank colors. The InRank colors are the highlights</para>
     /// </summary>
-    public partial class FiveStarRanking : Dashboard
+    public partial class FiveStarRanking : BidirectionalDashboard
     {
         /// <summary>
         /// Constructs a FiveStarRanking
         /// </summary>
-        public FiveStarRanking()
+        public FiveStarRanking() 
         {
             InitializeComponent();
+            RegisterGrabHandle(LayoutRoot);
         }
+
+
 
 
         #region InRankColor property
@@ -172,6 +175,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void Animate()
         {
+
+
             _animOrigin.To = new Point(Value, 0);
             _animTopLeft.To = new Point(Value, 0);
             _animBotRight.To = new Point(Value, 32);

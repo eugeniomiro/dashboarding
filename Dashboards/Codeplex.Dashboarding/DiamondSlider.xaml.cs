@@ -41,14 +41,16 @@ namespace Codeplex.Dashboarding
     /// </list>
     /// </para>
     /// </summary>
-    public partial class DiamondSlider : Dashboard
+    public partial class DiamondSlider : BidirectionalDashboard
     {
+
         /// <summary>
         /// Constructs a DiamondSlider
         /// </summary>
         public DiamondSlider()
         {
             InitializeComponent();
+            RegisterGrabHandle(_slider);
         }
 
         #region DiamondColorproperty
@@ -216,8 +218,68 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void Animate()
         {
-            _animValue.Value = Value;
-            _swipe.Begin();
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+                _startAnimValue.Value = 0;
+                _endAnimValue.Value = Value;
+                _swipe.Begin();
+            }
+            else
+            {
+
+                _startAnimValue.Value = CurrentValue;
+                _endAnimValue.Value = CurrentValue;
+                _swipe.Begin();
+         
+            }
+
+
         }
+
+        /// <summary>
+        /// Mouse has entered the grab handle, please give some visual feedback
+        /// </summary>
+        protected override void ShowGrabHandle()
+        {
+            base.ShowGrabHandle();
+            _slider.StrokeThickness = 2;
+            _slider.StrokeDashArray = new DoubleCollection { 1, 1 };
+        }
+
+
+
+        /// <summary>
+        /// Remove the grab handle
+        /// </summary>
+        protected override void HideGrabHandle()
+        {
+            base.HideGrabHandle();
+            _slider.StrokeThickness = 1;
+            _slider.StrokeDashArray = new DoubleCollection();
+        }
+
+
+
+        /// <summary>
+        /// Mouse is moving, move the diagram
+        /// </summary>
+        /// <param name="mouseDownPosition">origin of the drag</param>
+        /// <param name="currentPosition">where the mouse is now</param>
+        protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
+        {
+            base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
+            double offset =  currentPosition.X - mouseDownPosition.X ;
+            CurrentValue = Value + offset;
+            if (CurrentValue > 100)
+            {
+                CurrentValue = 100;
+            }
+            if (CurrentValue < 0)
+            {
+                CurrentValue = 0;
+            }
+            Animate();
+        }
+
     }
 }

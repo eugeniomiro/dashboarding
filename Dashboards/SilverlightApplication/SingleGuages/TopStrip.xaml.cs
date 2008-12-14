@@ -70,7 +70,7 @@ namespace SilverlightApplication.SingleGuages
 
                 _prog1.Value = _random.Next(100);
 
-                _slider.Value = _random.Next(100);
+                //_slider.Value = _random.Next(100);
 
                 _dial180.Value = _random.Next(100);
 

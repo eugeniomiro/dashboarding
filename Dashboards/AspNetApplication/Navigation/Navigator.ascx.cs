@@ -46,6 +46,8 @@ namespace AspNetApplication.Navigation
         {
             new NavigationItem("Contacts and pages","~/Extras/Contacts.aspx"),
             new NavigationItem("Matrix font editor","~/Extras/FontEditor.aspx"),
+            new NavigationItem("Bidirectional operation","~/Extras/BidirectionalControls.aspx"),
+
         };
 
         #endregion
