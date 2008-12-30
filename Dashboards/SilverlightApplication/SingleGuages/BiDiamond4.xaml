@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="SilverlightApplication.SingleGuages.BiDiamond4"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+ xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding" 
+    Width="600" Height="200">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="110"/>
+          
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" >
+            <db:DiamondSlider Minimum="-50" Maximum="50" Value="{Binding CurrentValue, Mode=TwoWay}" IsBidirectional="True"  />
+<TextBlock Text="DiamondSlider" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" />
+
+<db:ProgressBar HorizontalAlignment="Stretch" Minimum="-50" Maximum="50" Value="{Binding CurrentValue, Mode=TwoWay}" IsBidirectional="True"   />
+<TextBlock Text="ProgressBar" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" />
+
+<db:FiveStarRanking HorizontalAlignment="Stretch"   Value="{Binding CurrentValue, Mode=TwoWay}" IsBidirectional="True" Minimum="-50" Maximum="50"  />
+<TextBlock Text="FiveStarRanking" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite"  />
+</StackPanel>
+        
+        <db:PlainThermometer Minimum="-50" Maximum="50" IsBidirectional="True" Value="{Binding CurrentValue, Mode=TwoWay}"  Grid.Column="1"  />
+        <TextBlock Text="PlainThermometer" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" Grid.Row="1" Grid.Column="1" />
+
+        <db:WallThermometer Minimum="-50" Maximum="50" IsBidirectional="True" Value="{Binding CurrentValue, Mode=TwoWay}"  Grid.Column="2"  />
+        <TextBlock Text="WallThermometer" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" Grid.Row="1" Grid.Column="2" />
+
+
+
+
+
+    </Grid>
+</UserControl>

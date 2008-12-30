@@ -98,6 +98,9 @@
     <Compile Include="SingleGuages\BiDiamond3.xaml.cs">
       <DependentUpon>BiDiamond3.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleGuages\BiDiamond4.xaml.cs">
+      <DependentUpon>BiDiamond4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleGuages\Dial180_1.xaml.cs">
       <DependentUpon>Dial180_1.xaml</DependentUpon>
     </Compile>
@@ -270,6 +273,10 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="SingleGuages\BiDiamond3.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\BiDiamond4.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

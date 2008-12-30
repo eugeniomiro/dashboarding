@@ -26,13 +26,27 @@
         Which gives the following operation (mouse over the diamond and drag it to set the
         value)</p>
     <center>
-        <object type="application/x-silverlight" height="40" width="140">
+        <object type="application/x-silverlight" height="40" width="400">
             <param name="source" value="../ClientBin/SilverlightApplication.xap" />
             <param name="initParams" value="demo=BiDiamond1,IsRandom=true" />
             <param name="background" value="Transparent" />
             <param name="windowless" value="True" />
         </object>
     </center>
+    
+    
+    <p> Currently the following controls can operate in a bidirectional manner </p>
+    <center>
+        <object type="application/x-silverlight" height="200" width="600">
+            <param name="source" value="../ClientBin/SilverlightApplication.xap" />
+            <param name="initParams" value="demo=BiDiamond4,IsRandom=true" />
+            <param name="background" value="Transparent" />
+            <param name="windowless" value="True" />
+        </object>
+    </center>
+    
+    
+    
     <p>
         You can deal with the value changing in one of two easy ways, through events, or
         through two way data binding. Lets deal with events first.</p>

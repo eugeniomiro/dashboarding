@@ -220,20 +220,16 @@ namespace Codeplex.Dashboarding
         {
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-                _startAnimValue.Value = 0;
-                _endAnimValue.Value = Value;
+                _endAnimValue.Value = NormalizedValue * 100;
                 _swipe.Begin();
             }
             else
             {
+                TransformGroup tg = _slider.RenderTransform as TransformGroup;
+                tg.Children[3].SetValue(TranslateTransform.XProperty, CurrentNormalizedValue * 100);
 
-                _startAnimValue.Value = CurrentValue;
-                _endAnimValue.Value = CurrentValue;
-                _swipe.Begin();
-         
+                    
             }
-
-
         }
 
         /// <summary>
@@ -268,18 +264,11 @@ namespace Codeplex.Dashboarding
         protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
         {
             base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
-            double offset =  currentPosition.X - mouseDownPosition.X ;
-            CurrentValue = Value + offset;
-            if (CurrentValue > 100)
-            {
-                CurrentValue = 100;
-            }
-            if (CurrentValue < 0)
-            {
-                CurrentValue = 0;
-            }
+            MoveCurrentPositionByOffset(currentPosition.X - mouseDownPosition.X);
             Animate();
         }
+
+       
 
     }
 }
