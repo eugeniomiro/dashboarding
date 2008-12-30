@@ -9,15 +9,18 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         
   Width="800" Height="200" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <Grid x:Name="LayoutRoot" >
-        <db:FiveStarRanking x:Name="_fiveStar" IsBidirectional="True" ShowFocus="True" Value="100" Height="24" Margin="0,136,144,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
-            <ToolTipService.ToolTip>
-                <ToolTip Content="A FiveStarRanking control"/>
-            </ToolTipService.ToolTip>
-        </db:FiveStarRanking>
+
+        
+            <db:FiveStarRanking x:Name="_fiveStar"  Value="100" Height="24" Margin="0,136,144,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="A FiveStarRanking control"/>
+                </ToolTipService.ToolTip>
+            </db:FiveStarRanking>
+        
         <db:ProgressBar x:Name="_prog1" Margin="0,137,30,0" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" VerticalAlignment="Top" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a ProgressBar, control"/>
-            </ToolTipService.ToolTip> 
+            </ToolTipService.ToolTip>
         </db:ProgressBar>
         <db:DiamondSlider x:Name="_slider"  Height="23" Margin="0,134,253,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
             <ToolTipService.ToolTip>
@@ -64,7 +67,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:PerformanceMonitor>
 
 
-        <db:PlainThermometer x:Name="_ther2" Height="135" Margin="391,11,379,0" VerticalAlignment="Top" >
+        <db:PlainThermometer  x:Name="_ther2" Height="135" Margin="391,11,379,0" VerticalAlignment="Top" >
             <ToolTipService.ToolTip>
                 <ToolTip >
                     <TextBlock Width="200" TextWrapping="Wrap" Text="This is PlainThermometer control that has a color range set. The mercury is colored according to the value. Green 0..33,Yello 33..66 and red 66 to 99"/>
@@ -137,7 +140,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
                 </TransformGroup>
             </db:Dial180.RenderTransform>
         </db:Dial180>
-        
+
         <db:MatrixLedMarquee HorizontalAlignment="Left" Margin="12,0,0,7"  VerticalAlignment="Bottom"
             Panels="30" 
             TimerDuration="00:00:0.1"
@@ -146,6 +149,6 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             Mode="Continious"                             
             Text="Welcome to the Silverlight Dashboard and gauges project. This MatrixLedMarquee control is one of many in the growing library hosted at Codeplex."
         />
-        
+
     </Grid>
 </UserControl>

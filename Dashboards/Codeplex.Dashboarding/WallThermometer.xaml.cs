@@ -46,7 +46,59 @@ namespace Codeplex.Dashboarding
         {
             InitializeComponent();
             _delegate.TextColor = Colors.Black;
+            PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(OneOfMyPropertiesChanged);
+            _delegate.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(OneOfTheDelegatesPropertiesChanged);
             SetValue(MercuryColorRangeProperty, new ColorPointCollection());
+        }
+
+        /// <summary>
+        /// One of the delegates properties changed if it is value then raise the onproperty changed event for 
+        /// us by setting our value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void OneOfTheDelegatesPropertiesChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "Minimum":
+                    if (_delegate.Minimum != Minimum)
+                        Minimum = _delegate.Minimum;
+                    break;
+                case "Maximum":
+                    if (_delegate.Maximum != Maximum)
+                        Maximum = _delegate.Maximum;
+                    break;
+                case "Value":
+                    if (_delegate.Value != Value)
+                        Value = _delegate.Value;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// One of my propertis changed, if this is a property we need to pass to our delegate
+        /// we do so
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
+        void OneOfMyPropertiesChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "Minimum":
+                    if (_delegate.Minimum != Minimum)
+                        _delegate.Minimum = Minimum;
+                    break;
+                case "Maximum":
+                    if (_delegate.Maximum != Maximum)
+                        _delegate.Maximum = Maximum;
+                    break;
+                case "Value":
+                    if (_delegate.Value != Value)
+                        _delegate.Value = Value;
+                    break;
+            }
         }
 
 
@@ -139,6 +191,56 @@ namespace Codeplex.Dashboarding
         #endregion
 
 
+
+        #region IsBidirectional property
+
+        /// <summary>
+        /// Identifies the IsBidirectional attached property
+        /// </summary>
+        public static readonly DependencyProperty IsBidirectionalProperty =
+            DependencyProperty.Register("IsBidirectional", typeof(Boolean), typeof(WallThermometer), new PropertyMetadata(new PropertyChangedCallback(IsBidirectionalPropertyChanged)));
+
+        /// <summary>
+        /// Gets or sets a value to determin if this dashboard is bidrectional. IsBiderectional == false means that
+        /// the control shows values. IsBidirectional == true means that the user can interact with the control
+        /// to ser values. We implement this here and not derive from BiDirectional Dashboard control because
+        /// the plain thermometer does the heavy lifting we just delgate to it
+        /// </summary>
+        public Boolean IsBidirectional
+        {
+            get
+            {
+                Boolean res = (Boolean)GetValue(IsBidirectionalProperty);
+                return res;
+            }
+            set
+            {
+                SetValue(IsBidirectionalProperty, value);
+                _delegate.IsBidirectional = value;
+            }
+        }
+
+
+
+        /// <summary>
+        /// The value of the IsBidirectional property has changed. We call animate to allow any focus
+        /// handle to be rendered
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void IsBidirectionalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
+            if (instance != null)
+            {
+                instance.IsBidirectional = (bool)args.NewValue;
+            }
+        }
+
+
+        #endregion
+
+ 
 
         /// <summary>
         /// For animation we set the value of the contained thermometer, then

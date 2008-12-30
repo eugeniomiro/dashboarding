@@ -34,7 +34,7 @@ namespace Codeplex.Dashboarding
     /// <summary>
     /// A progress bar show the 0 .. 100% progress of an operation
     /// </summary>
-    public partial class ProgressBar : Dashboard
+    public partial class ProgressBar : BidirectionalDashboard
     {
         /// <summary>
         /// Constructs a ProgressBar
@@ -42,6 +42,7 @@ namespace Codeplex.Dashboarding
         public ProgressBar()
         {
             InitializeComponent();
+            RegisterGrabHandle(_grabHandleCanvas);
         }
 
         #region OutlineColor property
@@ -85,9 +86,6 @@ namespace Codeplex.Dashboarding
         }
 
         #endregion
-
-
-
 
         #region InProgressColor property
 
@@ -197,7 +195,42 @@ namespace Codeplex.Dashboarding
         #endregion
 
 
+        #region BiDirection
+        /// <summary>
+        /// Highlight the grab handle as the mouse is in
+        /// </summary>
+        protected override void ShowGrabHandle()
+        {
+            base.ShowGrabHandle();
+            _grabHandle.StrokeDashArray = new DoubleCollection { 1, 1 };
+            _grabHandleCanvas.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+        }
 
+        /// <summary>
+        /// Stop the highlight of the grab handle the mouse is out
+        /// </summary>
+        protected override void HideGrabHandle()
+        {
+            base.HideGrabHandle();
+            _grabHandle.StrokeDashArray = new DoubleCollection();
+            _grabHandleCanvas.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+
+        /// <summary>
+        /// Mouse is moving, move the diagram
+        /// </summary>
+        /// <param name="mouseDownPosition">origin of the drag</param>
+        /// <param name="currentPosition">where the mouse is now</param>
+        protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
+        {
+            base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
+            MoveCurrentPositionByOffset(currentPosition.X - mouseDownPosition.X);
+            Animate();
+        }
+
+
+        #endregion
 
 
         /// <summary>
@@ -206,10 +239,36 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void Animate()
         {
-            _startPoint.To = new Point(Value, 0);
-            _topLeft.To = new Point(Value, 0);
-            _botLeft.To = new Point(Value, 15);
-            _swipe.Begin();
+            if (IsBidirectional)
+            {
+                _grabHandleCanvas.Visibility = Visibility.Visible;
+                _grabHandle.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _grabHandleCanvas.Visibility = Visibility.Collapsed;
+                _grabHandle.Visibility = Visibility.Collapsed;
+            }
+
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+                double pos = NormalizedValue * 100;
+                _startPoint.To = new Point(pos, 0);
+                _topLeft.To = new Point(pos, 0);
+                _botLeft.To = new Point(pos, 15);
+                _handlePos.Value = pos - 10;
+                _swipe.Begin();
+                _moveGrab.Begin();
+            }
+            else
+            {
+                double currentPos = CurrentNormalizedValue * 100;
+                TransformGroup tg = _grabHandleCanvas.RenderTransform as TransformGroup;
+                tg.Children[3].SetValue(TranslateTransform.XProperty, currentPos - 10);
+                pf.StartPoint = new Point(currentPos, 0);
+                seg1.Point = new Point(currentPos, 0);
+                seg4.Point = new Point(currentPos, 15); 
+            }
         }
     }
 }

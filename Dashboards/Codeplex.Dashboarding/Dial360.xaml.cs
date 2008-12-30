@@ -225,7 +225,7 @@ namespace Codeplex.Dashboarding
             
             _percentage.Text = String.Format("{0:000}", Value);
             //SetColourFromRange();
-            double animateTo = -150 + (3 * Value);
+            double animateTo = -150 + (3 * (NormalizedValue * 100) );
             _needlePos.Value = animateTo;
             _moveNeedle.Begin();
         }

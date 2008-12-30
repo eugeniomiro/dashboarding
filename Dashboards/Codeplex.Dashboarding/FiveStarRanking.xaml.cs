@@ -46,10 +46,8 @@ namespace Codeplex.Dashboarding
         {
             InitializeComponent();
             RegisterGrabHandle(LayoutRoot);
+            RegisterGrabHandle(_grabHandleCanvas);
         }
-
-
-
 
         #region InRankColor property
 
@@ -170,19 +168,84 @@ namespace Codeplex.Dashboarding
         #endregion
 
 
+        #region BiDirection
+        /// <summary>
+        /// Highlight the grab handle as the mouse is in
+        /// </summary>
+        protected override void ShowGrabHandle()
+        {
+            base.ShowGrabHandle();
+            _grabHandle.StrokeDashArray = new DoubleCollection { 1, 1 };
+            _grabHandleCanvas.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+        }
+
+        /// <summary>
+        /// Stop the highlight of the grab handle the mouse is out
+        /// </summary>
+        protected override void HideGrabHandle()
+        {
+            base.HideGrabHandle();
+            _grabHandle.StrokeDashArray = new DoubleCollection();
+            _grabHandleCanvas.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+
+        /// <summary>
+        /// Mouse is moving, move the diagram
+        /// </summary>
+        /// <param name="mouseDownPosition">origin of the drag</param>
+        /// <param name="currentPosition">where the mouse is now</param>
+        protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
+        {
+            base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
+            MoveCurrentPositionByOffset(currentPosition.X - mouseDownPosition.X);
+            Animate();
+        }
+
+
+        #endregion
+
+
+
         /// <summary>
         /// Display the control according the the current value
         /// </summary>
         protected override void Animate()
         {
 
+            if (IsBidirectional)
+            {
+                _grabHandleCanvas.Visibility = Visibility.Visible;
+                _grabHandle.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _grabHandleCanvas.Visibility = Visibility.Collapsed;
+                _grabHandle.Visibility = Visibility.Collapsed;
+            }
 
-            _animOrigin.To = new Point(Value, 0);
-            _animTopLeft.To = new Point(Value, 0);
-            _animBotRight.To = new Point(Value, 32);
 
-            
-            _swipe.Begin();
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+                double pos = NormalizedValue * 100;
+                _animOrigin.To = new Point(pos, 0);
+                _animTopLeft.To = new Point(pos, 0);
+                _animBotRight.To = new Point(pos, 32);
+                _swipe.Begin();
+                _grabValue.Value = pos;
+                _animGrab.Begin();
+            }
+            else
+            {
+                double currentPos = CurrentNormalizedValue * 100;
+                _pf.StartPoint = new Point(currentPos, 0);
+                _seg1.Point = new Point(currentPos, 0);
+                _seg4.Point = new Point(currentPos, 32);
+
+                TransformGroup g = _grabHandleCanvas.RenderTransform as TransformGroup;
+                g.Children[3].SetValue(TranslateTransform.XProperty, currentPos );
+            }
+        
         }
     }
 }

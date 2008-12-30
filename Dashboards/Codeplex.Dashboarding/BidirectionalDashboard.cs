@@ -62,9 +62,37 @@ namespace Codeplex.Dashboarding
         protected bool IsGrabbed { get; set; }
 
         /// <summary>
-        /// Current control value while dragging
+        /// Current control Normalized value while dragging
         /// </summary>
-        protected double CurrentValue { get; set; }
+        protected double CurrentNormalizedValue { get; set; }
+
+        /// <summary>
+        /// The current value of the drap point in the range Minimum <= CurrentValue <= Maximum
+        /// </summary>
+        public double CurrentValue 
+        {
+            get
+            {
+                return Minimum + ((Maximum - Minimum) * CurrentNormalizedValue);
+            }
+        }
+
+        /// <summary>
+        /// Manipulates the CurrentNormalizedValue to move the position by a number of screen pixels
+        /// </summary>
+        /// <param name="offset">Offset in pixels</param>
+        protected void MoveCurrentPositionByOffset(double offset)
+        {
+            CurrentNormalizedValue = NormalizedValue + (offset / 100);
+            if (CurrentNormalizedValue > 1)
+            {
+                CurrentNormalizedValue = 1;
+            }
+            if (CurrentNormalizedValue < 0)
+            {
+                CurrentNormalizedValue = 0;
+            }
+        }
 
         #endregion
 
@@ -156,51 +184,6 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
-        #region ShowFocus property
-
-        /// <summary>
-        /// Identifies the ShowFocus attached property
-        /// </summary>
-        public static readonly DependencyProperty ShowFocusProperty =
-            DependencyProperty.Register("ShowFocus", typeof(Boolean), typeof(BidirectionalDashboard), new PropertyMetadata(new PropertyChangedCallback(ShowFocusPropertyChanged)));
-
-        /// <summary>
-        /// Gets or sets a value to determine if this dashboard should show a focus indicator when 
-        /// the user moves into the control. Quite what is shown is up to the derived control and 
-        /// its animate function. One side effect of ShowFocus == true is that Animate will be 
-        /// called on mouse enter and leave
-        /// to show hide the focus indicator .
-        /// </summary>
-        public Boolean ShowFocus
-        {
-            get
-            {
-                Boolean res = (Boolean)GetValue(ShowFocusProperty);
-                return res;
-            }
-            set
-            {
-                SetValue(ShowFocusProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// The value of the ShowFocus property has changed. Call Animate to allow the derived class
-        /// upate the visuals
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void ShowFocusPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
-            if (instance != null)
-            {
-
-            }
-        }
-
-        #endregion
-
         #region mouse enter and leave
 
         /// <summary>
@@ -211,7 +194,7 @@ namespace Codeplex.Dashboarding
         /// <param name="e">eventargs</param>
         void BidirectionalDashboard_MouseEnter(object sender, MouseEventArgs e)
         {
-            if (IsBidirectional && ShowFocus)
+            if (IsBidirectional )
             {
                 
 
@@ -231,7 +214,7 @@ namespace Codeplex.Dashboarding
         void target_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             IsGrabbed = true;
-            CurrentValue = Value;
+            CurrentNormalizedValue = Value;
             GrabHandle.CaptureMouse();
             _grabOrigin = e.GetPosition(null);
 
@@ -265,10 +248,8 @@ namespace Codeplex.Dashboarding
             if (IsGrabbed)
             {
                 Value = CurrentValue;
-                if (ShowFocus)
-                {
-                    HideGrabHandle();
-                }
+                HideGrabHandle();
+
                 GrabHandle.ReleaseMouseCapture();
                 Animate();
             }

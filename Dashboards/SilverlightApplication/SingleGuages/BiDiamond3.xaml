@@ -7,7 +7,7 @@
 <StackPanel Orientation="Horizontal">
     <TextBlock Text="{Binding CurrentValue}" VerticalAlignment="Center" 
                TextAlignment="Right" Width="40" Foreground="AntiqueWhite"/>
-    <db:DiamondSlider Value="{Binding CurrentValue, Mode=TwoWay}" IsBidirectional="True"  ShowFocus="True" />
+    <db:DiamondSlider Value="{Binding CurrentValue, Mode=TwoWay}" IsBidirectional="True"  />
     <Button Content="Set To 50" Click="Button_Click"/>
 </StackPanel>
     </Grid>

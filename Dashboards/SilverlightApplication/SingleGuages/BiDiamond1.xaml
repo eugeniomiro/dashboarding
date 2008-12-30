@@ -4,6 +4,6 @@
  xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding" 
     Width="130" Height="25">
     <Grid x:Name="LayoutRoot" >
-        <db:DiamondSlider Value="50" IsBidirectional="True"  ShowFocus="True"/>
+        <db:DiamondSlider Value="50" IsBidirectional="True" />
     </Grid>
 </UserControl>

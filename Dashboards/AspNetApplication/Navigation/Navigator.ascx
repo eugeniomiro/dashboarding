@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navigator.ascx.cs" Inherits="AspNetApplication.Navigation.Navigator" %>
 <div id="left">
+    <asp:HyperLink ID="HyperLink1" CssClass="homeLink"  runat="server" NavigateUrl="~/Default.aspx">Welcome page</asp:HyperLink>
     <h2>
         Controls</h2>
     <ul>

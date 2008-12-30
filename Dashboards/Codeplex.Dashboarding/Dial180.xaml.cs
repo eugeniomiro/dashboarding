@@ -247,7 +247,7 @@ namespace Codeplex.Dashboarding
             SetFaceColor();
             SetNeedleColor();
             _text.Text = "" + Value;
-            double point = -90 + ((Value / 100) * 180);
+            double point = -90 + (NormalizedValue * 180);
             _value.Value = point;
             _swipe.Begin();
 

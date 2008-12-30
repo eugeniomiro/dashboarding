@@ -34,7 +34,7 @@ namespace Codeplex.Dashboarding
     /// <summary>
     /// A simple Thermometer, hold the lettuce
     /// </summary>
-    public partial class PlainThermometer : Dashboard
+    public partial class PlainThermometer : BidirectionalDashboard
     {
         /// <summary>
         /// Stores the 100% end point values for the animation scale
@@ -57,7 +57,8 @@ namespace Codeplex.Dashboarding
         {
             InitializeComponent();
             SetValue(MercuryColorRangeProperty, new ColorPointCollection());
-          
+            RegisterGrabHandle(_grabHandleCanvas);
+           
         }
 
         /// <summary>
@@ -188,6 +189,43 @@ namespace Codeplex.Dashboarding
         #endregion
 
 
+        #region BiDirection
+        /// <summary>
+        /// Highlight the grab handle as the mouse is in
+        /// </summary>
+        protected override void ShowGrabHandle()
+        {
+            base.ShowGrabHandle();
+            _grabHandle.StrokeDashArray = new DoubleCollection { 1, 1 };
+            _grabHandleCanvas.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+        }
+
+        /// <summary>
+        /// Stop the highlight of the grab handle the mouse is out
+        /// </summary>
+        protected override void HideGrabHandle()
+        {
+            base.HideGrabHandle();
+            _grabHandle.StrokeDashArray = new DoubleCollection();
+            _grabHandleCanvas.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+
+        /// <summary>
+        /// Mouse is moving, move the diagram
+        /// </summary>
+        /// <param name="mouseDownPosition">origin of the drag</param>
+        /// <param name="currentPosition">where the mouse is now</param>
+        protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
+        {
+            base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
+            MoveCurrentPositionByOffset(mouseDownPosition.Y - currentPosition.Y);
+            Animate();
+        }
+
+
+        #endregion
+
 
         #region privates
         /// <summary>
@@ -224,11 +262,47 @@ namespace Codeplex.Dashboarding
             {
                 InitializeAnimation();
             }
-            SetMercuryColor();
-            _translate.Value = _fullTranslate * (Value / 100);
-            _scale.Value = _fullScale * (Value / 100);
-            _text.Text = "" + Value;
-            _swipe.Begin();
+
+            if (IsBidirectional)
+            {
+                _grabHandleCanvas.Visibility = Visibility.Visible;
+                _grabHandle.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _grabHandleCanvas.Visibility = Visibility.Collapsed;
+                _grabHandle.Visibility = Visibility.Collapsed;
+            }
+
+            
+
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+                
+
+                SetMercuryColor();
+                _translate.Value = _fullTranslate * NormalizedValue;
+                _scale.Value = _fullScale * NormalizedValue;
+                _text.Text = "" + Value;
+                _grabFrame.Value = -(NormalizedValue * 100);
+                _swipe.Begin();
+            }
+            else
+            {
+              
+                TransformGroup handle  = _grabHandleCanvas.RenderTransform as TransformGroup;
+                handle.Children[3].SetValue(TranslateTransform.YProperty, -(CurrentNormalizedValue*100));
+
+                TransformGroup merc = _merc.RenderTransform as TransformGroup;
+                merc.Children[0].SetValue(ScaleTransform.ScaleYProperty, _fullScale * (CurrentNormalizedValue ));
+                merc.Children[3].SetValue(TranslateTransform.YProperty, _fullTranslate * (CurrentNormalizedValue ));
+                _text.Text = "" + CurrentValue;
+            }
+
+          
+
+
+           
         }
         #endregion
     }

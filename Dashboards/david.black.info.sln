@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightApplication", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding", "Codeplex.Dashboarding\Codeplex.Dashboarding.csproj", "{4AC50D91-3409-41EC-B09B-4B15F82F731A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casewise.Dashboarding.Tests", "Casewise.Dashboarding.Tests\Casewise.Dashboarding.Tests.csproj", "{992FBC01-8F3F-45D2-9107-9077D26BD608}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 4
@@ -40,6 +42,10 @@ Global
 		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

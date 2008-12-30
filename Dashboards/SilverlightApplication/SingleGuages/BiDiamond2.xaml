@@ -7,7 +7,7 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="_t" Text="000 -> 000" VerticalAlignment="Center" 
                        TextAlignment="Right" Width="70" Foreground="AntiqueWhite"/>
-            <db:DiamondSlider Value="50" IsBidirectional="True"  ShowFocus="True" 
+            <db:DiamondSlider Value="50" IsBidirectional="True"  
                               ValueChanged="DiamondSlider_ValueChanged" x:Name="_ds"/>
         </StackPanel>
     </Grid>

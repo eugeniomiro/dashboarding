@@ -55,6 +55,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         public Dashboard() :base()
         {
+            Minimum = 0;
+            Maximum = 100;
             Loaded += new RoutedEventHandler(Dashboard_Loaded);
             
         }
@@ -89,6 +91,17 @@ namespace Codeplex.Dashboarding
             set 
             {
                 double old = Value;
+                
+                if (value > RealMaximum)
+                {
+                    value = RealMaximum;
+                }
+
+                if (value < RealMinimum)
+                {
+                    value = RealMinimum;
+                }
+
                 SetValue(ValueProperty, value);
                 OnValueChanged(old, value);
                 OnPropertyChanged("Value");
@@ -110,7 +123,8 @@ namespace Codeplex.Dashboarding
 
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Our dependany property has changed, deal with it and ensure the Property change notification 
+        /// of INotifyPropertyChanges is triggered
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
@@ -119,10 +133,152 @@ namespace Codeplex.Dashboarding
             Dashboard instance = dependancy as Dashboard;
             if (instance != null)
             {
+
+                double v = instance.Value;
+                if (v > instance.RealMaximum)
+                {
+                    instance.Value = instance.RealMaximum;
+                }
+
+                if (v < instance.RealMinimum)
+                {
+                    instance.Value = instance.RealMinimum;
+                }
+                instance.OnPropertyChanged("Value");
                 instance.Animate();
             }
         }
 
+      
+
+
+        #endregion
+
+
+        #region min max functions
+
+        #region Minimum property
+        
+        /// <summary>
+        /// Dependancy property backing the Minimum value
+        /// </summary>
+        public static readonly DependencyProperty MinimumProperty =
+            DependencyProperty.Register("Minimum", typeof(double), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(MinimumPropertyChanged)));
+
+        /// <summary>
+        /// Minimum value the gauge will take, values lower than this are raised to this
+        /// </summary>
+        public double Minimum
+        {
+            get { return (double)GetValue(MinimumProperty);  }
+            set { SetValue(MinimumProperty, value); OnPropertyChanged("Minimum");}
+        }
+        
+        /// <summary>
+        /// Our dependany property has changed, deal with it and ensure the Property change notification 
+        /// of INotifyPropertyChanges is triggered
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void MinimumPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            Dashboard instance = dependancy as Dashboard;
+            if (instance != null)
+            {
+                instance.OnPropertyChanged("Minimum");
+            }
+        }
+
+      
+
+        #endregion
+
+        #region MaximumProperty
+
+        /// <summary>
+        /// Dependancy property backing the Maximim value 
+        /// </summary>
+        public static readonly DependencyProperty MaximumProperty =
+            DependencyProperty.Register("Maximum", typeof(double), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(MaximumPropertyChanged)));
+
+        /// <summary>
+        /// Maximum value the gauge will tae. Values above this are rounded down
+        /// </summary>
+        public double Maximum
+        {
+            get { return (double)GetValue(MaximumProperty); }
+            set { SetValue(MaximumProperty, value);  OnPropertyChanged("Maximum");}
+        }
+
+                /// <summary>
+        /// Our dependany property has changed, deal with it and ensure the Property change notification 
+        /// of INotifyPropertyChanges is triggered
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void MaximumPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            Dashboard instance = dependancy as Dashboard;
+            if (instance != null)
+            {
+                instance.OnPropertyChanged("Maximum");
+            }
+        }
+
+
+        #endregion
+
+
+        #region RealMaximum property
+
+        /// <summary>
+        /// Since the user may set Minimum > Maximum, we internally use RealMinimum
+        /// and RealMaximum which already return Maximum >= Minimum even if they have to swap
+        /// </summary>
+        internal double RealMaximum 
+        {
+            get
+            {
+                return (Maximum > Minimum) ? Maximum : Minimum;
+            }
+        }
+
+        #endregion
+
+        #region RealMaximum property
+
+        /// <summary>
+        /// Since the user may set Minimum > Maximum, we internally use RealMinimum
+        /// and RealMaximum which already return Maximum >= Minimum even if they have to swap
+        /// </summary>
+        internal double RealMinimum
+        {
+            get
+            {
+                return (Maximum < Minimum) ? Maximum : Minimum;
+            }
+        }
+
+        #endregion
+
+        #region Normalised Value
+
+        /// <summary>
+        /// Rgardless of the Minimum or Maximum settings, the actual value to display on the gauge
+        /// is represented by the Normalized value which always is in the range 0 <= n <= 1.0. This makes
+        /// the job of animating more easy.
+        /// </summary>
+        internal double NormalizedValue
+        {
+            get
+            {
+                double range = RealMaximum - RealMinimum;
+                return (Value- RealMinimum) /range;
+            }
+        }
+
+
+        #endregion
 
         #endregion
 
@@ -152,6 +308,7 @@ namespace Codeplex.Dashboarding
         }
 
         #endregion
+
     }
 
     /// <summary>
@@ -168,6 +325,8 @@ namespace Codeplex.Dashboarding
         /// new value of the dashboard
         /// </summary>
         public double NewValue { get; set; }
+
+
     }
 
 }

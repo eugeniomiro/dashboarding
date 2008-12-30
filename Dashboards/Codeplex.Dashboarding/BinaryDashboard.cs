@@ -205,7 +205,7 @@ namespace Codeplex.Dashboarding
 
                 trueControl.Opacity = 0;
                 falseControl.Opacity = 0;
-                if (Value >= 50)
+                if (NormalizedValue >= 0.5)
                 {
                     trueControl.Visibility = Visibility.Visible;
                     falseControl.Visibility = Visibility.Collapsed;

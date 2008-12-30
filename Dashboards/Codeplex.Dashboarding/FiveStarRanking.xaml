@@ -2,16 +2,23 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:db="clr-namespace:Codeplex.Dashboarding"
-    
+    Width="100"
     >
 	<UserControl.Resources>
 		<Storyboard x:Name="_swipe">
-		<PointAnimation Storyboard.TargetName="_pf" x:Name="_animOrigin" Storyboard.TargetProperty="StartPoint" To="100,0" Duration="00:00:2" />
-            <PointAnimation x:Name="_animTopLeft" Storyboard.TargetName="_seg1" Storyboard.TargetProperty="Point" To="100,0" Duration="00:00:2" />
-            <PointAnimation x:Name="_animBotRight"  Storyboard.TargetName="_seg4" Storyboard.TargetProperty="Point" To="100,32" Duration="00:00:2" />
+		<PointAnimation Storyboard.TargetName="_pf" x:Name="_animOrigin" Storyboard.TargetProperty="StartPoint" To="100,0" Duration="00:00:1" />
+            <PointAnimation x:Name="_animTopLeft" Storyboard.TargetName="_seg1" Storyboard.TargetProperty="Point" To="100,0" Duration="00:00:1" />
+            <PointAnimation x:Name="_animBotRight"  Storyboard.TargetName="_seg4" Storyboard.TargetProperty="Point" To="100,32" Duration="00:00:1" />
 
         </Storyboard>
-	</UserControl.Resources>
+
+        <Storyboard x:Name="_animGrab">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandleCanvas" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <SplineDoubleKeyFrame x:Name="_grabValue" KeyTime="00:00:01" Value="100.0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </UserControl.Resources>
     <Grid x:Name="LayoutRoot"   >
     	<StackPanel Orientation="Horizontal">
     	<TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
@@ -144,8 +151,21 @@
 			
     	</StackPanel>
 
-		
-		</Grid>
+
+        <Canvas   Visibility="Visible" x:Name="_grabHandleCanvas" RenderTransformOrigin="0.5,0.5" Margin="-10,8,0,0" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Height="6" >
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Path x:Name="_grabHandle"  Height="7" Width="20" Fill="#FFDD4EEA" Stretch="Fill" Stroke="#FF020202" Data="M0.5,0.5 L5.5,3.471154 L0.5,6.5 z M19.125,0.50000006 L14.125,3.471154 L19.125,6.5 z M5.5000005,3.5000002 L14.708001,3.5000002"/>
+        </Canvas>
+
+
+    </Grid>
 		
 	 	
 
