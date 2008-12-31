@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casewise.Dashboarding.Tests
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs05.codeplex.com/
 		SccLocalPath0 = .
@@ -24,6 +24,9 @@ Global
 		SccProjectUniqueName3 = Codeplex.Dashboarding\\Codeplex.Dashboarding.csproj
 		SccProjectName3 = Codeplex.Dashboarding
 		SccLocalPath3 = Codeplex.Dashboarding
+		SccProjectUniqueName4 = Casewise.Dashboarding.Tests\\Casewise.Dashboarding.Tests.csproj
+		SccProjectName4 = Casewise.Dashboarding.Tests
+		SccLocalPath4 = Casewise.Dashboarding.Tests
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
