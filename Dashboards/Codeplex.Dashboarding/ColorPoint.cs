@@ -33,6 +33,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Codeplex.Dashboarding
 {
@@ -44,7 +45,7 @@ namespace Codeplex.Dashboarding
     /// <para>This allow us to have a needle red at below 33%, yellow 
     /// up till 66% and green after that</para>
     /// </summary>
-    public class ColorPoint: Control
+    public class ColorPoint: Control, INotifyPropertyChanged
     {
         /// <summary>
         /// Constructs a ColorPoint
@@ -54,15 +55,13 @@ namespace Codeplex.Dashboarding
 
         }
 
-        
-
         #region HiColor property
 
         /// <summary>
         /// The dependancy property for the HiColor attached property
         /// </summary>
         public static readonly DependencyProperty HiColorProperty =
-            DependencyProperty.Register("HiColor", typeof(Color), typeof(ColorPoint), null);
+            DependencyProperty.Register("HiColor", typeof(Color), typeof(ColorPoint), new PropertyMetadata(new PropertyChangedCallback(HiColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
@@ -76,6 +75,22 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Our dependany property has changed, deal with it and ensure the Property change notification 
+        /// of INotifyPropertyChanges is triggered
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void HiColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            ColorPoint instance = dependancy as ColorPoint;
+            if (instance != null)
+            {              
+                instance.OnPropertyChanged("HiColor");
+            }
+        }
+
+
         #endregion
 
         #region LowColor property
@@ -84,7 +99,7 @@ namespace Codeplex.Dashboarding
         /// The dependancy property for the LowColor attached property
         /// </summary>
         public static readonly DependencyProperty LowColorProperty =
-            DependencyProperty.Register("LowColor", typeof(Color), typeof(ColorPoint), null);
+            DependencyProperty.Register("LowColor", typeof(Color), typeof(ColorPoint), new PropertyMetadata(new PropertyChangedCallback(LowColorPropertyChanged)));
 
         /// <summary>
         /// low colour in the blend
@@ -98,6 +113,23 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Our dependany property has changed, deal with it and ensure the Property change notification 
+        /// of INotifyPropertyChanges is triggered
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void LowColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            ColorPoint instance = dependancy as ColorPoint;
+            if (instance != null)
+            {
+                instance.OnPropertyChanged("LowColor");
+            }
+        }
+
+
+
         #endregion
 
         #region Value property
@@ -106,7 +138,7 @@ namespace Codeplex.Dashboarding
         /// The dependancy property for Value attached property
         /// </summary>
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(ColorPoint), null);
+            DependencyProperty.Register("Value", typeof(double), typeof(ColorPoint), new PropertyMetadata(new PropertyChangedCallback(ValuePropertyChanged)));
 
         /// <summary>
         /// The point in the range (0..100) where this color takes effect
@@ -121,7 +153,44 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Our dependany property has changed, deal with it and ensure the Property change notification 
+        /// of INotifyPropertyChanges is triggered
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void ValuePropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            ColorPoint instance = dependancy as ColorPoint;
+            if (instance != null)
+            {
+                instance.OnPropertyChanged("Value");
+            }
+        }
+
+
         #endregion
 
+
+        #region INotifyPropertyChanged Members
+
+        /// <summary>
+        /// Raised when a property changes
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raise the PropertyChanged event if any one is listening
+        /// </summary>
+        /// <param name="prop">Name of the changed property</param>
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+
+        #endregion
     }
 }

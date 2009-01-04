@@ -46,6 +46,9 @@ namespace SilverlightApplication
                 case "SecondStep": return new SecondStep();
                 case "ThirdStep": return new ThirdStep();
                 case "FourthStep": return new FourthStep();
+                case "FifthStep": return new FifthStep();
+                case "SixthStep": return new SixthStep();
+                case "SeventhStep": return new SeventhStep();
                 case "DecadeBorder": return new DecadeBorderColor(e.InitParams);
                 case "Dial360": return new Dial360(e.InitParams);
 

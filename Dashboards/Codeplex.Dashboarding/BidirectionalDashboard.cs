@@ -46,9 +46,9 @@ namespace Codeplex.Dashboarding
         #region private members
 
         /// <summary>
-        /// Our grab handle
+        /// Our grab handle 
         /// </summary>
-        private FrameworkElement GrabHandle { get; set; }
+        internal FrameworkElement GrabHandle { get; set; }
 
         #endregion
 
@@ -177,6 +177,7 @@ namespace Codeplex.Dashboarding
             BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
             if (instance != null)
             {
+                instance.OnPropertyChanged("IsBidirectional");
                 instance.Animate();
             }
         }
@@ -192,7 +193,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">eventargs</param>
-        void BidirectionalDashboard_MouseEnter(object sender, MouseEventArgs e)
+        internal void BidirectionalDashboard_MouseEnter(object sender, MouseEventArgs e)
         {
             if (IsBidirectional )
             {
@@ -213,26 +214,47 @@ namespace Codeplex.Dashboarding
         /// <param name="e">event args</param>
         void target_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            IsGrabbed = true;
-            CurrentNormalizedValue = Value;
-            GrabHandle.CaptureMouse();
-            _grabOrigin = e.GetPosition(null);
-
-            // user may click-release-click on the grab handle, no mouse in event occurs so we show focus here too
-            ShowGrabHandle();
+            ButtonDown(e.GetPosition(this));
         }
+
+        /// <summary>
+        /// Left button down exposed here for unit testing
+        /// </summary>
+        /// <param name="at"></param>
+         internal void ButtonDown(Point at)
+         {
+             IsGrabbed = true;
+             CurrentNormalizedValue = Value;
+             if (GrabHandle != null)
+             {
+                 GrabHandle.CaptureMouse();
+             }
+             _grabOrigin = at;
+             // user may click-release-click on the grab handle, no mouse in event occurs so we show focus here too
+             ShowGrabHandle();
+         }
 
         /// <summary>
         /// Mouse has moved pass on the origin and current position
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void GrabHandle_MouseMove(object sender, MouseEventArgs e)
+        private void GrabHandle_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point p = e.GetPosition(this);
+
+            MoveToPoint(p);
+        }
+
+        /// <summary>
+        /// The mouse has moved to a new point. Deal with it (exposed for unit testing ony)
+        /// </summary>
+        /// <param name="p">THe mouse point</param>
+        internal void MoveToPoint(Point p)
         {
             if (IsBidirectional && IsGrabbed)
             {
-
-                OnMouseGrabHandleMove(_grabOrigin, e.GetPosition(null));
+                OnMouseGrabHandleMove(_grabOrigin, p);
             }
         }
         
@@ -243,31 +265,41 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void BidirectionalDashboard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+         void BidirectionalDashboard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (IsGrabbed)
-            {
-                Value = CurrentValue;
-                HideGrabHandle();
-
-                GrabHandle.ReleaseMouseCapture();
-                Animate();
-            }
-            else
-            {
-                Animate();
-            }
-            IsGrabbed = false;
+            MouseUp();
         }
+
+        /// <summary>
+        /// Mouse is up internal for unit-tests
+        /// </summary>
+         internal void MouseUp()
+         {
+             if (IsGrabbed)
+             {
+                 Value = CurrentValue;
+                 HideGrabHandle();
+                 if (GrabHandle != null)
+                 {
+                     GrabHandle.ReleaseMouseCapture();
+                 }
+                 Animate();
+             }
+             else
+             {
+                 Animate();
+             }
+             IsGrabbed = false;
+         }
 
         /// <summary>
         /// THe mouse has left the control if there is no grab then remove the focus handle
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">Event args</param>
-        void GrabHandle_MouseLeave(object sender, MouseEventArgs e)
+        internal void GrabHandle_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (!IsGrabbed)
+            if (!IsGrabbed && IsBidirectional)
             {
                 HideGrabHandle();
             }

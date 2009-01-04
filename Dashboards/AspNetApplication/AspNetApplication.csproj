@@ -219,6 +219,7 @@
   <ItemGroup>
     <Content Include="ClientBin\SilverlightApplication.xap" />
     <Content Include="Default.aspx" />
+    <Content Include="dove2.png" />
     <Content Include="Extras\Bidirection.aspx" />
     <Content Include="Extras\Contacts.aspx" />
     <Content Include="Extras\FontEditor.aspx" />

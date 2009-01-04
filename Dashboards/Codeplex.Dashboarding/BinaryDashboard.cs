@@ -51,7 +51,9 @@ namespace Codeplex.Dashboarding
             
             SetValue(TrueColorProperty, new ColorPoint { HiColor=Color.FromArgb(0xFF,0x6C,0xFA,0x20), LowColor = Color.FromArgb(0xFF,0xDC,0xF9,0xD4) });
             SetValue(FalseColorProperty, new ColorPoint { HiColor = Color.FromArgb(0xFF, 0xFA, 0x65, 0x65), LowColor = Color.FromArgb(0xFF, 0xFC, 0xD5, 0xD5) });
+            PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(PropertyHasChanged);
         }
+
 
 
         #region TrueColor property
@@ -78,7 +80,6 @@ namespace Codeplex.Dashboarding
             set
             {
                 SetValue(TrueColorProperty, value);
-                Animate();
             }
         }
 
@@ -93,6 +94,7 @@ namespace Codeplex.Dashboarding
             BinaryDashboard instance = dependancy as BinaryDashboard;
             if (instance != null)
             {
+                instance.OnPropertyChanged("TrueColor");
                 instance.Animate();
             }
         }
@@ -122,7 +124,6 @@ namespace Codeplex.Dashboarding
             set
             {
                 SetValue(FalseColorProperty, value);
-                Animate();
             }
         }
 
@@ -136,6 +137,7 @@ namespace Codeplex.Dashboarding
             BinaryDashboard instance = dependancy as BinaryDashboard;
             if (instance != null)
             {
+                instance.OnPropertyChanged("FalseColor");
                 instance.Animate();
             }
         }
@@ -148,7 +150,7 @@ namespace Codeplex.Dashboarding
         /// Identifies the IsTrue attached property
         /// </summary>
         public static readonly DependencyProperty IsTrueProperty =
-            DependencyProperty.Register("IsTrue", typeof(Boolean), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(IsTruePropertyChanged)));
+            DependencyProperty.Register("IsTrue", typeof(bool), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(IsTruePropertyChanged)));
 
         /// <summary>
         /// A boolean over ride of the value property from the Dashboard base class. Setting
@@ -164,7 +166,6 @@ namespace Codeplex.Dashboarding
             set
             {
                 SetValue(IsTrueProperty, value);
-                Value = (IsTrue) ? 100 : 0;
             }
         }
 
@@ -180,8 +181,9 @@ namespace Codeplex.Dashboarding
             BinaryDashboard instance = dependancy as BinaryDashboard;
             if (instance != null)
             {
-                double value = (instance.IsTrue) ? 100 : 0;
+                double value = (instance.IsTrue) ? instance.Maximum : instance.Minimum;
                 instance.SetValue(BinaryDashboard.ValueProperty, value);
+                instance.OnPropertyChanged("IsTrue");
             }
         }
 
@@ -241,8 +243,26 @@ namespace Codeplex.Dashboarding
                 lowStop.Color = colorPoint.LowColor;
             }
 
-
         }
+
+        /// <summary>
+        /// A property has changed, if it is the Value property raise an IsTrue property changed event
+        /// </summary>
+        /// <param name="sender">this</param>
+        /// <param name="e">event args</param>
+        void PropertyHasChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Value")
+            {
+                bool toBe = (NormalizedValue >= 0.5);
+                if (IsTrue != toBe)
+                {
+                    SetValue(IsTrueProperty, toBe);
+                }
+
+            }
+        }
+
         #endregion
 
 

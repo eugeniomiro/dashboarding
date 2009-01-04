@@ -34,7 +34,7 @@ namespace Codeplex.Dashboarding
     /// <summary>
     /// A needle and dial face control where the needle sweeps a 180 degree path. 
     /// </summary>
-    public partial class Dial180 : Dashboard
+    public partial class Dial180 : BidirectionalDashboard
     {
         /// <summary>
         /// constructs a dial 180 
@@ -44,7 +44,7 @@ namespace Codeplex.Dashboarding
             InitializeComponent();
             SetValue(FaceColorRangeProperty, new ColorPointCollection());
             SetValue(NeedleColorRangeProperty, new ColorPointCollection());
-
+            RegisterGrabHandle(_grabHandle);
         }
 
 
@@ -85,6 +85,7 @@ namespace Codeplex.Dashboarding
             if (instance != null)
             {
                 instance.SetFaceColor();
+                instance.OnPropertyChanged("FaceColorRange");
             }
         }
 
@@ -140,6 +141,8 @@ namespace Codeplex.Dashboarding
             if (instance != null)
             {
                 instance.SetNeedleColor();
+                instance.OnPropertyChanged("NeedleColorRange");
+
             }
         }
 
@@ -159,7 +162,7 @@ namespace Codeplex.Dashboarding
         #endregion
 
         #region TextColor
-       
+
         /// <summary>
         /// The Dependancy property for the TextColor attached property
         /// </summary>
@@ -194,6 +197,7 @@ namespace Codeplex.Dashboarding
             if (instance != null)
             {
                 instance._text.Foreground = new SolidColorBrush(instance.TextColor);
+                instance.OnPropertyChanged("TextColor");
             }
         }
 
@@ -230,13 +234,107 @@ namespace Codeplex.Dashboarding
 
             if (instance != null)
             {
+                instance.OnPropertyChanged("TextVisibility");
                 instance._text.Visibility = instance.TextVisibility;
             }
         }
 
         #endregion
 
+        #region BiDirection
+        /// <summary>
+        /// Highlight the grab handle as the mouse is in
+        /// </summary>
+        protected override void ShowGrabHandle()
+        {
+            base.ShowGrabHandle();
+            _grabHighlight.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+        }
 
+        /// <summary>
+        /// Stop the highlight of the grab handle the mouse is out
+        /// </summary>
+        protected override void HideGrabHandle()
+        {
+            base.HideGrabHandle();
+            _grabHighlight.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+
+        /// <summary>
+        /// Mouse is moving, move the diagram
+        /// </summary>
+        /// <param name="mouseDownPosition">origin of the drag</param>
+        /// <param name="currentPosition">where the mouse is now</param>
+        protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
+        {
+            base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
+
+            double cv = CalculateRotationAngle(currentPosition);
+
+            cv = (cv < 0) ? 0 : cv;
+            cv = (cv > 180) ?  180 : cv;
+
+            CurrentNormalizedValue = cv / 180;
+
+            Animate();
+        }
+
+        /// <summary>
+        /// Determines the angle of the needle based on the mouse 
+        /// position.
+        /// </summary>
+        /// <param name="_currentPoint">Mouse position</param>
+        /// <returns>The angle in degrees</returns>
+        private double CalculateRotationAngle(Point _currentPoint)
+        {
+
+            double opposite = _currentPoint.Y - (172 / 2);
+            double adjacent = _currentPoint.X - (ActualWidth / 2);
+            double tan = opposite / adjacent;
+            double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
+
+            if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y <= (172 / 2))
+            {
+                angleInDegrees = 180 + angleInDegrees;
+            }
+            else if (_currentPoint.X < (ActualWidth / 2) && _currentPoint.Y <= (172 / 2))
+            {
+                // already done
+            }
+            else if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y > (172 / 2))
+            {
+                angleInDegrees = 180 + angleInDegrees;
+            }
+            else
+            {
+                //angleInDegrees = 360 + angleInDegrees;
+            }
+
+
+
+
+            
+
+
+
+            return angleInDegrees;
+        }
+
+        /// <summary>
+        /// Shows the grab handle if theis control is bidirectional
+        /// </summary>
+        private void ShowHandleIfBiDirectional()
+        {
+            Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
+
+            _grabHandle.Visibility = val;
+            _grabHighlight.Visibility = val;
+        }
+
+
+
+        #endregion
 
 
         /// <summary>
@@ -246,10 +344,31 @@ namespace Codeplex.Dashboarding
         {
             SetFaceColor();
             SetNeedleColor();
-            _text.Text = "" + Value;
-            double point = -90 + (NormalizedValue * 180);
-            _value.Value = point;
-            _swipe.Begin();
+
+            ShowHandleIfBiDirectional();
+
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+
+                _text.Text = "" + Value;
+                double point = -90 + (NormalizedValue * 180);
+                _value.Value = point;
+                _swipe.Begin();
+
+                _grabPos.Value = point;
+                _moveGrab.Begin();
+            }
+            else
+            {
+                double currentPos = -90 +  (CurrentNormalizedValue * 180);
+
+                TransformGroup tg = path.RenderTransform as TransformGroup;
+                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
+
+                tg = _grabHandle.RenderTransform as TransformGroup;
+                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
+            }
+
 
         }
     }

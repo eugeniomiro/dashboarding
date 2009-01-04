@@ -35,9 +35,10 @@
     </center>
     
     
-    <p> Currently the following controls can operate in a bidirectional manner </p>
+    <p> Currently the following controls can operate in a bidirectional manner (change any slider
+    and the others will update through a TwoWay databinding)</p>
     <center>
-        <object type="application/x-silverlight" height="200" width="600">
+        <object type="application/x-silverlight" height="240" width="750">
             <param name="source" value="../ClientBin/SilverlightApplication.xap" />
             <param name="initParams" value="demo=BiDiamond4,IsRandom=true" />
             <param name="background" value="Transparent" />

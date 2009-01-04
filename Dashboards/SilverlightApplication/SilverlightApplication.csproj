@@ -77,6 +77,9 @@
     <Compile Include="Experimentor\DecadeVuMeter.xaml.cs">
       <DependentUpon>DecadeVuMeter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleGuages\FifthStep.xaml.cs">
+      <DependentUpon>FifthStep.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FontEditor\FontEditor.xaml.cs">
       <DependentUpon>FontEditor.xaml</DependentUpon>
     </Compile>
@@ -201,12 +204,18 @@
     <Compile Include="SingleGuages\SecondStep.xaml.cs">
       <DependentUpon>SecondStep.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleGuages\SeventhStep.xaml.cs">
+      <DependentUpon>SeventhStep.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleGuages\SingleGauge.cs" />
     <Compile Include="SingleGuages\SixteenBase.xaml.cs">
       <DependentUpon>SixteenBase.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleGuages\SixteenEx.xaml.cs">
       <DependentUpon>SixteenEx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleGuages\SixthStep.xaml.cs">
+      <DependentUpon>SixthStep.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleGuages\Therm1.xaml.cs">
       <DependentUpon>Therm1.xaml</DependentUpon>
@@ -245,6 +254,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Experimentor\DecadeVuMeter.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\FifthStep.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
@@ -412,11 +425,19 @@
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
+    <Page Include="SingleGuages\SeventhStep.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
     <Page Include="SingleGuages\SixteenBase.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="SingleGuages\SixteenEx.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\SixthStep.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

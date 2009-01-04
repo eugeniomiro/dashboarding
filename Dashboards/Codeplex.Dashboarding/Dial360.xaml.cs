@@ -36,7 +36,7 @@ namespace Codeplex.Dashboarding
     /// A Dial360  displays as a traditional circular guage with numbers from 0 to 100. The
     /// needle sweep through aproximately 240 degrees
     /// </summary>
-    public partial class Dial360 : Dashboard
+    public partial class Dial360 : BidirectionalDashboard
     {
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Codeplex.Dashboarding
             InitializeComponent();
             SetValue(FaceColorRangeProperty, new ColorPointCollection());
             SetValue(NeedleColorRangeProperty, new ColorPointCollection());
-
+            RegisterGrabHandle(_grabHandle);
         }
 
         #region FaceColorRange property
@@ -86,7 +86,9 @@ namespace Codeplex.Dashboarding
             Dial360 instance = dependancy as Dial360;
             if (instance != null)
             {
+
                 instance.SetFaceColor();
+                instance.OnPropertyChanged("FaceColorRange");
             }
         }
 
@@ -128,7 +130,9 @@ namespace Codeplex.Dashboarding
             Dial360 instance = dependancy as Dial360;
             if (instance != null)
             {
+                
                 instance.SetNeedleColor();
+                instance.OnPropertyChanged("NeedleColorRange");
             }
         }
 
@@ -170,6 +174,7 @@ namespace Codeplex.Dashboarding
             if (instance != null)
             {
                 instance._percentage.Foreground = new SolidColorBrush(instance.TextColor);
+                instance.OnPropertyChanged("TextColor");
             }
         }
 
@@ -207,12 +212,55 @@ namespace Codeplex.Dashboarding
 
             if (instance != null)
             {
-                instance._percentage.Visibility = instance.TextVisibility;
+                instance._percentage.Visibility = instance.TextVisibility; 
+                instance.OnPropertyChanged("TextVisibility");
+
             }
         }
 
         #endregion
 
+        #region BiDirection
+        /// <summary>
+        /// Highlight the grab handle as the mouse is in
+        /// </summary>
+        protected override void ShowGrabHandle()
+        {
+            base.ShowGrabHandle();
+            _grabHighlight.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+        }
+
+        /// <summary>
+        /// Stop the highlight of the grab handle the mouse is out
+        /// </summary>
+        protected override void HideGrabHandle()
+        {
+            base.HideGrabHandle();
+            _grabHighlight.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+
+        /// <summary>
+        /// Mouse is moving, move the diagram
+        /// </summary>
+        /// <param name="mouseDownPosition">origin of the drag</param>
+        /// <param name="currentPosition">where the mouse is now</param>
+        protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
+        {
+            base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
+
+            double cv = CalculateRotationAngle(currentPosition);
+
+            if (cv < -150)
+                cv = -150;
+            if (cv > 150)
+                cv = 150;
+            CurrentNormalizedValue = (cv + 150) / 300;
+
+            Animate();
+        }
+
+        #endregion
 
       
         /// <summary>
@@ -222,12 +270,71 @@ namespace Codeplex.Dashboarding
         {
             SetFaceColor();
             SetNeedleColor();
+
+            ShowIfBiDirectional();
+
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+                _percentage.Text = String.Format("{0:000}", Value);
+                //SetColourFromRange();
+                double animateTo = -150 + (3 * (NormalizedValue * 100));
+                _needlePos.Value = animateTo;
+                _grabPos.Value = animateTo;
+
+                _moveGrab.Begin();
+                _moveNeedle.Begin();
+            }
+            else
+            {
+                double currentPos = -150+ (3*(CurrentNormalizedValue * 100));
+              
+                TransformGroup tg = path.RenderTransform as TransformGroup;
+                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
+
+                tg = _grabHandle.RenderTransform as TransformGroup;
+                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
+              
+            }
+
+
+        }
+
+        private double CalculateRotationAngle(Point _currentPoint)
+        {
+            double opposite = _currentPoint.Y - (ActualHeight / 2);
+            double adjacent = _currentPoint.X - (ActualWidth / 2);
+            double tan = opposite / adjacent;
+            double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
+
+            if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y <= (ActualHeight / 2))
+            {
+                angleInDegrees = 180 + angleInDegrees;
+            }
+            else if (_currentPoint.X < (ActualWidth / 2) && _currentPoint.Y <= (ActualHeight / 2))
+            {
+                // already done
+            }
+            else if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y > (ActualHeight / 2))
+            {
+                angleInDegrees = 180 + angleInDegrees;
+            }
+            else
+            {
+                //angleInDegrees = 360 + angleInDegrees;
+            }
+
+            angleInDegrees = (angleInDegrees - 90) % 360;
             
-            _percentage.Text = String.Format("{0:000}", Value);
-            //SetColourFromRange();
-            double animateTo = -150 + (3 * (NormalizedValue * 100) );
-            _needlePos.Value = animateTo;
-            _moveNeedle.Begin();
+     
+            return angleInDegrees;
+        }
+
+        private void ShowIfBiDirectional()
+        {
+            Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
+
+            _grabHandle.Visibility = val;
+            _grabHighlight.Visibility = val;
         }
 
         /// <summary>

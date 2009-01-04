@@ -34,6 +34,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Codeplex.Dashboarding
 {
@@ -41,7 +42,7 @@ namespace Codeplex.Dashboarding
     /// A ColorPoint allows you to set the color of an item at a start point. A 
     /// ColorPointCollection aggregates these ColorPoints.
     /// </summary>
-    public class ColorPointCollection : List<ColorPoint>
+    public class ColorPointCollection : ObservableCollection<ColorPoint>
     {
         /// <summary>
         /// Constructs a ColourPointCollection
@@ -53,7 +54,8 @@ namespace Codeplex.Dashboarding
 
         /// <summary>
         /// Get the Range with which to render an item at the specified 
-        /// point in the range 
+        /// point in the range. If the value is below the value of the first color point we
+        /// return the first color point, if it is greater than the last, we return that
         /// </summary>
         /// <param name="position">The value in the range at which you want to get 
         /// color to render an item</param>
@@ -66,6 +68,14 @@ namespace Codeplex.Dashboarding
                 if (position >= point.Value)
                     res = point;
             }
+
+            // Have we underflowed?
+            if (res == null && this.Count > 0)
+            {
+                return this[0];
+            }
+
+
             return res;
         }
     }

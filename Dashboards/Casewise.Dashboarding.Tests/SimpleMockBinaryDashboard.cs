@@ -25,19 +25,24 @@ using Codeplex.Dashboarding;
 
 namespace Casewise.Dashboarding.Tests
 {
-    public class SimpleMockDashboard : Dashboard
+    /// <summary>
+    /// Mock binaery dashboard
+    /// </summary>
+    public class SimpleMockBinaryDashboard : BinaryDashboard
     {
-        
         /// <summary>
-        /// Has the animate method been called?
+        /// Has animate been called?
         /// </summary>
         public bool AnimateCalled { get; set; }
 
 
+
+        /// <summary>
+        /// if invoked mark the instance as having animated
+        /// </summary>
         protected override void Animate()
         {
             AnimateCalled = true;
         }
-
     }
 }

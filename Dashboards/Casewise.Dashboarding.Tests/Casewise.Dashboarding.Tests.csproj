@@ -70,10 +70,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BidirectionalDashboardTests.cs" />
+    <Compile Include="BinaryDashboardTests.cs" />
+    <Compile Include="ColorPointCollectionTests.cs" />
+    <Compile Include="ColorPointTests.cs" />
     <Compile Include="DashboardMinMaxAndValue.cs" />
+    <Compile Include="DecadeVuMeterTests.cs" />
+    <Compile Include="Dial180Tests.cs" />
+    <Compile Include="Dial360Tests.cs" />
+    <Compile Include="Silverlight Test Class1.cs" />
+    <Compile Include="SimpleMockBidirectionaldashboard.cs" />
     <Compile Include="PropertyChangeNotification\DashboardPropertyChangeNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleMockBinaryDashboard.cs" />
     <Compile Include="SimpleMockDashboard.cs" />
+    <Compile Include="TestINotifyPropertyChanged.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

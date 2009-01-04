@@ -104,7 +104,7 @@ namespace Codeplex.Dashboarding
 
                 SetValue(ValueProperty, value);
                 OnValueChanged(old, value);
-                OnPropertyChanged("Value");
+
             }
         }
 
@@ -171,7 +171,7 @@ namespace Codeplex.Dashboarding
         public double Minimum
         {
             get { return (double)GetValue(MinimumProperty);  }
-            set { SetValue(MinimumProperty, value); OnPropertyChanged("Minimum");}
+            set { SetValue(MinimumProperty, value); }
         }
         
         /// <summary>
@@ -207,7 +207,7 @@ namespace Codeplex.Dashboarding
         public double Maximum
         {
             get { return (double)GetValue(MaximumProperty); }
-            set { SetValue(MaximumProperty, value);  OnPropertyChanged("Maximum");}
+            set { SetValue(MaximumProperty, value);  }
         }
 
                 /// <summary>
@@ -233,7 +233,7 @@ namespace Codeplex.Dashboarding
 
         /// <summary>
         /// Since the user may set Minimum > Maximum, we internally use RealMinimum
-        /// and RealMaximum which already return Maximum >= Minimum even if they have to swap
+        /// and RealMaximum which allways return Maximum >= Minimum even if they have to swap
         /// </summary>
         internal double RealMaximum 
         {
@@ -249,7 +249,7 @@ namespace Codeplex.Dashboarding
 
         /// <summary>
         /// Since the user may set Minimum > Maximum, we internally use RealMinimum
-        /// and RealMaximum which already return Maximum >= Minimum even if they have to swap
+        /// and RealMaximum which always return Maximum >= Minimum even if they have to swap
         /// </summary>
         internal double RealMinimum
         {

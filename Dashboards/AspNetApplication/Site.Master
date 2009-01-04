@@ -19,7 +19,15 @@
     <div style="height: 100%;">
         <div id="wrap">
             <div id="header">
-                <h1>Dave's Silverlight Dashboards and gauges</h1>
+                <table >
+                <tr>
+                <td>
+                    <asp:Image  ID="Image1" runat="server" Width="64" Height="64" 
+                        ImageUrl="~/dove2.png" />
+                   </td>
+                   <td >
+                   <h1> Dave's Silverlight Dashboards and gauges</h1>
+                   </td></tr></table>
             </div>
             <div id="right">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
