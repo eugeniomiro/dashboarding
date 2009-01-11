@@ -16,8 +16,7 @@
     <center>
         <pre class="csharpcode">
 <span class="kwrd">&lt;</span><span class="html">db:DiamondSlider</span>  <span
-            class="attr">IsBidirectional</span><span class="kwrd">="True"</span> <span class="attr">ShowFocus</span><span
-                class="kwrd">="True"</span> <span class="attr">Width</span><span class="kwrd">="125"</span>  <span
+            class="attr">IsBidirectional</span><span class="kwrd">="True"</span>  <span class="attr">Width</span><span class="kwrd">="125"</span>  <span
                     class="kwrd">/&gt;</span>
           
 </pre>
@@ -38,7 +37,7 @@
     <p> Currently the following controls can operate in a bidirectional manner (change any slider
     and the others will update through a TwoWay databinding)</p>
     <center>
-        <object type="application/x-silverlight" height="240" width="750">
+        <object type="application/x-silverlight" height="360" width="750">
             <param name="source" value="../ClientBin/SilverlightApplication.xap" />
             <param name="initParams" value="demo=BiDiamond4,IsRandom=true" />
             <param name="background" value="Transparent" />
@@ -61,7 +60,7 @@
 <span class="kwrd">&lt;</span><span class="html">StackPanel</span> <span class="attr">Orientation</span><span class="kwrd">="Horizontal"</span><span class="kwrd">&gt;</span>
     <span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">x:Name</span><span class="kwrd">="_t"</span> <span class="attr">Text</span>="<span class="attr">000</span> <span class="attr">-</span><span class="kwrd">&gt;</span> 000" VerticalAlignment="Center" 
                     TextAlignment="Right" Width="70" Foreground="AntiqueWhite"<span class="kwrd">/&gt;</span>
-    <span class="kwrd">&lt;</span><span class="html">db:DiamondSlider</span> <span class="attr">Value</span><span class="kwrd">="50"</span> <span class="attr">IsBidirectional</span><span class="kwrd">="True"</span>  <span class="attr">ShowFocus</span><span class="kwrd">="True"</span> 
+    <span class="kwrd">&lt;</span><span class="html">db:DiamondSlider</span> <span class="attr">Value</span><span class="kwrd">="50"</span> <span class="attr">IsBidirectional</span><span class="kwrd">="True"</span>   
                     <span class="attr">ValueChanged</span><span class="kwrd">="DiamondSlider_ValueChanged"</span> <span class="attr">x:Name</span><span class="kwrd">="_ds"</span><span class="kwrd">/&gt;</span>
 <span class="kwrd">&lt;/</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span>
 </pre>
@@ -106,7 +105,7 @@ any explicit event handling.</p>
 <span class="kwrd">&lt;</span><span class="html">StackPanel</span> <span class="attr">Orientation</span><span class="kwrd">="Horizontal"</span><span class="kwrd">&gt;</span>
     <span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">Text</span><span class="kwrd">="{Binding CurrentValue}"</span> <span class="attr">VerticalAlignment</span><span class="kwrd">="Center"</span> 
                <span class="attr">TextAlignment</span><span class="kwrd">="Right"</span> <span class="attr">Width</span><span class="kwrd">="40"</span> <span class="attr">Foreground</span><span class="kwrd">="AntiqueWhite"</span><span class="kwrd">/&gt;</span>
-    <span class="kwrd">&lt;</span><span class="html">db:DiamondSlider</span> <span class="attr">Value</span><span class="kwrd">="{Binding CurrentValue, Mode=TwoWay}"</span> <span class="attr">IsBidirectional</span><span class="kwrd">="True"</span>  <span class="attr">ShowFocus</span><span class="kwrd">="True"</span> <span class="kwrd">/&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">db:DiamondSlider</span> <span class="attr">Value</span><span class="kwrd">="{Binding CurrentValue, Mode=TwoWay}"</span> <span class="attr">IsBidirectional</span><span class="kwrd">="True"</span>   <span class="kwrd">/&gt;</span>
     <span class="kwrd">&lt;</span><span class="html">Button</span> <span class="attr">Content</span><span class="kwrd">="Set To 50"</span> <span class="attr">Click</span><span class="kwrd">="Button_Click"</span><span class="kwrd">/&gt;</span>
 <span class="kwrd">&lt;/</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span></pre>
 </div>

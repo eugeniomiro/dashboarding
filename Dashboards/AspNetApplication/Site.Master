@@ -22,8 +22,8 @@
                 <table >
                 <tr>
                 <td>
-                    <asp:Image  ID="Image1" runat="server" Width="64" Height="64" 
-                        ImageUrl="~/dove2.png" />
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx"><asp:Image  ID="Image1" runat="server" Width="64" Height="64" 
+                        ImageUrl="~/dove2.png" /></asp:HyperLink> 
                    </td>
                    <td >
                    <h1> Dave's Silverlight Dashboards and gauges</h1>
