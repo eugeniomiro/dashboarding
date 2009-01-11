@@ -93,6 +93,7 @@ namespace SilverlightApplication
                 case "BiDiamond3": return new BiDiamond3();
                 case "BiDiamond4": return new BiDiamond4();
 
+                case "Knob360": return new Knob360();
 
                 case "FontEditor": return new FontEditor.FontEditor();
             }

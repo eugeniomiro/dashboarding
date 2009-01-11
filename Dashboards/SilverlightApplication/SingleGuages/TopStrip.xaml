@@ -4,25 +4,25 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:col="clr-namespace:System.Collections.Generic;assembly=mscorlib"
 xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
-               
+        xmlns:controls="clr-namespace:Microsoft.Windows.Controls;assembly=Microsoft.Windows.Controls"       
        xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding"             
         
   Width="800" Height="200" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <Grid x:Name="LayoutRoot" >
 
         
-            <db:FiveStarRanking x:Name="_fiveStar"  Value="100" Height="24" Margin="0,136,144,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
+            <db:FiveStarRanking x:Name="_fiveStar"  Value="100" Height="24" Margin="0,95.999,298,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="A FiveStarRanking control"/>
                 </ToolTipService.ToolTip>
             </db:FiveStarRanking>
         
-        <db:ProgressBar x:Name="_prog1" Margin="0,137,30,0" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" VerticalAlignment="Top" >
+        <db:ProgressBar x:Name="_prog1" Margin="0,62,302,0" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" VerticalAlignment="Top" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a ProgressBar, control"/>
             </ToolTipService.ToolTip>
         </db:ProgressBar>
-        <db:DiamondSlider x:Name="_slider"  Height="23" Margin="0,134,253,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
+        <db:DiamondSlider x:Name="_slider"  Height="23" Margin="0,123,278,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a DiamondSlider, control"/>
             </ToolTipService.ToolTip>
@@ -67,7 +67,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:PerformanceMonitor>
 
 
-        <db:PlainThermometer  x:Name="_ther2" Height="135" Margin="391,11,379,0" VerticalAlignment="Top" >
+        <db:PlainThermometer  x:Name="_ther2" Height="135" Margin="388,10,402,0" VerticalAlignment="Top" >
             <ToolTipService.ToolTip>
                 <ToolTip >
                     <TextBlock Width="200" TextWrapping="Wrap" Text="This is PlainThermometer control that has a color range set. The mercury is colored according to the value. Green 0..33,Yello 33..66 and red 66 to 99"/>
@@ -94,13 +94,13 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:WallThermometer>
 
 
-        <db:Odometer x:Name="_odometer"  Digits="4" MeterMode="Static"  InitialValue="3141" Margin="0,70,28,0" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" >
+        <db:Odometer x:Name="_odometer"  Digits="4" MeterMode="Static"  InitialValue="3141" Margin="0,6,244,0" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is an Odometer control"/>
             </ToolTipService.ToolTip>
         </db:Odometer>
 
-        <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,7,27,0" VerticalAlignment="Top" Width="Auto" d:LayoutOverrides="VerticalAlignment, Width" HorizontalAlignment="Right">
+        <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,4,26,0" VerticalAlignment="Top" Width="Auto" d:LayoutOverrides="VerticalAlignment, Width" HorizontalAlignment="Right">
 
             <ToolTipService.ToolTip>
                 <ToolTip Width="300" >
@@ -113,17 +113,13 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             <db:SixteenSegmentLED x:Name="_sH2" DisplayCharacter="a" Margin="5,0,0,0"/>
             <db:SixteenSegmentLED x:Name="_sM1" DisplayCharacter="s" Margin="15,0,0,0"/>
             <db:SixteenSegmentLED x:Name="_sM2" DisplayCharacter="h" Margin="5,0,0,0"/>
-            <db:SixteenSegmentLED x:Name="_sS1" DisplayCharacter="b" Margin="15,0,0,0"/>
-            <db:SixteenSegmentLED x:Name="_sS2" DisplayCharacter="o" Margin="5,0,0,0"/>
-            <db:SixteenSegmentLED x:Name="_sD1" DisplayCharacter="a" Margin="15,0,0,0"/>
-            <db:SixteenSegmentLED x:Name="_sD2" DisplayCharacter="r" Margin="5,0,0,0"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Margin="127,4,0,0"  Orientation="Horizontal" VerticalAlignment="Top" Height="143">
             <db:DecadeVuMeter x:Name="_dvu1" Width="16"  HorizontalAlignment="Left" VerticalAlignment="Stretch" />
             <db:DecadeVuMeter x:Name="_dvu2" Width="16"  HorizontalAlignment="Left" VerticalAlignment="Stretch" />
             <db:DecadeVuMeter x:Name="_dvu3" Width="16"  HorizontalAlignment="Left" VerticalAlignment="Stretch" />
         </StackPanel>
-        <db:Dial180  Margin="404,41.042,0,0" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.5,0.5" Height="113.334" x:Name="_dial180">
+        <db:Dial180  Margin="504,57,0,0" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.5,0.5" Height="113.334" x:Name="_dial180">
 
             <ToolTipService.ToolTip>
                 <ToolTip Width="300" >
@@ -142,7 +138,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:Dial180>
 
         <db:MatrixLedMarquee HorizontalAlignment="Left" Margin="12,0,0,7"  VerticalAlignment="Bottom"
-            Panels="30" 
+            Panels="25" 
             TimerDuration="00:00:0.1"
             LedOnColor="#FF00FF00"
             LedOffColor="#2200FF00"
@@ -150,5 +146,9 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             Text="Welcome to the Silverlight Dashboard and gauges project. This MatrixLedMarquee control is one of many in the growing library hosted at Codeplex."
         />
 
+        <controls:Viewbox x:Name="_viewBox1"  HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="100" Height="100" Margin="0,0,20,20" >
+        <db:Knob360  x:Name="_knob360" >
+        </db:Knob360>
+        </controls:Viewbox>
     </Grid>
 </UserControl>

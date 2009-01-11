@@ -1,23 +1,4 @@
-﻿/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -29,26 +10,24 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-
 namespace Codeplex.Dashboarding
 {
     /// <summary>
-    /// A Dial360  displays as a traditional circular guage with numbers from 0 to 100. The
-    /// needle sweep through aproximately 240 degrees
+    /// Dial 360 with a control knob to drag not a needle
     /// </summary>
-    public partial class Dial360 : BidirectionalDashboard
+    public partial class Knob360 : BidirectionalDashboard
     {
-
         /// <summary>
-        /// Constructs a Dial360
+        /// Constructs a Knob360
         /// </summary>
-        public Dial360()
+        public Knob360()
         {
             InitializeComponent();
             SetValue(FaceColorRangeProperty, new ColorPointCollection());
             SetValue(NeedleColorRangeProperty, new ColorPointCollection());
-            RegisterGrabHandle(_grabHandle);
+            RegisterGrabHandle(_indicator);
         }
+
 
         #region FaceColorRange property
 
@@ -56,7 +35,7 @@ namespace Codeplex.Dashboarding
         /// Dependancy property for the FaceColor attached property
         /// </summary>
         public static readonly DependencyProperty FaceColorRangeProperty =
-            DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
+            DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(Knob360), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
 
         /// <summary>
         /// Specifies the face color at points in the range. A single color point with
@@ -64,8 +43,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         public ColorPointCollection FaceColorRange
         {
-            get 
-            { 
+            get
+            {
                 ColorPointCollection res = (ColorPointCollection)GetValue(FaceColorRangeProperty);
                 return res;
             }
@@ -83,7 +62,7 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void FaceColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Knob360 instance = dependancy as Knob360;
             if (instance != null)
             {
 
@@ -101,7 +80,7 @@ namespace Codeplex.Dashboarding
         /// The  Dependancy property for the NeedleColor attached property
         /// </summary>
         public static readonly DependencyProperty NeedleColorRangeProperty =
-            DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
+            DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(Knob360), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
 
         /// <summary>
         /// Specifies what color the needle is a various point is the range
@@ -127,10 +106,10 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Knob360 instance = dependancy as Knob360;
             if (instance != null)
             {
-                
+
                 instance.SetNeedleColor();
                 instance.OnPropertyChanged("NeedleColorRange");
             }
@@ -144,7 +123,7 @@ namespace Codeplex.Dashboarding
         /// The Dependancy property for the TextColor attached property
         /// </summary>
         public static readonly DependencyProperty TextColorProperty =
-            DependencyProperty.Register("TextColor", typeof(Color), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
+            DependencyProperty.Register("TextColor", typeof(Color), typeof(Knob360), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
 
         /// <summary>
         /// The color of the text used to show the percentage
@@ -170,7 +149,7 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Knob360 instance = dependancy as Knob360;
             if (instance != null)
             {
                 for (int i = 0; i <= 11; i++)
@@ -192,7 +171,7 @@ namespace Codeplex.Dashboarding
         /// The dependancy property for theTextVisibility attached property
         /// </summary>
         public static readonly DependencyProperty TextVisibilityProperty =
-            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
+            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(Knob360), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
 
 
         /// <summary>
@@ -214,13 +193,11 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void TextVisibilityPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            Dial360 instance = dependancy as Dial360;
+            Knob360 instance = dependancy as Knob360;
 
 
             if (instance != null)
             {
-               
-                
                 for (int i = 0; i <= 11; i++)
                 {
                     TextBlock tb = instance.LayoutRoot.FindName("_txt" + i) as TextBlock;
@@ -229,7 +206,6 @@ namespace Codeplex.Dashboarding
                         tb.Visibility = instance.TextVisibility;
                     }
                 }
-
                 instance.OnPropertyChanged("TextVisibility");
 
             }
@@ -244,7 +220,7 @@ namespace Codeplex.Dashboarding
         protected override void ShowGrabHandle()
         {
             base.ShowGrabHandle();
-            _grabHighlight.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+            _grabHighlight.Fill = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
         }
 
         /// <summary>
@@ -253,7 +229,7 @@ namespace Codeplex.Dashboarding
         protected override void HideGrabHandle()
         {
             base.HideGrabHandle();
-            _grabHighlight.Background = new SolidColorBrush(Colors.Transparent);
+            _grabHighlight.Fill = new SolidColorBrush(Colors.Transparent);
         }
 
 
@@ -275,45 +251,6 @@ namespace Codeplex.Dashboarding
             CurrentNormalizedValue = (cv + 150) / 300;
 
             Animate();
-        }
-
-        #endregion
-
-      
-        /// <summary>
-        /// Animate our Dial360. We calculate the needle position, color and the face color
-        /// </summary>
-        protected override void Animate()
-        {
-            SetFaceColor();
-            SetNeedleColor();
-
-            ShowIfBiDirectional();
-
-            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
-            {
-                _txt11.Text = String.Format("{0:000}", Value);
-                //SetColourFromRange();
-                double animateTo = -150 + (3 * (NormalizedValue * 100));
-                _needlePos.Value = animateTo;
-                _grabPos.Value = animateTo;
-
-                _moveGrab.Begin();
-                _moveNeedle.Begin();
-            }
-            else
-            {
-                double currentPos = -150+ (3*(CurrentNormalizedValue * 100));
-              
-                TransformGroup tg = path.RenderTransform as TransformGroup;
-                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
-
-                tg = _grabHandle.RenderTransform as TransformGroup;
-                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
-              
-            }
-
-
         }
 
         private double CalculateRotationAngle(Point _currentPoint)
@@ -341,18 +278,43 @@ namespace Codeplex.Dashboarding
             }
 
             angleInDegrees = (angleInDegrees - 90) % 360;
-            
-     
+
+
             return angleInDegrees;
         }
 
-        private void ShowIfBiDirectional()
-        {
-            Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
+        #endregion
 
-            _grabHandle.Visibility = val;
-            _grabHighlight.Visibility = val;
+
+
+        /// <summary>
+        /// Animates the dial moving the grab knob and needle
+        /// </summary>
+        protected override void Animate()
+        {
+            SetFaceColor();
+            SetNeedleColor();
+
+            _txt11.Text = String.Format("{0:000}", Value);
+
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {               
+                _needlePos.Value = (-150+(300*NormalizedValue))-2;
+                _grabPos.Value =  (300*NormalizedValue) -10;
+                _swipe.Begin();
+            }
+            else
+            {
+                TransformGroup tg = _needle.RenderTransform as TransformGroup;
+                tg.Children[2].SetValue(RotateTransform.AngleProperty, (-150+(300*CurrentNormalizedValue))-2);
+
+                tg = _grabCanvas.RenderTransform as TransformGroup;
+                tg.Children[2].SetValue(RotateTransform.AngleProperty, (300*CurrentNormalizedValue) -10);
+            }
         }
+
+
+        #region privates
 
         /// <summary>
         /// Set the face color from the range
@@ -376,11 +338,11 @@ namespace Codeplex.Dashboarding
             ColorPoint c = NeedleColorRange.GetColor(Value);
             if (c != null)
             {
-                _needleHighColour.Color = c.HiColor;
-                _needleLowColour.Color = c.LowColor;
+                _needle.Fill = new SolidColorBrush(c.HiColor);
             }
         }
 
-        
+        #endregion
+
     }
 }

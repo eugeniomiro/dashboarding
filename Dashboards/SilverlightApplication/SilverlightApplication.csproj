@@ -116,6 +116,9 @@
     <Compile Include="SingleGuages\Diam2.xaml.cs">
       <DependentUpon>Diam2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleGuages\Knob360.xaml.cs">
+      <DependentUpon>Knob360.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleGuages\Mat1.xaml.cs">
       <DependentUpon>Mat1.xaml</DependentUpon>
     </Compile>
@@ -306,6 +309,10 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="SingleGuages\Diam2.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Knob360.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

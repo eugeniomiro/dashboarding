@@ -197,8 +197,6 @@ namespace Codeplex.Dashboarding
         {
             if (IsBidirectional )
             {
-                
-
                 ShowGrabHandle();
             }
         }
@@ -224,7 +222,7 @@ namespace Codeplex.Dashboarding
          internal void ButtonDown(Point at)
          {
              IsGrabbed = true;
-             CurrentNormalizedValue = Value;
+             CurrentNormalizedValue = NormalizedValue;
              if (GrabHandle != null)
              {
                  GrabHandle.CaptureMouse();

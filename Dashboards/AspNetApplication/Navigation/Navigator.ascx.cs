@@ -35,6 +35,7 @@ namespace AspNetApplication.Navigation
             new NavigationItem("ProgressBar", "~/Pages/ProgressBar.aspx"),
             new NavigationItem("DiamondSlider", "~/Pages/DiamondSlider.aspx"),
             new NavigationItem("MatrixLedMarquee", "~/Pages/MatrixLedMarquee.aspx"),
+            new NavigationItem("Knob360", "~/Pages/Knob360.aspx"),
 
         };
         

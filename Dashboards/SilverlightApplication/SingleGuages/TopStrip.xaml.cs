@@ -92,15 +92,18 @@ namespace SilverlightApplication.SingleGuages
             _sH2.DisplayCharacter = "" + t[1];
             _sM1.DisplayCharacter = "" + t[2];
             _sM2.DisplayCharacter = "" + t[3];
-            _sS1.DisplayCharacter = "" + t[4];
-            _sS2.DisplayCharacter = "" + t[5];
-            _sD1.DisplayCharacter = "" + t[6];
-            _sD2.DisplayCharacter = "" + t[7];
-
+            
             _ther2.Value = _random.Next(100);
             _wall1.Value = _random.Next(100);
             _odometer.Increment();
-            
+
+
+            if (_knob360 == null)
+            {
+                _knob360 = _viewBox1.Child as Codeplex.Dashboarding.Knob360;
+            }
+
+            _knob360.Value = _random.Next(100);
 
             pos++;
             if (pos == 4)
