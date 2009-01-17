@@ -36,7 +36,7 @@ namespace Codeplex.Dashboarding
     /// A Dial360  displays as a traditional circular guage with numbers from 0 to 100. The
     /// needle sweep through aproximately 240 degrees
     /// </summary>
-    public partial class Dial360 : BidirectionalDashboard
+    public partial class Dial360 : BidirectionalDial
     {
 
         /// <summary>
@@ -50,236 +50,8 @@ namespace Codeplex.Dashboarding
             RegisterGrabHandle(_grabHandle);
         }
 
-        #region FaceColorRange property
 
-        /// <summary>
-        /// Dependancy property for the FaceColor attached property
-        /// </summary>
-        public static readonly DependencyProperty FaceColorRangeProperty =
-            DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
-
-        /// <summary>
-        /// Specifies the face color at points in the range. A single color point with
-        /// a value of 0 specifies the color for all
-        /// </summary>
-        public ColorPointCollection FaceColorRange
-        {
-            get 
-            { 
-                ColorPointCollection res = (ColorPointCollection)GetValue(FaceColorRangeProperty);
-                return res;
-            }
-            set
-            {
-                SetValue(FaceColorRangeProperty, value);
-                Animate();
-            }
-        }
-
-        /// <summary>
-        /// Our dependany property has changed, update the face color
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void FaceColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            Dial360 instance = dependancy as Dial360;
-            if (instance != null)
-            {
-
-                instance.SetFaceColor();
-                instance.OnPropertyChanged("FaceColorRange");
-            }
-        }
-
-
-        #endregion
-
-        #region NeedleColorRange property
-
-        /// <summary>
-        /// The  Dependancy property for the NeedleColor attached property
-        /// </summary>
-        public static readonly DependencyProperty NeedleColorRangeProperty =
-            DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
-
-        /// <summary>
-        /// Specifies what color the needle is a various point is the range
-        /// </summary>
-        public ColorPointCollection NeedleColorRange
-        {
-            get
-            {
-                ColorPointCollection res = (ColorPointCollection)GetValue(NeedleColorRangeProperty);
-                return res;
-            }
-            set
-            {
-                SetValue(NeedleColorRangeProperty, value);
-                Animate();
-            }
-        }
-
-        /// <summary>
-        /// Our needle color has changed, deal with it
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            Dial360 instance = dependancy as Dial360;
-            if (instance != null)
-            {
-                
-                instance.SetNeedleColor();
-                instance.OnPropertyChanged("NeedleColorRange");
-            }
-        }
-
-        #endregion
-
-        #region TextColor
-
-        /// <summary>
-        /// The Dependancy property for the TextColor attached property
-        /// </summary>
-        public static readonly DependencyProperty TextColorProperty =
-            DependencyProperty.Register("TextColor", typeof(Color), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
-
-        /// <summary>
-        /// The color of the text used to show the percentage
-        /// </summary>
-        public Color TextColor
-        {
-            get
-            {
-                Color res = (Color)GetValue(TextColorProperty);
-                return res;
-            }
-            set
-            {
-                SetValue(TextColorProperty, value);
-                Animate();
-            }
-        }
-
-        /// <summary>
-        /// Our TextColor dependany property has changed, deal with it
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            Dial360 instance = dependancy as Dial360;
-            if (instance != null)
-            {
-                for (int i = 0; i <= 11; i++)
-                {
-                    TextBlock tb = instance.LayoutRoot.FindName("_txt" + i) as TextBlock;
-                    if (tb != null)
-                    {
-                        tb.Foreground = new SolidColorBrush(instance.TextColor);
-                    }
-                }
-                instance.OnPropertyChanged("TextColor");
-            }
-        }
-
-        #endregion
-
-        #region TextVisibility property
-        /// <summary>
-        /// The dependancy property for theTextVisibility attached property
-        /// </summary>
-        public static readonly DependencyProperty TextVisibilityProperty =
-            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(Dial360), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
-
-
-        /// <summary>
-        /// Show or hide the text according to the visibility
-        /// </summary>
-        public Visibility TextVisibility
-        {
-            get { return (Visibility)GetValue(TextVisibilityProperty); }
-            set
-            {
-                SetValue(TextVisibilityProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// Our TextVivibility dependany property has changed, deal with it
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void TextVisibilityPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            Dial360 instance = dependancy as Dial360;
-
-
-            if (instance != null)
-            {
-               
-                
-                for (int i = 0; i <= 11; i++)
-                {
-                    TextBlock tb = instance.LayoutRoot.FindName("_txt" + i) as TextBlock;
-                    if (tb != null)
-                    {
-                        tb.Visibility = instance.TextVisibility;
-                    }
-                }
-
-                instance.OnPropertyChanged("TextVisibility");
-
-            }
-        }
-
-        #endregion
-
-        #region BiDirection
-        /// <summary>
-        /// Highlight the grab handle as the mouse is in
-        /// </summary>
-        protected override void ShowGrabHandle()
-        {
-            base.ShowGrabHandle();
-            _grabHighlight.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
-        }
-
-        /// <summary>
-        /// Stop the highlight of the grab handle the mouse is out
-        /// </summary>
-        protected override void HideGrabHandle()
-        {
-            base.HideGrabHandle();
-            _grabHighlight.Background = new SolidColorBrush(Colors.Transparent);
-        }
-
-
-        /// <summary>
-        /// Mouse is moving, move the diagram
-        /// </summary>
-        /// <param name="mouseDownPosition">origin of the drag</param>
-        /// <param name="currentPosition">where the mouse is now</param>
-        protected override void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
-        {
-            base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
-
-            double cv = CalculateRotationAngle(currentPosition);
-
-            if (cv < -150)
-                cv = -150;
-            if (cv > 150)
-                cv = 150;
-            CurrentNormalizedValue = (cv + 150) / 300;
-
-            Animate();
-        }
-
-        #endregion
-
-      
+        #region animation
         /// <summary>
         /// Animate our Dial360. We calculate the needle position, color and the face color
         /// </summary>
@@ -316,7 +88,104 @@ namespace Codeplex.Dashboarding
 
         }
 
-        private double CalculateRotationAngle(Point _currentPoint)
+       
+        private void ShowIfBiDirectional()
+        {
+            Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
+
+            _grabHandle.Visibility = val;
+            _grabHighlight.Visibility = val;
+        }
+        #endregion
+
+        #region abstract BiDirectionalDial implementation
+
+        /// <summary>
+        /// Set the face color from the range
+        /// </summary>
+        protected override void SetFaceColor()
+        {
+
+            ColorPoint c = FaceColorRange.GetColor(Value);
+            if (c != null)
+            {
+                _colourRangeStart.Color = c.HiColor;
+                _colourRangeEnd.Color = c.LowColor;
+            }
+        }
+
+        /// <summary>
+        /// Set the needle color from the range
+        /// </summary>
+        protected override void SetNeedleColor()
+        {
+            ColorPoint c = NeedleColorRange.GetColor(Value);
+            if (c != null)
+            {
+                _needleHighColour.Color = c.HiColor;
+                _needleLowColour.Color = c.LowColor;
+            }
+        }
+
+        /// <summary>
+        /// Sets the text to the color in the TextColorProperty
+        /// </summary>
+        protected override void SetTextColor()
+        {
+            for (int i = 0; i <= 11; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Foreground = new SolidColorBrush(TextColor);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the text visibility to that of the TextVisibility property
+        /// </summary>
+        protected override void SetTextVisibility()
+        {
+            for (int i = 0; i <= 11; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Visibility = TextVisibility;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Return the shape used to highlight the grab control
+        /// </summary>
+        protected override Shape GrabHighlight
+        {
+            get { return _grabHighlight; }
+        }
+
+
+        /// <summary>
+        /// Converts the angle specified into a 0..1 normalized value
+        /// </summary>
+        /// <param name="cv"></param>
+        protected override void SetCurrentNormalizedValue(double cv)
+        {
+            if (cv < -150)
+                cv = -150;
+            if (cv > 150)
+                cv = 150;
+            CurrentNormalizedValue = (cv + 150) / 300;
+        }
+
+        /// <summary>
+        /// Based on the current position calculates what angle the current mouse
+        /// position represents relative to the rotation point of the needle
+        /// </summary>
+        /// <param name="_currentPoint">Current point</param>
+        /// <returns>Angle in degrees</returns>
+        protected override double CalculateRotationAngle(Point _currentPoint)
         {
             double opposite = _currentPoint.Y - (ActualHeight / 2);
             double adjacent = _currentPoint.X - (ActualWidth / 2);
@@ -341,46 +210,12 @@ namespace Codeplex.Dashboarding
             }
 
             angleInDegrees = (angleInDegrees - 90) % 360;
-            
-     
+
+
             return angleInDegrees;
         }
 
-        private void ShowIfBiDirectional()
-        {
-            Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
 
-            _grabHandle.Visibility = val;
-            _grabHighlight.Visibility = val;
-        }
-
-        /// <summary>
-        /// Set the face color from the range
-        /// </summary>
-        private void SetFaceColor()
-        {
-
-            ColorPoint c = FaceColorRange.GetColor(Value);
-            if (c != null)
-            {
-                _colourRangeStart.Color = c.HiColor;
-                _colourRangeEnd.Color = c.LowColor;
-            }
-        }
-
-        /// <summary>
-        /// Set the needle color from the range
-        /// </summary>
-        private void SetNeedleColor()
-        {
-            ColorPoint c = NeedleColorRange.GetColor(Value);
-            if (c != null)
-            {
-                _needleHighColour.Color = c.HiColor;
-                _needleLowColour.Color = c.LowColor;
-            }
-        }
-
-        
+        #endregion
     }
 }

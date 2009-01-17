@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BidirectionalDashboard.cs" />
+    <Compile Include="BiDirectionalDial.cs" />
     <Compile Include="BinaryDashboard.cs" />
     <Compile Include="ColorPoint.cs" />
     <Compile Include="ColorPointCollection.cs" />

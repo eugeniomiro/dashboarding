@@ -30,16 +30,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial180" Collapsed="true">
-    <Position X="13.5" Y="3.5" Width="1.5" />
+    <Position X="13.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAgQQJwgACAEQCBAgIABAEAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAQQIwgAAAAQCBAAIABAEAAAAEAAAAAA=</HashCode>
       <FileName>Dial180.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial360" Collapsed="true">
-    <Position X="15.25" Y="3.5" Width="1.5" />
+    <Position X="17" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAgQQJwgACAEQCAAgIABAEAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAQQIwgAAAAQCAAAIABAEAAAAEAAAAAA=</HashCode>
       <FileName>Dial360.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -118,6 +118,20 @@
     <TypeIdentifier>
       <HashCode>QAIAAAAAEAQQQUSAAgCAIIAAAAEAABAAAAAkEAAAQAA=</HashCode>
       <FileName>BidirectionalDashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.BidirectionalDial" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAABQAACAEQAAAgAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>BiDirectionalDial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Knob360" Collapsed="true">
+    <Position X="15.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAQQIwgAAAAQCAAAIABAEAAAAEAAAAAA=</HashCode>
+      <FileName>Knob360.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
