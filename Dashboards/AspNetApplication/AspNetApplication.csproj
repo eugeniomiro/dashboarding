@@ -130,6 +130,13 @@
     <Compile Include="Pages\Dial360.aspx.designer.cs">
       <DependentUpon>Dial360.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dial90.aspx.cs">
+      <DependentUpon>Dial90.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Dial90.aspx.designer.cs">
+      <DependentUpon>Dial90.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DiamondSlider.aspx.cs">
       <DependentUpon>DiamondSlider.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,6 +240,7 @@
     <Content Include="Pages\DecadeVuMeter.aspx" />
     <Content Include="Pages\Dial180.aspx" />
     <Content Include="Pages\Dial360.aspx" />
+    <Content Include="Pages\Dial90.aspx" />
     <Content Include="Pages\DiamondSlider.aspx" />
     <Content Include="Pages\FiveStarRanking.aspx" />
     <Content Include="Pages\Knob360.aspx" />

@@ -9,7 +9,7 @@
             <Canvas.Resources>
                 <Storyboard x:Name="_moveNeedle">
                     <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:02.0" Value="150" x:Name="_needlePos"/>
+                        <SplineDoubleKeyFrame KeyTime="00:00:0.75" Value="150" x:Name="_needlePos"/>
                     </DoubleAnimationUsingKeyFrames>
 
                 </Storyboard>

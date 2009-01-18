@@ -11,23 +11,23 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
     <Grid x:Name="LayoutRoot" >
 
         
-            <db:FiveStarRanking x:Name="_fiveStar"  Value="100" Height="24" Margin="0,95.999,298,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
+            <db:FiveStarRanking  Value="{Binding CurrentValue, Mode=TwoWay}" x:Name="_fiveStar"   Height="24" Margin="0,95.999,276,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" d:LayoutOverrides="VerticalAlignment">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="A FiveStarRanking control"/>
                 </ToolTipService.ToolTip>
             </db:FiveStarRanking>
         
-        <db:ProgressBar x:Name="_prog1" Margin="0,62,302,0" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" VerticalAlignment="Top" >
+        <db:ProgressBar  Value="{Binding CurrentValue, Mode=TwoWay}" x:Name="_prog1" Margin="0,62,280,0" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Width, Height" HorizontalAlignment="Right" VerticalAlignment="Top" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a ProgressBar, control"/>
             </ToolTipService.ToolTip>
         </db:ProgressBar>
-        <db:DiamondSlider x:Name="_slider"  Height="23" Margin="0,123,278,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="VerticalAlignment" >
+        <db:DiamondSlider x:Name="_slider"  Value="{Binding CurrentValue, Mode=TwoWay}" Height="23" Margin="0,123,256,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="125" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a DiamondSlider, control"/>
             </ToolTipService.ToolTip>
         </db:DiamondSlider>
-        <db:Dial360 x:Name="_dial360"  VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="-20,-18,0,0" d:LayoutOverrides="Width">
+        <db:Dial360 x:Name="_dial360"  Value="{Binding CurrentValue, Mode=TwoWay}"  VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="-20,-18,0,0" d:LayoutOverrides="Width">
             <db:Dial360.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
@@ -56,7 +56,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:TickCross>
 
 
-        <db:PerformanceMonitor x:Name="_perf" Height="142" Margin="181,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" >
+        <db:PerformanceMonitor x:Name="_perf" Height="142" Margin="172,4,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is a PerformanceMonitor, control"/>
             </ToolTipService.ToolTip>
@@ -67,7 +67,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:PerformanceMonitor>
 
 
-        <db:PlainThermometer  x:Name="_ther2" Height="135" Margin="388,10,402,0" VerticalAlignment="Top" >
+        <db:PlainThermometer  Value="{Binding CurrentValue, Mode=TwoWay}" x:Name="_ther2" Height="135" Margin="376,12,394,0" VerticalAlignment="Top" >
             <ToolTipService.ToolTip>
                 <ToolTip >
                     <TextBlock Width="200" TextWrapping="Wrap" Text="This is PlainThermometer control that has a color range set. The mercury is colored according to the value. Green 0..33,Yello 33..66 and red 66 to 99"/>
@@ -80,7 +80,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             </db:PlainThermometer.MercuryColorRange>
         </db:PlainThermometer>
 
-        <db:WallThermometer x:Name="_wall1" Margin="339,5,0,0" VerticalAlignment="Top" Height="142" HorizontalAlignment="Left" d:LayoutOverrides="Width">
+        <db:WallThermometer  Value="{Binding CurrentValue, Mode=TwoWay}" x:Name="_wall1" Margin="330,6,0,0" VerticalAlignment="Top" Height="142" HorizontalAlignment="Left" d:LayoutOverrides="Width">
             <ToolTipService.ToolTip>
                 <ToolTip >
                     <TextBlock Width="200" TextWrapping="Wrap" Text="This is the WallMountedThermometer"/>
@@ -94,7 +94,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:WallThermometer>
 
 
-        <db:Odometer x:Name="_odometer"  Digits="4" MeterMode="Static"  InitialValue="3141" Margin="0,6,244,0" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment, Width, Height" HorizontalAlignment="Right" >
+        <db:Odometer x:Name="_odometer"  Digits="4" MeterMode="Static"  InitialValue="3141" Margin="0,7,218,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Width, Height" HorizontalAlignment="Right" >
             <ToolTipService.ToolTip>
                 <ToolTip Content="This is an Odometer control"/>
             </ToolTipService.ToolTip>
@@ -119,7 +119,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             <db:DecadeVuMeter x:Name="_dvu2" Width="16"  HorizontalAlignment="Left" VerticalAlignment="Stretch" />
             <db:DecadeVuMeter x:Name="_dvu3" Width="16"  HorizontalAlignment="Left" VerticalAlignment="Stretch" />
         </StackPanel>
-        <db:Dial180  Margin="504,57,0,0" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.5,0.5" Height="113.334" x:Name="_dial180">
+        <db:Dial180  Value="{Binding CurrentValue, Mode=TwoWay}"   Margin="522,57,0,0" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.5,0.5" Height="113.334" x:Name="_dial180">
 
             <ToolTipService.ToolTip>
                 <ToolTip Width="300" >
@@ -138,7 +138,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
         </db:Dial180>
 
         <db:MatrixLedMarquee HorizontalAlignment="Left" Margin="12,0,0,7"  VerticalAlignment="Bottom"
-            Panels="25" 
+            Panels="20" 
             TimerDuration="00:00:0.1"
             LedOnColor="#FF00FF00"
             LedOffColor="#2200FF00"
@@ -146,9 +146,45 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             Text="Welcome to the Silverlight Dashboard and gauges project. This MatrixLedMarquee control is one of many in the growing library hosted at Codeplex."
         />
 
-        <controls:Viewbox x:Name="_viewBox1"  HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="100" Height="100" Margin="0,0,20,20" >
-        <db:Knob360  x:Name="_knob360" >
+        <controls:Viewbox x:Name="_viewBox1"  HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="100" Height="100" Margin="0,0,15,39" >
+        <db:Knob360  x:Name="_knob360"  Value="{Binding CurrentValue, Mode=TwoWay}">
         </db:Knob360>
         </controls:Viewbox>
+
+
+        <Grid   Width="200" Height="100" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height" HorizontalAlignment="Right" Margin="0,0,86,-23">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <controls:Viewbox Width="50" Height="50" >
+                <db:Dial90NorthWest Grid.Column="0" Grid.Row="0" x:Name="_d1" Value="{Binding CurrentValue, Mode=TwoWay}" />
+            </controls:Viewbox>
+
+
+            <controls:Viewbox Width="50" Height="50"  Grid.Column="1" >
+                <db:Dial90NorthEast x:Name="_d2" Value="{Binding CurrentValue, Mode=TwoWay}" />
+            </controls:Viewbox>
+
+            <controls:Viewbox Width="50" Height="50"  Grid.Column="2" >
+                <db:Dial90SouthWest x:Name="_d3" Value="{Binding CurrentValue, Mode=TwoWay}" />
+            </controls:Viewbox>
+
+            <controls:Viewbox Width="50" Height="50"  Grid.Column="3" Margin="0,-3,0,0">
+                <db:Dial90SouthEast x:Name="_d4" Value="{Binding CurrentValue, Mode=TwoWay}" />
+            </controls:Viewbox>
+
+
+        </Grid>
+
+
+
+
     </Grid>
 </UserControl>

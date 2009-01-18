@@ -76,6 +76,7 @@ namespace Codeplex.Dashboarding
             else
             {
                 double currentPos = -150+ (3*(CurrentNormalizedValue * 100));
+                _txt11.Text = String.Format("{0:000}", CurrentValue);
               
                 TransformGroup tg = path.RenderTransform as TransformGroup;
                 tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);

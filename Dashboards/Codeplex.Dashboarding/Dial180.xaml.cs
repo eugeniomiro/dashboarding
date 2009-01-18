@@ -177,6 +177,8 @@ namespace Codeplex.Dashboarding
             }
             else
             {
+                _text.Text = "" + CurrentValue;
+
                 double currentPos = -90 +  (CurrentNormalizedValue * 180);
 
                 TransformGroup tg = path.RenderTransform as TransformGroup;

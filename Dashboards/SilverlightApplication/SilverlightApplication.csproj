@@ -77,6 +77,9 @@
     <Compile Include="Experimentor\DecadeVuMeter.xaml.cs">
       <DependentUpon>DecadeVuMeter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleGuages\Dial90.xaml.cs">
+      <DependentUpon>Dial90.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleGuages\FifthStep.xaml.cs">
       <DependentUpon>FifthStep.xaml</DependentUpon>
     </Compile>
@@ -257,6 +260,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Experimentor\DecadeVuMeter.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="SingleGuages\Dial90.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

@@ -61,6 +61,19 @@
     <Compile Include="Dial180.xaml.cs">
       <DependentUpon>Dial180.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dial90.cs" />
+    <Compile Include="Dial90NorthEast.xaml.cs">
+      <DependentUpon>Dial90NorthEast.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dial90NorthWest.xaml.cs">
+      <DependentUpon>Dial90NorthWest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dial90SouthEast.xaml.cs">
+      <DependentUpon>Dial90SouthEast.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dial90SouthWest.xaml.cs">
+      <DependentUpon>Dial90SouthWest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DiamondSlider.xaml.cs">
       <DependentUpon>DiamondSlider.xaml</DependentUpon>
     </Compile>
@@ -114,6 +127,22 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Dial180.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Dial90NorthEast.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Dial90NorthWest.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Dial90SouthEast.xaml">
+      <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Dial90SouthWest.xaml">
       <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>

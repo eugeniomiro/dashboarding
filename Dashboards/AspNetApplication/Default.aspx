@@ -7,7 +7,7 @@
     <h2>
         Welcome</h2>
     <p>
-        There are <em>14</em> dials and gauges in the Codeplex.Dashboarding library. This tutorial
+        There are <em>19</em> dials and gauges in the Codeplex.Dashboarding library. This tutorial
         will show you how to embed the Silverlight guages and dials into your own silverlight
         applications.</p>
     
@@ -30,16 +30,15 @@
     <p>
         The above example shows the following controls:</p>
     <ul>
-        <li>Dial360</li>
+        <li>Scrolling MetrixLedMarquee</li>
+        <li>Dial360, Dial180, Knob360, Dial90NorthWest, Dial90NorthEast, Dial90SouthWest, Dial90SouthEast</li>
         <li>DecadeVuMeter</li>
-        <li>RoundLed</li>
-        <li>TickCross</li>
+        <li>RoundLed, TickCross</li>
         <li>PerformanceMonitor</li>
-        <li>FiveStarRanking </li>
+        <li>FiveStarRanking, ProgressBar, DiamondSlider</li>
         <li>SixteenSegmentLed</li>
         <li>Odometer</li>
-        <li>Thermometer</li>
-        <li>ProgressBar</li>
+        <li>WallThermometer, Thermometer</li>
         
     </ul>
     <p>
