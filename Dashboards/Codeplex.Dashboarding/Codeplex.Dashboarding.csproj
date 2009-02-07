@@ -96,6 +96,7 @@
     <Compile Include="PlainThermometer.xaml.cs">
       <DependentUpon>PlainThermometer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlatformIndependentDashboard.cs" />
     <Compile Include="ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
     </Compile>

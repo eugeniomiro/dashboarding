@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Codeplex.Dashboarding.BinaryDashboard" Collapsed="true">
-    <Position X="10.75" Y="2" Width="1.5" />
+    <Position X="9.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AGAAABAAAIAAAAgAAAAEAAgAIAAAAAAAAAkAAIAAIAA=</HashCode>
       <FileName>BinaryDashboard.cs</FileName>
@@ -32,14 +32,14 @@
   <Class Name="Codeplex.Dashboarding.Dial180" Collapsed="true">
     <Position X="13.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAQQIwgAAAAQCBAAIABAEAAAAEAAAAAA=</HashCode>
+      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQABAAAABAEAAAAAAAAAAA=</HashCode>
       <FileName>Dial180.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial360" Collapsed="true">
     <Position X="17" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAQQIwgAAAAQCAAAIABAEAAAAEAAAAAA=</HashCode>
+      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQAAAAIABAEAAAAAAAAAAA=</HashCode>
       <FileName>Dial360.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -123,15 +123,57 @@
   <Class Name="Codeplex.Dashboarding.BidirectionalDial" Collapsed="true">
     <Position X="15.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAABQAACAEQAAAgAABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAQAAMCAAAAAgQQJwgACAEQCAAgIABAEAAAAEAAAAAA=</HashCode>
       <FileName>BiDirectionalDial.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Knob360" Collapsed="true">
     <Position X="15.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAQQIwgAAAAQCAAAIABAEAAAAEAAAAAA=</HashCode>
+      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQAAAAAABAEAAAAAAAAAAA=</HashCode>
       <FileName>Knob360.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Dial90" Collapsed="true">
+    <Position X="18.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CA4CAMAAAAABAECAQAACAAQgBCAAABAgAAEAAJAAgEA=</HashCode>
+      <FileName>Dial90.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Dial90NorthEast" Collapsed="true">
+    <Position X="17.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Dial90NorthEast.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Dial90NorthWest" Collapsed="true">
+    <Position X="22.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Dial90NorthWest.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Dial90SouthEast" Collapsed="true">
+    <Position X="15.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Dial90SouthEast.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Dial90SouthWest" Collapsed="true">
+    <Position X="20" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Dial90SouthWest.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.PlatformIndependentDashboard" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>PlatformIndependentDashboard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
