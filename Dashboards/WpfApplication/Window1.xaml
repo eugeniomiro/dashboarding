@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfApplication.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding.Wpf"
+    Title="WPF test application" Height="350" Width="600" Background="#FF333333">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <!-- first row -->
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Height="160" >
+                    <db:DecadeVuMeter x:Name="_decade1" Value="{Binding CurrentValue, Mode=TwoWay}" Width="14"/>
+                    <db:DecadeVuMeter x:Name="_decade2" Value="{Binding CurrentValue2, Mode=TwoWay}" Width="14"/>
+                    <db:DecadeVuMeter x:Name="_decade3" Value="{Binding CurrentValue3, Mode=TwoWay}" Width="14"/>
+                    <db:DecadeVuMeter x:Name="_decade4" Value="{Binding CurrentValue4, Mode=TwoWay}" Width="14"/>
+                </StackPanel>
+                <db:Dial180 Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <db:Dial360 Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <db:Knob360 Value="{Binding CurrentValue, Mode=TwoWay}" />
+            </StackPanel>
+    
+            <!-- second row -->
+            <StackPanel Orientation="Horizontal">
+                <db:Dial90NorthWest Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <db:Dial90NorthEast Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <db:Dial90SouthWest Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <db:Dial90SouthEast Margin="0,-6,0,0" Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <StackPanel  Orientation="Vertical">
+                    <db:DiamondSlider  Value="{Binding CurrentValue, Mode=TwoWay}" />
+                </StackPanel>
+            </StackPanel>
+            
+           
+
+        </StackPanel>
+    </Grid>
+</Window>

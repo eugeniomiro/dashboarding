@@ -4,24 +4,24 @@
     xmlns:db="clr-namespace:Codeplex.Dashboarding"
     Width="100"
     >
-	<UserControl.Resources>
-		<Storyboard x:Name="_swipe">
-		<PointAnimation Storyboard.TargetName="_pf" x:Name="_animOrigin" Storyboard.TargetProperty="StartPoint" To="100,0" Duration="00:00:1" />
-            <PointAnimation x:Name="_animTopLeft" Storyboard.TargetName="_seg1" Storyboard.TargetProperty="Point" To="100,0" Duration="00:00:1" />
-            <PointAnimation x:Name="_animBotRight"  Storyboard.TargetName="_seg4" Storyboard.TargetProperty="Point" To="100,32" Duration="00:00:1" />
-
-        </Storyboard>
-
-        <Storyboard x:Name="_animGrab">
-            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandleCanvas" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                <SplineDoubleKeyFrame x:Name="_grabValue" KeyTime="00:00:01" Value="100.0"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-
-    </UserControl.Resources>
     <Grid x:Name="LayoutRoot"   >
-    	<StackPanel Orientation="Horizontal">
-    	<TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <Grid.Resources>
+            <Storyboard x:Name="_swipe" x:Key="_swipe">
+                <PointAnimation Storyboard.TargetName="_pf" x:Name="_animOrigin" Storyboard.TargetProperty="StartPoint" To="100,0" Duration="00:00:1" />
+                <PointAnimation x:Name="_animTopLeft" Storyboard.TargetName="_seg1" Storyboard.TargetProperty="Point" To="100,0" Duration="00:00:1" />
+                <PointAnimation x:Name="_animBotRight"  Storyboard.TargetName="_seg4" Storyboard.TargetProperty="Point" To="100,32" Duration="00:00:1" />
+
+            </Storyboard>
+
+            <Storyboard x:Name="_moveGrab"  x:Key="_moveGrab">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandleCanvas" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                    <SplineDoubleKeyFrame x:Name="_grabValue" KeyTime="00:00:01" Value="100.0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+        </Grid.Resources>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt1" Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -30,9 +30,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt2"  Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -41,9 +41,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock  Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock  Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt3"  Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -52,9 +52,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt4"  Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -63,9 +63,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock Grid.Column="0" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt5"  Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -74,26 +74,26 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-			
-    	</StackPanel>
-		
 
-    	<StackPanel Orientation="Horizontal" x:Name="_panelDark">
-		<StackPanel.Clip>
-		<PathGeometry x:Name="_pg">
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" x:Name="_panelDark">
+            <StackPanel.Clip>
+                <PathGeometry x:Name="_pg">
                     <PathFigure x:Name="_pf" IsClosed="true" StartPoint="0,0">
                         <LineSegment x:Name="_seg1" Point="0,0"/>
                         <LineSegment x:Name="_seg2" Point="100,0"/>
                         <LineSegment x:Name="_seg3" Point="100,32"/>
                         <LineSegment x:Name="_seg4" Point="0,32"/>
                     </PathFigure>
-		</PathGeometry>
-    
-		</StackPanel.Clip>
-		
-    	<TextBlock  FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                </PathGeometry>
+
+            </StackPanel.Clip>
+
+            <TextBlock  FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt6"  Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -102,9 +102,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock  FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock  FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt7"  Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -113,9 +113,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock   FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock   FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt8" Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -124,9 +124,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock   FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock   FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt9" Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -135,9 +135,9 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
+            </TextBlock>
 
-    	<TextBlock   FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <TextBlock   FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" >
 			<Run FontFamily="Webdings" x:Name="_txt10" Text="★">
     			<Run.Foreground>
     				<RadialGradientBrush>
@@ -146,10 +146,10 @@
     				</RadialGradientBrush>
     			</Run.Foreground>
     		</Run>
-		</TextBlock>
-		
-			
-    	</StackPanel>
+            </TextBlock>
+
+
+        </StackPanel>
 
 
         <Canvas   Visibility="Visible" x:Name="_grabHandleCanvas" RenderTransformOrigin="0.5,0.5" Margin="-10,8,0,0" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Height="6" >
@@ -166,8 +166,8 @@
 
 
     </Grid>
-		
-	 	
 
-		
+
+
+
 </db:BidirectionalDashboard>

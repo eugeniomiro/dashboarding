@@ -233,7 +233,7 @@ namespace Codeplex.Dashboarding
                 _animBotRight.To = new Point(pos, 32);
                 _swipe.Begin();
                 _grabValue.Value = pos;
-                _animGrab.Begin();
+                _moveGrab.Begin();
             }
             else
             {
@@ -246,6 +246,16 @@ namespace Codeplex.Dashboarding
                 g.Children[3].SetValue(TranslateTransform.XProperty, currentPos );
             }
         
+        }
+
+        /// <summary>
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
+        /// </summary>
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
+        {
+            get { return LayoutRoot; }
         }
     }
 }

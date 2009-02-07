@@ -9,9 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casewise.Dashboarding.Tests", "Casewise.Dashboarding.Tests\Casewise.Dashboarding.Tests.csproj", "{992FBC01-8F3F-45D2-9107-9077D26BD608}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding.Wpf", "Codeplex.Dashboarding.Wpf\Codeplex.Dashboarding.Wpf.csproj", "{60E35411-C181-42A7-A438-58013A7EA455}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication", "WpfApplication\WpfApplication.csproj", "{2063757F-6E52-4D2F-A721-4882F821FD96}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs05.codeplex.com/
 		SccLocalPath0 = .
@@ -27,6 +31,12 @@ Global
 		SccProjectUniqueName4 = Casewise.Dashboarding.Tests\\Casewise.Dashboarding.Tests.csproj
 		SccProjectName4 = Casewise.Dashboarding.Tests
 		SccLocalPath4 = Casewise.Dashboarding.Tests
+		SccProjectUniqueName5 = Codeplex.Dashboarding.Wpf\\Codeplex.Dashboarding.Wpf.csproj
+		SccProjectName5 = Codeplex.Dashboarding.Wpf
+		SccLocalPath5 = Codeplex.Dashboarding.Wpf
+		SccProjectUniqueName6 = WpfApplication\\WpfApplication.csproj
+		SccProjectName6 = WpfApplication
+		SccLocalPath6 = WpfApplication
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +59,14 @@ Global
 		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60E35411-C181-42A7-A438-58013A7EA455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E35411-C181-42A7-A438-58013A7EA455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E35411-C181-42A7-A438-58013A7EA455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E35411-C181-42A7-A438-58013A7EA455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2063757F-6E52-4D2F-A721-4882F821FD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2063757F-6E52-4D2F-A721-4882F821FD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2063757F-6E52-4D2F-A721-4882F821FD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2063757F-6E52-4D2F-A721-4882F821FD96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -305,5 +305,15 @@ namespace Codeplex.Dashboarding
            
         }
         #endregion
+
+        /// <summary>
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
+        /// </summary>
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
+        {
+            get { return LayoutRoot; }
+        }
     }
 }

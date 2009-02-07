@@ -270,5 +270,15 @@ namespace Codeplex.Dashboarding
                 seg4.Point = new Point(currentPos, 15); 
             }
         }
+
+        /// <summary>
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
+        /// </summary>
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
+        {
+            get { return LayoutRoot; }
+        }
     }
 }

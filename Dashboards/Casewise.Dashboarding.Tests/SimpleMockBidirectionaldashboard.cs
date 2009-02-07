@@ -93,5 +93,10 @@ namespace Casewise.Dashboarding.Tests
 
 
 
+
+        protected override Grid ResourceRoot
+        {
+            get { return null; }
+        }
     }
 }
