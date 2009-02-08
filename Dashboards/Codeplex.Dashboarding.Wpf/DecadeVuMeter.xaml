@@ -8,62 +8,62 @@
             <Storyboard x:Name="TimelineLed0"  x:Key="TimelineLed0">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led0" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour0" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour0" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour0" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
 
             <Storyboard x:Name="TimelineLed1" x:Key="TimelineLed1">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led1" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour1" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour1" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour1" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed2" x:Key="TimelineLed2">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led2" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour2" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour2" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour2" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed3" x:Key="TimelineLed3">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led3" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour3" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour3" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour3" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed4" x:Key="TimelineLed4">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led4" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour4" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour4" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour4" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed5" x:Key="TimelineLed5">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led5" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour5" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour5" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour5" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed6" x:Key="TimelineLed6">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led6" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour6" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour6" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour6" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed7" x:Key="TimelineLed7">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led7" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour7" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour7" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour7" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed8" x:Key="TimelineLed8">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led8" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour8" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour8" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour8" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Name="TimelineLed9" x:Key="TimelineLed9">
                 <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_led9" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                     <SplineColorKeyFrame x:Name="_startColour9" KeyTime="00:00:00" Value="#FF264108"/>
-                    <SplineColorKeyFrame x:Name="_endColour9" KeyTime="00:00:02" Value="#FF96FB23"/>
+                    <SplineColorKeyFrame x:Name="_endColour9" KeyTime="00:00:0.75" Value="#FF96FB23"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
 

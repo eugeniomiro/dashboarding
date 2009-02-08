@@ -29,7 +29,7 @@ namespace WpfApplication
         public Window1()
         {
             InitializeComponent();
-            _timer.Interval = new TimeSpan(0,0,1);
+            _timer.Interval = new TimeSpan(0,0,0,0,1500);
             _timer.Tick += new EventHandler(_timer_Elapsed);
             Loaded += new RoutedEventHandler(IAmLoaded);
             bo = new BoundObject { CurrentValue = 0 };
