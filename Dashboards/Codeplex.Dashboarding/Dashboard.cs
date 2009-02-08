@@ -43,7 +43,7 @@ namespace Codeplex.Dashboarding
     /// 
     /// <para>Orchectrates initial render through the abstract render method</para>
     /// </summary>
-    public abstract class Dashboard : UserControl, INotifyPropertyChanged
+    public abstract class Dashboard : PlatformIndependentDashboard, INotifyPropertyChanged
     {
         /// <summary>
         /// Event raised when the value changes
@@ -310,6 +310,7 @@ namespace Codeplex.Dashboarding
         }
 
         #endregion
+
 
     }
 

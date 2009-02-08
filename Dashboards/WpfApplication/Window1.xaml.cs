@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Timers;
+using System.Windows.Threading;
 
 namespace WpfApplication
 {
@@ -23,13 +24,13 @@ namespace WpfApplication
     {
        BoundObject bo = new BoundObject();
         private Random _random = new Random();
-        private System.Timers.Timer _timer = new System.Timers.Timer();
+        private DispatcherTimer _timer = new DispatcherTimer();
 
         public Window1()
         {
             InitializeComponent();
-            _timer.Interval = 1000;
-            _timer.Elapsed += new ElapsedEventHandler(_timer_Elapsed);
+            _timer.Interval = new TimeSpan(0,0,1);
+            _timer.Tick += new EventHandler(_timer_Elapsed);
             Loaded += new RoutedEventHandler(IAmLoaded);
             bo = new BoundObject { CurrentValue = 0 };
             DataContext = bo;
@@ -47,7 +48,7 @@ namespace WpfApplication
             SetValues();
         }
 
-        void _timer_Elapsed(object sender, ElapsedEventArgs e)
+        void _timer_Elapsed(object sender, EventArgs e)
         {
             SetValues();
         }
@@ -63,6 +64,17 @@ namespace WpfApplication
             bo.CurrentValue3 = _random.Next(100); 
             bo.CurrentValue4 = _random.Next(100);
 
+            string t = DateTime.Now.ToString("hhmmsstt");
+
+            _sH1.DisplayCharacter = "" + t[0];
+            _sH2.DisplayCharacter = "" + t[1];
+            _sM1.DisplayCharacter = "" + t[2];
+            _sM2.DisplayCharacter = "" + t[3];
+            _sS1.DisplayCharacter = "" + t[4];
+            _sS2.DisplayCharacter = "" + t[5];
+
+            _odometer.Increment();
+            _mon.Value = _random.Next(100);
         }
 
     }

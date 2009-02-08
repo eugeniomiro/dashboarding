@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace Codeplex.Dashboarding
 {
@@ -15,7 +16,7 @@ namespace Codeplex.Dashboarding
     /// We target Silverlight and WPF, this level of the class hierarchy 
     /// deals with the differences by providing helper methods
     /// </summary>
-    public abstract class PlatformIndependentDashboard : Dashboard
+    public abstract class PlatformIndependentDashboard : UserControl
     {
         /// <summary>
         /// Gets a story board by name. WPF storyboards are stored as Resources and are accessed
@@ -33,7 +34,83 @@ namespace Codeplex.Dashboarding
 #endif        
         }
 
+        /// <summary>
+        /// Gets a PointAnimation from the children of a storyboard by name
+        /// </summary>
+        /// <param name="storyBoard">The story board.</param>
+        /// <param name="name">The name of the point animation.</param>
+        /// <returns></returns>
+        protected PointAnimation GetChildPointAnimation(Storyboard storyBoard, string name)
+        {
+            foreach (Timeline tl in storyBoard.Children)
+            {
+#if WPF
+                if (tl.Name == name)
+                {
+                    return tl as PointAnimation;
+                }
+#else
+                if (tl.GetValue(FrameworkElement.NameProperty) as string == name)
+                {
+                    return tl as PointAnimation;
+                }
+#endif
+            }
+            return null;
+        }
 
+
+        /// <summary>
+        /// Gets a DoubleAnimation from the children of a storyboard by name
+        /// </summary>
+        /// <param name="storyBoard">The story board.</param>
+        /// <param name="name">The name of the point animation.</param>
+        /// <returns></returns>
+        protected DoubleAnimation GetChildDoubleAnimation(Storyboard storyBoard, string name)
+        {
+            foreach (DoubleAnimation da in storyBoard.Children)
+            {
+#if WPF
+                if (da.Name == name)
+                {
+                    return da as DoubleAnimation;
+                }
+#else
+                if (da.GetValue(FrameworkElement.NameProperty) as string == name)
+                {
+                    return da as DoubleAnimation;
+                }
+#endif
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets a DoubleAnimation from the children of a storyboard by name
+        /// </summary>
+        /// <param name="storyBoard">The story board.</param>
+        /// <param name="name">The name of the point animation.</param>
+        /// <returns></returns>
+        protected DoubleAnimationUsingKeyFrames GetChildDoubleAnimationUsingKeyFrames(Storyboard storyBoard, string name)
+        {
+            foreach (DoubleAnimationUsingKeyFrames da in storyBoard.Children)
+            {
+#if WPF
+                if (da.Name == name)
+                {
+                    return da as DoubleAnimationUsingKeyFrames;
+                }
+#else
+                if (da.GetValue(FrameworkElement.NameProperty) as string == name)
+                {
+                    return da as DoubleAnimationUsingKeyFrames;
+                }
+#endif
+            }
+            return null;
+        }
+
+       
         /// <summary>
         /// Gets the StoryBoard used to animate the main indicator on a gauge
         /// for example the needle for a Dial360
@@ -79,6 +156,10 @@ namespace Codeplex.Dashboarding
                 sdf.Value = point;
             }
         }
+
+      
+
+       
 
         /// <summary>
         /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf

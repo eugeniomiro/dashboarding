@@ -1,12 +1,11 @@
-﻿<db:PlatformIndependentDashboard x:Class="Codeplex.Dashboarding.Odometer"
+﻿<UserControl x:Class="Codeplex.Dashboarding.MatrixLedMarquee"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:db="clr-namespace:Codeplex.Dashboarding"
-             
-            
-             >
+    >
     <Grid x:Name="LayoutRoot" >
-        <StackPanel Orientation="Horizontal" x:Name="_stack">
+        <StackPanel Orientation="Horizontal" x:Name="_stackpanel">
+           
         </StackPanel>
     </Grid>
-</db:PlatformIndependentDashboard>
+</UserControl>

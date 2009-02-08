@@ -40,7 +40,7 @@ namespace Codeplex.Dashboarding
     /// analysts claim that showing data is not enough and that interaction is key.
     /// 
     /// </summary>
-    public abstract class BidirectionalDashboard : PlatformIndependentDashboard
+    public abstract class BidirectionalDashboard : Dashboard
     {
 
         #region private members

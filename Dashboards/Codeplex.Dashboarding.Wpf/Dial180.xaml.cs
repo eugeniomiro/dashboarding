@@ -166,7 +166,6 @@ namespace Codeplex.Dashboarding
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-
                 _text.Text = "" + Value;
                 double point = -90 + (NormalizedValue * 180);
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
@@ -188,8 +187,6 @@ namespace Codeplex.Dashboarding
                 tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
             }
         }
-
-     
 
         /// <summary>
         /// Shows the grab handle if theis control is bidirectional

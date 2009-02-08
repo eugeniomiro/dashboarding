@@ -36,7 +36,7 @@ namespace Codeplex.Dashboarding
     /// Intended to look like a Vu meter from an old cassette deck this thermomter style
     /// control displays data on blocks rather than as a continious sweep.
     /// </summary>
-    public partial class DecadeVuMeter : PlatformIndependentDashboard
+    public partial class DecadeVuMeter : Dashboard
     {
         private const int NumberOfLeds = 10;
 

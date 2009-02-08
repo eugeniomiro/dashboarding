@@ -143,7 +143,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             LedOnColor="#FF00FF00"
             LedOffColor="#2200FF00"
             Mode="Continious"                             
-            Text="Welcome to the Silverlight Dashboard and gauges project. This MatrixLedMarquee control is one of many in the growing library hosted at Codeplex."
+            Text="Welcome to the Silverlight _and_ WPF  Dashboard and gauges project. This MatrixLedMarquee control is one of many in the growing library hosted at Codeplex."
         />
 
         <controls:Viewbox x:Name="_viewBox1"  HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="100" Height="100" Margin="0,0,15,39" >
