@@ -39,6 +39,8 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public partial class SixteenSegmentLED : PlatformIndependentDashboard
     {
+        private bool _hasInitialized;
+
         /// <summary>
         /// Names for each component bit
         /// </summary>
@@ -147,7 +149,11 @@ namespace Codeplex.Dashboarding
         /// <param name="e">event args</param>
         void SixteenSegmentLED_Loaded(object sender, RoutedEventArgs e)
         {
-            StoreLedInformation();
+            if (!_hasInitialized)
+            {
+                _hasInitialized = true;
+                StoreLedInformation();
+            }
             Animate();
         }
 
