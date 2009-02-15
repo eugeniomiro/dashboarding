@@ -51,12 +51,14 @@ namespace Codeplex.Dashboarding
         public event EventHandler<DashboardValueChangedEventArgs> ValueChanged;
 
         /// <summary>
-        /// Constructs a Dashboard and initializes animation etc
+        /// Constructs a Dashboard and initializes animation etc, defaults are
+        /// Minimun = 0, Maximum = 100, AnimationDuration = 0.75 seconds
         /// </summary>
         public Dashboard() :base()
         {
             Minimum = 0;
             Maximum = 100;
+            AnimationDuration = TimeSpan.FromSeconds(0.75);
             Loaded += new RoutedEventHandler(Dashboard_Loaded);
             
         }
@@ -155,10 +157,51 @@ namespace Codeplex.Dashboarding
         #endregion
 
 
+        #region AnimationDuration property
+
+
+
+        /// <summary>
+        /// Gets or sets the duration of the animation. The default is 0.75 seconds. Set
+        /// the animation duration depending on the interval between the value changing.
+        /// </summary>
+        /// <value>The duration of the animation.</value>
+        public TimeSpan AnimationDuration
+        {
+            get { return (TimeSpan)GetValue(AnimationDurationProperty); }
+            set { SetValue(AnimationDurationProperty, value); }
+        }
+
+        /// <summary>
+        /// Using a DependencyProperty as the backing store for AnimationDuration.  This enables animation, styling, binding, etc...
+        /// </summary>
+        public static readonly DependencyProperty AnimationDurationProperty =
+            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(AnimationDurationChanged)));
+
+        /// <summary>
+        /// The animation duration dependancy property changed. We don't do alot as we
+        /// pick this up at the next render
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void AnimationDurationChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+             Dashboard instance = dependancy as Dashboard;
+             if (instance != null)
+             {
+
+             }
+        }
+
+
+        #endregion
+
+
+
         #region min max functions
 
         #region Minimum property
-        
+
         /// <summary>
         /// Dependancy property backing the Minimum value
         /// </summary>

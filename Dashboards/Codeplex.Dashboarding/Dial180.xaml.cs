@@ -166,26 +166,36 @@ namespace Codeplex.Dashboarding
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-                _text.Text = "" + Value;
-                double point = -90 + (NormalizedValue * 180);
-                SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
-                Start(AnimateIndicatorStoryboard);
-
-                SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
-                Start(AnimateGrabHandleStoryboard);
+                SetPointerByAnimationOverSetTime(NormalizedValue, Value, AnimationDuration);
             }
             else
             {
-                _text.Text = "" + CurrentValue;
-
-                double currentPos = -90 +  (CurrentNormalizedValue * 180);
-
-                TransformGroup tg = path.RenderTransform as TransformGroup;
-                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
-
-                tg = _grabHandle.RenderTransform as TransformGroup;
-                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
+                SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);
+            
+            
             }
+        }
+
+        /// <summary>
+        /// Sets the pointer animation to execute and sets the time to animate. This allow the same
+        /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
+        /// needle during bidirectional operation (TimeSpan.Zero)
+        /// </summary>
+        /// <param name="normalizedValue">The normalized Value.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="duration">The duration.</param>
+        private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
+        {
+            _text.Text = "" + value;
+
+            double point = -90 + (normalizedValue * 180);
+            SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
+            needle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateIndicatorStoryboard);
+
+            SplineDoubleKeyFrame handle = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
+            handle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateGrabHandleStoryboard);
         }
 
         /// <summary>

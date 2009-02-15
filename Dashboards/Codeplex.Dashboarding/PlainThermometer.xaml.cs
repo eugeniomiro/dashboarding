@@ -276,35 +276,17 @@ namespace Codeplex.Dashboarding
                 _grabHandle.Visibility = Visibility.Collapsed;
             }
 
-            
+
+
+            SetMercuryColor();
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-                
-
-                SetMercuryColor();
-
-                DoubleAnimationUsingKeyFrames da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_scaleContainer");
-                da.KeyFrames[0].Value = _fullScale * NormalizedValue;
-                da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_translateContainer");
-                da.KeyFrames[0].Value = _fullTranslate * NormalizedValue;
-                da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_animGrab");
-                da.KeyFrames[0].Value = -(NormalizedValue * 100);
-
-
-                 _text.Text = "" + Value;
-                Start(AnimateIndicatorStoryboard);
+                SetPointerByAnimationOverSetTime(NormalizedValue, Value, AnimationDuration);
             }
             else
             {
-              
-                TransformGroup handle  = _grabHandleCanvas.RenderTransform as TransformGroup;
-                handle.Children[3].SetValue(TranslateTransform.YProperty, -(CurrentNormalizedValue*100));
-
-                TransformGroup merc = _merc.RenderTransform as TransformGroup;
-                merc.Children[0].SetValue(ScaleTransform.ScaleYProperty, _fullScale * (CurrentNormalizedValue ));
-                merc.Children[3].SetValue(TranslateTransform.YProperty, _fullTranslate * (CurrentNormalizedValue ));
-                _text.Text = "" + CurrentValue;
+                SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);              
             }
 
           
@@ -312,6 +294,35 @@ namespace Codeplex.Dashboarding
 
            
         }
+
+
+          /// <summary>
+        /// Sets the pointer animation to execute and sets the time to animate. This allow the same
+        /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
+        /// needle during bidirectional operation (TimeSpan.Zero)
+        /// </summary>
+        /// <param name="normalizedValue">The normalized Value.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="duration">The duration.</param>
+        private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
+        {
+            SetMercuryColor();
+
+            DoubleAnimationUsingKeyFrames da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_scaleContainer");
+            da.KeyFrames[0].Value = _fullScale * normalizedValue;
+            da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
+            da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_translateContainer");
+            da.KeyFrames[0].Value = _fullTranslate * normalizedValue;
+            da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
+            da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_animGrab");
+            da.KeyFrames[0].Value = -(normalizedValue * 100);
+            da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
+
+
+            _text.Text = String.Format("{0:000}", value);
+            Start(AnimateIndicatorStoryboard);
+        }
+
         #endregion
 
         /// <summary>

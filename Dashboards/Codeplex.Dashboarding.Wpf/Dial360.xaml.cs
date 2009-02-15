@@ -64,29 +64,38 @@ namespace Codeplex.Dashboarding
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-                _txt11.Text = String.Format("{0:000}", Value);
-                //SetColourFromRange();
-                double point = -150 + (3 * (NormalizedValue * 100));
-                SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
-                Start(AnimateIndicatorStoryboard);
-
-                SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
-                Start(AnimateGrabHandleStoryboard);
-
+                SetPointerByAnimationOverSetTime(NormalizedValue, Value, AnimationDuration);
             }
             else
             {
-                double currentPos = -150+ (3*(CurrentNormalizedValue * 100));
-                _txt11.Text = String.Format("{0:000}", CurrentValue);
-              
-                TransformGroup tg = path.RenderTransform as TransformGroup;
-                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
-
-                tg = _grabHandle.RenderTransform as TransformGroup;
-                tg.Children[2].SetValue(RotateTransform.AngleProperty, currentPos);
-              
+                SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);
             }
 
+
+        }
+
+        /// <summary>
+        /// Sets the pointer animation to execute and sets the time to animate. This allow the same
+        /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
+        /// needle during bidirectional operation (TimeSpan.Zero)
+        /// </summary>
+        /// <param name="normalizedValue">The normalized Value.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="duration">The duration.</param>
+        private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
+        {
+            _txt11.Text = String.Format("{0:000}", value);
+
+            double point = -150 + (3 * (normalizedValue * 100));
+
+          
+            SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
+            needle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateIndicatorStoryboard);
+
+            SplineDoubleKeyFrame handle = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
+            handle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateGrabHandleStoryboard);
 
         }
 

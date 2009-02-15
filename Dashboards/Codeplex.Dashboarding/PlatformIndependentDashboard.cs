@@ -143,18 +143,20 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="sb">The sb.</param>
         /// <param name="point">The point.</param>
-        protected void SetFirstChildSplineDoubleKeyFrameTime(Storyboard sb, double point)
+        protected SplineDoubleKeyFrame SetFirstChildSplineDoubleKeyFrameTime(Storyboard sb, double point)
         {
+            SplineDoubleKeyFrame sdf = null;
             if (sb.Children.Count != 1)
-                return;
+                return sdf;
             DoubleAnimationUsingKeyFrames anim = sb.Children[0] as DoubleAnimationUsingKeyFrames;
             if (anim == null || anim.KeyFrames.Count != 1)
-                return;
-            SplineDoubleKeyFrame sdf = anim.KeyFrames[0] as SplineDoubleKeyFrame;
+                return sdf;
+            sdf = anim.KeyFrames[0] as SplineDoubleKeyFrame;
             if (sdf != null)
             {
                 sdf.Value = point;
             }
+            return sdf;
         }
 
 

@@ -220,16 +220,16 @@ namespace Codeplex.Dashboarding
         {
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-                SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, NormalizedValue * 100);
+                SplineDoubleKeyFrame f = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, NormalizedValue * 100);
+                f.KeyTime = KeyTime.FromTimeSpan(AnimationDuration);
                 Start(AnimateIndicatorStoryboard);
 
             }
             else
             {
-                TransformGroup tg = _slider.RenderTransform as TransformGroup;
-                tg.Children[3].SetValue(TranslateTransform.XProperty, CurrentNormalizedValue * 100);
-
-                    
+                SplineDoubleKeyFrame f = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, CurrentNormalizedValue * 100);
+                f.KeyTime = KeyTime.FromTimeSpan(TimeSpan.Zero);
+                Start(AnimateIndicatorStoryboard);
             }
         }
 
