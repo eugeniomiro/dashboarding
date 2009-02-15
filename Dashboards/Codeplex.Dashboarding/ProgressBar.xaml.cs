@@ -258,9 +258,9 @@ namespace Codeplex.Dashboarding
                 GetChildPointAnimation(AnimateIndicatorStoryboard, "_topLeft").To = new Point(pos, 0);
                 GetChildPointAnimation(AnimateIndicatorStoryboard, "_botLeft").To = new Point(pos, 15);
 
-                AnimateIndicatorStoryboard.Begin();
+                Start(AnimateIndicatorStoryboard);
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, pos-10);
-                AnimateGrabHandleStoryboard.Begin();
+                Start(AnimateGrabHandleStoryboard);
             }
             else
             {

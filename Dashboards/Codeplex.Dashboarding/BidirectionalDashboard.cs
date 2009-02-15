@@ -113,15 +113,14 @@ namespace Codeplex.Dashboarding
         protected void RegisterGrabHandle(FrameworkElement target)
         {
             GrabHandle = target;
-            if (IsBidirectional)
-            {
-                Initialize();
-            }
+            Initialize();
         }
+
+        private bool _eventsRegistered;
 
         private void Initialize()
         {
-            if (GrabHandle != null)
+            if (GrabHandle != null && IsBidirectional && !_eventsRegistered)
             {
                 GrabHandle.Cursor = (IsBidirectional) ? Cursors.Hand: Cursors.None;
                 GrabHandle.MouseEnter += new MouseEventHandler(BidirectionalDashboard_MouseEnter);
@@ -129,6 +128,17 @@ namespace Codeplex.Dashboarding
                 GrabHandle.MouseLeftButtonUp += new MouseButtonEventHandler(BidirectionalDashboard_MouseLeftButtonUp);
                 GrabHandle.MouseLeftButtonDown += new MouseButtonEventHandler(target_MouseLeftButtonDown);
                 GrabHandle.MouseMove += new MouseEventHandler(GrabHandle_MouseMove);
+                _eventsRegistered = true;
+            }
+            else if (GrabHandle != null && !IsBidirectional && _eventsRegistered)
+            {
+                GrabHandle.Cursor = (IsBidirectional) ? Cursors.Hand : Cursors.None;
+                GrabHandle.MouseEnter -= new MouseEventHandler(BidirectionalDashboard_MouseEnter);
+                GrabHandle.MouseLeave -= new MouseEventHandler(GrabHandle_MouseLeave);
+                GrabHandle.MouseLeftButtonUp -= new MouseButtonEventHandler(BidirectionalDashboard_MouseLeftButtonUp);
+                GrabHandle.MouseLeftButtonDown -= new MouseButtonEventHandler(target_MouseLeftButtonDown);
+                GrabHandle.MouseMove -= new MouseEventHandler(GrabHandle_MouseMove);
+                _eventsRegistered = false;
             }
         }
 
@@ -178,6 +188,7 @@ namespace Codeplex.Dashboarding
             if (instance != null)
             {
                 instance.OnPropertyChanged("IsBidirectional");
+                instance.Initialize();
                 instance.Animate();
             }
         }

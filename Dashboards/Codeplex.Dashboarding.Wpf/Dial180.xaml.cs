@@ -169,10 +169,10 @@ namespace Codeplex.Dashboarding
                 _text.Text = "" + Value;
                 double point = -90 + (NormalizedValue * 180);
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
-                AnimateIndicatorStoryboard.Begin();
+                Start(AnimateIndicatorStoryboard);
 
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
-                AnimateGrabHandleStoryboard.Begin();
+                Start(AnimateGrabHandleStoryboard);
             }
             else
             {

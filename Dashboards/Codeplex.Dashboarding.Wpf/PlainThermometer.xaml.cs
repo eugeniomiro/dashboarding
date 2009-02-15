@@ -292,16 +292,8 @@ namespace Codeplex.Dashboarding
                 da.KeyFrames[0].Value = -(NormalizedValue * 100);
 
 
-                //GetChildSplineDoubleKeyFrame(AnimateIndicatorStoryboard, "_translate").Value = _fullTranslate * NormalizedValue;
-                //GetChildSplineDoubleKeyFrame(AnimateIndicatorStoryboard, "_scale").Value = _fullScale * NormalizedValue;
-                //GetChildSplineDoubleKeyFrame(AnimateIndicatorStoryboard, "_grabFrame").Value = -(NormalizedValue * 100);
-
-
-                //_translate.Value = _fullTranslate * NormalizedValue;
-                //_scale.Value = _fullScale * NormalizedValue;
-                _text.Text = "" + Value;
-                //_grabFrame.Value = -(NormalizedValue * 100);
-                AnimateIndicatorStoryboard.Begin();
+                 _text.Text = "" + Value;
+                Start(AnimateIndicatorStoryboard);
             }
             else
             {

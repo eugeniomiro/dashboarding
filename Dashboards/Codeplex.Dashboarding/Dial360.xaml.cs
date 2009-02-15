@@ -68,10 +68,10 @@ namespace Codeplex.Dashboarding
                 //SetColourFromRange();
                 double point = -150 + (3 * (NormalizedValue * 100));
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
-                AnimateIndicatorStoryboard.Begin();
+                Start(AnimateIndicatorStoryboard);
 
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
-                AnimateGrabHandleStoryboard.Begin();
+                Start(AnimateGrabHandleStoryboard);
 
             }
             else

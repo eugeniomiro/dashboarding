@@ -157,7 +157,21 @@ namespace Codeplex.Dashboarding
             }
         }
 
-      
+
+        /// <summary>
+        /// Starts the specified story board, this differs between Silverlight and
+        /// WPF because under WPF we have to specify the animation is controlable
+        /// because a value change may force us to alter the animation endpoint.
+        /// </summary>
+        /// <param name="sb">The storyboard.</param>
+        protected void Start(Storyboard sb)
+        {
+#if WPF
+            sb.Begin(this, true);
+#else
+            sb.Begin();
+#endif
+        }
 
        
 

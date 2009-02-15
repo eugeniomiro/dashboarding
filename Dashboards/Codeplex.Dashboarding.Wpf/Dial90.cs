@@ -204,10 +204,10 @@ namespace Codeplex.Dashboarding
                 double point = CalculatePointFromNormalisedValue();
 
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
-                AnimateIndicatorStoryboard.Begin();
+                Start(AnimateIndicatorStoryboard);
 
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
-                AnimateGrabHandleStoryboard.Begin();
+                Start(AnimateGrabHandleStoryboard);
 
             }
             else

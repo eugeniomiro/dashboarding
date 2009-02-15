@@ -143,8 +143,8 @@ namespace Codeplex.Dashboarding
             double to = from - 32;
             GetChildDoubleAnimation(AnimateIndicatorStoryboard, "_anim").To = to;
             GetChildDoubleAnimation(AnimateIndicatorStoryboard, "_anim").From = from;
- 
-            AnimateIndicatorStoryboard.Begin();
+
+            Start(AnimateIndicatorStoryboard);
         }
 
        
@@ -169,7 +169,7 @@ namespace Codeplex.Dashboarding
             GetChildDoubleAnimation(AnimateIndicatorStoryboard, "_anim").To = to;
             GetChildDoubleAnimation(AnimateIndicatorStoryboard, "_anim").From = from;
 
-            AnimateIndicatorStoryboard.Begin();
+            Start(AnimateIndicatorStoryboard);
 
         }
 

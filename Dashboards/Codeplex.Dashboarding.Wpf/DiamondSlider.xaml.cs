@@ -221,7 +221,7 @@ namespace Codeplex.Dashboarding
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, NormalizedValue * 100);
-                AnimateIndicatorStoryboard.Begin();
+                Start(AnimateIndicatorStoryboard);
 
             }
             else

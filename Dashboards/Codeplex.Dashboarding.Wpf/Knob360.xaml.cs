@@ -68,10 +68,10 @@ namespace Codeplex.Dashboarding
                 //_needlePos.Value = (-150+(300*NormalizedValue))-2;
                 //_grabPos.Value =  (300*NormalizedValue) -10;
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, (-150 + (300 * NormalizedValue)) - 2);
-                AnimateIndicatorStoryboard.Begin();
+                Start(AnimateIndicatorStoryboard);
 
                 SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, (300 * NormalizedValue) - 10);
-                AnimateGrabHandleStoryboard.Begin();
+                Start(AnimateGrabHandleStoryboard);
 
             }
             else

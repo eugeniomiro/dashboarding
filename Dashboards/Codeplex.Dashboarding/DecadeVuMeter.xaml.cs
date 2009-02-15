@@ -79,7 +79,7 @@ namespace Codeplex.Dashboarding
                     double pos = ((i + 1) / (double)NumberOfLeds) * 100;
                     if ((NormalizedValue * 100) >= pos)
                     {
-                        sb.Begin();
+                        Start(sb);
                     }
                     else
                     {

@@ -217,7 +217,7 @@ namespace Codeplex.Dashboarding
                     falseControl.Visibility = Visibility.Visible;
                     trueControl.Visibility = Visibility.Collapsed;
                 }
-                sb.Begin();
+                Start(sb);
             }
         }
 

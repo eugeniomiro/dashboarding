@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Codeplex.Dashboarding
 {
@@ -47,7 +48,8 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// storyboard to act as a timer
         /// </summary>
-        Storyboard _timer = new Storyboard();
+        private DispatcherTimer _timer = new DispatcherTimer();
+
 
         /// <summary>
         /// All digits for the number in the order most significant to least
@@ -157,8 +159,8 @@ namespace Codeplex.Dashboarding
         {
             InitializeComponent();
             Loaded += new RoutedEventHandler(Odometer_Loaded);
-            _timer.Duration = new Duration(TimeSpan.FromSeconds(1));
-            _timer.Completed += new EventHandler(_timer_Tick);
+            _timer.Interval = new TimeSpan(0,0,0,0, 750);
+            _timer.Tick += new EventHandler(_timer_Tick);
         }
 
         #endregion
@@ -312,7 +314,7 @@ namespace Codeplex.Dashboarding
                                         new PropertyMetadata(new PropertyChangedCallback(IntervalPropertyChanged)));
 
         /// <summary>
-        /// number of digits to display
+        /// time in seconds between ticks for automatic dials
         /// </summary>
         public double Interval
         {
@@ -335,7 +337,7 @@ namespace Codeplex.Dashboarding
             Odometer instance = dependancy as Odometer;
             if (instance != null)
             {
-                instance._timer.Duration = new Duration(TimeSpan.FromSeconds(instance.Interval));
+                instance._timer.Interval = TimeSpan.FromSeconds(instance.Interval);
             }
         }
 
@@ -378,7 +380,7 @@ namespace Codeplex.Dashboarding
         {
             if (MeterMode != Mode.Static)
             {
-                _timer.Begin();
+                _timer.Start();
             }
         }
 
@@ -403,7 +405,7 @@ namespace Codeplex.Dashboarding
                     MoveFromInitialToFinal();
                     break;
             }
-            _timer.Begin();
+
         }
 
 
