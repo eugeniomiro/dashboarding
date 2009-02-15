@@ -84,8 +84,8 @@ namespace Codeplex.Dashboarding
                     else
                     {
                        
-                        sb.Stop();
-                        sb.Seek(new TimeSpan(0, 0, 0));
+                        //sb.Stop(this);
+                        sb.Seek(this, new TimeSpan(0, 0, 0), TimeSeekOrigin.BeginTime);
                     }
                 }
             }

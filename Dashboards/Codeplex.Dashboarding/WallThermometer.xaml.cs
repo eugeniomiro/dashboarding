@@ -230,7 +230,7 @@ namespace Codeplex.Dashboarding
         /// <param name="args">arguments</param>
         private static void IsBidirectionalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
+            WallThermometer instance = dependancy as WallThermometer;
             if (instance != null)
             {
                 instance.IsBidirectional = (bool)args.NewValue;

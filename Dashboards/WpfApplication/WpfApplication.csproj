@@ -49,29 +49,137 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Window1.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Demonstrators\AllControlsDemonstrator.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\BooleanDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\BoundData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\Dial180Demonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\Dial360Demonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\Dial90Demonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\Knob360Demonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\LedMarqueeDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\MatrixLedCharacterDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\OdometerDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\PerformanceMonitorDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\PlainThermometerDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\ProgressbarDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demonstrators\VduMeterDemonstrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demonstrators\AllControlsDemonstrator.xaml.cs">
+      <DependentUpon>AllControlsDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\BooleanDemonstrator.xaml.cs">
+      <DependentUpon>BooleanDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\BoundData.cs" />
+    <Compile Include="Demonstrators\BoundData.xaml.cs">
+      <DependentUpon>BoundData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\Dial180Demonstrator.xaml.cs">
+      <DependentUpon>Dial180Demonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\Dial360Demonstrator.xaml.cs">
+      <DependentUpon>Dial360Demonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\Dial90Demonstrator.xaml.cs">
+      <DependentUpon>Dial90Demonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\IDemonstrateDials.cs" />
+    <Compile Include="Demonstrators\Knob360Demonstrator.xaml.cs">
+      <DependentUpon>Knob360Demonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\LedMarqueeDemonstrator.xaml.cs">
+      <DependentUpon>LedMarqueeDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\MatrixLedCharacterDemonstrator.xaml.cs">
+      <DependentUpon>MatrixLedCharacterDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\OdometerDemonstrator.xaml.cs">
+      <DependentUpon>OdometerDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\PerformanceMonitorDemonstrator.xaml.cs">
+      <DependentUpon>PerformanceMonitorDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\PlainThermometerDemonstrator.xaml.cs">
+      <DependentUpon>PlainThermometerDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\ProgressbarDemonstrator.xaml.cs">
+      <DependentUpon>ProgressbarDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\VduMeterDemonstrator.xaml.cs">
+      <DependentUpon>VduMeterDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
