@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 namespace Codeplex.Dashboarding
 {
     /// <summary>
@@ -15,6 +16,8 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy property for the FaceColor attached property
         /// </summary>
+
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty FaceColorRangeProperty =
             DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
 
@@ -22,6 +25,8 @@ namespace Codeplex.Dashboarding
         /// Specifies the face color at points in the range. A single color point with
         /// a value of 0 specifies the color for all
         /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPointCollection FaceColorRange
         {
             get
@@ -41,6 +46,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
+
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void FaceColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
@@ -61,12 +68,15 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The  Dependancy property for the NeedleColor attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty NeedleColorRangeProperty =
             DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
 
         /// <summary>
         /// Specifies what color the needle is a various point is the range
         /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPointCollection NeedleColorRange
         {
             get
@@ -106,12 +116,15 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The Dependancy property for the TextColor attached property
         /// </summary>
+
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty TextColorProperty =
             DependencyProperty.Register("TextColor", typeof(Color), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
 
         /// <summary>
         /// The color of the text used to show the percentage
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color TextColor
         {
             get
@@ -131,6 +144,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
@@ -239,16 +253,19 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Update your face color from the property value
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         protected abstract void SetFaceColor();
 
         /// <summary>
         /// Update your needle color from the property value
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         protected abstract void SetNeedleColor();
 
         /// <summary>
         /// Update your text colors to that of the TextColor dependancy property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         protected abstract void SetTextColor();
 
         /// <summary>
@@ -274,7 +291,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="_currentPoint">Current point</param>
         /// <returns>Angle in degrees</returns>
-        protected abstract double CalculateRotationAngle(Point _currentPoint);
+        protected abstract double CalculateRotationAngle(Point currentPoint);
     
     }
 }

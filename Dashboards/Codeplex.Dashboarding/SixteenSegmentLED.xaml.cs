@@ -29,7 +29,11 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Threading;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
+
+[module: SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", Scope = "type", Target = "Codeplex.Dashboarding.SixteenSegmentLED", MessageId = "LED")]
 namespace Codeplex.Dashboarding
 {
     /// <summary>
@@ -203,12 +207,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the LedOnColor property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOnColorProperty =
             DependencyProperty.Register("LedOnColor", typeof(Color), typeof(SixteenSegmentLED), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOnColor
         {
             get { return (Color)GetValue(LedOnColorProperty); }
@@ -225,12 +231,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the LedOffColor property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOffColorProperty =
             DependencyProperty.Register("LedOffColor", typeof(Color), typeof(SixteenSegmentLED), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOffColor
         {
             get { return (Color)GetValue(LedOffColorProperty); }
@@ -245,6 +253,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void ColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             SixteenSegmentLED instance = dependancy as SixteenSegmentLED;
@@ -285,9 +294,9 @@ namespace Codeplex.Dashboarding
             if (DisplayCharacter.Length > 1)
                 ShowError();
 
-           if (_characterLeds.ContainsKey(DisplayCharacter.ToUpper()))
+           if (_characterLeds.ContainsKey(DisplayCharacter.ToUpper(CultureInfo.CurrentCulture)))
            {
-               var leds = _characterLeds[DisplayCharacter.ToUpper()];
+               var leds = _characterLeds[DisplayCharacter.ToUpper(CultureInfo.CurrentCulture)];
                foreach (Leds led in leds)
                {
                    _leds[led].Fill = new SolidColorBrush(LedOnColor);

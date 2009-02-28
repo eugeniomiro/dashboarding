@@ -34,6 +34,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -54,7 +55,7 @@ namespace Codeplex.Dashboarding
         /// Constructs a Dashboard and initializes animation etc, defaults are
         /// Minimun = 0, Maximum = 100, AnimationDuration = 0.75 seconds
         /// </summary>
-        public Dashboard() :base()
+        protected Dashboard() :base()
         {
             Minimum = 0;
             Maximum = 100;
@@ -87,9 +88,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Current value in the range Minimum &lt;= Value &lt;= Maximum
         /// </summary>
-        public  double Value
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
+        public double Value
         {
-            get { return (double)GetValue(ValueProperty); }
+            // suppressed message because GetValue is from dependancyProperty and too late to rename value
+            get 
+            { 
+                return (double)GetValue(ValueProperty); 
+            }
             set 
             {
                 double old = Value;
@@ -308,7 +314,7 @@ namespace Codeplex.Dashboarding
 
         /// <summary>
         /// Rgardless of the Minimum or Maximum settings, the actual value to display on the gauge
-        /// is represented by the Normalized value which always is in the range 0 <= n <= 1.0. This makes
+        /// is represented by the Normalized value which always is in the range 0 &gt;= n &lt;= 1.0. This makes
         /// the job of animating more easy.
         /// </summary>
         internal double NormalizedValue

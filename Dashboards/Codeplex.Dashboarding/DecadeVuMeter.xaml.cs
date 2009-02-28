@@ -28,8 +28,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 
+
+[module: SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", Scope = "type", Target = "Codeplex.Dashboarding.DecadeVuMeter", MessageId = "Vu")]
 namespace Codeplex.Dashboarding
 {
     /// <summary>
@@ -73,7 +76,7 @@ namespace Codeplex.Dashboarding
             _text.Text = Value.ToString();
             for (int i = 0; i < NumberOfLeds; i++)
             {
-                Storyboard sb = GetStoryBoard("TimelineLed" + (NumberOfLeds - (i + 1))) as Storyboard;
+                Storyboard sb = GetStoryboard("TimelineLed" + (NumberOfLeds - (i + 1))) as Storyboard;
                 if (sb != null)
                 {
                     double pos = ((i + 1) / (double)NumberOfLeds) * 100;
@@ -96,12 +99,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the BorderColor attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty BorderColorProperty =
             DependencyProperty.Register("BorderColor", typeof(Color), typeof(DecadeVuMeter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)) );
 
         /// <summary>
         /// Color of the border around each led in the control
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color BorderColor
         {
             get { return (Color)GetValue(BorderColorProperty); }
@@ -140,12 +145,15 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the LedOn attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOnColorProperty =
             DependencyProperty.Register("LedOnColor", typeof(Color), typeof(DecadeVuMeter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// The LedOnColor is the color of a lit LED
         /// </summary>
+
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOnColor
         {
             get { return (Color)GetValue(LedOnColorProperty); }
@@ -162,12 +170,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// THe dependancy property for the LedOffColor attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOffColorProperty =
             DependencyProperty.Register("LedOffColor", typeof(Color), typeof(DecadeVuMeter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Color of the LED when not lit
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOffColor
         {
             get { return (Color)GetValue(LedOffColorProperty); }
@@ -187,7 +197,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         private void SetTimerDelay()
         {
-            int step = 0;
+            
                 for (int i =0; i < NumberOfLeds; i++)
                 {
                 SetLedColours(i);

@@ -33,6 +33,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -46,7 +47,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Constructs a BinaryDashboard
         /// </summary>
-        public BinaryDashboard() :base()
+        protected BinaryDashboard() :base()
         {
             
             SetValue(TrueColorProperty, new ColorPoint { HiColor=Color.FromArgb(0xFF,0x6C,0xFA,0x20), LowColor = Color.FromArgb(0xFF,0xDC,0xF9,0xD4) });
@@ -61,6 +62,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Identifies the TrueColor attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty TrueColorProperty =
             DependencyProperty.Register("TrueColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(TrueColorPropertyChanged)));
 
@@ -70,6 +72,7 @@ namespace Codeplex.Dashboarding
         /// bad (red). Hearing a judge say Guilty to you would I think be 
         /// a red indicator for true :-)
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPoint TrueColor
         {
             get
@@ -107,6 +110,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Identifies our FalseColor attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty FalseColorProperty =
             DependencyProperty.Register("FalseColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(FalseColorPropertyChanged)));
 
@@ -114,6 +118,7 @@ namespace Codeplex.Dashboarding
         /// Sets the color range for when the value is false. Please see the definition of
         /// TrueColor range for a vacuous example of when ths may be needed
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPoint FalseColor
         {
             get
@@ -228,7 +233,7 @@ namespace Codeplex.Dashboarding
         /// <param name="el"></param>
         /// <param name="colorPoint"></param>
         /// <param name="id"></param>
-        private void SetColorsFromXaml(FrameworkElement el, ColorPoint colorPoint, string id)
+        private static void SetColorsFromXaml(FrameworkElement el, ColorPoint colorPoint, string id)
         {
             if (el == null || colorPoint.HiColor == null || colorPoint.LowColor == null)
             {

@@ -35,6 +35,7 @@ using System.Windows.Shapes;
 using Microsoft.Silverlight.Testing.UnitTesting.Metadata.VisualStudio;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeplex.Dashboarding;
+using System.Diagnostics.CodeAnalysis;
 
 
 

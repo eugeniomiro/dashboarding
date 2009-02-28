@@ -29,6 +29,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -42,6 +43,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Specifies the render mode of the MatrixLedMarquee
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         public enum MarqueeMode
         {
             /// <summary>
@@ -54,7 +56,7 @@ namespace Codeplex.Dashboarding
             /// Text is wrapped.When the last letter is 
             /// rendered, we start agin with the first
             /// </summary>
-            Continious,
+            Continuous,
 
             /// <summary>
             /// Just display the text, don't scroll (see TextAlign) 
@@ -119,12 +121,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the LedOn colr
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOnColorProperty =
             DependencyProperty.Register("LedOnColor", typeof(Color), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// The on color of all leds in the marquee
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOnColor
         {
             get { return (Color)GetValue(LedOnColorProperty); }
@@ -170,12 +174,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// THe dependancy property for the LedOffColor
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOffColorProperty =
             DependencyProperty.Register("LedOffColor", typeof(Color), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// the off color of leds in the marquee
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOffColor
         {
             get { return (Color)GetValue(LedOffColorProperty); }
@@ -557,7 +563,7 @@ namespace Codeplex.Dashboarding
             _textOffset = 0;
             if (Text.Length > 0)
             {
-                _ledStates = MatrixLedCharacterDefintions.GetDefintion("" + Text[_textOffset]);
+                _ledStates = MatrixLedCharacterDefinitions.GetDefinition("" + Text[_textOffset]);
                 _textExists = true;
             }
             else
@@ -574,17 +580,17 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Current led to render
         /// </summary>
-        private byte[] _ledStates = null;
+        private byte[] _ledStates;
 
         /// <summary>
         /// current column in the current led 
         /// </summary>
-        private int _offset = 0;
+        private int _offset;
 
         /// <summary>
         /// Current offset within the text
         /// </summary>
-        private int _textOffset = 0;
+        private int _textOffset;
 
         /// <summary>
         /// Animate the marquee, if we need a new character from the string we get one
@@ -607,7 +613,7 @@ namespace Codeplex.Dashboarding
             MatrixLedCharacter first = _characters[_characters.Count - 1];
             if (!_textExists)
             {
-                first.ScrollOne(null, new MatrixScrollEventArgs { Column = new List<bool> { false, false, false, false, false, false } });
+                first.ScrollOne(null, new MatrixScrollEventArgs (new List<bool> { false, false, false, false, false, false } ));
             }
             else
             {
@@ -625,8 +631,8 @@ namespace Codeplex.Dashboarding
         {
             byte b = _ledStates[_offset];
             MatrixScrollEventArgs args = new MatrixScrollEventArgs
-            {
-                Column = new List<bool> 
+            (
+            new List<bool> 
                 {
                     (b & 0x40) != 0,
                     (b & 0x20) != 0,
@@ -637,7 +643,7 @@ namespace Codeplex.Dashboarding
                     (b & 0x01) != 0,
 
                 }
-            };
+            );
             RackCharacter();
             return args;
         }
@@ -660,14 +666,14 @@ namespace Codeplex.Dashboarding
                 _textOffset += 1;
                 if (_textOffset < Text.Length)
                 {
-                    _ledStates = MatrixLedCharacterDefintions.GetDefintion("" + Text[_textOffset]);
+                    _ledStates = MatrixLedCharacterDefinitions.GetDefinition("" + Text[_textOffset]);
                 }
                 else
                 {
-                    if (Mode == MarqueeMode.Continious)
+                    if (Mode == MarqueeMode.Continuous)
                     {
                         _textOffset = 0;
-                        _ledStates = MatrixLedCharacterDefintions.GetDefintion("" + Text[_textOffset]);
+                        _ledStates = MatrixLedCharacterDefinitions.GetDefinition("" + Text[_textOffset]);
                     }
                     else if (Mode == MarqueeMode.SingleShot)
                     {

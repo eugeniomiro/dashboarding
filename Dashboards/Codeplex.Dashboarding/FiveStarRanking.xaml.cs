@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 
 namespace Codeplex.Dashboarding
@@ -54,6 +55,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy Property for the InRankColor property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty InRankColorProperty =
             DependencyProperty.Register("InRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(InRankColorPropertyChanged)));
 
@@ -63,6 +65,7 @@ namespace Codeplex.Dashboarding
         /// bad (red). Hearing a judge say Guilty to you would I think be 
         /// a red indicator for true :-)
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPoint InRankColor
         {
             get
@@ -116,6 +119,10 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy Property for the OutRankColor
         /// </summary>
+
+
+        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty OutRankColorProperty =
             DependencyProperty.Register("OutRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(OutRankColorPropertyChanged)));
 
@@ -123,6 +130,9 @@ namespace Codeplex.Dashboarding
         /// Sets the color range for when the value is false. Please see the definition of
         /// TrueColor range for a vacuous example of when ths may be needed
         /// </summary>
+
+        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPoint OutRankColor
         {
             get

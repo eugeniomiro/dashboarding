@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -57,12 +58,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy color for the DiamondColorproperty
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty DiamondColorProperty =
             DependencyProperty.Register("DiamondColor", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(DiamondColorPropertyChanged)));
 
         /// <summary>
         /// Color of the Diamond
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color DiamondColor
         {
             get { return (Color)GetValue(DiamondColorProperty); }

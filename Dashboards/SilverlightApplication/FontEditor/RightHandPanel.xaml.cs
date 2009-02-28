@@ -26,7 +26,7 @@ namespace SilverlightApplication.FontEditor
         private void RenderExistingLetters()
         {
             List<string> letters = new List<string>();
-            letters.AddRange(MatrixLedCharacterDefintions.CharacterDefintions.Keys);
+            letters.AddRange(MatrixLedCharacterDefinitions.CharacterDefinitions.Keys);
             foreach (string letter in letters)
             {
                 SingleCharacter sc = new SingleCharacter();

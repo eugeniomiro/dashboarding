@@ -187,24 +187,24 @@ namespace Codeplex.Dashboarding
         /// Determines the angle of the needle based on the mouse 
         /// position.
         /// </summary>
-        /// <param name="_currentPoint">Mouse position</param>
+        /// <param name="currentPoint">Mouse position</param>
         /// <returns>The angle in degrees</returns>
-        protected override double CalculateRotationAngle(Point _currentPoint)
+        protected override double CalculateRotationAngle(Point currentPoint)
         {
-            double opposite = _currentPoint.Y - (ActualHeight / 2);
-            double adjacent = _currentPoint.X - (ActualWidth / 2);
+            double opposite = currentPoint.Y - (ActualHeight / 2);
+            double adjacent = currentPoint.X - (ActualWidth / 2);
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
-            if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y <= (ActualHeight / 2))
+            if (currentPoint.X >= (ActualWidth / 2) && currentPoint.Y <= (ActualHeight / 2))
             {
                 angleInDegrees = 180 + angleInDegrees;
             }
-            else if (_currentPoint.X < (ActualWidth / 2) && _currentPoint.Y <= (ActualHeight / 2))
+            else if (currentPoint.X < (ActualWidth / 2) && currentPoint.Y <= (ActualHeight / 2))
             {
                 // already done
             }
-            else if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y > (ActualHeight / 2))
+            else if (currentPoint.X >= (ActualWidth / 2) && currentPoint.Y > (ActualHeight / 2))
             {
                 angleInDegrees = 180 + angleInDegrees;
             }

@@ -32,7 +32,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
+
+
+[module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "Codeplex.Dashboarding", MessageId = "Codeplex")]
+[module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "Codeplex.Dashboarding", MessageId = "Dashboarding")]
 namespace Codeplex.Dashboarding
 {
     /// <summary>
@@ -101,7 +106,7 @@ namespace Codeplex.Dashboarding
         /// Constrcts a BidirectionalDashboard, which is mostly about grabbing the mouse
         /// enter and leave events and rendering the focus handle is necessary
         /// </summary>
-        public BidirectionalDashboard()
+        protected BidirectionalDashboard()
         {
             IsGrabbed = false;
         }

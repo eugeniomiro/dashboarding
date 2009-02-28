@@ -23,6 +23,7 @@
 #endregion
 
 
+
 using System;
 using System.Net;
 using System.Windows;
@@ -35,14 +36,16 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 
+[module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "type", Target = "Codeplex.Dashboarding.ColorPointCollection", MessageId = "Color")]
 namespace Codeplex.Dashboarding
 {
     /// <summary>
     /// A ColorPoint allows you to set the color of an item at a start point. A 
     /// ColorPointCollection aggregates these ColorPoints.
     /// </summary>
-    public class ColorPointCollection : ObservableCollection<ColorPoint>
+     public class ColorPointCollection : ObservableCollection<ColorPoint>
     {
         /// <summary>
         /// Constructs a ColourPointCollection
@@ -60,6 +63,7 @@ namespace Codeplex.Dashboarding
         /// <param name="position">The value in the range at which you want to get 
         /// color to render an item</param>
         /// <returns>The color point for the psition</returns>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPoint GetColor(double position)
         {
             ColorPoint res = null;

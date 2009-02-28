@@ -34,7 +34,10 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
+
+[module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope="type", Target="Codeplex.Dashboarding.ColorPoint", MessageId="Color")]
 namespace Codeplex.Dashboarding
 {
     /// <summary>
@@ -60,12 +63,16 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the HiColor attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Hi")]
         public static readonly DependencyProperty HiColorProperty =
             DependencyProperty.Register("HiColor", typeof(Color), typeof(ColorPoint), new PropertyMetadata(new PropertyChangedCallback(HiColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Hi")]
         public Color HiColor
         {
             get { return (Color)GetValue(HiColorProperty); }
@@ -81,6 +88,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Hi")]
         private static void HiColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             ColorPoint instance = dependancy as ColorPoint;
@@ -98,12 +107,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the LowColor attached property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LowColorProperty =
             DependencyProperty.Register("LowColor", typeof(Color), typeof(ColorPoint), new PropertyMetadata(new PropertyChangedCallback(LowColorPropertyChanged)));
 
         /// <summary>
         /// low colour in the blend
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LowColor
         {
             get { return (Color)GetValue(LowColorProperty); }
@@ -119,6 +130,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void LowColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             ColorPoint instance = dependancy as ColorPoint;
@@ -143,9 +155,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The point in the range (0..100) where this color takes effect
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         public double Value
         {
-            get { return (double)GetValue(ValueProperty); }
+            // suppressed message because GetValue is from dependancyProperty and too late to rename value
+            get 
+            { 
+                return (double)GetValue(ValueProperty); 
+            }
             set
             {
                 SetValue(ValueProperty, value);

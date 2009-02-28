@@ -37,7 +37,7 @@ namespace SilverlightApplication.FontEditor
         /// </summary>
        internal void SetLedsFromCharacter(string t, MatrixLedCharacter matrixLedCharacter)
         {
-            byte[] bytes = MatrixLedCharacterDefintions.GetDefintion(t);
+            byte[] bytes = MatrixLedCharacterDefinitions.GetDefinition(t);
             _matrixLedCharacter = matrixLedCharacter;
 
             columns.Clear();
@@ -74,8 +74,8 @@ namespace SilverlightApplication.FontEditor
                newRep.Add(b);
            }
            newRep.Add(0);
-           MatrixLedCharacterDefintions.CharacterDefintions.Remove(_matrixLedCharacter.Text);
-           MatrixLedCharacterDefintions.CharacterDefintions.Add(_matrixLedCharacter.Text,newRep.ToArray());
+           MatrixLedCharacterDefinitions.CharacterDefinitions.Remove(_matrixLedCharacter.Text);
+           MatrixLedCharacterDefinitions.CharacterDefinitions.Add(_matrixLedCharacter.Text,newRep.ToArray());
            string oldChar = _matrixLedCharacter.Text;
            _matrixLedCharacter.Text = " ";
            _matrixLedCharacter.Text = oldChar;

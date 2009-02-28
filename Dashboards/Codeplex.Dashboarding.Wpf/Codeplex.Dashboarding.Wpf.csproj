@@ -54,6 +54,117 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Codeplex.Dashboarding\BidirectionalDashboard.cs">
+      <Link>BidirectionalDashboard.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\BiDirectionalDial.cs">
+      <Link>BiDirectionalDial.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\BinaryDashboard.cs">
+      <Link>BinaryDashboard.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\ColorPoint.cs">
+      <Link>ColorPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\ColorPointCollection.cs">
+      <Link>ColorPointCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dashboard.cs">
+      <Link>Dashboard.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\DecadeVuMeter.xaml.cs">
+      <Link>DecadeVuMeter.xaml.cs</Link>
+      <DependentUpon>DecadeVuMeter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial180.xaml.cs">
+      <Link>Dial180.xaml.cs</Link>
+      <DependentUpon>Dial180.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial360.xaml.cs">
+      <Link>Dial360.xaml.cs</Link>
+      <DependentUpon>Dial360.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90.cs">
+      <Link>Dial90.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90NorthEast.xaml.cs">
+      <Link>Dial90NorthEast.xaml.cs</Link>
+      <DependentUpon>Dial90NorthEast.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90NorthWest.xaml.cs">
+      <Link>Dial90NorthWest.xaml.cs</Link>
+      <DependentUpon>Dial90NorthWest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90SouthEast.xaml.cs">
+      <Link>Dial90SouthEast.xaml.cs</Link>
+      <DependentUpon>Dial90SouthEast.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90SouthWest.xaml.cs">
+      <Link>Dial90SouthWest.xaml.cs</Link>
+      <DependentUpon>Dial90SouthWest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\DiamondSlider.xaml.cs">
+      <Link>DiamondSlider.xaml.cs</Link>
+      <DependentUpon>DiamondSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\FiveStarRanking.xaml.cs">
+      <Link>FiveStarRanking.xaml.cs</Link>
+      <DependentUpon>FiveStarRanking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Knob360.xaml.cs">
+      <Link>Knob360.xaml.cs</Link>
+      <DependentUpon>Knob360.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\MatrixLedCharacter.xaml.cs">
+      <Link>MatrixLedCharacter.xaml.cs</Link>
+      <DependentUpon>MatrixLedCharacter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\MatrixLedCharacterDefintions.cs">
+      <Link>MatrixLedCharacterDefintions.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\MatrixLedMarquee.xaml.cs">
+      <Link>MatrixLedMarquee.xaml.cs</Link>
+      <DependentUpon>MatrixLedMarquee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Odometer.xaml.cs">
+      <Link>Odometer.xaml.cs</Link>
+      <DependentUpon>Odometer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\OdometerDigit.xaml.cs">
+      <Link>OdometerDigit.xaml.cs</Link>
+      <DependentUpon>OdometerDigit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\PerformanceMonitor.xaml.cs">
+      <Link>PerformanceMonitor.xaml.cs</Link>
+      <DependentUpon>PerformanceMonitor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\PlainThermometer.xaml.cs">
+      <Link>PlainThermometer.xaml.cs</Link>
+      <DependentUpon>PlainThermometer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\PlatformIndependentDashboard.cs">
+      <Link>PlatformIndependentDashboard.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\ProgressBar.xaml.cs">
+      <Link>ProgressBar.xaml.cs</Link>
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\RoundLed.xaml.cs">
+      <Link>RoundLed.xaml.cs</Link>
+      <DependentUpon>RoundLed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\SixteenSegmentLED.xaml.cs">
+      <Link>SixteenSegmentLED.xaml.cs</Link>
+      <DependentUpon>SixteenSegmentLED.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\TickCross.xaml.cs">
+      <Link>TickCross.xaml.cs</Link>
+      <DependentUpon>TickCross.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\WallThermometer.xaml.cs">
+      <Link>WallThermometer.xaml.cs</Link>
+      <DependentUpon>WallThermometer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -76,6 +187,118 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Codeplex.Dashboarding\DecadeVuMeter.xaml">
+      <Link>DecadeVuMeter.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial180.xaml">
+      <Link>Dial180.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial360.xaml">
+      <Link>Dial360.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90NorthEast.xaml">
+      <Link>Dial90NorthEast.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90NorthWest.xaml">
+      <Link>Dial90NorthWest.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90SouthEast.xaml">
+      <Link>Dial90SouthEast.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90SouthWest.xaml">
+      <Link>Dial90SouthWest.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\DiamondSlider.xaml">
+      <Link>DiamondSlider.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\FiveStarRanking.xaml">
+      <Link>FiveStarRanking.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Knob360.xaml">
+      <Link>Knob360.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\MatrixLedCharacter.xaml">
+      <Link>MatrixLedCharacter.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\MatrixLedMarquee.xaml">
+      <Link>MatrixLedMarquee.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Odometer.xaml">
+      <Link>Odometer.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\OdometerDigit.xaml">
+      <Link>OdometerDigit.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\PerformanceMonitor.xaml">
+      <Link>PerformanceMonitor.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\PlainThermometer.xaml">
+      <Link>PlainThermometer.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\ProgressBar.xaml">
+      <Link>ProgressBar.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\RoundLed.xaml">
+      <Link>RoundLed.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\SixteenSegmentLED.xaml">
+      <Link>SixteenSegmentLED.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\TickCross.xaml">
+      <Link>TickCross.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\WallThermometer.xaml">
+      <Link>WallThermometer.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Codeplex.Dashboarding\odometerStrip.png">
+      <Link>odometerStrip.png</Link>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

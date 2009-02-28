@@ -32,18 +32,18 @@ namespace SilverlightApplication.FontEditor
         {
             StringBuilder sb = new StringBuilder();
             List<string> letters = new List<string>();
-            letters.AddRange(MatrixLedCharacterDefintions.CharacterDefintions.Keys);
+            letters.AddRange(MatrixLedCharacterDefinitions.CharacterDefinitions.Keys);
             foreach (string letter in letters)
             {
              
 
                 sb.AppendFormat("{{ \"{0}\", new byte [] {{ {1},{2},{3},{4},{5},0}} }},",
                     (letter != "\"") ? letter : "\\\"",
-                    MatrixLedCharacterDefintions.GetDefintion(letter)[0],
-                    MatrixLedCharacterDefintions.GetDefintion(letter)[1],
-                    MatrixLedCharacterDefintions.GetDefintion(letter)[2],
-                    MatrixLedCharacterDefintions.GetDefintion(letter)[3],
-                    MatrixLedCharacterDefintions.GetDefintion(letter)[4]
+                    MatrixLedCharacterDefinitions.GetDefinition(letter)[0],
+                    MatrixLedCharacterDefinitions.GetDefinition(letter)[1],
+                    MatrixLedCharacterDefinitions.GetDefinition(letter)[2],
+                    MatrixLedCharacterDefinitions.GetDefinition(letter)[3],
+                    MatrixLedCharacterDefinitions.GetDefinition(letter)[4]
                     );
                 sb.AppendLine();
             }

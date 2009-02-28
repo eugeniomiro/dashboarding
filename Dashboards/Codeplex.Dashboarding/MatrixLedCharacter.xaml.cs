@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -53,7 +54,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// This cell is scrolling out a column of data
         /// </summary>
-        public event EventHandler<MatrixScrollEventArgs> ScrollOut;
+        internal event EventHandler<MatrixScrollEventArgs> ScrollOut;
 
         /// <summary>
         /// Constructs and empty character
@@ -64,9 +65,7 @@ namespace Codeplex.Dashboarding
             Clear();
 
             LedOffColor = Color.FromArgb(0x22, 0xdd, 0x00, 0x00);
-            LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);
-
-            
+            LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);    
         }
 
 
@@ -119,12 +118,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the LedOn colr
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOnColorProperty =
             DependencyProperty.Register("LedOnColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOnColor
         {
             get { return (Color)GetValue(LedOnColorProperty); }
@@ -161,12 +162,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// THe dependancy property for the LedOffColor
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty LedOffColorProperty =
             DependencyProperty.Register("LedOffColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LedOffColor
         {
             get { return (Color)GetValue(LedOffColorProperty); }
@@ -184,7 +187,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         private void SetLedsFromCharacter()
         {
-           byte [] bytes = MatrixLedCharacterDefintions.GetDefintion(Text);
+           byte [] bytes = MatrixLedCharacterDefinitions.GetDefinition(Text);
            columns.Clear();
            for (int i = 0; i < bytes.Length - 1; i++)
            {
@@ -210,16 +213,26 @@ namespace Codeplex.Dashboarding
         /// cells. Usually on a marquee style control this means only the right most
         /// character gets ticked manually the rest do through chained events
         /// </summary>
+        [SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers")]
         public void ScrollOne(object sender, MatrixScrollEventArgs args)
         {
             List<bool> toPassOver = columns[0];
             columns.RemoveAt(0);
             columns.Add(args.Column);
+            OnScrollOut(toPassOver);
+            SetLedsFromState();
+        }
+
+        /// <summary>
+        /// Called when a scroll out is happening.
+        /// </summary>
+        /// <param name="toPassOver">To pass over.</param>
+        private void OnScrollOut(List<bool> toPassOver)
+        {
             if (ScrollOut != null)
             {
-                ScrollOut(this, new MatrixScrollEventArgs { Column = toPassOver });
+                ScrollOut(this, new MatrixScrollEventArgs(toPassOver));
             }
-            SetLedsFromState();
         }
 
         /// <summary>
@@ -282,10 +295,22 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public class MatrixScrollEventArgs: EventArgs
     {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MatrixScrollEventArgs"/> class.
+        /// </summary>
+        /// <param name="column">The column.</param>
+        [SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
+        public MatrixScrollEventArgs(List<bool> column)
+        {
+            Column = column;
+        }
+
         /// <summary>
         /// New inbound column of data
         /// </summary>
-        public List<bool> Column { get; set; }
+        [SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
+        public List<bool> Column { get; private set; }
     }
 
 }

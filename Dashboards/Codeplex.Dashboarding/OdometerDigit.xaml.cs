@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -56,7 +57,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Value of the digit
         /// </summary>
-        private int _digit = 0;
+        private int _digit;
 
 
         /// <summary>
@@ -113,7 +114,7 @@ namespace Codeplex.Dashboarding
             _image.SetValue(Canvas.TopProperty, -(offset + amountToScroll));
         }
 
-     
+
 
         /// <summary>
         /// Slides the image up by 32 to show the value incrementing. On amination complete
@@ -202,6 +203,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="sender">the lower digit</param>
         /// <param name="args">Empty args</param>
+        [SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers")]
         public void LowerOrderDigitDecadePlus(object sender, EventArgs args)
         {
             Increment();
@@ -213,6 +215,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="sender">the lower digit</param>
         /// <param name="args">Empty args</param>
+        [SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers")]
         public void LowerOrderDigitDecadeMinus(object sender, EventArgs args)
         {
             Decrement();

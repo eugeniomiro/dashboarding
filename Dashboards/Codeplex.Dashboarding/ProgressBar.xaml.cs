@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -49,12 +50,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy color for the OutlineColor property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty OutlineColorProperty =
             DependencyProperty.Register("OutlineColor", typeof(Color), typeof(ProgressBar), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color OutlineColor
         {
             get { return (Color)GetValue(OutlineColorProperty); }
@@ -92,6 +95,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy Property for the InProgressColor property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty InProgressColorProperty =
             DependencyProperty.Register("InProgressColor", typeof(ColorPoint), typeof(ProgressBar), new PropertyMetadata(new PropertyChangedCallback(InProgressColorPropertyChanged)));
 
@@ -101,6 +105,7 @@ namespace Codeplex.Dashboarding
         /// bad (red). Hearing a judge say Guilty to you would I think be 
         /// a red indicator for true :-)
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPoint InProgressColor
         {
             get
@@ -147,6 +152,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy Property for the OutOfProgressColor
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty OutOfProgressColorProperty =
             DependencyProperty.Register("OutOfProgressColor", typeof(ColorPoint), typeof(ProgressBar), new PropertyMetadata(new PropertyChangedCallback(OutOfProgressColorPropertyChanged)));
 
@@ -154,6 +160,7 @@ namespace Codeplex.Dashboarding
         /// Sets the color range for when the value is false. Please see the definition of
         /// TrueColor range for a vacuous example of when ths may be needed
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPoint OutOfProgressColor
         {
             get

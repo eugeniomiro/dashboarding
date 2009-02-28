@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Threading;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -25,7 +26,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="name">The name of the Storyboard.</param>
         /// <returns>The desired Storyboard</returns>
-        protected Storyboard GetStoryBoard(string name)
+        protected Storyboard GetStoryboard(string name)
         {
 #if WPF
             return (Storyboard)ResourceRoot.Resources[name];
@@ -40,9 +41,9 @@ namespace Codeplex.Dashboarding
         /// <param name="storyBoard">The story board.</param>
         /// <param name="name">The name of the point animation.</param>
         /// <returns></returns>
-        protected PointAnimation GetChildPointAnimation(Storyboard storyBoard, string name)
+        protected static PointAnimation GetChildPointAnimation(Storyboard storyboard, string name)
         {
-            foreach (Timeline tl in storyBoard.Children)
+            foreach (Timeline tl in storyboard.Children)
             {
 #if WPF
                 if (tl.Name == name)
@@ -66,9 +67,9 @@ namespace Codeplex.Dashboarding
         /// <param name="storyBoard">The story board.</param>
         /// <param name="name">The name of the point animation.</param>
         /// <returns></returns>
-        protected DoubleAnimation GetChildDoubleAnimation(Storyboard storyBoard, string name)
+        protected static DoubleAnimation GetChildDoubleAnimation(Storyboard storyboard, string name)
         {
-            foreach (DoubleAnimation da in storyBoard.Children)
+            foreach (DoubleAnimation da in storyboard.Children)
             {
 #if WPF
                 if (da.Name == name)
@@ -91,9 +92,9 @@ namespace Codeplex.Dashboarding
         /// <param name="storyBoard">The story board.</param>
         /// <param name="name">The name of the point animation.</param>
         /// <returns></returns>
-        protected DoubleAnimationUsingKeyFrames GetChildDoubleAnimationUsingKeyFrames(Storyboard storyBoard, string name)
+        protected static DoubleAnimationUsingKeyFrames GetChildDoubleAnimationUsingKeyFrames(Storyboard storyboard, string name)
         {
-            foreach (DoubleAnimationUsingKeyFrames da in storyBoard.Children)
+            foreach (DoubleAnimationUsingKeyFrames da in storyboard.Children)
             {
 #if WPF
                 if (da.Name == name)
@@ -118,7 +119,7 @@ namespace Codeplex.Dashboarding
         /// <value>The animate position.</value>
         protected Storyboard AnimateIndicatorStoryboard
         {
-            get { return GetStoryBoard("_swipe"); }
+            get { return GetStoryboard("_swipe"); }
         }
 
         /// <summary>
@@ -129,7 +130,7 @@ namespace Codeplex.Dashboarding
         /// <value>The animate position.</value>
         protected Storyboard AnimateGrabHandleStoryboard
         {
-            get { return GetStoryBoard("_moveGrab"); }
+            get { return GetStoryboard("_moveGrab"); }
         }
 
         /// <summary>
@@ -143,7 +144,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="sb">The sb.</param>
         /// <param name="point">The point.</param>
-        protected SplineDoubleKeyFrame SetFirstChildSplineDoubleKeyFrameTime(Storyboard sb, double point)
+        protected static SplineDoubleKeyFrame SetFirstChildSplineDoubleKeyFrameTime(Storyboard sb, double point)
         {
             SplineDoubleKeyFrame sdf = null;
             if (sb.Children.Count != 1)
@@ -166,8 +167,10 @@ namespace Codeplex.Dashboarding
         /// because a value change may force us to alter the animation endpoint.
         /// </summary>
         /// <param name="sb">The storyboard.</param>
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         protected void Start(Storyboard sb)
         {
+            // suppredded message as this uses *this* in WPF
 #if WPF
             sb.Begin(this, true);
 #else

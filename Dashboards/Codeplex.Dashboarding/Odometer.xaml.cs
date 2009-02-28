@@ -29,6 +29,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -62,7 +63,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The type of update required
         /// </summary>
-        public enum Mode { 
+        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
+        public enum Mode
+        { 
+            /// <summary>
+            /// Preventative enumerand for possible serialization issues is this is ever serialized
+            /// </summary>
+            Error = 0,
+            
             /// <summary>
             /// Start from InitialValue and add one every Interval Seconds
             /// </summary>
@@ -92,8 +100,13 @@ namespace Codeplex.Dashboarding
         /// Used to specifc which digit within the Odometer the user wishes
         /// to manipulate when directly Incrementing or Decrementing
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         public enum IncrementDecrementDigit
         {
+            /// <summary>
+            /// Included to show obvious serialization proplems later
+            /// </summary>
+            Error= 0,
 
             /// <summary>
             /// Increment the value by 1, the control will automatically roll over if necessary

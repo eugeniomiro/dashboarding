@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -53,6 +54,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the face color from the color range
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         protected override void SetFaceColor()
         {
 
@@ -67,6 +69,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the needle color from the color range
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         protected override void SetNeedleColor()
         {
             ColorPoint c = NeedleColorRange.GetColor(Value);
@@ -118,25 +121,25 @@ namespace Codeplex.Dashboarding
         /// Determines the angle of the needle based on the mouse 
         /// position.
         /// </summary>
-        /// <param name="_currentPoint">Mouse position</param>
+        /// <param name="currentPoint">Mouse position</param>
         /// <returns>The angle in degrees</returns>
-        protected override double CalculateRotationAngle(Point _currentPoint)
+        protected override double CalculateRotationAngle(Point currentPoint)
         {
 
-            double opposite = _currentPoint.Y - (172 / 2);
-            double adjacent = _currentPoint.X - (ActualWidth / 2);
+            double opposite = currentPoint.Y - (172 / 2);
+            double adjacent = currentPoint.X - (ActualWidth / 2);
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
-            if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y <= (172 / 2))
+            if (currentPoint.X >= (ActualWidth / 2) && currentPoint.Y <= (172 / 2))
             {
                 angleInDegrees = 180 + angleInDegrees;
             }
-            else if (_currentPoint.X < (ActualWidth / 2) && _currentPoint.Y <= (172 / 2))
+            else if (currentPoint.X < (ActualWidth / 2) && currentPoint.Y <= (172 / 2))
             {
                 // already done
             }
-            else if (_currentPoint.X >= (ActualWidth / 2) && _currentPoint.Y > (172 / 2))
+            else if (currentPoint.X >= (ActualWidth / 2) && currentPoint.Y > (172 / 2))
             {
                 angleInDegrees = 180 + angleInDegrees;
             }
@@ -162,7 +165,7 @@ namespace Codeplex.Dashboarding
             SetFaceColor();
             SetNeedleColor();
 
-            ShowHandleIfBiDirectional();
+            ShowHandleIfBidirectional();
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
@@ -201,7 +204,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Shows the grab handle if theis control is bidirectional
         /// </summary>
-        private void ShowHandleIfBiDirectional()
+        private void ShowHandleIfBidirectional()
         {
             Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
 

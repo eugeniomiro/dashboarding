@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 
 namespace Codeplex.Dashboarding
@@ -83,6 +84,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy property for GridLine color
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "GridLine")]
         public static readonly DependencyProperty GridLineProperty =
             DependencyProperty.Register("GridLine",
                                 typeof(Color), typeof(PerformanceMonitor),
@@ -91,6 +93,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The color of the grid lines on the background of the graph
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "GridLine")]
         public Color GridLine
         {
             get { return (Color)GetValue(GridLineProperty); }
@@ -106,6 +109,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the PerformanceMonitor</param>
         /// <param name="args">old value and new value</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void GridLineColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
@@ -164,6 +168,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy property for GraphLine color
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty TextColorProperty =
             DependencyProperty.Register("TextColor",
                                 typeof(Color), typeof(PerformanceMonitor),
@@ -172,6 +177,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The color of the min / max text 
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color TextColor
         {
             get { return (Color)GetValue(TextColorProperty); }
@@ -187,6 +193,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the PerformanceMonitor</param>
         /// <param name="args">old value and new value</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
@@ -227,6 +234,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the PerformanceMonitor</param>
         /// <param name="args">old value and new value</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void GraphLineColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
@@ -335,6 +343,8 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The color of the grid lines on the background of the graph
         /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public List<double> HistoricalValues
         {
             get { return (List<double>)GetValue(HistoricalValuesProperty); }
@@ -372,8 +382,8 @@ namespace Codeplex.Dashboarding
         
 
 
-        private int _historicalMax = 0;
-        private int _historicalMin = 0;
+        private int _historicalMax;
+        private int _historicalMin;
 
         private List<double> _values = new List<double>();
 

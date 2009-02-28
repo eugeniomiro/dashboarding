@@ -24,12 +24,15 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
     /// <summary>
     /// A quarter of a circle dial that sweeps through 90 degrees upper left quadrant
     /// </summary>
+
+    [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "NorthWest")]
     public partial class Dial90NorthWest : Dial90
     {
 
@@ -47,16 +50,16 @@ namespace Codeplex.Dashboarding
         /// Determines the angle of the needle based on the mouse 
         /// position.
         /// </summary>
-        /// <param name="_currentPoint">Mouse position</param>
+        /// <param name="currentPoint">Mouse position</param>
         /// <returns>The angle in degrees</returns>
-        protected override double CalculateRotationAngle(Point _currentPoint)
+        protected override double CalculateRotationAngle(Point currentPoint)
         {
-            double opposite = _currentPoint.Y - ActualHeight;
-            double adjacent = _currentPoint.X - (ActualWidth );
+            double opposite = currentPoint.Y - ActualHeight;
+            double adjacent = currentPoint.X - (ActualWidth );
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
-            if (_currentPoint.X >= (ActualWidth ) && _currentPoint.Y <= ActualHeight)
+            if (currentPoint.X >= (ActualWidth ) && currentPoint.Y <= ActualHeight)
             {
                 angleInDegrees = 180 + angleInDegrees;
             }    

@@ -75,11 +75,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         private GradientStop _needleLowColorGradientStop;
 
-        /// <summary>
-        /// Displays the needle
-        /// </summary>
-        private Path _needlePath;
-
+    
       
 
         /// <summary>
@@ -106,8 +102,7 @@ namespace Codeplex.Dashboarding
             _faceLowColorGradientStop = ResourceRoot.FindName("_colourRangeEnd") as GradientStop;
             _needleHighColorGradientStop = ResourceRoot.FindName("_needleHighColour") as GradientStop;
             _needleLowColorGradientStop = ResourceRoot.FindName("_needleLowColour") as GradientStop;
-            _needlePath = ResourceRoot.FindName("path") as Path;
-            
+             
            
         }
 
@@ -179,7 +174,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Shows the grab handle if this control is bidirectional
         /// </summary>
-        protected void ShowHandleIfBiDirectional()
+        protected void ShowHandleIfBidirectional()
         {
             Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
 
@@ -195,7 +190,7 @@ namespace Codeplex.Dashboarding
             SetFaceColor();
             SetNeedleColor();
 
-            ShowHandleIfBiDirectional();
+            ShowHandleIfBidirectional();
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {

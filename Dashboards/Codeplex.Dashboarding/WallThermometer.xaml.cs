@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -107,12 +108,15 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy property for out MercuryColor property
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public static readonly DependencyProperty MercuryColorRangeProperty =
             DependencyProperty.Register("MercuryColorRange", typeof(ColorPointCollection), typeof(WallThermometer), new PropertyMetadata(new PropertyChangedCallback(MercuryColorRangeChanged)));
 
         /// <summary>
         /// The point in the range (0..100) where this color takes effect
         /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public ColorPointCollection MercuryColorRange
         {
             get
@@ -131,6 +135,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         private static void MercuryColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             WallThermometer instance = dependancy as WallThermometer;
