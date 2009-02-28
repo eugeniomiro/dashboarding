@@ -1,187 +1,229 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Codeplex.Dashboarding.BinaryDashboard" Collapsed="true">
-    <Position X="9.75" Y="4" Width="1.5" />
+  <Class Name="Codeplex.Dashboarding.BidirectionalDashboard" Collapsed="true">
+    <Position X="25.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AGAAABAAAIAAAAgAAAAEAAgAIAAAAAAAAAkAAIAAIAA=</HashCode>
-      <FileName>BinaryDashboard.cs</FileName>
+      <HashCode>RAIAAAAAEAQQQUSAAgCAIIAAAAEAABAAAAAkEAAAQAA=</HashCode>
+      <FileName>BidirectionalDashboard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.WallThermometer" Collapsed="true">
-    <Position X="14.5" Y="4" Width="1.5" />
+    <Position X="27.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAACAAAAAAQCAAAAAACQCAAEIAAAAAIAEQAAAAJA=</HashCode>
       <FileName>WallThermometer.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Codeplex.Dashboarding.Dashboard" Collapsed="true">
-    <Position X="14.5" Y="2.5" Width="1.5" />
+  <Class Name="Codeplex.Dashboarding.BidirectionalDial" Collapsed="true">
+    <Position X="23.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAgAACABAQAAAAAIAAQQAQAgGBAAAEAAAAggAAACAA=</HashCode>
+      <HashCode>CAQAAMCAAAAAgQQJwgACAEQCAAgIABAEAAAAEAAAAAA=</HashCode>
+      <FileName>BiDirectionalDial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.BinaryDashboard" Collapsed="true">
+    <Position X="34.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGAAABAAAIAAAAgAAAAEAAgAIAAAAAAAAAkAAIAAIAA=</HashCode>
+      <FileName>BinaryDashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.ColorPoint" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAhAAAAAgAAAAAAIAAwAAAAgAAAAAAgAAAgQQAAAAA=</HashCode>
+      <FileName>ColorPoint.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Codeplex.Dashboarding.ColorPointCollection" Collapsed="true">
+    <Position X="41.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>ColorPointCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Dashboard" Collapsed="true">
+    <Position X="28.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAACABAQAAAAAIAAQQAQAgGBACIEQAAAggAAACAA=</HashCode>
       <FileName>Dashboard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Codeplex.Dashboarding.DashboardValueChangedEventArgs" Collapsed="true">
+    <Position X="43.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Codeplex.Dashboarding.DecadeVuMeter" Collapsed="true">
-    <Position X="12.75" Y="4" Width="1.5" />
+    <Position X="32" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAEAAAAAAAAEAAAAAASABQCAIAAAAAAIIAAAAAEAEA=</HashCode>
       <FileName>DecadeVuMeter.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial180" Collapsed="true">
-    <Position X="13.75" Y="6.75" Width="1.5" />
+    <Position X="22.25" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQABAAAABAEAIAAAAAAAAA=</HashCode>
+      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQABAAQABAEAIAAAAAAAAA=</HashCode>
       <FileName>Dial180.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial360" Collapsed="true">
-    <Position X="17.25" Y="6.75" Width="1.5" />
+    <Position X="24.5" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQAAAAIABAEAIAAAAAAAAA=</HashCode>
+      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQAAAAYABAEAIAAAAAAAAA=</HashCode>
       <FileName>Dial360.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Codeplex.Dashboarding.DiamondSlider" Collapsed="true">
-    <Position X="20.75" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAiACAAAAJAAAQAAgAAAAYAAAAAEQAAAIAAUBAIAAA=</HashCode>
-      <FileName>DiamondSlider.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.FiveStarRanking" Collapsed="true">
-    <Position X="22.5" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AADAAAAAAAAQAAQCggAAAAQAAAAAAAEACIAAEAABAAA=</HashCode>
-      <FileName>FiveStarRanking.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.MatrixLedMarquee" Collapsed="true">
-    <Position X="24.25" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABoAAAwAIIAgQMBAMEASAAUFAIAAEAAhNEASCGEgAEA=</HashCode>
-      <FileName>MatrixLedMarquee.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.Odometer" Collapsed="true">
-    <Position X="22.25" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAQQABIADAAgIAAAKICEAEEAAQAAIAAAAIQAAgAAQEA=</HashCode>
-      <FileName>Odometer.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.PerformanceMonitor" Collapsed="true">
-    <Position X="16.25" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAFgAYCAAgAABSAKgAAhAgSCAQQBAAYAENBAwAADCDA=</HashCode>
-      <FileName>PerformanceMonitor.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.PlainThermometer" Collapsed="true">
-    <Position X="17.25" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAQQJggAAAGQCAIAIAAAAgIAAEAAAAJA=</HashCode>
-      <FileName>PlainThermometer.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.ProgressBar" Collapsed="true">
-    <Position X="19" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAQAEAAAEAAQAChAAAAQAQIAQAQQAAIAAEAAAAAA=</HashCode>
-      <FileName>ProgressBar.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.RoundLed" Collapsed="true">
-    <Position X="11.75" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
-      <FileName>RoundLed.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.SixteenSegmentLED" Collapsed="true">
-    <Position X="20.25" Y="4" Width="1.5" />
-    <InheritanceLine Type="Codeplex.Dashboarding.PlatformIndependentDashboard" ManuallyRouted="true">
-      <Path>
-        <Point X="19" Y="1.191" />
-        <Point X="19" Y="1.906" />
-        <Point X="21" Y="1.906" />
-        <Point X="21" Y="4" />
-      </Path>
-    </InheritanceLine>
-    <TypeIdentifier>
-      <HashCode>BACQgAAAgAIAAAAAAAQSAAQAAoAAAAAAYIAAAAEAAEA=</HashCode>
-      <FileName>SixteenSegmentLED.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.TickCross" Collapsed="true">
-    <Position X="10" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
-      <FileName>TickCross.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.BidirectionalDashboard" Collapsed="true">
-    <Position X="18.25" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAIAAAAAEAQQQUSAAgCAIIAAAAEAABAAAAAkEAAAQAA=</HashCode>
-      <FileName>BidirectionalDashboard.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.BidirectionalDial" Collapsed="true">
-    <Position X="15.5" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>CAQAAMCAAAAAgQQJwgACAEQCAAgIABAEAAAAEAAAAAA=</HashCode>
-      <FileName>BiDirectionalDial.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Codeplex.Dashboarding.Knob360" Collapsed="true">
-    <Position X="15.5" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQAAAAAABAEAIAAAAAAAAA=</HashCode>
-      <FileName>Knob360.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Codeplex.Dashboarding.Dial90" Collapsed="true">
-    <Position X="19" Y="6.75" Width="1.5" />
+    <Position X="26.5" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CA4AAMAAAAABAACAQAACAAQABCAAABAgAAAAABAAgEA=</HashCode>
+      <HashCode>CA4AAMAAAAABAACAQAACAAQABCAQABAgAAAAABAAgEA=</HashCode>
       <FileName>Dial90.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial90NorthEast" Collapsed="true">
-    <Position X="18" Y="8.25" Width="1.5" />
+    <Position X="23.25" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
       <FileName>Dial90NorthEast.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial90NorthWest" Collapsed="true">
-    <Position X="22.5" Y="8.25" Width="1.5" />
+    <Position X="25.5" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
       <FileName>Dial90NorthWest.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial90SouthEast" Collapsed="true">
-    <Position X="15.75" Y="8.25" Width="1.5" />
+    <Position X="27.75" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
       <FileName>Dial90SouthEast.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Codeplex.Dashboarding.Dial90SouthWest" Collapsed="true">
-    <Position X="20.25" Y="8.25" Width="1.5" />
+    <Position X="30" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
       <FileName>Dial90SouthWest.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Codeplex.Dashboarding.PlatformIndependentDashboard" Collapsed="true">
-    <Position X="18.25" Y="0.5" Width="1.5" />
+  <Class Name="Codeplex.Dashboarding.DiamondSlider" Collapsed="true">
+    <Position X="25.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAEQAAAAAgAAAAAAAAAAAAAAAAAAAAAIAAAAAgAAA=</HashCode>
+      <HashCode>EAAiACAAAAJAAAQAAgAAAAYAAAAAEQAAAIAAUBAIAAA=</HashCode>
+      <FileName>DiamondSlider.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.FiveStarRanking" Collapsed="true">
+    <Position X="30" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADAAAAAAAAQAAQCggAAAAQAAAAQAAEACIAAEAABAAA=</HashCode>
+      <FileName>FiveStarRanking.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Knob360" Collapsed="true">
+    <Position X="20" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAMAAAAAAAAAAQAAAAAQAAAAQABAEAIAAAAAAAAA=</HashCode>
+      <FileName>Knob360.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.MatrixLedCharacter" Collapsed="true">
+    <Position X="39.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAECAAAAAAAABAAABSAAABAIABAAAAOIAACABAAEA=</HashCode>
+      <FileName>MatrixLedCharacter.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.MatrixScrollEventArgs" Collapsed="true">
+    <Position X="39.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MatrixLedCharacter.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.MatrixLedCharacterDefintions" Collapsed="true">
+    <Position X="41.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>MatrixLedCharacterDefintions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.MatrixLedMarquee" Collapsed="true">
+    <Position X="43.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABoAAAwAIIAgQMBAMEASAAUFAIAAEAAhNEASCGEgAEA=</HashCode>
+      <FileName>MatrixLedMarquee.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.Odometer" Collapsed="true">
+    <Position X="24.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQQABIADAAgIAAAKICEAEEAAQAAIAAAAIQAAgAAQEA=</HashCode>
+      <FileName>Odometer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.OdometerDigit" Collapsed="true">
+    <Position X="30" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAIAAAABAAAAIAAAAAEAAAgCqAACAIAAAAAAAAk=</HashCode>
+      <FileName>OdometerDigit.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.PerformanceMonitor" Collapsed="true">
+    <Position X="29.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFgAYCAAgAABSAKgAAhAgSCAQQBAAYAENBAwAADCDA=</HashCode>
+      <FileName>PerformanceMonitor.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.PlainThermometer" Collapsed="true">
+    <Position X="21.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAQQJggAAAGQCAIAYAAAAgIAAEAAAAJA=</HashCode>
+      <FileName>PlainThermometer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.PlatformIndependentDashboard" Collapsed="true">
+    <Position X="27.5" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAEQAAACAgAAAAAAAAAgAAAAAAAAAAAIACAAAgAAA=</HashCode>
       <FileName>PlatformIndependentDashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.ProgressBar" Collapsed="true">
+    <Position X="27.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAQAEAAAEAAQAChAAAAQAQIAQAQQAAIAAEAAAAAA=</HashCode>
+      <FileName>ProgressBar.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.RoundLed" Collapsed="true">
+    <Position X="35.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>RoundLed.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.SixteenSegmentLED" Collapsed="true">
+    <Position X="26.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACQgAAAgAIAAAAAAAQSAAQAAoAAAAAAYIAAAAEBAEA=</HashCode>
+      <FileName>SixteenSegmentLED.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codeplex.Dashboarding.TickCross" Collapsed="true">
+    <Position X="33.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>TickCross.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
