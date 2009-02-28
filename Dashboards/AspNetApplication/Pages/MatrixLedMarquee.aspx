@@ -83,19 +83,19 @@ You can also specify the interval between steps for the anination using the
 <p>The three modes that the <code>MatrixLedMarquee</code> supports are:</p>
 <ul>
 <li>SingleShot</li>
-<li>Continious</li>
+<li>Continuous</li>
 <li>Motionless</li>
 </ul>
 
 <p><b><i>SingleShot</i></b>: The text is scrolled once, whe the last digit is fully rendered on the 
 panel, the <code>MatrixLedMarquee</code> will raise an event allowing you to set the next piece of text. </p>
 
-<p><b><i>Continious</i></b>: The text is scrolled, when it comes to an end the text is started again.</p>
+<p><b><i>Continuous</i></b>: The text is scrolled, when it comes to an end the text is started again.</p>
 
 <p><b><i>Motionless</i></b>: The Text is not scrolled, it is rendered in place and alligned according to
 the TextAlign property. </p>
 
-<p>For SingleShot and Continious modes: the new text goes straight on after the 
+<p>For SingleShot and Continuous modes: the new text goes straight on after the 
 previous one, it is up to the caller to pad with spaces as required.</p>
 
 </td>
@@ -215,9 +215,9 @@ on load and then the next one after each message finishes.</p>
 <tr>
 <br />
 <td colspan="2">
-<h4>Continious</h4>
+<h4>Continuous</h4>
 
-<p>Continious operation is as simple as setting the text and the mode to Continious. Note that
+<p>Continuous operation is as simple as setting the text and the mode to Continious. Note that
 the Text defintion has an space at the end to sperate the next copy from the previous one</p>
 
 </td>
@@ -231,7 +231,7 @@ the Text defintion has an space at the end to sperate the next copy from the pre
             <span class="kwrd">&lt;</span><span class="html">db:MatrixLedMarquee</span> 
                 <span class="attr">Panels</span><span class="kwrd">="10"</span> 
                 <span class="attr">TimerDuration</span><span class="kwrd">="00:00:0.1"</span>                             
-                <span class="attr">Mode</span><span class="kwrd">="Continious"</span>
+                <span class="attr">Mode</span><span class="kwrd">="Continuous"</span>
                 <span class="attr">Text</span><span class="kwrd">="David Black "</span><span class="kwrd">/&gt;</span></pre>
             </td>
 <td>

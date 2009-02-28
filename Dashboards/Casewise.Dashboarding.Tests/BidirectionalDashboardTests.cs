@@ -240,7 +240,7 @@ namespace Casewise.Dashboarding.Tests
             d.ButtonDown(start);
             d.MoveToPoint(end);
             d.AnimateCalled = false;
-            d.MouseUp();
+            d.MouseUpAction();
             Assert.IsTrue(d.AnimateCalled);
         }
 
@@ -255,7 +255,7 @@ namespace Casewise.Dashboarding.Tests
             d.ButtonDown(start);
             d.MoveToPoint(end);
             d.HideGrabHandleCalled = false;
-            d.MouseUp();
+            d.MouseUpAction();
             Assert.IsTrue(d.HideGrabHandleCalled);
         }
 
@@ -272,7 +272,7 @@ namespace Casewise.Dashboarding.Tests
             d.IsBidirectional = true;
             d.ButtonDown(start);
             d.MoveToPoint(end);
-            d.MouseUp();
+            d.MouseUpAction();
             Assert.IsFalse(d.Grabbed);
         }
 

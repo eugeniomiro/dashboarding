@@ -142,7 +142,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
             TimerDuration="00:00:0.1"
             LedOnColor="#FF00FF00"
             LedOffColor="#2200FF00"
-            Mode="Continious"                             
+            Mode="Continuous"                             
             Text="Welcome to the Silverlight _and_ WPF  Dashboard and gauges project. This MatrixLedMarquee control is one of many in the growing library hosted at Codeplex."
         />
 

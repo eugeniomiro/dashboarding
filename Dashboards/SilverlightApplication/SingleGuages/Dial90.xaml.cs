@@ -16,7 +16,7 @@ namespace SilverlightApplication.SingleGuages
     {
         private Random _random = new Random();
         Storyboard _timer = new Storyboard();
-        private IDictionary<string, string> _parameters;
+
        
 
         public Dial90()

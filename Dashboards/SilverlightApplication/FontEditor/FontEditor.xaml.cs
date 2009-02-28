@@ -47,7 +47,6 @@ namespace SilverlightApplication.FontEditor
                     );
                 sb.AppendLine();
             }
-            int t = 0;
             _tb.Text = sb.ToString();
             _codePopup.IsOpen = true;
             

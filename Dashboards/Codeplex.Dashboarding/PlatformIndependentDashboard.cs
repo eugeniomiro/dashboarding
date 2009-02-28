@@ -38,7 +38,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Gets a PointAnimation from the children of a storyboard by name
         /// </summary>
-        /// <param name="storyBoard">The story board.</param>
+        /// <param name="storyboard">The story board.</param>
         /// <param name="name">The name of the point animation.</param>
         /// <returns></returns>
         protected static PointAnimation GetChildPointAnimation(Storyboard storyboard, string name)
@@ -64,7 +64,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Gets a DoubleAnimation from the children of a storyboard by name
         /// </summary>
-        /// <param name="storyBoard">The story board.</param>
+        /// <param name="storyboard">The story board.</param>
         /// <param name="name">The name of the point animation.</param>
         /// <returns></returns>
         protected static DoubleAnimation GetChildDoubleAnimation(Storyboard storyboard, string name)
@@ -89,7 +89,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Gets a DoubleAnimation from the children of a storyboard by name
         /// </summary>
-        /// <param name="storyBoard">The story board.</param>
+        /// <param name="storyboard">The story board.</param>
         /// <param name="name">The name of the point animation.</param>
         /// <returns></returns>
         protected static DoubleAnimationUsingKeyFrames GetChildDoubleAnimationUsingKeyFrames(Storyboard storyboard, string name)

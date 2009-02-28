@@ -22,7 +22,6 @@
 
 #endregion
 
-
 using System;
 using System.Net;
 using System.Windows;
@@ -50,12 +49,12 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public class ColorPoint: Control, INotifyPropertyChanged
     {
+
         /// <summary>
-        /// Constructs a ColorPoint
+        /// Initializes a new instance of the <see cref="ColorPoint"/> class.
         /// </summary>
         public ColorPoint()
         {
-
         }
 
         #region HiColor property
@@ -68,9 +67,11 @@ namespace Codeplex.Dashboarding
         public static readonly DependencyProperty HiColorProperty =
             DependencyProperty.Register("HiColor", typeof(Color), typeof(ColorPoint), new PropertyMetadata(new PropertyChangedCallback(HiColorPropertyChanged)));
 
+
         /// <summary>
-        /// Hi colour in the blend
+        /// Gets or sets the color of the hi point in the blend.
         /// </summary>
+        /// <value>The color of the hi.</value>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Hi")]
         public Color HiColor
@@ -99,7 +100,6 @@ namespace Codeplex.Dashboarding
             }
         }
 
-
         #endregion
 
         #region LowColor property
@@ -112,7 +112,7 @@ namespace Codeplex.Dashboarding
             DependencyProperty.Register("LowColor", typeof(Color), typeof(ColorPoint), new PropertyMetadata(new PropertyChangedCallback(LowColorPropertyChanged)));
 
         /// <summary>
-        /// low colour in the blend
+        /// Gets or sets the low colour in the blend
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
         public Color LowColor
@@ -165,8 +165,7 @@ namespace Codeplex.Dashboarding
             }
             set
             {
-                SetValue(ValueProperty, value);
-           
+                SetValue(ValueProperty, value);      
             }
         }
 

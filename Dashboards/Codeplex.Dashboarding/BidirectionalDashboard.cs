@@ -1,263 +1,169 @@
-﻿
-#region Copyright 2008 David Black
+﻿//-----------------------------------------------------------------------
+// <copyright file="BidirectionalDashboard.cs" company="David Black">
+//      Copyright 2008 David Black
+//  
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//     
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 
-/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-#endregion
-
-using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Diagnostics.CodeAnalysis;
-
-
-
-[module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "Codeplex.Dashboarding", MessageId = "Codeplex")]
-[module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "Codeplex.Dashboarding", MessageId = "Dashboarding")]
+[module: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "Codeplex.Dashboarding", MessageId = "Codeplex", Justification = "This is a trademark")]
+[module: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "Codeplex.Dashboarding", MessageId = "Dashboarding", Justification = "This is the project name")]
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Input;
+
     /// <summary>
     /// A bidirectionalDashboard can both display and set values. Increasingly
     /// analysts claim that showing data is not enough and that interaction is key.
-    /// 
     /// </summary>
     public abstract class BidirectionalDashboard : Dashboard
     {
-
-        #region private members
-
-        /// <summary>
-        /// Our grab handle 
-        /// </summary>
-        internal FrameworkElement GrabHandle { get; set; }
-
-        #endregion
-
-        #region protected members
-
-
-        /// <summary>
-        /// THe handle is grabbed, child controls should not render other than on
-        /// mouse move etc
-        /// </summary>
-        protected bool IsGrabbed { get; set; }
-
-        /// <summary>
-        /// Current control Normalized value while dragging
-        /// </summary>
-        protected double CurrentNormalizedValue { get; set; }
-
-        /// <summary>
-        /// The current value of the drap point in the range Minimum <= CurrentValue <= Maximum
-        /// </summary>
-        public double CurrentValue 
-        {
-            get
-            {
-                return Minimum + ((Maximum - Minimum) * CurrentNormalizedValue);
-            }
-        }
-
-        /// <summary>
-        /// Manipulates the CurrentNormalizedValue to move the position by a number of screen pixels
-        /// </summary>
-        /// <param name="offset">Offset in pixels</param>
-        protected void MoveCurrentPositionByOffset(double offset)
-        {
-            CurrentNormalizedValue = NormalizedValue + (offset / 100);
-            if (CurrentNormalizedValue > 1)
-            {
-                CurrentNormalizedValue = 1;
-            }
-            if (CurrentNormalizedValue < 0)
-            {
-                CurrentNormalizedValue = 0;
-            }
-        }
-
-        #endregion
-
-
-        /// <summary>
-        /// Constrcts a BidirectionalDashboard, which is mostly about grabbing the mouse
-        /// enter and leave events and rendering the focus handle is necessary
-        /// </summary>
-        protected BidirectionalDashboard()
-        {
-            IsGrabbed = false;
-        }
-
-        /// <summary>
-        /// Register the control that the grab action works upon
-        /// </summary>
-        /// <param name="target"></param>
-        protected void RegisterGrabHandle(FrameworkElement target)
-        {
-            GrabHandle = target;
-            Initialize();
-        }
-
-        private bool _eventsRegistered;
-
-        private void Initialize()
-        {
-            if (GrabHandle != null && IsBidirectional && !_eventsRegistered)
-            {
-                GrabHandle.Cursor = (IsBidirectional) ? Cursors.Hand: Cursors.None;
-                GrabHandle.MouseEnter += new MouseEventHandler(BidirectionalDashboard_MouseEnter);
-                GrabHandle.MouseLeave += new MouseEventHandler(GrabHandle_MouseLeave);
-                GrabHandle.MouseLeftButtonUp += new MouseButtonEventHandler(BidirectionalDashboard_MouseLeftButtonUp);
-                GrabHandle.MouseLeftButtonDown += new MouseButtonEventHandler(target_MouseLeftButtonDown);
-                GrabHandle.MouseMove += new MouseEventHandler(GrabHandle_MouseMove);
-                _eventsRegistered = true;
-            }
-            else if (GrabHandle != null && !IsBidirectional && _eventsRegistered)
-            {
-                GrabHandle.Cursor = (IsBidirectional) ? Cursors.Hand : Cursors.None;
-                GrabHandle.MouseEnter -= new MouseEventHandler(BidirectionalDashboard_MouseEnter);
-                GrabHandle.MouseLeave -= new MouseEventHandler(GrabHandle_MouseLeave);
-                GrabHandle.MouseLeftButtonUp -= new MouseButtonEventHandler(BidirectionalDashboard_MouseLeftButtonUp);
-                GrabHandle.MouseLeftButtonDown -= new MouseButtonEventHandler(target_MouseLeftButtonDown);
-                GrabHandle.MouseMove -= new MouseEventHandler(GrabHandle_MouseMove);
-                _eventsRegistered = false;
-            }
-        }
-
-        
-
-
-
-
-        #region IsBidirectional property
+        #region public fields
 
         /// <summary>
         /// Identifies the IsBidirectional attached property
         /// </summary>
         public static readonly DependencyProperty IsBidirectionalProperty =
-            DependencyProperty.Register("IsBidirectional", typeof(Boolean), typeof(BidirectionalDashboard), new PropertyMetadata(new PropertyChangedCallback(IsBidirectionalPropertyChanged)));
+            DependencyProperty.Register("IsBidirectional", typeof(bool), typeof(BidirectionalDashboard), new PropertyMetadata(new PropertyChangedCallback(IsBidirectionalPropertyChanged)));
+
+        #endregion
+ 
+        #region private fields
 
         /// <summary>
-        /// Gets or sets a value to determin if this dashboard is bidrectional. IsBiderectional == false means that
-        /// the control shows values. IsBidirectional == true means that the user can interact with the control
-        /// to ser values.
+        /// The point where the mouse went down
         /// </summary>
-        public Boolean IsBidirectional
-        {
-            get
-            {
-                Boolean res = (Boolean)GetValue(IsBidirectionalProperty);
-                return res;
-            }
-            set
-            {
-                SetValue(IsBidirectionalProperty, value);
-                Initialize();
-            }
-        }
-
-
+        private Point grabOrigin;
 
         /// <summary>
-        /// The value of the IsBidirectional property has changed. We call animate to allow any focus
-        /// handle to be rendered
+        /// Are the events registered in theis state?
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void IsBidirectionalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
-            if (instance != null)
-            {
-                instance.OnPropertyChanged("IsBidirectional");
-                instance.Initialize();
-                instance.Animate();
-            }
-        }
-
+        private bool eventsRegistered;
 
         #endregion
 
-        #region mouse enter and leave
-
         /// <summary>
-        /// Mouse has entered the control if we are showing focus and we are bidirectional
-        /// we call animate to get the child control to render
+        /// Initializes a new instance of the <see cref="BidirectionalDashboard"/> class, 
+        /// which is mostly about grabbing the mouse enter and leave events 
+        /// and rendering the focus handle is necessary
         /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">eventargs</param>
-        internal void BidirectionalDashboard_MouseEnter(object sender, MouseEventArgs e)
+        protected BidirectionalDashboard()
         {
-            if (IsBidirectional )
+            this.IsGrabbed = false;
+        }
+
+        #region public properties
+       
+        /// <summary>
+        /// Gets  the current value of the drag point in the range 
+        /// Minimum &lt;= CurrentValue &lt;= Maximum
+        /// </summary>
+        /// <value>The current value.</value>
+        public double CurrentValue
+        {
+            get
             {
-                ShowGrabHandle();
+                return this.Minimum + ((this.Maximum - this.Minimum) * this.CurrentNormalizedValue);
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this dashboard is bidrectional. IsBiderectional == false means that
+        /// the control shows values. IsBidirectional == true means that the user can interact with the control
+        /// to ser values.
+        /// </summary>
+        public bool IsBidirectional
+        {
+            get
+            {
+                bool res = (bool)GetValue(IsBidirectionalProperty);
+                return res;
+            }
 
-       
-        private Point _grabOrigin;
+            set
+            {
+                SetValue(IsBidirectionalProperty, value);
+                this.SetGrabHandleEventsForGrabState();
+            }
+        }
+
+        #endregion
+ 
+        #region internal Properties
+        /// <summary>
+        /// Gets or sets the grab handle.
+        /// </summary>
+        /// <value>The grab handle.</value>
+        internal FrameworkElement GrabHandle { get; set; }
+        #endregion
+
+        #region protected properties
 
         /// <summary>
-        /// The mouse has been clicked
+        /// Gets or sets a value indicating whether the handle is grabbed, child 
+        /// controls should not render other than on mouse move etc
         /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">event args</param>
-        void target_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        /// <value>
+        ///      <c>true</c> if this instance is grabbed; otherwise, <c>false</c>.
+        /// </value>
+        protected bool IsGrabbed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current normalized value while dragging.
+        /// </summary>
+        /// <value>The current normalized value.</value>
+        protected double CurrentNormalizedValue { get; set; }
+
+        #endregion
+
+        #region internal methods
+
+        /// <summary>
+        /// Handles the MouseEnter event of the BidirectionalDashboard control.
+        /// If we are showing focus and we are bidirectional
+        /// we call animate to get the child control to render
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
+        internal void BidirectionalDashboard_MouseEnter(object sender, MouseEventArgs e)
         {
-            ButtonDown(e.GetPosition(this));
+            if (this.IsBidirectional)
+            {
+                this.ShowGrabHandle();
+            }
         }
 
         /// <summary>
-        /// Left button down exposed here for unit testing
+        /// Button down exposed here for unit testing.
         /// </summary>
-        /// <param name="at"></param>
-         internal void ButtonDown(Point at)
-         {
-             IsGrabbed = true;
-             CurrentNormalizedValue = NormalizedValue;
-             if (GrabHandle != null)
-             {
-                 GrabHandle.CaptureMouse();
-             }
-             _grabOrigin = at;
-             // user may click-release-click on the grab handle, no mouse in event occurs so we show focus here too
-             ShowGrabHandle();
-         }
-
-        /// <summary>
-        /// Mouse has moved pass on the origin and current position
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GrabHandle_MouseMove(object sender, MouseEventArgs e)
+        /// <param name="at">The location of the ButtonDown</param>
+        internal void ButtonDown(Point at)
         {
-            Point p = e.GetPosition(this);
+            this.IsGrabbed = true;
+            this.CurrentNormalizedValue = this.NormalizedValue;
+            if (this.GrabHandle != null)
+            {
+                this.GrabHandle.CaptureMouse();
+            }
 
-            MoveToPoint(p);
+            this.grabOrigin = at;
+
+            // user may click-release-click on the grab handle, no mouse in event occurs 
+            // so we show focus here too
+            this.ShowGrabHandle();
         }
 
         /// <summary>
@@ -266,57 +172,79 @@ namespace Codeplex.Dashboarding
         /// <param name="p">THe mouse point</param>
         internal void MoveToPoint(Point p)
         {
-            if (IsBidirectional && IsGrabbed)
+            if (this.IsBidirectional && this.IsGrabbed)
             {
-                OnMouseGrabHandleMove(_grabOrigin, p);
+                this.OnMouseGrabHandleMove(this.grabOrigin, p);
             }
         }
-        
-
 
         /// <summary>
-        /// Button goes up if we are grabbing we do te OnSetValueCall
+        /// Mouse is up (internal for unit-tests)
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-         void BidirectionalDashboard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        internal void MouseUpAction()
         {
-            MouseUp();
+            if (this.IsGrabbed)
+            {
+                Value = this.CurrentValue;
+                this.HideGrabHandle();
+                if (this.GrabHandle != null)
+                {
+                    this.GrabHandle.ReleaseMouseCapture();
+                }
+
+                Animate();
+            }
+            else
+            {
+                Animate();
+            }
+
+            this.IsGrabbed = false;
         }
 
         /// <summary>
-        /// Mouse is up internal for unit-tests
+        /// The mouse has left the control if there is no grab then remove the focus handle
         /// </summary>
-         internal void MouseUp()
-         {
-             if (IsGrabbed)
-             {
-                 Value = CurrentValue;
-                 HideGrabHandle();
-                 if (GrabHandle != null)
-                 {
-                     GrabHandle.ReleaseMouseCapture();
-                 }
-                 Animate();
-             }
-             else
-             {
-                 Animate();
-             }
-             IsGrabbed = false;
-         }
-
-        /// <summary>
-        /// THe mouse has left the control if there is no grab then remove the focus handle
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">Event args</param>
+        /// <param name="sender">The initiator of the event</param>
+        /// <param name="e">Mouse event args</param>
         internal void GrabHandle_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (!IsGrabbed && IsBidirectional)
+            if (!this.IsGrabbed && this.IsBidirectional)
             {
-                HideGrabHandle();
+                this.HideGrabHandle();
             }
+        }
+
+        #endregion
+
+        #region protected methods
+        
+        /// <summary>
+        /// Manipulates the CurrentNormalizedValue to move the position by a number of screen pixels
+        /// </summary>
+        /// <param name="offset">Offset in pixels</param>
+        protected void MoveCurrentPositionByOffset(double offset)
+        {
+            this.CurrentNormalizedValue = this.NormalizedValue + (offset / 100);
+            if (this.CurrentNormalizedValue > 1)
+            {
+                this.CurrentNormalizedValue = 1;
+            }
+
+            if (this.CurrentNormalizedValue < 0)
+            {
+                this.CurrentNormalizedValue = 0;
+            }
+        }
+
+        /// <summary>
+        /// Register the control that the grab action works upon
+        /// </summary>
+        /// <param name="target">The FrameWorkElement representing the Grab handle</param>
+        protected void RegisterGrabHandle(FrameworkElement target)
+        {
+            this.GrabHandle = target;
+            this.SetGrabHandleEventsForGrabState();
         }
 
         /// <summary>
@@ -332,8 +260,7 @@ namespace Codeplex.Dashboarding
         protected virtual void HideGrabHandle()
         {
         }
-
-       
+     
         /// <summary>
         /// We have a mouse down and move event, we pass the point where the original click happened
         /// and the current point
@@ -342,13 +269,90 @@ namespace Codeplex.Dashboarding
         /// <param name="currentPosition">Where we are now</param>
         protected virtual void OnMouseGrabHandleMove(Point mouseDownPosition, Point currentPosition)
         {
-           
         }
 
         #endregion
 
+        #region private methods
+
+        /// <summary>
+        /// The value of the IsBidirectional property has changed. We call animate to allow any focus
+        /// handle to be rendered
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">The property changed event args</param>
+        private static void IsBidirectionalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
+            if (instance != null)
+            {
+                instance.OnPropertyChanged("IsBidirectional");
+                instance.SetGrabHandleEventsForGrabState();
+                instance.Animate();
+            }
+        }
+
+        /// <summary>
+        /// Handles the MouseLeftButtonUp event of the BidirectionalDashboard control. If we 
+        /// are grabbing we do the MouseUp handling 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
+        private void BidirectionalDashboard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.MouseUpAction();
+        }
+ 
+        /// <summary>
+        /// Handles the MouseLeftButtonDown event of the target control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
+        private void Target_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.ButtonDown(e.GetPosition(this));
+        }
+
+        /// <summary>
+        /// Handles the MouseMove event of the GrabHandle control, 
+        /// pass on the origin and current position
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
+        private void GrabHandle_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point p = e.GetPosition(this);
+            this.MoveToPoint(p);
+        }
+
+        /// <summary>
+        /// Sets the state of the grab handle events for Gra control, hookem up if the
+        /// IsBidirectional flag is set on and removing em if it isnt.
+        /// </summary>
+        private void SetGrabHandleEventsForGrabState()
+        {
+            if (this.GrabHandle != null && this.IsBidirectional && !this.eventsRegistered)
+            {
+                this.GrabHandle.Cursor = this.IsBidirectional ? Cursors.Hand : Cursors.None;
+                this.GrabHandle.MouseEnter += new MouseEventHandler(this.BidirectionalDashboard_MouseEnter);
+                this.GrabHandle.MouseLeave += new MouseEventHandler(this.GrabHandle_MouseLeave);
+                this.GrabHandle.MouseLeftButtonUp += new MouseButtonEventHandler(this.BidirectionalDashboard_MouseLeftButtonUp);
+                this.GrabHandle.MouseLeftButtonDown += new MouseButtonEventHandler(this.Target_MouseLeftButtonDown);
+                this.GrabHandle.MouseMove += new MouseEventHandler(this.GrabHandle_MouseMove);
+                this.eventsRegistered = true;
+            }
+            else if (this.GrabHandle != null && !this.IsBidirectional && this.eventsRegistered)
+            {
+                this.GrabHandle.Cursor = this.IsBidirectional ? Cursors.Hand : Cursors.None;
+                this.GrabHandle.MouseEnter -= new MouseEventHandler(this.BidirectionalDashboard_MouseEnter);
+                this.GrabHandle.MouseLeave -= new MouseEventHandler(this.GrabHandle_MouseLeave);
+                this.GrabHandle.MouseLeftButtonUp -= new MouseButtonEventHandler(this.BidirectionalDashboard_MouseLeftButtonUp);
+                this.GrabHandle.MouseLeftButtonDown -= new MouseButtonEventHandler(this.Target_MouseLeftButtonDown);
+                this.GrabHandle.MouseMove -= new MouseEventHandler(this.GrabHandle_MouseMove);
+                this.eventsRegistered = false;
+            }
+        }
+
+        #endregion
     }
-
-
-
 }
