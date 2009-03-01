@@ -18,17 +18,11 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Diagnostics.CodeAnalysis;
 
 
 namespace Codeplex.Dashboarding
@@ -55,7 +49,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy Property for the InRankColor property
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty InRankColorProperty =
             DependencyProperty.Register("InRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(InRankColorPropertyChanged)));
 
@@ -65,7 +59,7 @@ namespace Codeplex.Dashboarding
         /// bad (red). Hearing a judge say Guilty to you would I think be 
         /// a red indicator for true :-)
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public ColorPoint InRankColor
         {
             get
@@ -76,7 +70,7 @@ namespace Codeplex.Dashboarding
             set
             {
                 SetValue(InRankColorProperty, value);
-                Animate();
+                this.Animate();
             }
         }
 
@@ -122,7 +116,7 @@ namespace Codeplex.Dashboarding
 
 
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty OutRankColorProperty =
             DependencyProperty.Register("OutRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(OutRankColorPropertyChanged)));
 
@@ -132,7 +126,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
 
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public ColorPoint OutRankColor
         {
             get
@@ -143,7 +137,7 @@ namespace Codeplex.Dashboarding
             set
             {
                 SetValue(OutRankColorProperty, value);
-                Animate();
+                this.Animate();
             }
         }
 
@@ -209,7 +203,7 @@ namespace Codeplex.Dashboarding
         {
             base.OnMouseGrabHandleMove(mouseDownPosition, currentPosition);
             MoveCurrentPositionByOffset(currentPosition.X - mouseDownPosition.X);
-            Animate();
+            this.Animate();
         }
 
 

@@ -109,7 +109,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the PerformanceMonitor</param>
         /// <param name="args">old value and new value</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         private static void GridLineColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
@@ -168,7 +168,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Dependancy property for GraphLine color
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty TextColorProperty =
             DependencyProperty.Register("TextColor",
                                 typeof(Color), typeof(PerformanceMonitor),
@@ -177,7 +177,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The color of the min / max text 
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public Color TextColor
         {
             get { return (Color)GetValue(TextColorProperty); }
@@ -193,7 +193,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the PerformanceMonitor</param>
         /// <param name="args">old value and new value</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
@@ -234,7 +234,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">the PerformanceMonitor</param>
         /// <param name="args">old value and new value</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         private static void GraphLineColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
@@ -343,7 +343,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The color of the grid lines on the background of the graph
         /// </summary>
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "This is bound to xaml and the colection does change!")]
         [SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public List<double> HistoricalValues
         {

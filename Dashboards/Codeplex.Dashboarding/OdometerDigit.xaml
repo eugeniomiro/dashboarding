@@ -6,7 +6,7 @@
    <Grid x:Name="LayoutRoot" Background="Black">
 	<Grid.Resources>
 		<Storyboard x:Name="_swipe" x:Key="_swipe">
-			<DoubleAnimation x:Name="_anim" From="-24" To="-56" BeginTime="00:00:00" Duration="00:00:00.10" Storyboard.TargetName="_image" Storyboard.TargetProperty="(Canvas.Top)">
+			<DoubleAnimation FillBehavior="Stop" x:Name="_anim" From="-24" To="-56" BeginTime="00:00:00" Duration="00:00:00.10" Storyboard.TargetName="_image" Storyboard.TargetProperty="(Canvas.Top)">
 			</DoubleAnimation>
 		</Storyboard>
 	</Grid.Resources>

@@ -58,6 +58,7 @@
     <Compile Include="ColorPoint.cs" />
     <Compile Include="ColorPointCollection.cs" />
     <Compile Include="Dashboard.cs" />
+    <Compile Include="DashboardValueChangedEventArgs.cs" />
     <Compile Include="Dial180.xaml.cs">
       <DependentUpon>Dial180.xaml</DependentUpon>
     </Compile>

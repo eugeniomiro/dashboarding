@@ -22,12 +22,8 @@
 #endregion
 
 using System;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
@@ -86,8 +82,8 @@ namespace Codeplex.Dashboarding
         {
             SetValue(FaceColorRangeProperty, new ColorPointCollection());
             SetValue(NeedleColorRangeProperty, new ColorPointCollection());
-            InitialiseRefs();
-            RegisterGrabHandle(_grabHandleCanvas);
+            this.InitialiseRefs();
+            RegisterGrabHandle(this._grabHandleCanvas);
         }
 
         /// <summary>
@@ -98,10 +94,10 @@ namespace Codeplex.Dashboarding
             _grabHandleCanvas = ResourceRoot.FindName("_grabHandle") as Canvas;
             _grabHighlightShape = ResourceRoot.FindName("_grabHighlight") as Shape;
             _textBlock = ResourceRoot.FindName("_text") as TextBlock;
-            _faceHighColorGradientStop = ResourceRoot.FindName("_colourRangeStart") as GradientStop;
-            _faceLowColorGradientStop = ResourceRoot.FindName("_colourRangeEnd") as GradientStop;
-            _needleHighColorGradientStop = ResourceRoot.FindName("_needleHighColour") as GradientStop;
-            _needleLowColorGradientStop = ResourceRoot.FindName("_needleLowColour") as GradientStop;
+            this._faceHighColorGradientStop = ResourceRoot.FindName("_colourRangeStart") as GradientStop;
+            this._faceLowColorGradientStop = ResourceRoot.FindName("_colourRangeEnd") as GradientStop;
+            this._needleHighColorGradientStop = ResourceRoot.FindName("_needleHighColour") as GradientStop;
+            this._needleLowColorGradientStop = ResourceRoot.FindName("_needleLowColour") as GradientStop;
              
            
         }

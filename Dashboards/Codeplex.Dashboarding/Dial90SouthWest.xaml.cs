@@ -22,9 +22,9 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Codeplex.Dashboarding
 {
@@ -56,8 +56,8 @@ namespace Codeplex.Dashboarding
         protected override double CalculateRotationAngle(Point currentPoint)
         {
 
-            double opposite = currentPoint.Y ;
-            double adjacent = (ActualWidth ) - (currentPoint.X );
+            double opposite = currentPoint.Y;
+            double adjacent = (ActualWidth ) - (currentPoint.X);
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
@@ -73,7 +73,7 @@ namespace Codeplex.Dashboarding
             _debug.Visibility = Visibility.Collapsed;
             _debug.Text = String.Format("{0:000}, {1:000}, {2:000},", angleInDegrees, currentPoint.X, currentPoint.Y);
 
-             return   angleInDegrees;
+             return angleInDegrees;
         }
 
 

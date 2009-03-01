@@ -1,42 +1,29 @@
-﻿
-#region Copyright 2008 David Black
-
-/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-#endregion
-
-
-using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Diagnostics.CodeAnalysis;
+﻿//-----------------------------------------------------------------------
+// <copyright file="BinaryDashboard.cs" company="David Black">
+//      Copyright 2008 David Black
+//  
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//     
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+
     /// <summary>
     /// Common base class for for all binary dashboard controls. Contains
     /// properties to set the binary value and the colors for true and false
@@ -44,35 +31,46 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public abstract class BinaryDashboard : Dashboard
     {
-        /// <summary>
-        /// Constructs a BinaryDashboard
-        /// </summary>
-        protected BinaryDashboard() :base()
-        {
-            
-            SetValue(TrueColorProperty, new ColorPoint { HiColor=Color.FromArgb(0xFF,0x6C,0xFA,0x20), LowColor = Color.FromArgb(0xFF,0xDC,0xF9,0xD4) });
-            SetValue(FalseColorProperty, new ColorPoint { HiColor = Color.FromArgb(0xFF, 0xFA, 0x65, 0x65), LowColor = Color.FromArgb(0xFF, 0xFC, 0xD5, 0xD5) });
-            PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(PropertyHasChanged);
-        }
-
-
-
-        #region TrueColor property
-
+        #region public static fields
         /// <summary>
         /// Identifies the TrueColor attached property
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty TrueColorProperty =
             DependencyProperty.Register("TrueColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(TrueColorPropertyChanged)));
 
         /// <summary>
-        /// The colour range for the boolean indicator when the underlying value is true.
+        /// Identifies our FalseColor attached property
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public static readonly DependencyProperty FalseColorProperty =
+            DependencyProperty.Register("FalseColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(FalseColorPropertyChanged)));
+
+        /// <summary>
+        /// Identifies the IsTrue attached property
+        /// </summary>
+        public static readonly DependencyProperty IsTrueProperty =
+            DependencyProperty.Register("IsTrue", typeof(bool), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(IsTruePropertyChanged)));
+        #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BinaryDashboard"/> class.
+        /// </summary>
+        protected BinaryDashboard() : base()
+        {   
+            SetValue(TrueColorProperty, new ColorPoint { HiColor = Color.FromArgb(0xFF, 0x6C, 0xFA, 0x20), LowColor = Color.FromArgb(0xFF, 0xDC, 0xF9, 0xD4) });
+            SetValue(FalseColorProperty, new ColorPoint { HiColor = Color.FromArgb(0xFF, 0xFA, 0x65, 0x65), LowColor = Color.FromArgb(0xFF, 0xFC, 0xD5, 0xD5) });
+            PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.PropertyHasChanged);
+        }
+
+        #region public properties
+        /// <summary>
+        /// Gets or sets the colour range for the boolean indicator when the underlying value is true.
         /// Note in some instances (in english) true is good (green) in some circumstances
         /// bad (red). Hearing a judge say Guilty to you would I think be 
         /// a red indicator for true :-)
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public ColorPoint TrueColor
         {
             get
@@ -80,45 +78,18 @@ namespace Codeplex.Dashboarding
                 ColorPoint res = (ColorPoint)GetValue(TrueColorProperty);
                 return res;
             }
+
             set
             {
                 SetValue(TrueColorProperty, value);
             }
         }
 
-
         /// <summary>
-        /// Our TrueColor property has changed
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void TrueColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            BinaryDashboard instance = dependancy as BinaryDashboard;
-            if (instance != null)
-            {
-                instance.OnPropertyChanged("TrueColor");
-                instance.Animate();
-            }
-        }
-
-
-        #endregion
-
-        #region FalseColor property
-
-        /// <summary>
-        /// Identifies our FalseColor attached property
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
-        public static readonly DependencyProperty FalseColorProperty =
-            DependencyProperty.Register("FalseColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(FalseColorPropertyChanged)));
-
-        /// <summary>
-        /// Sets the color range for when the value is false. Please see the definition of
+        /// Gets or sets the  color range for when the value is false. Please see the definition of
         /// TrueColor range for a vacuous example of when ths may be needed
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public ColorPoint FalseColor
         {
             get
@@ -126,6 +97,7 @@ namespace Codeplex.Dashboarding
                 ColorPoint res = (ColorPoint)GetValue(FalseColorProperty);
                 return res;
             }
+
             set
             {
                 SetValue(FalseColorProperty, value);
@@ -133,69 +105,25 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our FalseColor dependany property has changed, deal with it
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void FalseColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            BinaryDashboard instance = dependancy as BinaryDashboard;
-            if (instance != null)
-            {
-                instance.OnPropertyChanged("FalseColor");
-                instance.Animate();
-            }
-        }
-
-        #endregion
-
-        #region IsTrue property
-
-        /// <summary>
-        /// Identifies the IsTrue attached property
-        /// </summary>
-        public static readonly DependencyProperty IsTrueProperty =
-            DependencyProperty.Register("IsTrue", typeof(bool), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(IsTruePropertyChanged)));
-
-        /// <summary>
-        /// A boolean over ride of the value property from the Dashboard base class. Setting
+        /// Gets or sets a value indicating whether to display the true or false representation.
         /// IsTrue = false sets Vaue to 0, setting IsTrue = true sets the value to 100
         /// </summary>
-        public Boolean IsTrue
+        public bool IsTrue
         {
             get
             {
-                Boolean res = (Boolean)GetValue(IsTrueProperty);
+                bool res = (bool)GetValue(IsTrueProperty);
                 return res;
             }
+
             set
             {
                 SetValue(IsTrueProperty, value);
             }
         }
-
-
-
-        /// <summary>
-        /// Our dependany property IsTrue has changed, deal with it
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void IsTruePropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            BinaryDashboard instance = dependancy as BinaryDashboard;
-            if (instance != null)
-            {
-                double value = (instance.IsTrue) ? instance.Maximum : instance.Minimum;
-                instance.SetValue(BinaryDashboard.ValueProperty, value);
-                instance.OnPropertyChanged("IsTrue");
-            }
-        }
-
-
         #endregion
 
-        #region private members
+        #region protected methods
         /// <summary>
         /// Show or hised the correct element depending on the state and then starts
         /// any animation associated with the value
@@ -207,8 +135,8 @@ namespace Codeplex.Dashboarding
         {
             if (trueControl != null || falseControl != null || sb != null)
             {
-                SetColorsFromXaml(trueControl, TrueColor, "true");
-                SetColorsFromXaml(falseControl, FalseColor, "false");
+                SetColorsFromXaml(trueControl, this.TrueColor, "true");
+                SetColorsFromXaml(falseControl, this.FalseColor, "false");
 
                 trueControl.Opacity = 0;
                 falseControl.Opacity = 0;
@@ -222,17 +150,71 @@ namespace Codeplex.Dashboarding
                     falseControl.Visibility = Visibility.Visible;
                     trueControl.Visibility = Visibility.Collapsed;
                 }
+
                 Start(sb);
             }
         }
+
+        #endregion
+
+        #region private static methods
+
+        /// <summary>
+        /// The true property changed,update
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void TrueColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            BinaryDashboard instance = dependancy as BinaryDashboard;
+            if (instance != null)
+            {
+                instance.OnPropertyChanged("TrueColor");
+                instance.Animate();
+            }
+        }
+
+        /// <summary>
+        /// The false color changed, deal with it
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void FalseColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            BinaryDashboard instance = dependancy as BinaryDashboard;
+            if (instance != null)
+            {
+                instance.OnPropertyChanged("FalseColor");
+                instance.Animate();
+            }
+        }
+
+        /// <summary>
+        /// The IsTrue property changed update the UI
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void IsTruePropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            BinaryDashboard instance = dependancy as BinaryDashboard;
+            if (instance != null)
+            {
+                double value = instance.IsTrue ? instance.Maximum : instance.Minimum;
+                instance.SetValue(BinaryDashboard.ValueProperty, value);
+                instance.OnPropertyChanged("IsTrue");
+            }
+        }
+        #endregion
+        
+        #region private methods
 
         /// <summary>
         /// Finds the true and false representaions and dets the
         /// gradient stop colors for them
         /// </summary>
-        /// <param name="el"></param>
-        /// <param name="colorPoint"></param>
-        /// <param name="id"></param>
+        /// <param name="el">The framework element</param>
+        /// <param name="colorPoint">The colorPoint for the current value</param>
+        /// <param name="id">The number of the element to set the color for</param>
         private static void SetColorsFromXaml(FrameworkElement el, ColorPoint colorPoint, string id)
         {
             if (el == null || colorPoint.HiColor == null || colorPoint.LowColor == null)
@@ -240,37 +222,33 @@ namespace Codeplex.Dashboarding
                 return;
             }
 
-            GradientStop highStop = el.FindName(id+"HighColor") as GradientStop;
-            GradientStop lowStop = el.FindName(id+"LowColor") as GradientStop;
+            GradientStop highStop = el.FindName(id + "HighColor") as GradientStop;
+            GradientStop lowStop = el.FindName(id + "LowColor") as GradientStop;
             if (highStop != null && lowStop != null)
             {
                 highStop.Color = colorPoint.HiColor;
                 lowStop.Color = colorPoint.LowColor;
             }
-
         }
 
         /// <summary>
-        /// A property has changed, if it is the Value property raise an IsTrue property changed event
+        /// A property has changed in the dashboard if it is VAlue
+        /// modif the Istrue value 
         /// </summary>
-        /// <param name="sender">this</param>
-        /// <param name="e">event args</param>
-        void PropertyHasChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        private void PropertyHasChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Value")
             {
                 bool toBe = (NormalizedValue >= 0.5);
-                if (IsTrue != toBe)
+                if (this.IsTrue != toBe)
                 {
                     SetValue(IsTrueProperty, toBe);
                 }
-
             }
         }
 
         #endregion
-
-
-
     }
 }

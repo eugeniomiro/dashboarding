@@ -62,10 +62,10 @@ namespace Codeplex.Dashboarding
         public MatrixLedCharacter()
         {
             InitializeComponent();
-            Clear();
+            this.Clear();
 
-            LedOffColor = Color.FromArgb(0x22, 0xdd, 0x00, 0x00);
-            LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);    
+            this.LedOffColor = Color.FromArgb(0x22, 0xdd, 0x00, 0x00);
+            this.LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);    
         }
 
 
@@ -89,11 +89,12 @@ namespace Codeplex.Dashboarding
             }
         }
 
+
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// The text property changed, deal with it
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
         private static void TextPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             MatrixLedCharacter instance = dependancy as MatrixLedCharacter;
@@ -118,14 +119,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// The dependancy property for the LedOn colr
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty LedOnColorProperty =
             DependencyProperty.Register("LedOnColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public Color LedOnColor
         {
             get { return (Color)GetValue(LedOnColorProperty); }
@@ -162,14 +163,14 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// THe dependancy property for the LedOffColor
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty LedOffColorProperty =
             DependencyProperty.Register("LedOffColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// Hi colour in the blend
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public Color LedOffColor
         {
             get { return (Color)GetValue(LedOffColorProperty); }
@@ -187,7 +188,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         private void SetLedsFromCharacter()
         {
-           byte [] bytes = MatrixLedCharacterDefinitions.GetDefinition(Text);
+           byte[] bytes = MatrixLedCharacterDefinitions.GetDefinition(Text);
            columns.Clear();
            for (int i = 0; i < bytes.Length - 1; i++)
            {
@@ -213,6 +214,8 @@ namespace Codeplex.Dashboarding
         /// cells. Usually on a marquee style control this means only the right most
         /// character gets ticked manually the rest do through chained events
         /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="Codeplex.Dashboarding.MatrixScrollEventArgs"/> instance containing the event data.</param>
         [SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers")]
         public void ScrollOne(object sender, MatrixScrollEventArgs args)
         {
@@ -293,7 +296,7 @@ namespace Codeplex.Dashboarding
     /// <summary>
     /// Event args describing the scroll of a matrix
     /// </summary>
-    public class MatrixScrollEventArgs: EventArgs
+    public class MatrixScrollEventArgs : EventArgs
     {
 
         /// <summary>
@@ -306,9 +309,11 @@ namespace Codeplex.Dashboarding
             Column = column;
         }
 
+
         /// <summary>
-        /// New inbound column of data
+        /// Gets column of incomming data.
         /// </summary>
+        /// <value>The column.</value>
         [SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public List<bool> Column { get; private set; }
     }
