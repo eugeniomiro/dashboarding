@@ -22,6 +22,7 @@ namespace Codeplex.Dashboarding
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
+    using System.Windows.Media;
 
     /// <summary>
     /// Common base class for all dashboard controls. Contains the Minimum, Maximum
@@ -55,6 +56,24 @@ namespace Codeplex.Dashboarding
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register("Maximum", typeof(double), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(MaximumPropertyChanged)));
 
+        /// <summary>
+        /// The Dependancy property for the TextColor attached property
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public static readonly DependencyProperty TextColorProperty =
+            DependencyProperty.Register("TextColor", typeof(Color), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
+
+        /// <summary>
+        /// The dependancy property for theTextVisibility attached property
+        /// </summary>
+        public static readonly DependencyProperty TextVisibilityProperty =
+            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
+
+        /// <summary>
+        /// The dependancy property for TextFormat attached property
+        /// </summary>
+        public static readonly DependencyProperty TextFormatProperty =
+            DependencyProperty.Register("TextFormat", typeof(string), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(TextFormatPropertyChanged)));
         #endregion
 
         /// <summary>
@@ -66,6 +85,7 @@ namespace Codeplex.Dashboarding
         {
             this.Minimum = 0;
             this.Maximum = 100;
+            this.TextFormat = "{0:000}";
             this.AnimationDuration = TimeSpan.FromSeconds(0.75);
             Loaded += new RoutedEventHandler(this.Dashboard_Loaded);
         }
@@ -113,6 +133,7 @@ namespace Codeplex.Dashboarding
 
                 SetValue(ValueProperty, value);
                 this.OnValueChanged(old, value);
+                this.OnPropertyChanged("FormattedValue");
             }
         }
 
@@ -144,6 +165,80 @@ namespace Codeplex.Dashboarding
             get { return (double)GetValue(MaximumProperty); }
             set { SetValue(MaximumProperty, value); }
         }
+
+        /// <summary>
+        /// Gets or sets the color of the text used to display the value.
+        /// </summary>
+        /// <value>The color of the text.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public Color TextColor
+        {
+            get
+            {
+                Color res = (Color)GetValue(TextColorProperty);
+                return res;
+            }
+
+            set
+            {
+                SetValue(TextColorProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a the visibility of the textural representation of the value
+        /// </summary>
+        public Visibility TextVisibility
+        {
+            get { return (Visibility)GetValue(TextVisibilityProperty); }
+            set { SetValue(TextVisibilityProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets a the format string of the textural representation of the value. Since
+        /// the default is 0..100 we use {0:000} as the default format string.
+        /// <para>
+        ///     The format of the string is a String.Format specifier. You should consume parameter
+        ///     zero {0} as the place holder for the text representation of the Value.  
+        /// </para>
+        /// <para>
+        /// Valid options are
+        /// <list type="bullet">
+        /// <item><code>"{0}"</code> - Unstructured, value will over flow all over the place</item>
+        /// <item><code>"{0:000}"</code> three digits padded e.g. 032</item>
+        /// <item><code>"{0:00}c"</code> - a temperatre two digits and a 'c' ie 23c</item>
+        /// <item><code>"{0:00.0}f"</code> - a temperatre: two digits, a decimal digit and an 'f' ie 23.6f</item>
+        /// </list>
+        /// </para>
+        /// </summary>
+        public string TextFormat
+        {
+            get { return (string)GetValue(TextFormatProperty); }
+            set { SetValue(TextFormatProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets the textural representation of the value as specified through the TextFormat property.
+        /// </summary>
+        /// <value>The formatted value. If the TextFormat property null we return the value formatted
+        /// using "{0:000} which is the backwards compatabilty value. If TextFormat 
+        /// is not a valid format string we return "???" rather than crashing
+        /// </value>
+        public string FormattedValue
+        {
+            get 
+            {
+                try
+                {
+                    return String.Format(this.TextFormat ?? "{0:000}", this.Value);
+                }
+                catch (FormatException)
+                {
+                    return "???";
+                }
+            }
+        }
+
         #endregion
 
         #region internalproperties
@@ -187,6 +282,22 @@ namespace Codeplex.Dashboarding
         /// has changed and that they should update their appearance appropriately
         /// </summary>
         protected abstract void Animate();
+
+        /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        protected abstract void UpdateTextColor();
+
+        /// <summary>
+        /// Set the visibiity of your text according to that of the TextVisibility property
+        /// </summary>
+        protected abstract void UpdateTextVisibility();
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected abstract void UpdateTextFormat();
 
         /// <summary>
         /// Notify any listeners that a property has changed
@@ -278,14 +389,49 @@ namespace Codeplex.Dashboarding
         #region private methods
 
         /// <summary>
-        /// Handles the Loaded event of the Dashboard control. This
-        /// will trigger the first call to Animate()
+        /// The Text visibility property has cahaned..
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
-        private void Dashboard_Loaded(object sender, RoutedEventArgs e)
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void TextVisibilityPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            this.Animate();
+            Dashboard instance = dependancy as Dashboard;
+            if (instance != null)
+            {
+                instance.UpdateTextVisibility();
+                instance.OnPropertyChanged("TextVisibility");
+            }
+        }
+
+        /// <summary>
+        /// The text color dependancy property changed, deal with it
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            Dashboard instance = dependancy as Dashboard;
+            if (instance != null)
+            {
+                instance.UpdateTextColor();
+                instance.OnPropertyChanged("TextColor");
+            }
+        }
+
+        /// <summary>
+        /// The format string representing the value display format has changed
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void TextFormatPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            Dashboard instance = dependancy as Dashboard;
+            if (instance != null)
+            {
+                 instance.UpdateTextFormat();
+                instance.OnPropertyChanged("TextFormat");
+            }
         }
 
         /// <summary>
@@ -301,6 +447,16 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Handles the Loaded event of the Dashboard control. This
+        /// will trigger the first call to Animate()
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void Dashboard_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Animate();
+        }
         #endregion
     }
 }

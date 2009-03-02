@@ -211,6 +211,27 @@ namespace Codeplex.Dashboarding
         #endregion
 
         /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        protected override void UpdateTextColor()
+        {
+        }
+
+        /// <summary>
+        /// Set the visibiity of your text according to that of the TextVisibility property
+        /// </summary>
+        protected override void UpdateTextVisibility()
+        {
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+        }
+
+        /// <summary>
         /// Moves the diamond
         /// </summary>
         protected override void Animate()

@@ -50,6 +50,19 @@ namespace Casewise.Dashboarding.Tests
             get { return null; }
         }
 
+        protected override void UpdateTextColor()
+        {
+        }
 
+        protected override void UpdateTextVisibility()
+        {
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+        }
     }
 }

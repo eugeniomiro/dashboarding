@@ -124,6 +124,28 @@ namespace Codeplex.Dashboarding
         #endregion
 
         #region protected methods
+
+        /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        protected override void UpdateTextColor()
+        {
+        }
+
+        /// <summary>
+        /// Set the visibiity of your text according to that of the TextVisibility property
+        /// </summary>
+        protected override void UpdateTextVisibility()
+        {
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+        }
+
         /// <summary>
         /// Show or hised the correct element depending on the state and then starts
         /// any animation associated with the value

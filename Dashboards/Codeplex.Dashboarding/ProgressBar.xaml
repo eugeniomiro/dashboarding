@@ -10,7 +10,7 @@
                     <SplineDoubleKeyFrame x:Name="_handlePos" KeyTime="00:00:0.75" Value="92.75"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
-   
+
             <Storyboard x:Name="_swipe"  x:Key="_swipe">
                 <PointAnimation x:Name="_startPoint" Storyboard.TargetName="pf" Storyboard.TargetProperty="StartPoint"
         To="100,0" Duration="0:0:0.75" />
@@ -38,7 +38,7 @@
         <Path  Grid.Row="1" Width="100" Height="15" Stretch="Fill" Stroke="#FF000000" StrokeThickness="2" Canvas.Left="0" Canvas.Top="0" Data="M1,3 C1,1.8954305 1.8954305,1 3,1 L97,1 C98.104569,1 99,1.8954305 99,3 L99,12 C99,13.104569 98.104569,14 97,14 L3,14 C1.8954305,14 1,13.104569 1,12 z" x:Name="_gray">
             <Path.Fill>
                 <LinearGradientBrush EndPoint="0.56,-0.05" StartPoint="0.56,1.012">
-                    <GradientStop x:Name="_lowDisabled0"  Color="#FF525253" Offset="0"/>
+                    <GradientStop x:Name="_lowDisabled0"  Color="#FF6D6D80" Offset="0"/>
                     <GradientStop x:Name="_highDisabled0" Color="#FFB5B5B5" Offset="1"/>
                 </LinearGradientBrush>
             </Path.Fill>
@@ -71,6 +71,7 @@
             <Path x:Name="_grabHandle"  Height="7" Width="20" Fill="#FFEADD4E" Stretch="Fill" Stroke="#FF020202" Data="M0.5,0.5 L5.5,3.471154 L0.5,6.5 z M19.125,0.50000006 L14.125,3.471154 L19.125,6.5 z M5.5000005,3.5000002 L14.708001,3.5000002"/>
         </Canvas>
 
+        <TextBlock Grid.RowSpan="3" IsHitTestVisible="False" x:Name="_text" Text="000" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" FontSize="10" Foreground="#FF030303" FontWeight="Bold" FontFamily="Portable User Interface" />
 
 
     </Grid>

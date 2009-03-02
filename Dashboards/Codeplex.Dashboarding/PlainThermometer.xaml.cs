@@ -120,83 +120,33 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
-        #region TextColor property
 
         /// <summary>
-        /// The dependancy property for the TextColor property
+        /// Update your text colors to that of the TextColor dependancy property
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty TextColorProperty =
-            DependencyProperty.Register("TextColor", typeof(Color), typeof(PlainThermometer), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
-
-        /// <summary>
-        /// Color of the text that shows the percentage
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public Color TextColor
+        protected override void UpdateTextColor()
         {
-            get { return (Color)GetValue(TextColorProperty); }
-            set
-            {
-                SetValue(TextColorProperty, value);
-            }
+            _text.Foreground = new SolidColorBrush(TextColor);
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Set the visibiity of your text according to that of the TextVisibility property
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void ColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        protected override void UpdateTextVisibility()
         {
-            PlainThermometer instance = dependancy as PlainThermometer;
-
-
-            if (instance != null)
-            {
-                instance._text.Foreground = new SolidColorBrush(instance.TextColor);
-            }
-        }
-
-        #endregion
-
-        #region TextVisibility property
-        /// <summary>
-        /// The dependancy property for theTextVisibilityiColor property
-        /// </summary>
-        public static readonly DependencyProperty TextVisibilityProperty =
-            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(PlainThermometer), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
-
-        /// <summary>
-        /// Visibility of the text that shows the percentage
-        /// </summary>
-        public Visibility TextVisibility
-        {
-            get { return (Visibility)GetValue(TextVisibilityProperty); }
-            set
-            {
-                SetValue(TextVisibilityProperty, value);
-            }
+            _text.Visibility = TextVisibility;
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// The format string for the value has changed
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void TextVisibilityPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        protected override void UpdateTextFormat()
         {
-            PlainThermometer instance = dependancy as PlainThermometer;
-
-
-            if (instance != null)
+            if (this._text != null)
             {
-                instance._text.Visibility = instance.TextVisibility;
+                this._text.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
             }
         }
-
-        #endregion
-
 
         #region BiDirection
         /// <summary>
@@ -267,6 +217,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void Animate()
         {
+            UpdateTextFormat();
+
             if (_fullScale == 0 || _fullTranslate == 0)
             {
                 InitializeAnimation();
@@ -324,9 +276,6 @@ namespace Codeplex.Dashboarding
             da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_animGrab");
             da.KeyFrames[0].Value = -(normalizedValue * 100);
             da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
-
-
-            _text.Text = String.Format("{0:000}", value);
             Start(AnimateIndicatorStoryboard);
         }
 

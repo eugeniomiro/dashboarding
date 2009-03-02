@@ -66,7 +66,7 @@ namespace Codeplex.Dashboarding
         /// Sets the face color from the color range
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        protected override void SetFaceColor()
+        protected override void UpdateFaceColor()
         {
             ColorPoint c = FaceColorRange.GetColor(Value);
             if (c != null)
@@ -80,7 +80,7 @@ namespace Codeplex.Dashboarding
         /// Sets the needle color from the color range
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        protected override void SetNeedleColor()
+        protected override void UpdateNeedleColor()
         {
             ColorPoint c = NeedleColorRange.GetColor(Value);
             if (c != null)
@@ -93,7 +93,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Set our text color to that of the TextColorProperty
         /// </summary>
-        protected override void SetTextColor()
+        protected override void UpdateTextColor()
         {
             _text.Foreground = new SolidColorBrush(TextColor);
         }
@@ -101,9 +101,20 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the text visibility to that of the TextVisibility property
         /// </summary>
-        protected override void SetTextVisibility()
+        protected override void UpdateTextVisibility()
         {
             _text.Visibility = TextVisibility;
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+            if (_text != null)
+            {
+                _text.Text = this.IsGrabbed ? FormattedCurrentValue : FormattedValue;
+            }
         }
 
         /// <summary>
@@ -151,8 +162,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void Animate()
         {
-            this.SetFaceColor();
-            this.SetNeedleColor();
+            this.UpdateFaceColor();
+            this.UpdateNeedleColor();
 
             this.ShowHandleIfBidirectional();
 
@@ -179,7 +190,7 @@ namespace Codeplex.Dashboarding
         /// <param name="duration">The duration.</param>
         private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
         {
-            _text.Text = String.Empty + value;
+            this.UpdateTextFormat();
 
             double point = -90 + (normalizedValue * 180);
             SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);

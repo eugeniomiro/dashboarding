@@ -1,78 +1,77 @@
-﻿#region Copyright 2008 David Black
-
-/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-#endregion
-
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Dial90.cs" company="David Black">
+//      Copyright 2008 David Black
+//  
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//     
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+    using System.Windows.Shapes;
+
     /// <summary>
     /// Base class for all quadrant based 90 degree dials
     /// </summary>
     public abstract class Dial90 : BidirectionalDial
     {
-
         /// <summary>
         /// Canvas to rotate to move the grab handle
         /// </summary>
-        private Canvas _grabHandleCanvas;
+        private Canvas grabHandleCanvas;
 
         /// <summary>
         /// Shape used to highlight that the mouse is in the grab area
         /// </summary>
-        private Shape _grabHighlightShape;
+        private Shape grabHighlightShape;
 
         /// <summary>
         /// The text block used to display the percentage
         /// </summary>
-        private TextBlock _textBlock;
+        private TextBlock textBlock;
 
         /// <summary>
         /// Blend start for the face of the dial
         /// </summary>
-        private GradientStop _faceHighColorGradientStop;
+        private GradientStop faceHighColorGradientStop;
 
         /// <summary>
         /// Blend end for the face of the dial
         /// </summary>
-        private GradientStop _faceLowColorGradientStop;
+        private GradientStop faceLowColorGradientStop;
 
         /// <summary>
         /// Blend start for the face of the dial
         /// </summary>
-        private GradientStop _needleHighColorGradientStop;
+        private GradientStop needleHighColorGradientStop;
 
         /// <summary>
         /// Blend end for the face of the dial
         /// </summary>
-        private GradientStop _needleLowColorGradientStop;
+        private GradientStop needleLowColorGradientStop;
 
-    
-      
+        /// <summary>
+        /// Gets the shape used to highlight the grab control
+        /// </summary>
+        protected override Shape GrabHighlight
+        {
+            get { return this.grabHighlightShape; }
+        }
 
         /// <summary>
         /// Set the defaults for our dependancy properties and register the
@@ -83,77 +82,61 @@ namespace Codeplex.Dashboarding
             SetValue(FaceColorRangeProperty, new ColorPointCollection());
             SetValue(NeedleColorRangeProperty, new ColorPointCollection());
             this.InitialiseRefs();
-            RegisterGrabHandle(this._grabHandleCanvas);
-        }
-
-        /// <summary>
-        /// Initialize references to controls we expect to find in the child
-        /// </summary>
-        private void InitialiseRefs()
-        {
-            _grabHandleCanvas = ResourceRoot.FindName("_grabHandle") as Canvas;
-            _grabHighlightShape = ResourceRoot.FindName("_grabHighlight") as Shape;
-            _textBlock = ResourceRoot.FindName("_text") as TextBlock;
-            this._faceHighColorGradientStop = ResourceRoot.FindName("_colourRangeStart") as GradientStop;
-            this._faceLowColorGradientStop = ResourceRoot.FindName("_colourRangeEnd") as GradientStop;
-            this._needleHighColorGradientStop = ResourceRoot.FindName("_needleHighColour") as GradientStop;
-            this._needleLowColorGradientStop = ResourceRoot.FindName("_needleLowColour") as GradientStop;
-             
-           
-        }
-
-        /// <summary>
-        /// Return the shape used to highlight the grab control
-        /// </summary>
-        protected override Shape GrabHighlight
-        {
-            get { return _grabHighlightShape; }
+            RegisterGrabHandle(this.grabHandleCanvas);
         }
 
         /// <summary>
         /// Sets the text visibility to that of the TextVisibility property
         /// </summary>
-        protected override void SetTextVisibility()
+        protected override void UpdateTextVisibility()
         {
-            _textBlock.Visibility = TextVisibility;
+            this.textBlock.Visibility = TextVisibility;
         }
 
         /// <summary>
         /// Set our text color to that of the TextColorProperty
         /// </summary>
-        protected override void SetTextColor()
+        protected override void UpdateTextColor()
         {
-            _textBlock.Foreground = new SolidColorBrush(TextColor);
+            this.textBlock.Foreground = new SolidColorBrush(TextColor);
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+            if (this.textBlock != null)
+            {
+                this.textBlock.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
+            }
         }
 
         /// <summary>
         /// Sets the face color from the color range
         /// </summary>
-        protected override void SetFaceColor()
+        protected override void UpdateFaceColor()
         {
-
             ColorPoint c = FaceColorRange.GetColor(Value);
             if (c != null)
             {
-                _faceHighColorGradientStop.Color = c.HiColor;
-                _faceLowColorGradientStop.Color = c.LowColor;
+                this.faceHighColorGradientStop.Color = c.HiColor;
+                this.faceLowColorGradientStop.Color = c.LowColor;
             }
         }
 
         /// <summary>
         /// Sets the needle color from the color range
         /// </summary>
-        protected override void SetNeedleColor()
+        protected override void UpdateNeedleColor()
         {
             ColorPoint c = NeedleColorRange.GetColor(Value);
             if (c != null)
             {
-                _needleHighColorGradientStop.Color = c.HiColor;
-                _needleLowColorGradientStop.Color = c.LowColor;
+                this.needleHighColorGradientStop.Color = c.HiColor;
+                this.needleLowColorGradientStop.Color = c.LowColor;
             }
         }
-
-
 
         /// <summary>
         /// Based on the rotation angle, set the normalized current value
@@ -166,7 +149,6 @@ namespace Codeplex.Dashboarding
             CurrentNormalizedValue = cv / 90;
         }
 
-
         /// <summary>
         /// Shows the grab handle if this control is bidirectional
         /// </summary>
@@ -174,8 +156,8 @@ namespace Codeplex.Dashboarding
         {
             Visibility val = IsBidirectional ? Visibility.Visible : Visibility.Collapsed;
 
-            _grabHandleCanvas.Visibility = val;
-            _grabHighlightShape.Visibility = val;
+            this.grabHandleCanvas.Visibility = val;
+            this.grabHighlightShape.Visibility = val;
         }
 
         /// <summary>
@@ -183,46 +165,21 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void Animate()
         {
-            SetFaceColor();
-            SetNeedleColor();
+            this.UpdateFaceColor();
+            this.UpdateNeedleColor();
 
-            ShowHandleIfBidirectional();
+            this.ShowHandleIfBidirectional();
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-                SetPointerByAnimationOverSetTime(CalculatePointFromNormalisedValue(), CurrentValue, AnimationDuration);
-
+                this.SetPointerByAnimationOverSetTime(this.CalculatePointFromNormalisedValue(), CurrentValue, AnimationDuration);
             }
             else
             {
-                SetPointerByAnimationOverSetTime(CalculatePointFromCurrentNormalisedValue(), CurrentValue, TimeSpan.Zero);
+                this.SetPointerByAnimationOverSetTime(this.CalculatePointFromCurrentNormalisedValue(), CurrentValue, TimeSpan.Zero);
             }
         }
-
-        /// <summary>
-        /// Sets the pointer animation to execute and sets the time to animate. This allow the same
-        /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
-        /// needle during bidirectional operation (TimeSpan.Zero)
-        /// </summary>
-        /// <param name="point">The point to animate to.</param>
-        /// <param name="value">The value to display.</param>
-        /// <param name="duration">The duration.</param>
-        private void SetPointerByAnimationOverSetTime(double point, double value, TimeSpan duration)
-        {
-            _textBlock.Text = String.Format("{0:000}", value);
-
-           
-            SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
-            needle.KeyTime = KeyTime.FromTimeSpan(duration);
-            Start(AnimateIndicatorStoryboard);
-
-            SplineDoubleKeyFrame handle = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
-            handle.KeyTime = KeyTime.FromTimeSpan(duration);
-            Start(AnimateGrabHandleStoryboard);
-        }
-
-
-
+ 
         /// <summary>
         /// Calculate the rotation angle from the normalised actual value
         /// </summary>
@@ -235,6 +192,39 @@ namespace Codeplex.Dashboarding
         /// <returns>angle in degrees to position the transform</returns>
         protected abstract double CalculatePointFromCurrentNormalisedValue();
 
+        /// <summary>
+        /// Initialize references to controls we expect to find in the child
+        /// </summary>
+        private void InitialiseRefs()
+        {
+            this.grabHandleCanvas = ResourceRoot.FindName("_grabHandle") as Canvas;
+            this.grabHighlightShape = ResourceRoot.FindName("_grabHighlight") as Shape;
+            this.textBlock = ResourceRoot.FindName("_text") as TextBlock;
+            this.faceHighColorGradientStop = ResourceRoot.FindName("_colourRangeStart") as GradientStop;
+            this.faceLowColorGradientStop = ResourceRoot.FindName("_colourRangeEnd") as GradientStop;
+            this.needleHighColorGradientStop = ResourceRoot.FindName("_needleHighColour") as GradientStop;
+            this.needleLowColorGradientStop = ResourceRoot.FindName("_needleLowColour") as GradientStop;
+        }
 
+        /// <summary>
+        /// Sets the pointer animation to execute and sets the time to animate. This allow the same
+        /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
+        /// needle during bidirectional operation (TimeSpan.Zero)
+        /// </summary>
+        /// <param name="point">The point to animate to.</param>
+        /// <param name="value">The value to display.</param>
+        /// <param name="duration">The duration.</param>
+        private void SetPointerByAnimationOverSetTime(double point, double value, TimeSpan duration)
+        {
+            this.UpdateTextFormat();
+
+            SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, point);
+            needle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateIndicatorStoryboard);
+
+            SplineDoubleKeyFrame handle = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, point);
+            handle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateGrabHandleStoryboard);
+        }
     }
 }

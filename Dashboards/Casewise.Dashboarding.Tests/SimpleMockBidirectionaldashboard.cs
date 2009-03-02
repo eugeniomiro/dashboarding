@@ -91,8 +91,19 @@ namespace Casewise.Dashboarding.Tests
             MoveEndPos = currentPosition;
         }
 
+        protected override void UpdateTextColor()
+        {
+        }
 
-
+        protected override void UpdateTextVisibility()
+        {
+        }
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+        }
 
         protected override Grid ResourceRoot
         {

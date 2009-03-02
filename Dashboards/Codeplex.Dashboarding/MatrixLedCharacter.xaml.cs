@@ -273,7 +273,7 @@ namespace Codeplex.Dashboarding
         {
             if (el != null)
             {
-                el.Fill = new SolidColorBrush((on) ? LedOnColor: LedOffColor);
+                el.Fill = new SolidColorBrush((on) ? LedOnColor : LedOffColor);
             }
         }
 

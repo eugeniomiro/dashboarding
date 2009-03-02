@@ -148,10 +148,32 @@ namespace Codeplex.Dashboarding
                 }
             }
         }
+
+        /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        protected override void UpdateTextColor()
+        {
+            _text.Foreground = new SolidColorBrush(TextColor);
+        }
+
+        /// <summary>
+        /// Set the visibiity of your text according to that of the TextVisibility property
+        /// </summary>
+        protected override void UpdateTextVisibility()
+        {
+            _text.Visibility = TextVisibility;
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+        }
         #endregion
 
-        #region Private methods
-
+        #region private methods
         /// <summary>
         /// BorderColor property has changed, deal with it
         /// </summary>
@@ -163,11 +185,6 @@ namespace Codeplex.Dashboarding
 
             if (instance != null)
             {
-                if (instance.LedOnColor != null)
-                {
-                    instance._text.Foreground = new SolidColorBrush(instance.LedOnColor);
-                }
-
                 for (int i = 0; i < NumberOfLeds; i++)
                 {
                     instance.SetLedColours(i);

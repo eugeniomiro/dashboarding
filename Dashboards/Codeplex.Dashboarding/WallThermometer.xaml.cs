@@ -99,6 +99,19 @@ namespace Codeplex.Dashboarding
                     if (_delegate.Value != Value)
                         _delegate.Value = Value;
                     break;
+                case "TextColor":
+                    if (_delegate.TextColor != TextColor)
+                        _delegate.TextColor = TextColor;
+                    break;
+                case "TextVisibility":
+                    if (_delegate.TextVisibility != TextVisibility)
+                        _delegate.TextVisibility = TextVisibility;
+                    break;
+                case "TextFormat":
+                    if (_delegate.TextFormat != TextFormat)
+                        _delegate.TextFormat = TextFormat;
+                    break;
+
             }
         }
 
@@ -147,55 +160,30 @@ namespace Codeplex.Dashboarding
 
 
         #endregion
-
-
-        #region TextVisibility property
+        
         /// <summary>
-        /// The dependancy property for theTextVisibilityiColor property
+        /// Set the visibiity of your text according to that of the TextVisibility property
         /// </summary>
-        public static readonly DependencyProperty TextVisibilityProperty =
-            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(WallThermometer), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
-
-        /// <summary>
-        /// Color of the text that shows the percentage
-        /// </summary>
-        public Visibility TextVisibility
-        {
-            get { return (Visibility)GetValue(TextVisibilityProperty); }
-            set
-            {
-                SetValue(TextVisibilityProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// Our dependany property has changed, deal with it
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void TextVisibilityPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            WallThermometer instance = dependancy as WallThermometer;
-
-
-            if (instance != null)
-            {
-                instance.SetTextVisibility();
-            }
-        }
-
-        /// <summary>
-        /// Set the visibiliity of the thermometer text and resize the wood to suite
-        /// </summary>
-        private void SetTextVisibility()
+        protected override void UpdateTextVisibility()
         {
             _delegate.TextVisibility = TextVisibility;
             _wood.Height = (TextVisibility == Visibility.Visible) ? 142 : 128;
         }
 
-        #endregion
+        /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        protected override void UpdateTextColor()
+        {
+            _delegate.TextColor = TextColor;
+        }
 
-
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+        }
 
         #region IsBidirectional property
 

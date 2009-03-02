@@ -44,19 +44,6 @@ namespace Codeplex.Dashboarding
         public static readonly DependencyProperty NeedleColorRangeProperty =
             DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
         
-        /// <summary>
-        /// The Dependancy property for the TextColor attached property
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty TextColorProperty =
-            DependencyProperty.Register("TextColor", typeof(Color), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
-        
-        /// <summary>
-        /// The dependancy property for theTextVisibility attached property
-        /// </summary>
-        public static readonly DependencyProperty TextVisibilityProperty =
-            DependencyProperty.Register("TextVisibility", typeof(Visibility), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(TextVisibilityPropertyChanged)));
-
         #endregion
 
         #region public Properties
@@ -101,35 +88,6 @@ namespace Codeplex.Dashboarding
                 SetValue(NeedleColorRangeProperty, value);
                 Animate();
             }
-        }
-
-        /// <summary>
-        /// Gets or sets the color of the text used to display the value.
-        /// </summary>
-        /// <value>The color of the text.</value>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public Color TextColor
-        {
-            get
-            {
-                Color res = (Color)GetValue(TextColorProperty);
-                return res;
-            }
-
-            set
-            {
-                SetValue(TextColorProperty, value);
-                Animate();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a the visibility of the textural representation of the value
-        /// </summary>
-        public Visibility TextVisibility
-        {
-            get { return (Visibility)GetValue(TextVisibilityProperty); }
-            set { SetValue(TextVisibilityProperty, value); }
         }
 
         #endregion
@@ -184,24 +142,13 @@ namespace Codeplex.Dashboarding
         /// Update your face color from the property value
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        protected abstract void SetFaceColor();
+        protected abstract void UpdateFaceColor();
 
         /// <summary>
         /// Update your needle color from the property value
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        protected abstract void SetNeedleColor();
-
-        /// <summary>
-        /// Update your text colors to that of the TextColor dependancy property
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        protected abstract void SetTextColor();
-
-        /// <summary>
-        /// Set the visibiity of your text according to that of the TextVisibility property
-        /// </summary>
-        protected abstract void SetTextVisibility();
+        protected abstract void UpdateNeedleColor();
 
         /// <summary>
         /// Based on the rotation angle, set the normalized current value
@@ -220,37 +167,7 @@ namespace Codeplex.Dashboarding
         #endregion
 
         #region private methods
-        /// <summary>
-        /// The Text visibility property has cahaned..
-        /// </summary>
-        /// <param name="dependancy">The dependancy.</param>
-        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void TextVisibilityPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            BidirectionalDial instance = dependancy as BidirectionalDial;
-            if (instance != null)
-            {
-                instance.SetTextVisibility();
-                instance.OnPropertyChanged("TextVisibility");
-            }
-        }
-
-        /// <summary>
-        /// The text color dependancy property changed, deal with it
-        /// </summary>
-        /// <param name="dependancy">The dependancy.</param>
-        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            BidirectionalDial instance = dependancy as BidirectionalDial;
-            if (instance != null)
-            {
-                instance.SetTextColor();
-                instance.OnPropertyChanged("TextColor");
-            }
-        }
-
+       
         /// <summary>
         /// The FaceColorRange property changed, update the visuals
         /// </summary>
@@ -262,7 +179,7 @@ namespace Codeplex.Dashboarding
             BidirectionalDial instance = dependancy as BidirectionalDial;
             if (instance != null)
             {
-                instance.SetFaceColor();
+                instance.UpdateFaceColor();
                 instance.OnPropertyChanged("FaceColorRange");
             }
         }
@@ -277,7 +194,7 @@ namespace Codeplex.Dashboarding
             BidirectionalDial instance = dependancy as BidirectionalDial;
             if (instance != null)
             {
-                instance.SetNeedleColor();
+                instance.UpdateNeedleColor();
                 instance.OnPropertyChanged("NeedleColorRange");
             }
         }

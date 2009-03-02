@@ -162,48 +162,9 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
-        #region TextColor color Dependancy property
 
+       
 
-        /// <summary>
-        /// Dependancy property for GraphLine color
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty TextColorProperty =
-            DependencyProperty.Register("TextColor",
-                                typeof(Color), typeof(PerformanceMonitor),
-                                new PropertyMetadata(new PropertyChangedCallback(TextColorChanged)));
-
-        /// <summary>
-        /// The color of the min / max text 
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public Color TextColor
-        {
-            get { return (Color)GetValue(TextColorProperty); }
-            set
-            {
-                SetValue(TextColorProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// Our color has changed possibly via the TextColor property or via a SetValue directly
-        /// on the dependancy property. We change the color to the new value
-        /// </summary>
-        /// <param name="dependancy">the PerformanceMonitor</param>
-        /// <param name="args">old value and new value</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        private static void TextColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            PerformanceMonitor instance = dependancy as PerformanceMonitor;
-            if (instance != null)
-            {
-                instance.SetTextColor();
-            }
-        }
-
-        #endregion
 
         #region GraphLine color Dependancy property
 
@@ -411,7 +372,7 @@ namespace Codeplex.Dashboarding
         { 
                 SetGridLineColor();
                 SetGraphLineColors();
-                SetTextColor();
+                UpdateTextColor();
                 SetAxisColor();
                 SetGraphFill();           
         }
@@ -437,12 +398,29 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Sets the color of the text.
+        /// Set the visibiity of your text according to that of the TextVisibility property
         /// </summary>
-        private void SetTextColor()
+        protected override void UpdateTextVisibility()
+        {
+            _lowWaterMark.Visibility = TextVisibility;
+            _highWaterMark.Visibility = TextVisibility;
+
+        }
+
+        /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        protected override void UpdateTextColor()
         {
             _lowWaterMark.Foreground = new SolidColorBrush(TextColor);
             _highWaterMark.Foreground = new SolidColorBrush(TextColor);
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
         }
 
         /// <summary>
@@ -481,11 +459,11 @@ namespace Codeplex.Dashboarding
         private void DrawLines( int spacing, int maxSpacing)
         {
 
-            double lineY = 0 ;
+            double lineY = 0;
             double remainder = _canvas.ActualHeight % maxSpacing;
             if (remainder > 0)
             {
-                lineY = -(remainder / 2) ;
+                lineY = -(remainder / 2);
             }
 
 

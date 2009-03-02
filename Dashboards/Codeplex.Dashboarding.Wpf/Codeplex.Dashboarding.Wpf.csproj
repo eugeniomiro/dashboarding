@@ -72,6 +72,9 @@
     <Compile Include="..\Codeplex.Dashboarding\Dashboard.cs">
       <Link>Dashboard.cs</Link>
     </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\DashboardValueChangedEventArgs.cs">
+      <Link>DashboardValueChangedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Codeplex.Dashboarding\DecadeVuMeter.xaml.cs">
       <Link>DecadeVuMeter.xaml.cs</Link>
       <DependentUpon>DecadeVuMeter.xaml</DependentUpon>

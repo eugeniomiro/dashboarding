@@ -100,6 +100,27 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Gets the textural representation of the current value as specified through the TextFormat property.
+        /// </summary>
+        /// <value>The formatted value. If the TextFormat property null we return the value formatted
+        /// using "{0:000} which is the backwards compatabilty value. If TextFormat 
+        /// is not a valid format string we return "???" rather than crashing
+        /// </value>
+        public string FormattedCurrentValue
+        {
+            get 
+            {
+                try
+                {
+                    return String.Format(this.TextFormat ?? "{0:000}", this.CurrentValue);
+                }
+                catch (FormatException)
+                {
+                    return "???";
+                }
+            }
+        }
         #endregion
  
         #region internal Properties

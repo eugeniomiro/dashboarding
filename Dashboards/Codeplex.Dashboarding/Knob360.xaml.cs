@@ -58,8 +58,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void Animate()
         {
-            SetFaceColor();
-            SetNeedleColor();
+            UpdateFaceColor();
+            UpdateNeedleColor();
 
             _txt11.Text = String.Format("{0:000}", Value);
 
@@ -109,7 +109,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Set the face color from the range
         /// </summary>
-        protected override void SetFaceColor()
+        protected override void UpdateFaceColor()
         {
 
             ColorPoint c = FaceColorRange.GetColor(Value);
@@ -123,7 +123,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Set the needle color from the range
         /// </summary>
-        protected override void SetNeedleColor()
+        protected override void UpdateNeedleColor()
         {
             ColorPoint c = NeedleColorRange.GetColor(Value);
             if (c != null)
@@ -133,9 +133,20 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+            if (_txt11 != null)
+            {
+                _txt11.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
+            }
+        }
+
+        /// <summary>
         /// Set our text color to that of the TextColor property
         /// </summary>
-        protected override void SetTextColor()
+        protected override void UpdateTextColor()
         {
             for (int i = 0; i <= 11; i++)
             {
@@ -150,7 +161,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the text visibility to that of the TextVisibility property
         /// </summary>
-        protected override void SetTextVisibility()
+        protected override void UpdateTextVisibility()
         {
             for (int i = 0; i <= 11; i++)
             {
@@ -210,7 +221,7 @@ namespace Codeplex.Dashboarding
             }
             else
             {
-                //no-op
+                // no-op
             }
             angleInDegrees = (angleInDegrees - 90) % 360;
             return angleInDegrees;

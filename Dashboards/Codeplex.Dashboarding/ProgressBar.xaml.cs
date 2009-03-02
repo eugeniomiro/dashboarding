@@ -241,6 +241,51 @@ namespace Codeplex.Dashboarding
 
 
         /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        protected override void UpdateTextColor()
+        {
+            if (_text != null)
+            {
+                _text.Foreground = new SolidColorBrush(TextColor);
+            }
+        }
+
+        /// <summary>
+        /// Set the visibiity of your text according to that of the TextVisibility property
+        /// </summary>
+        protected override void UpdateTextVisibility()
+        {
+            if (_text != null)
+            {
+                _text.Visibility = TextVisibility;
+            }
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+            if (_text != null)
+            {
+                _text.Text = FormattedValue;
+            }
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected void UpdateCurrentTextFormat()
+        {
+            if (_text != null)
+            {
+                _text.Text = FormattedCurrentValue;
+            }
+        }
+
+
+        /// <summary>
         /// Calculate the destination position of the animation for the current value
         /// and set it off
         /// </summary>
@@ -248,11 +293,13 @@ namespace Codeplex.Dashboarding
         {
             if (IsBidirectional)
             {
+                UpdateCurrentTextFormat();
                 _grabHandleCanvas.Visibility = Visibility.Visible;
                 _grabHandle.Visibility = Visibility.Visible;
             }
             else
             {
+                UpdateTextFormat();
                 _grabHandleCanvas.Visibility = Visibility.Collapsed;
                 _grabHandle.Visibility = Visibility.Collapsed;
             }
@@ -289,7 +336,7 @@ namespace Codeplex.Dashboarding
             pa.Duration = new Duration(duration);
 
             Start(AnimateIndicatorStoryboard);
-            SplineDoubleKeyFrame s = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, pos-10);
+            SplineDoubleKeyFrame s = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, pos - 10);
             s.KeyTime = KeyTime.FromTimeSpan(duration);
             Start(AnimateGrabHandleStoryboard);
 
