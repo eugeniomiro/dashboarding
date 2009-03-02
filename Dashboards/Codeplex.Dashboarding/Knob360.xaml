@@ -172,8 +172,7 @@
     </TextBlock.RenderTransform><Run Text="100"/></TextBlock>
 
 
-            <TextBlock Width="21.167" Height="13.083" Canvas.Left="70" Canvas.Top="71.333" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_txt11" Foreground="#FFF2ECEC" TextAlignment="Center"/>
-
+            <TextBlock Width="106.167" Height="13.083" Canvas.Left="26.75" Canvas.Top="71.333" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_txt11" Foreground="#FFF2ECEC" TextAlignment="Center"/>
 
         </Canvas>
         <Canvas Height="28" HorizontalAlignment="Left" Margin="46,0,0,32" x:Name="_grabCanvas" VerticalAlignment="Bottom" Width="28" RenderTransformOrigin="1.285,-0.608">

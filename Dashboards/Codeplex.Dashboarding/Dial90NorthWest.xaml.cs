@@ -1,89 +1,41 @@
-﻿#region Copyright 2008 David Black
-
-/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-#endregion
-
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Dial90NorthWest.xaml.cs" company="David Black">
+//      Copyright 2008 David Black
+//  
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//     
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Controls;
+
     /// <summary>
     /// A quarter of a circle dial that sweeps through 90 degrees upper left quadrant
     /// </summary>
-
-    [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "NorthWest")]
+    [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "NorthWest", Justification = "Its been in use and would be a breaking change")]
     public partial class Dial90NorthWest : Dial90
     {
-
         /// <summary>
-        /// Constructs a top left 90 degree dial
+        /// Initializes a new instance of the <see cref="Dial90NorthWest"/> class.
         /// </summary>
         public Dial90NorthWest()
         {
             InitializeComponent();
             InitializeDial90();
-        }
-
-
-        /// <summary>
-        /// Determines the angle of the needle based on the mouse 
-        /// position.
-        /// </summary>
-        /// <param name="currentPoint">Mouse position</param>
-        /// <returns>The angle in degrees</returns>
-        protected override double CalculateRotationAngle(Point currentPoint)
-        {
-            double opposite = currentPoint.Y - ActualHeight;
-            double adjacent = currentPoint.X - (ActualWidth);
-            double tan = opposite / adjacent;
-            double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
-
-            if (currentPoint.X >= ActualWidth && currentPoint.Y <= ActualHeight)
-            {
-                angleInDegrees = 180 + angleInDegrees;
-            }    
-            return angleInDegrees;
-        }
-
-
-        /// <summary>
-        /// Calculate the rotation angle from the normalised current value
-        /// </summary>
-        /// <returns>angle in degrees to position the transform</returns>
-        protected override double CalculatePointFromCurrentNormalisedValue()
-        {
-            return -90 + (CurrentNormalizedValue * 90);
-        }
-
-
-        /// <summary>
-        /// Calculate the rotation angle from the normalised actual value
-        /// </summary>
-        /// <returns>angle in degrees to position the transform</returns>
-        protected override double CalculatePointFromNormalisedValue()
-        {
-            return -90 + (NormalizedValue * 90);
         }
 
         /// <summary>
@@ -94,6 +46,45 @@ namespace Codeplex.Dashboarding
         protected override Grid ResourceRoot
         {
             get { return LayoutRoot; }
+        }
+
+        /// <summary>
+        /// Determines the angle of the needle based on the mouse 
+        /// position.
+        /// </summary>
+        /// <param name="currentPoint">Mouse position</param>
+        /// <returns>The angle in degrees</returns>
+        protected override double CalculateRotationAngle(Point currentPoint)
+        {
+            double opposite = currentPoint.Y - ActualHeight;
+            double adjacent = currentPoint.X - ActualWidth;
+            double tan = opposite / adjacent;
+            double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
+
+            if (currentPoint.X >= ActualWidth && currentPoint.Y <= ActualHeight)
+            {
+                angleInDegrees = 180 + angleInDegrees;
+            }  
+  
+            return angleInDegrees;
+        }
+
+        /// <summary>
+        /// Calculate the rotation angle from the normalised current value
+        /// </summary>
+        /// <returns>angle in degrees to position the transform</returns>
+        protected override double CalculatePointFromCurrentNormalisedValue()
+        {
+            return -90 + (CurrentNormalizedValue * 90);
+        }
+
+        /// <summary>
+        /// Calculate the rotation angle from the normalised actual value
+        /// </summary>
+        /// <returns>angle in degrees to position the transform</returns>
+        protected override double CalculatePointFromNormalisedValue()
+        {
+            return -90 + (NormalizedValue * 90);
         }
     }
 }

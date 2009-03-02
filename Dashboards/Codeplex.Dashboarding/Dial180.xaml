@@ -5,23 +5,23 @@
      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
      Height="90" Width="162"
     >
-   
+
     <Grid x:Name="LayoutRoot" Height="90" Width="162">
- <Grid.Resources>
-        <Storyboard x:Name="_swipe" x:Key="_swipe">
-            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <SplineDoubleKeyFrame x:Name="_value" KeyTime="00:00:0.75" Value="89.574"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+        <Grid.Resources>
+            <Storyboard x:Name="_swipe" x:Key="_swipe">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                    <SplineDoubleKeyFrame x:Name="_value" KeyTime="00:00:0.75" Value="89.574"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
-        <Storyboard x:Name="_moveGrab" x:Key="_moveGrab">
-            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <SplineDoubleKeyFrame KeyTime="00:00:0.75" Value="150" x:Name="_grabPos"/>
-            </DoubleAnimationUsingKeyFrames>
+            <Storyboard x:Name="_moveGrab" x:Key="_moveGrab">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:0.75" Value="150" x:Name="_grabPos"/>
+                </DoubleAnimationUsingKeyFrames>
 
-        </Storyboard>
+            </Storyboard>
 
-    </Grid.Resources>
+        </Grid.Resources>
 
         <Path Height="86" HorizontalAlignment="Left" Margin="2,2,0,0" x:Name="rectangle" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.253996906997256,1.09214089395002" Stretch="Fill" Stroke="#FF000000" StrokeThickness="2" Data="M79.906609,0.5 C101.83415,0.5 121.68574,9.4029207 136.05556,23.797247 C143.2404,30.994293 149.05478,39.564186 153.07306,49.080528 C155.08215,53.838642 156.6422,58.83334 157.69997,64.011337 C158.22885,66.600319 158.63216,69.23513 158.90326,71.909096 L159.28171,79.416443 L159.5,79.416443 L159.5,85.5 L0.68678188,85.5 L0.68678188,83.747086 L0.5,80.041779 C0.49999809,36.111843 36.051735,0.5 79.906609,0.5 z">
             <Path.Fill>
@@ -151,7 +151,7 @@
                 </Path.RenderTransform>
             </Path>
         </Canvas>
-        <Path x:Name="_needleCoverCircle" Height="13" HorizontalAlignment="Left" Margin="70,75,0,0" VerticalAlignment="Top" Width="25" Stretch="Fill" Stroke="#FF080808" Data="M12.5,0.5 C19.127438,0.5 24.5,5.8726006 24.5,12.5 L0.5,12.5 C0.49999762,5.8725972 5.8725696,0.5 12.5,0.5 z">
+        <Path x:Name="_needleCoverCircle" Height="16.167" HorizontalAlignment="Left" Margin="66.584,71.833,0,0" VerticalAlignment="Top" Width="32.5" Stretch="Fill" Stroke="#FF080808" Data="M12.5,0.5 C19.127438,0.5 24.5,5.8726006 24.5,12.5 L0.5,12.5 C0.49999762,5.8725972 5.8725696,0.5 12.5,0.5 z" d:LayoutOverrides="Height">
             <Path.Fill>
                 <RadialGradientBrush GradientOrigin="0.5,1.038">
                     <RadialGradientBrush.RelativeTransform>
@@ -167,7 +167,7 @@
                 </RadialGradientBrush>
             </Path.Fill>
         </Path>
-        <TextBlock x:Name="_text" Text="000" Margin="74.938,0,80.062,1.864" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="8" d:LayoutOverrides="Width, Height" />
+        <TextBlock x:Name="_text" Text="1234c"  VerticalAlignment="Bottom" TextAlignment="Center" FontSize="8" d:LayoutOverrides="Height" Width="100" Margin="33.333,0,28.667,1.697" />
 
 
 

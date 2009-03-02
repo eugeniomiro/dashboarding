@@ -149,7 +149,7 @@
       </TransformGroup>
     </TextBlock.RenderTransform><Run Text="100"/></TextBlock>
 
-            <TextBlock Width="21.167" Height="13.083" Canvas.Left="69.583" Canvas.Top="105.997" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_txt11" Foreground="#FFF2ECEC" TextAlignment="Center"/>
+            <TextBlock Width="98.917" Height="13.083" Canvas.Left="30.583" Canvas.Top="105.997" Text="000" TextWrapping="Wrap" FontFamily="Verdana" x:Name="_txt11" Foreground="#FFF2ECEC" TextAlignment="Center"/>
 
             <Path Margin="6.832,5.999,0,0" Stretch="Fill" Data="M152.5,76 C152.5,96.39447 112.62733,78.363838 75.472977,78.80822 C36.66341,79.2724 0.5,97.303032 0.5,76 C0.5,34.302502 34.52636,0.5 76.5,0.5 C118.47364,0.5 152.5,34.302502 152.5,76 z" Opacity="0.4" VerticalAlignment="Top" Height="83.343" Width="148" HorizontalAlignment="Left">
                 <Path.Fill>

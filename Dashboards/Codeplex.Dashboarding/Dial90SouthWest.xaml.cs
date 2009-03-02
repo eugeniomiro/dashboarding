@@ -1,51 +1,52 @@
-﻿#region Copyright 2008 David Black
-
-/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-#endregion
-
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Dial90SouthWest.xaml.cs" company="David Black">
+//      Copyright 2008 David Black
+//  
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//     
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Controls;
+
     /// <summary>
     /// A quarter of a circle dial that sweeps through 90 degrees lower right quadrant
     /// </summary>
-
-    [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "SouthWest")]
+    [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "NorthWest", Justification = "Its been in use and would be a breaking change")]
     public partial class Dial90SouthWest : Dial90
     {
-        
-        
         /// <summary>
-        /// Constructs a top left 90 degree dial
+        /// Initializes a new instance of the <see cref="Dial90SouthWest"/> class.
         /// </summary>
         public Dial90SouthWest()
         {
             InitializeComponent();
             InitializeDial90();
         }
-     
+
+        /// <summary>
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
+        /// </summary>
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
+        {
+            get { return LayoutRoot; }
+        }
 
         /// <summary>
         /// Determines the angle of the needle based on the mouse 
@@ -55,9 +56,8 @@ namespace Codeplex.Dashboarding
         /// <returns>The angle in degrees</returns>
         protected override double CalculateRotationAngle(Point currentPoint)
         {
-
             double opposite = currentPoint.Y;
-            double adjacent = (ActualWidth ) - (currentPoint.X);
+            double adjacent = ActualWidth - currentPoint.X;
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
@@ -65,6 +65,7 @@ namespace Codeplex.Dashboarding
             {
                 angleInDegrees = 0;
             }
+
             if (currentPoint.X > 100)
             {
                 angleInDegrees = 90;
@@ -76,7 +77,6 @@ namespace Codeplex.Dashboarding
              return angleInDegrees;
         }
 
-
         /// <summary>
         /// Calculate the rotation angle from the normalised current value
         /// </summary>
@@ -86,7 +86,6 @@ namespace Codeplex.Dashboarding
             return 90 - (CurrentNormalizedValue * 90);
         }
 
-
         /// <summary>
         /// Calculate the rotation angle from the normalised actual value
         /// </summary>
@@ -95,16 +94,5 @@ namespace Codeplex.Dashboarding
         {
             return 90 - (NormalizedValue * 90);
         }
-        
-        /// <summary>
-        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
-        /// neutral manner
-        /// </summary>
-        /// <value>The resource root.</value>
-        protected override Grid ResourceRoot
-        {
-            get { return LayoutRoot; }
-        }
-
     }
 }

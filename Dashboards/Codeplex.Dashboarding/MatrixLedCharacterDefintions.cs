@@ -1,26 +1,25 @@
-﻿/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MatrixLedCharacterDefintions.cs" company="David Black">
+//      Copyright 2008 David Black
+//  
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//     
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Codeplex.Dashboarding
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Definies characters for the MatrixLedCharacter amoungst other things. Definitions are
     /// a character to 5 bytes of data each byte represents a column of 7 leds the MSB is ignored for
@@ -31,14 +30,13 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Empty square, shows an unknown character
         /// </summary>
-        private static readonly byte[] _unknownCharacter = { 0x3e, 0x22, 0x22, 0x22, 0x3e, 0 };
+        private static readonly byte[] unknownCharacter = { 0x3e, 0x22, 0x22, 0x22, 0x3e, 0 };
 
         /// <summary>
         /// Datastructure containing the mapping from character to leds
         /// </summary>
-        private static Dictionary<string, byte[]> _characterDefinitions = new Dictionary<string, byte[]>
+        private static Dictionary<string, byte[]> characterDefinitions = new Dictionary<string, byte[]>
         {
-            // space
             { " ", new byte[] { 0, 0, 0, 0, 0, 0 } }, 
             { "A", new byte[] { 63, 68, 68, 68, 63, 0 } },
             { "B", new byte[] { 127, 73, 73, 73, 54, 0 } },
@@ -133,17 +131,14 @@ namespace Codeplex.Dashboarding
             { "{", new byte[] { 0, 8, 54, 65, 0, 0 } }, 
             { "|", new byte[] { 0, 0, 119, 0, 0, 0 } }, 
             { "}", new byte[] { 0, 65, 54, 8, 0, 0 } }, 
-
-
-        
         };
 
         /// <summary>
-        /// Datastructure containing the mapping from character to leds
+        /// Gets the data structure containing the mapping from character to leds
         /// </summary>
         public static Dictionary<string, byte[]> CharacterDefinitions
         {
-            get { return _characterDefinitions; }
+            get { return characterDefinitions; }
         }
 
         /// <summary>
@@ -151,15 +146,15 @@ namespace Codeplex.Dashboarding
         /// rendered as an open rectangle
         /// </summary>
         /// <param name="character">the character to render</param>
-        /// <returns></returns>
+        /// <returns>The array of bytes representing vertical sets of on/off setting for LEDS</returns>
         public static byte[] GetDefinition(string character)
         {
             if (CharacterDefinitions.ContainsKey(character))
             {
                 return CharacterDefinitions[character];
             }
-            return _unknownCharacter;
-        }
 
+            return unknownCharacter;
+        }
     }
 }
