@@ -74,6 +74,28 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
+        /// Gets the shape used to highlight the grab control
+        /// </summary>
+        protected override Shape GrabHighlight
+        {
+            get { return this.grabHighlightShape; }
+        }
+
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            this.UpdateFaceColor();
+            this.UpdateNeedleColor();
+            this.UpdateTextColor();
+            this.UpdateTextFormat();
+            this.UpdateTextVisibility();
+        }
+ 
+        /// <summary>
         /// Set the defaults for our dependancy properties and register the
         /// grab handle
         /// </summary>
@@ -90,7 +112,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextVisibility()
         {
-            this.textBlock.Visibility = TextVisibility;
+            this.textBlock.Visibility = ValueTextVisibility;
         }
 
         /// <summary>
@@ -98,7 +120,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
-            this.textBlock.Foreground = new SolidColorBrush(TextColor);
+            this.textBlock.Foreground = new SolidColorBrush(ValueTextColor);
         }
 
         /// <summary>

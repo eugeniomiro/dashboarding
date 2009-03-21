@@ -12,14 +12,14 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <db:Dial180 x:Name="_dial0" Grid.Row="0" TextColor="Chocolate" Value="60">
+        <db:Dial180 x:Name="_dial0" Grid.Row="0" ValueTextColor="Chocolate" Value="60">
             <db:Dial180.FaceColorRange>
                 <db:ColorPoint HiColor="#2A242C" LowColor="#6C0680" Value="0" />
                 <db:ColorPoint HiColor="#2A242C" LowColor="#6C0000" Value="55" />
             </db:Dial180.FaceColorRange>
         </db:Dial180>
 
-        <db:Dial180 x:Name="_dial1" Grid.Row="2"  TextVisibility="Collapsed">
+        <db:Dial180 x:Name="_dial1" Grid.Row="2"  ValueTextVisibility="Collapsed">
             <db:Dial180.NeedleColorRange>
                 <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                 <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />

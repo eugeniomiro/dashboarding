@@ -154,7 +154,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
-            _text.Foreground = new SolidColorBrush(TextColor);
+            _text.Foreground = new SolidColorBrush(ValueTextColor);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextVisibility()
         {
-            _text.Visibility = TextVisibility;
+            _text.Visibility = ValueTextVisibility;
         }
 
         /// <summary>
@@ -171,6 +171,17 @@ namespace Codeplex.Dashboarding
         protected override void UpdateTextFormat()
         {
         }
+
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            this.SetAllLedColors();
+        }
+
         #endregion
 
         #region private methods
@@ -183,12 +194,20 @@ namespace Codeplex.Dashboarding
         {
             DecadeVuMeter instance = dependancy as DecadeVuMeter;
 
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                for (int i = 0; i < NumberOfLeds; i++)
-                {
-                    instance.SetLedColours(i);
-                }
+                instance.SetAllLedColors();
+            }
+        }
+
+        /// <summary>
+        /// Sets all led colors.
+        /// </summary>
+        private void SetAllLedColors()
+        {
+            for (int i = 0; i < NumberOfLeds; i++)
+            {
+                this.SetLedColours(i);
             }
         }
 

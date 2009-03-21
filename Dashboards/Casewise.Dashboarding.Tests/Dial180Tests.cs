@@ -25,23 +25,23 @@ namespace Casewise.Dashboarding.Tests
         public void TestTextColor()
         {
             var tinp = new TestINotifyPropertyChanged<Dial180>();
-            var action = new Action<Dial180>(p => p.TextColor = Colors.Yellow);
+            var action = new Action<Dial180>(p => p.ValueTextColor = Colors.Yellow);
             tinp.AssertChange(_meter, action, "TextColor");
-            action = new Action<Dial180>(p => p.SetValue(Dial180.TextColorProperty, Colors.Purple));
+            action = new Action<Dial180>(p => p.SetValue(Dial180.ValueTextColorProperty, Colors.Purple));
             tinp.AssertChange(_meter, action, "TextColor");
-            Assert.AreEqual(_meter.TextColor, Colors.Purple);
+            Assert.AreEqual(_meter.ValueTextColor, Colors.Purple);
         }
 
         [TestMethod]
         public void TestTextVisibility()
         {
             var tinp = new TestINotifyPropertyChanged<Dial180>();
-            var action = new Action<Dial180>(p => p.TextVisibility = (p.TextVisibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed);
+            var action = new Action<Dial180>(p => p.ValueTextVisibility = (p.ValueTextVisibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed);
             tinp.AssertChange(_meter, action, "TextVisibility");
-            Visibility nv = (_meter.TextVisibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
-            action = new Action<Dial180>(p => p.SetValue(Dial180.TextVisibilityProperty, nv));
+            Visibility nv = (_meter.ValueTextVisibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
+            action = new Action<Dial180>(p => p.SetValue(Dial180.ValueTextVisibilityProperty, nv));
             tinp.AssertChange(_meter, action, "TextVisibility");
-            Assert.AreEqual(_meter.TextVisibility, nv);
+            Assert.AreEqual(_meter.ValueTextVisibility, nv);
         }
 
 

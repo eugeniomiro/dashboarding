@@ -5,7 +5,7 @@
     Width="160" Height="136">
     <Grid x:Name="LayoutRoot" >
         <StackPanel Orientation="Horizontal">
-            <db:PlainThermometer x:Name="_ther2" TextColor="Aquamarine" Value="22">
+            <db:PlainThermometer x:Name="_ther2" ValueTextColor="Aquamarine" Value="22">
                 <db:PlainThermometer.MercuryColorRange>
                     <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                     <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />
@@ -14,7 +14,7 @@
             </db:PlainThermometer>
 
 
-            <db:PlainThermometer x:Name="_ther3" TextColor="Aquamarine" Value="45">
+            <db:PlainThermometer x:Name="_ther3" ValueTextColor="Aquamarine" Value="45">
                 <db:PlainThermometer.MercuryColorRange>
                     <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                     <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />
@@ -22,7 +22,7 @@
                 </db:PlainThermometer.MercuryColorRange>
             </db:PlainThermometer>
 
-            <db:PlainThermometer x:Name="_ther4" TextColor="Aquamarine" Value="88">
+            <db:PlainThermometer x:Name="_ther4" ValueTextColor="Aquamarine" Value="88">
                 <db:PlainThermometer.MercuryColorRange>
                     <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                     <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />

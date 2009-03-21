@@ -4,7 +4,7 @@
  xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding" 
     Width="50" Height="144">
     <Grid x:Name="LayoutRoot" >
-        <db:WallThermometer Value="50" TextVisibility="Collapsed" >
+        <db:WallThermometer Value="50" ValueTextVisibility="Collapsed" >
             <db:WallThermometer.MercuryColorRange>
                 <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
             </db:WallThermometer.MercuryColorRange>

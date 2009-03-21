@@ -63,6 +63,20 @@ namespace Codeplex.Dashboarding
         #region protected methods
 
         /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            this.UpdateFaceColor();
+            this.UpdateNeedleColor();
+            this.UpdateTextColor();
+            this.UpdateTextFormat();
+            this.UpdateTextVisibility();
+        }
+
+        /// <summary>
         /// Sets the face color from the color range
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
@@ -95,7 +109,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
-            _text.Foreground = new SolidColorBrush(TextColor);
+            _text.Foreground = new SolidColorBrush(ValueTextColor);
         }
 
         /// <summary>
@@ -103,7 +117,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextVisibility()
         {
-            _text.Visibility = TextVisibility;
+            _text.Visibility = ValueTextVisibility;
         }
 
         /// <summary>

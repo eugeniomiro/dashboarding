@@ -63,6 +63,19 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            UpdateMercuryColor();
+            UpdateTextColor();
+            UpdateTextFormat();
+            UpdateTextVisibility();
+        }
+
+        /// <summary>
         /// Initialize the animation end-points
         /// </summary>
         void InitializeAnimation()
@@ -111,7 +124,7 @@ namespace Codeplex.Dashboarding
         private static void MercuryColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PlainThermometer instance = dependancy as PlainThermometer;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 instance.Animate();
             }
@@ -126,7 +139,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
-            _text.Foreground = new SolidColorBrush(TextColor);
+            _text.Foreground = new SolidColorBrush(ValueTextColor);
         }
 
         /// <summary>
@@ -134,7 +147,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextVisibility()
         {
-            _text.Visibility = TextVisibility;
+            _text.Visibility = ValueTextVisibility;
         }
 
         /// <summary>
@@ -190,7 +203,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the high and low colors from the Mercury color range
         /// </summary>
-        private void SetMercuryColor()
+        private void UpdateMercuryColor()
         {
             ColorPoint c = MercuryColorRange.GetColor(Value);
             if (c != null)
@@ -237,7 +250,7 @@ namespace Codeplex.Dashboarding
 
 
 
-            SetMercuryColor();
+            UpdateMercuryColor();
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
@@ -265,7 +278,7 @@ namespace Codeplex.Dashboarding
         /// <param name="duration">The duration.</param>
         private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
         {
-            SetMercuryColor();
+            UpdateMercuryColor();
 
             DoubleAnimationUsingKeyFrames da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_scaleContainer");
             da.KeyFrames[0].Value = _fullScale * normalizedValue;

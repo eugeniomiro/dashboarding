@@ -77,15 +77,20 @@ namespace Codeplex.Dashboarding
             ProgressBar instance = dependancy as ProgressBar;
 
 
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 if (instance.OutlineColor != null)
                 {
-                    instance._grid.Stroke = new SolidColorBrush(instance.OutlineColor);
-                    instance._coloured.Stroke = new SolidColorBrush(instance.OutlineColor);
-                    instance._gray.Stroke = new SolidColorBrush(instance.OutlineColor);
+                    instance.UpdateColors();
                 }
             }
+        }
+
+        private void UpdateColors()
+        {
+            _grid.Stroke = new SolidColorBrush(OutlineColor);
+            _coloured.Stroke = new SolidColorBrush(OutlineColor);
+            _gray.Stroke = new SolidColorBrush(OutlineColor);
         }
 
         #endregion
@@ -133,15 +138,18 @@ namespace Codeplex.Dashboarding
             ProgressBar instance = dependancy as ProgressBar;
             if (instance != null)
             {
-                instance.SetInProgressColor();
+                instance.UpdateInProgressColor();
             }
         }
 
-        private void SetInProgressColor()
+        private void UpdateInProgressColor()
         {
-            _highEnabled0.Color = InProgressColor.HiColor;
-            
-            _lowEnabled0.Color = InProgressColor.LowColor;
+            if (InProgressColor != null)
+            {
+                _highEnabled0.Color = InProgressColor.HiColor;
+
+                _lowEnabled0.Color = InProgressColor.LowColor;
+            }
         }
 
 
@@ -185,18 +193,17 @@ namespace Codeplex.Dashboarding
             ProgressBar instance = dependancy as ProgressBar;
             if (instance != null)
             {
-                instance.SetOutOfProgressColor();
+                instance.UpdateOutOfProgressColor();
             }
         }
 
-        private void SetOutOfProgressColor()
+        private void UpdateOutOfProgressColor()
         {
-            _highDisabled0.Color = OutOfProgressColor.HiColor;
-           
-
-            _lowDisabled0.Color = OutOfProgressColor.LowColor;
-           
-
+            if (OutOfProgressColor != null)
+            {
+                _highDisabled0.Color = OutOfProgressColor.HiColor;
+                _lowDisabled0.Color = OutOfProgressColor.LowColor;
+            }
         }
 
         #endregion
@@ -239,6 +246,21 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            UpdateColors();
+            UpdateCurrentTextFormat();
+            UpdateInProgressColor();
+            UpdateOutOfProgressColor();
+            UpdateTextColor();
+            UpdateTextFormat();
+            UpdateTextVisibility();
+        } 
 
         /// <summary>
         /// Update your text colors to that of the TextColor dependancy property
@@ -247,7 +269,7 @@ namespace Codeplex.Dashboarding
         {
             if (_text != null)
             {
-                _text.Foreground = new SolidColorBrush(TextColor);
+                _text.Foreground = new SolidColorBrush(ValueTextColor);
             }
         }
 
@@ -258,7 +280,7 @@ namespace Codeplex.Dashboarding
         {
             if (_text != null)
             {
-                _text.Visibility = TextVisibility;
+                _text.Visibility = ValueTextVisibility;
             }
         }
 

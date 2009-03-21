@@ -86,25 +86,29 @@ namespace Codeplex.Dashboarding
             FiveStarRanking instance = dependancy as FiveStarRanking;
             if (instance != null)
             {
-                instance.SetInRankColor();
+                instance.UpdateInRankColor();
             }
         }
 
-        private void SetInRankColor()
+        /// <summary>
+        /// Updates the color of the in rank.
+        /// </summary>
+        private void UpdateInRankColor()
         {
-            _highEnabled0.Color = InRankColor.HiColor;
-            _highEnabled1.Color = InRankColor.HiColor;
-            _highEnabled2.Color = InRankColor.HiColor;
-            _highEnabled3.Color = InRankColor.HiColor;
-            _highEnabled4.Color = InRankColor.HiColor;
-
-            _lowEnabled0.Color = InRankColor.LowColor;
-            _lowEnabled1.Color = InRankColor.LowColor;
-            _lowEnabled2.Color = InRankColor.LowColor;
-            _lowEnabled3.Color = InRankColor.LowColor;
-            _lowEnabled4.Color = InRankColor.LowColor;
+            if (InRankColor != null)
+            {
+                _highEnabled0.Color = InRankColor.HiColor;
+                _highEnabled1.Color = InRankColor.HiColor;
+                _highEnabled2.Color = InRankColor.HiColor;
+                _highEnabled3.Color = InRankColor.HiColor;
+                _highEnabled4.Color = InRankColor.HiColor;
+                _lowEnabled0.Color = InRankColor.LowColor;
+                _lowEnabled1.Color = InRankColor.LowColor;
+                _lowEnabled2.Color = InRankColor.LowColor;
+                _lowEnabled3.Color = InRankColor.LowColor;
+                _lowEnabled4.Color = InRankColor.LowColor;
+            }
         }
-
 
         #endregion
 
@@ -151,24 +155,26 @@ namespace Codeplex.Dashboarding
             FiveStarRanking instance = dependancy as FiveStarRanking;
             if (instance != null)
             {
-                instance.SetOutRankColor();
+                instance.UpdateOutRankColor();
             }
         }
 
-        private void SetOutRankColor()
+        private void UpdateOutRankColor()
         {
-            _highDisabled0.Color = OutRankColor.HiColor;
-            _highDisabled1.Color = OutRankColor.HiColor;
-            _highDisabled2.Color = OutRankColor.HiColor;
-            _highDisabled3.Color = OutRankColor.HiColor;
-            _highDisabled4.Color = OutRankColor.HiColor;
-            _lowDisabled0.Color = OutRankColor.LowColor;
-            _lowDisabled1.Color = OutRankColor.LowColor;
-            _lowDisabled2.Color = OutRankColor.LowColor;
-            _lowDisabled3.Color = OutRankColor.LowColor;
-            _lowDisabled4.Color = OutRankColor.LowColor;
+            if (OutRankColor != null)
+            {
+                _highDisabled0.Color = OutRankColor.HiColor;
+                _highDisabled1.Color = OutRankColor.HiColor;
+                _highDisabled2.Color = OutRankColor.HiColor;
+                _highDisabled3.Color = OutRankColor.HiColor;
+                _highDisabled4.Color = OutRankColor.HiColor;
+                _lowDisabled0.Color = OutRankColor.LowColor;
+                _lowDisabled1.Color = OutRankColor.LowColor;
+                _lowDisabled2.Color = OutRankColor.LowColor;
+                _lowDisabled3.Color = OutRankColor.LowColor;
+                _lowDisabled4.Color = OutRankColor.LowColor;
+            }
         }
-
         #endregion
 
 
@@ -210,13 +216,27 @@ namespace Codeplex.Dashboarding
         #endregion
 
         /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            UpdateInRankColor();
+            UpdateOutRankColor();
+            UpdateTextColor();
+            UpdateTextFormat();
+            UpdateTextVisibility();
+        }
+
+        /// <summary>
         /// Update your text colors to that of the TextColor dependancy property
         /// </summary>
         protected override void UpdateTextColor()
         {
             if (_text != null)
             {
-                _text.Foreground = new SolidColorBrush(TextColor);
+                _text.Foreground = new SolidColorBrush(ValueTextColor);
             }
         }
 
@@ -227,7 +247,7 @@ namespace Codeplex.Dashboarding
         {
             if (_text != null)
             {
-                _text.Visibility = TextVisibility;
+                _text.Visibility = ValueTextVisibility;
             }
         }
 

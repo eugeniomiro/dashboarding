@@ -39,6 +39,8 @@ namespace Codeplex.Dashboarding
             InitializeComponent();
             SetValue(FaceColorRangeProperty, new ColorPointCollection());
             SetValue(NeedleColorRangeProperty, new ColorPointCollection());
+            SetValue(FaceTextColorProperty, Colors.White);
+            SetValue(ValueTextColorProperty, Colors.White);
             RegisterGrabHandle(_grabHandle);
         }
 
@@ -63,7 +65,22 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
-        #region Proteced methods
+        #region Protected methods
+
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            this.UpdateFaceColor();
+            this.UpdateNeedleColor();
+            this.UpdateTextColor();
+            this.UpdateTextFormat();
+            this.UpdateTextVisibility();
+        }
+
         /// <summary>
         /// Animate our Dial360. We calculate the needle position, color and the face color
         /// </summary>
@@ -115,13 +132,18 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
-            for (int i = 0; i <= 11; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
                 if (tb != null)
                 {
-                    tb.Foreground = new SolidColorBrush(TextColor);
+                    tb.Foreground = new SolidColorBrush(FaceTextColor);
                 }
+            }
+
+            if (_txt11 != null)
+            {
+                _txt11.Foreground = new SolidColorBrush(ValueTextColor);
             }
         }
 
@@ -130,6 +152,15 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextFormat()
         {
+            for (int i = 0; i <= 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null && FaceTextFormat != null)
+                {
+                    tb.Text = String.Format(FaceTextFormat, RealMinimum + (i * ((RealMaximum - RealMinimum) / 10)));
+                }
+            }
+
             if (_txt11 != null)
             {
                 _txt11.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
@@ -141,13 +172,18 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextVisibility()
         {
-            for (int i = 0; i <= 11; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
                 if (tb != null)
                 {
-                    tb.Visibility = TextVisibility;
+                    tb.Visibility = FaceTextVisibility;
                 }
+            }
+
+            if (_txt11 != null)
+            {
+                _txt11.Visibility = ValueTextVisibility;
             }
         }
 

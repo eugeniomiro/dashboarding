@@ -21,7 +21,7 @@
 
         <bd:BoundData Grid.ColumnSpan="2" x:Name="_slide"/>
 
-        <db:Dial90NorthEast Value="{Binding Path=CurrentValue, Mode=TwoWay}" x:Name="_dial0" Grid.Row="1" TextColor="Yellow">
+        <db:Dial90NorthEast Value="{Binding Path=CurrentValue, Mode=TwoWay}" x:Name="_dial0" Grid.Row="1" ValueTextColor="Yellow">
             <db:Dial90.FaceColorRange>
                 <db:ColorPoint HiColor="#2A242C" LowColor="#6C0680" Value="0" />
                 <db:ColorPoint HiColor="#2A242C" LowColor="#6C0000" Value="55" />
@@ -30,7 +30,7 @@
 
         <TextBlock Grid.Row="1" Grid.Column="1" Foreground="AntiqueWhite">Should show a changed text color of yellow and a face color range</TextBlock>
 
-        <db:Dial90NorthWest Value="{Binding Path=CurrentValue, Mode=TwoWay}" x:Name="_dial1" Grid.Row="2" TextVisibility="Collapsed">
+        <db:Dial90NorthWest Value="{Binding Path=CurrentValue, Mode=TwoWay}" x:Name="_dial1" Grid.Row="2" ValueTextVisibility="Collapsed">
             <db:Dial90.NeedleColorRange>
                 <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                 <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />

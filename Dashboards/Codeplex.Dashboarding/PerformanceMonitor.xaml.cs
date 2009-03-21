@@ -52,12 +52,20 @@ namespace Codeplex.Dashboarding
             GraphLine = Colors.Cyan;
             GridLine = Colors.White;
             Axis = Colors.Green;
-            TextColor = Colors.Green;
+            ValueTextColor = Colors.Green;
             GraphFillTo = Colors.Gray;
             GraphFillFrom = Colors.DarkGray;
 
             SizeChanged += new SizeChangedEventHandler(PerformanceMonitor_SizeChanged);
-            
+            Loaded += new RoutedEventHandler(PerformanceMonitor_Loaded);
+        }
+
+        void PerformanceMonitor_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateColours();
+            StoreValue();
+            DrawLine();
+            UpdateMinMxValues();
         }
 
         /// <summary>
@@ -68,7 +76,7 @@ namespace Codeplex.Dashboarding
         void PerformanceMonitor_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             GridRedrawRequired = true;
-            SetColours();
+            UpdateColours();
         }
 
 
@@ -113,10 +121,10 @@ namespace Codeplex.Dashboarding
         private static void GridLineColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 instance.GridRedrawRequired = true;
-                instance.SetGridLineColor();
+                instance.UpdateGridLineColor();
             }
         }
 
@@ -154,9 +162,9 @@ namespace Codeplex.Dashboarding
         private static void AxisChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance.SetAxisColor();
+                instance.UpdateAxisColor();
             }
         }
 
@@ -199,9 +207,9 @@ namespace Codeplex.Dashboarding
         private static void GraphLineColorChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance.SetGraphLineColors();
+                instance.UpdateGraphLineColors();
             }
         }
 
@@ -239,9 +247,9 @@ namespace Codeplex.Dashboarding
         private static void GraphFillFromChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance.SetGraphFill();
+                instance.UpdateGraphFill();
             }
         }
 
@@ -280,9 +288,9 @@ namespace Codeplex.Dashboarding
         private static void GraphFillToChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance.SetGraphFill();
+                instance.UpdateGraphFill();
             }
         }
 
@@ -316,17 +324,27 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our color has changed possibly via the GridLineProperty ot via a SetValue directly
-        /// on the dependancy property. We change the color to the new value
+        /// Initializes the control to a set of historical values to pre form a graph.
         /// </summary>
         /// <param name="dependancy">the PerformanceMonitor</param>
         /// <param name="args">old value and new value</param>
         private static void HistoricalValuesChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             PerformanceMonitor instance = dependancy as PerformanceMonitor;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance._values.AddRange(instance.HistoricalValues);
+                instance.UpdateHistoricalValues();
+            }
+        }
+
+        /// <summary>
+        /// Initializes the control to a set of historical values to pre form a graph.
+        /// </summary>
+        private void UpdateHistoricalValues()
+        {
+            if (HistoricalValues != null && HistoricalValues.Count > 0)
+            {
+                _values.AddRange(HistoricalValues);
             }
         }
 
@@ -337,8 +355,26 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
-        
 
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            UpdateAxisColor();
+            UpdateColours();
+            UpdateGraphFill();
+            UpdateGraphLineColors();
+            UpdateGridLineColor();
+            UpdateHistoricalValues();
+            UpdateMinMxValues();
+            UpdateTextColor();
+            UpdateTextFormat();
+            UpdateTextVisibility();
+
+        }
 
         
 
@@ -358,29 +394,29 @@ namespace Codeplex.Dashboarding
         protected override void Animate()
         {
             
-                SetColours();
+                UpdateColours();
                 StoreValue();
                 DrawLine();
-                SetMinMxValues();
+                UpdateMinMxValues();
             
         }
 
         /// <summary>
         /// Sets the colours.
         /// </summary>
-        private void SetColours()
+        private void UpdateColours()
         { 
-                SetGridLineColor();
-                SetGraphLineColors();
+                UpdateGridLineColor();
+                UpdateGraphLineColors();
                 UpdateTextColor();
-                SetAxisColor();
-                SetGraphFill();           
+                UpdateAxisColor();
+                UpdateGraphFill();           
         }
 
         /// <summary>
         /// Sets the graph fill.
         /// </summary>
-        private void SetGraphFill()
+        private void UpdateGraphFill()
         {
             rangeHighColour0.Color = GraphFillFrom;
             rangeLowColour0.Color = GraphFillTo;
@@ -390,7 +426,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the color of the axis.
         /// </summary>
-        private void SetAxisColor()
+        private void UpdateAxisColor()
         {
             _vertAxis.Stroke = new SolidColorBrush(Axis);
             _horAxis.Stroke = new SolidColorBrush(Axis);
@@ -402,8 +438,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextVisibility()
         {
-            _lowWaterMark.Visibility = TextVisibility;
-            _highWaterMark.Visibility = TextVisibility;
+            _lowWaterMark.Visibility = ValueTextVisibility;
+            _highWaterMark.Visibility = ValueTextVisibility;
 
         }
 
@@ -412,8 +448,8 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
-            _lowWaterMark.Foreground = new SolidColorBrush(TextColor);
-            _highWaterMark.Foreground = new SolidColorBrush(TextColor);
+            _lowWaterMark.Foreground = new SolidColorBrush(ValueTextColor);
+            _highWaterMark.Foreground = new SolidColorBrush(ValueTextColor);
         }
 
         /// <summary>
@@ -426,13 +462,13 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the graph line colors.
         /// </summary>
-        private void SetGraphLineColors()
+        private void UpdateGraphLineColors()
         {
             _path.Stroke = new SolidColorBrush(GraphLine);
         }
 
         #region draw grid
-        private void SetGridLineColor()
+        private void UpdateGridLineColor()
         {
             if (!GridRedrawRequired || _canvas.ActualHeight == 0 || _canvas.ActualHeight == 0)
                 return;
@@ -497,7 +533,7 @@ namespace Codeplex.Dashboarding
         #endregion
 
 
-        private void SetMinMxValues()
+        private void UpdateMinMxValues()
         {
             _lowWaterMark.Text = _historicalMin.ToString();
             _highWaterMark.Text = _historicalMax.ToString();

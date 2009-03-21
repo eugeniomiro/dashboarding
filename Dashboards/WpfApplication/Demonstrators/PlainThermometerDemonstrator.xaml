@@ -21,7 +21,7 @@
 
         <bd:BoundData Grid.ColumnSpan="2" x:Name="_slide"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <db:PlainThermometer   Value="{Binding Path=CurrentValue, Mode=TwoWay}"  x:Name="_ther2" TextColor="Aquamarine" >
+            <db:PlainThermometer   Value="{Binding Path=CurrentValue, Mode=TwoWay}"  x:Name="_ther2" ValueTextColor="Aquamarine" >
             </db:PlainThermometer>
             <db:WallThermometer   Margin="30,0,0,0"  Value="{Binding Path=CurrentValue, Mode=TwoWay}"  >
             </db:WallThermometer>
@@ -29,7 +29,7 @@
         <TextBlock  Grid.Row="1" Grid.Column="1" Foreground="AntiqueWhite">Straight out of the box (with a text color) PlainThermometer and WallThermometer controls</TextBlock>
 
         <StackPanel Orientation="Horizontal"  Grid.Row="2" >
-            <db:PlainThermometer Value="{Binding Path=CurrentValue, Mode=TwoWay}"  TextColor="Aquamarine" >
+            <db:PlainThermometer Value="{Binding Path=CurrentValue, Mode=TwoWay}"  ValueTextColor="Aquamarine" >
                 <db:PlainThermometer.MercuryColorRange>
                     <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                     <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />
@@ -50,7 +50,7 @@
         <TextBlock Grid.Row="2"  Grid.Column="1" Foreground="AntiqueWhite">With a mercury color range dependant on value</TextBlock>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <db:PlainThermometer Value="{Binding Path=CurrentValue, Mode=TwoWay}"  IsBidirectional="True"  TextColor="Aquamarine" >
+            <db:PlainThermometer Value="{Binding Path=CurrentValue, Mode=TwoWay}"  IsBidirectional="True"  ValueTextColor="Aquamarine" >
                 <db:PlainThermometer.MercuryColorRange>
                     <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                     <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />

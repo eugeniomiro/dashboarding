@@ -46,7 +46,7 @@ namespace Codeplex.Dashboarding
         public WallThermometer() :base()
         {
             InitializeComponent();
-            _delegate.TextColor = Colors.Black;
+            _delegate.ValueTextColor = Colors.Black;
             PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(OneOfMyPropertiesChanged);
             _delegate.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(OneOfTheDelegatesPropertiesChanged);
             SetValue(MercuryColorRangeProperty, new ColorPointCollection());
@@ -100,16 +100,16 @@ namespace Codeplex.Dashboarding
                         _delegate.Value = Value;
                     break;
                 case "TextColor":
-                    if (_delegate.TextColor != TextColor)
-                        _delegate.TextColor = TextColor;
+                    if (_delegate.ValueTextColor != ValueTextColor)
+                        _delegate.ValueTextColor = ValueTextColor;
                     break;
                 case "TextVisibility":
-                    if (_delegate.TextVisibility != TextVisibility)
-                        _delegate.TextVisibility = TextVisibility;
+                    if (_delegate.ValueTextVisibility != ValueTextVisibility)
+                        _delegate.ValueTextVisibility = ValueTextVisibility;
                     break;
                 case "TextFormat":
-                    if (_delegate.TextFormat != TextFormat)
-                        _delegate.TextFormat = TextFormat;
+                    if (_delegate.ValueTextFormat != ValueTextFormat)
+                        _delegate.ValueTextFormat = ValueTextFormat;
                     break;
 
             }
@@ -160,14 +160,26 @@ namespace Codeplex.Dashboarding
 
 
         #endregion
-        
+
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            UpdateTextVisibility();
+            UpdateTextColor();
+            UpdateTextFormat();
+        }
+
         /// <summary>
         /// Set the visibiity of your text according to that of the TextVisibility property
         /// </summary>
         protected override void UpdateTextVisibility()
         {
-            _delegate.TextVisibility = TextVisibility;
-            _wood.Height = (TextVisibility == Visibility.Visible) ? 142 : 128;
+            _delegate.ValueTextVisibility = ValueTextVisibility;
+            _wood.Height = (ValueTextVisibility == Visibility.Visible) ? 142 : 128;
         }
 
         /// <summary>
@@ -175,7 +187,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
-            _delegate.TextColor = TextColor;
+            _delegate.ValueTextColor = ValueTextColor;
         }
 
         /// <summary>
@@ -253,7 +265,5 @@ namespace Codeplex.Dashboarding
         {
             get { return LayoutRoot; }
         }
-
-
     }
 }

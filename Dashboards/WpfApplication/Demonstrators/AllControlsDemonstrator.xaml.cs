@@ -19,6 +19,21 @@ namespace WpfApplication.Demonstrators
         private Random _random = new Random();
         private DispatcherTimer _timer = new DispatcherTimer();
         private Foo foo = new Foo();
+
+        private List<Color> randomColors = new List<Color>() {
+            Colors.Blue, 
+            Colors.Red, 
+            Colors.Yellow, 
+            Colors.Goldenrod, 
+            Colors.Green, 
+            Colors.Lavender,
+            Colors.Black,
+            Colors.Chocolate,
+            Colors.White,
+            Colors.Tomato,
+            Colors.SteelBlue,
+        };
+
         public AllControlsDemonstrator()
         {
             InitializeComponent();
@@ -81,11 +96,8 @@ namespace WpfApplication.Demonstrators
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var lst = new List<Color>() { Colors.Blue, Colors.Red, Colors.Yellow, Colors.Goldenrod, Colors.Green, Colors.Lavender,
-            Colors.LightBlue, Colors.LightSlateGray, Colors.LimeGreen, Colors.MediumPurple};
-            var col = lst[this.random.Next(lst.Count)];
+            var col = randomColors[this.random.Next(randomColors.Count)];
             this.foo.TextColor = col;
-
         }
 
         private void _cb_Unchecked(object sender, RoutedEventArgs e)
@@ -93,11 +105,33 @@ namespace WpfApplication.Demonstrators
             this.foo.TextVisibility = Visibility.Collapsed;
         }
 
+      
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             foo.Format = _format.Text;
         }
 
+
+        private void Button_Click_FFormat(object sender, RoutedEventArgs e)
+        {
+            foo.FaceFormat = _txtFF.Text;
+        }
+
+        private void _cbf_Checked(object sender, RoutedEventArgs e)
+        {
+            this.foo.FaceTextVisibility = Visibility.Visible;
+        }
+        private void _cbf_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.foo.FaceTextVisibility = Visibility.Collapsed;
+        }
+
+        private void Button_ClickFColor(object sender, RoutedEventArgs e)
+        {
+            var col = randomColors[this.random.Next(randomColors.Count)];
+            this.foo.FaceTextColor = col;
+
+        }
    
     }
 
@@ -105,10 +139,12 @@ namespace WpfApplication.Demonstrators
     {
         public Foo()
         {
+            FaceTextVisibility = Visibility.Visible;
             TextVisibility = Visibility.Visible;
             TextColor = Colors.Black;
-            
-                
+            Format = "{0:000}";
+            FaceFormat = "{0:000}";
+            FaceTextColor = Colors.BlanchedAlmond;
         }
 
         private Visibility textVisibility;
@@ -119,6 +155,13 @@ namespace WpfApplication.Demonstrators
             set { textVisibility = value; OnPropertyChanged("TextVisibility"); }
         }
 
+        private Visibility faceTextVisibility;
+        public Visibility FaceTextVisibility                         
+        {
+            get { return faceTextVisibility; }
+            set { faceTextVisibility = value; OnPropertyChanged("FaceTextVisibility"); }
+        }
+
         private Color _textColor;
 
         public Color TextColor
@@ -126,6 +169,15 @@ namespace WpfApplication.Demonstrators
             get { return _textColor; }
             set { _textColor = value; OnPropertyChanged("TextColor"); OnPropertyChanged("AsBrush"); }
         }
+
+        private Color _ftextColor;
+
+        public Color FaceTextColor
+        {
+            get { return _ftextColor; }
+            set { _ftextColor = value; OnPropertyChanged("FaceTextColor"); OnPropertyChanged("FaceAsBrush"); }
+        }
+
 
         private string _format;
 
@@ -135,7 +187,16 @@ namespace WpfApplication.Demonstrators
             set { _format = value; OnPropertyChanged("Format"); }
         }
 
+        private string _fformat;
+
+        public string FaceFormat
+        {
+            get { return _fformat; }
+            set { _fformat = value; OnPropertyChanged("FaceFormat"); }
+        }
+
         public Brush AsBrush { get { return new SolidColorBrush(TextColor); } }
+        public Brush FaceAsBrush { get { return new SolidColorBrush(FaceTextColor); } }
 
         #region INotifyPropertyChanged Members
 

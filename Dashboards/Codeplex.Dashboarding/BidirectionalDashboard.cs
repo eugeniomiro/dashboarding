@@ -113,7 +113,7 @@ namespace Codeplex.Dashboarding
             {
                 try
                 {
-                    return String.Format(this.TextFormat ?? "{0:000}", this.CurrentValue);
+                    return String.Format(this.ValueTextFormat ?? "{0:000}", this.CurrentValue);
                 }
                 catch (FormatException)
                 {
@@ -305,7 +305,7 @@ namespace Codeplex.Dashboarding
         private static void IsBidirectionalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 instance.OnPropertyChanged("IsBidirectional");
                 instance.SetGrabHandleEventsForGrabState();
