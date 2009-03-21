@@ -12,6 +12,8 @@ namespace WpfApplication.Demonstrators
     public class BoundObject : INotifyPropertyChanged
     {
         private double _currentValue;
+        private double _minValue = -100;
+        private double _maxValue = 100;
 
 
         /// <summary>
@@ -27,7 +29,35 @@ namespace WpfApplication.Demonstrators
             }
         }
 
-        
+        /// <summary>
+        /// Gets or sets the min value.
+        /// </summary>
+        /// <value>The min value.</value>
+        public double MinValue
+        {
+            get { return _minValue; }
+            set
+            {
+                _minValue = value;
+                OnPropertyChanged("MinValue");
+            }
+
+        }
+
+        /// <summary>
+        /// Gets or sets the max value.
+        /// </summary>
+        /// <value>The max value.</value>
+        public double MaxValue
+        {
+            get { return _maxValue; }
+            set
+            {
+                _maxValue = value;
+                OnPropertyChanged("MaxValue");
+            }
+
+        }
 
         #region INotifyPropertyChanged Members
 

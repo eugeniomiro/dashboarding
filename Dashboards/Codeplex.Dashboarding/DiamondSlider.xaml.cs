@@ -46,7 +46,13 @@ namespace Codeplex.Dashboarding
         {
             InitializeComponent();
             RegisterGrabHandle(_slider);
+            DiamondColor = new Color { A = 0xFF, R = 0x85, G = 0x8a, B = 0xf9 };
+            LeftGradient = new Color { A = 0xFF, R = 0xA0, G = 0xF0, B = 0x35 };
+            RightGradient = new Color { A = 0xFF, R = 0xf9, G = 0x1d, B = 0x09 };
+            MidGradient = new Color { A = 0xFF, R = 0xe4, G = 0xf7, B = 0x39 };
         }
+
+
 
         #region DiamondColorproperty
         /// <summary>
@@ -79,12 +85,17 @@ namespace Codeplex.Dashboarding
             DiamondSlider instance = dependancy as DiamondSlider;
 
 
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                if (instance._slider != null)
-                {
-                    instance._slider.Fill = new SolidColorBrush(instance.DiamondColor);
-                }
+                instance.UpdateDiamondColor();
+            }
+        }
+
+        private void UpdateDiamondColor()
+        {
+            if (_slider != null)
+            {
+                _slider.Fill = new SolidColorBrush(DiamondColor);
             }
         }
 
@@ -119,15 +130,22 @@ namespace Codeplex.Dashboarding
             DiamondSlider instance = dependancy as DiamondSlider;
 
 
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 if (instance._slider != null)
                 {
-                    instance._leftColor.Color = instance.LeftGradient;
+                    instance.UpdateLeftGradient();
                 }
             }
         }
 
+        private void UpdateLeftGradient()
+        {
+            if (LeftGradient != null)
+            {
+                _leftColor.Color = LeftGradient;
+            }
+        }
         #endregion
 
         #region MidGradientproperty
@@ -163,8 +181,19 @@ namespace Codeplex.Dashboarding
             {
                 if (instance._slider != null)
                 {
-                    instance._midColor.Color = instance.MidGradient;
+                    instance.UpdateMidGradient();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Updates the mid gradient color from the dependancy property.
+        /// </summary>
+        private void UpdateMidGradient()
+        {
+            if (MidGradient != null)
+            {
+                _midColor.Color = MidGradient;
             }
         }
 
@@ -203,12 +232,37 @@ namespace Codeplex.Dashboarding
             {
                 if (instance._slider != null)
                 {
-                    instance._rightColor.Color = instance.RightGradient;
+                    instance.UpdateRightGradient();
                 }
             }
         }
 
+        /// <summary>
+        /// Updates the right gradient color to that specified in the dependancy property.
+        /// </summary>
+        private void UpdateRightGradient()
+        {
+            if (RightGradient != null)
+            {
+                _rightColor.Color = RightGradient;
+            }
+        }
         #endregion
+
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            UpdateDiamondColor();
+            UpdateLeftGradient();
+            UpdateRightGradient();
+            UpdateTextColor();
+            UpdateTextFormat();
+            UpdateTextVisibility();
+        }
 
         /// <summary>
         /// Update your text colors to that of the TextColor dependancy property

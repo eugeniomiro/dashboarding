@@ -46,6 +46,7 @@ namespace Codeplex.Dashboarding
             InitializeComponent();
             LayoutRoot.Clip = new RectangleGeometry { Rect = new Rect { X = 0, Y = 0, Width = 40, Height = 50 } };
             AnimateIndicatorStoryboard.Completed += new EventHandler(this._swipe_Completed);
+            Loaded += new RoutedEventHandler(OdometerDigit_Loaded);
         }
 
         #region events
@@ -67,6 +68,12 @@ namespace Codeplex.Dashboarding
         #endregion
 
         #region public properties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is loaded.
+        /// </summary>
+        /// <value><c>true</c> if this instance is loaded; otherwise, <c>false</c>.</value>
+        public bool DashboardLoaded { get; set; }
         
         /// <summary>
         /// Gets the current value of the digit 0..9
@@ -237,6 +244,18 @@ namespace Codeplex.Dashboarding
                 this.DecadeMinus(this, EventArgs.Empty);
             }
         }
+
+        private void OdometerDigit_Loaded(object sender, RoutedEventArgs e)
+        {
+            ManifestChanges();
+            DashboardLoaded = true;
+        }
+
+        private void ManifestChanges()
+        {
+            
+        }
+
         #endregion
     }
 }

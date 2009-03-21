@@ -243,6 +243,12 @@ namespace Codeplex.Dashboarding
             get { return (double)GetValue(IntervalProperty); }
             set { SetValue(IntervalProperty, value); }
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the dashboard is loaded.
+        /// </summary>
+        /// <value><c>true</c> if [dashboard loaded]; otherwise, <c>false</c>.</value>
+        public bool DashboardLoaded { get; set; }
         #endregion
 
         #region protected properties
@@ -346,10 +352,19 @@ namespace Codeplex.Dashboarding
         private static void IntervalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             Odometer instance = dependancy as Odometer;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance.timer.Interval = TimeSpan.FromSeconds(instance.Interval);
+                instance.UpdateInterval();
             }
+        }
+
+        /// <summary>
+        /// Updates the interval.
+        /// </summary>
+        private void UpdateInterval()
+        {
+            this.timer.Interval = TimeSpan.FromSeconds(this.Interval);
+
         }
 
         /// <summary>
@@ -360,9 +375,9 @@ namespace Codeplex.Dashboarding
         private static void InitialValuePropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             Odometer instance = dependancy as Odometer;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance.SetInitialValue();
+                instance.UpdateInitialValue();
             }
         }
 
@@ -374,9 +389,9 @@ namespace Codeplex.Dashboarding
         private static void DigitsPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             Odometer instance = dependancy as Odometer;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
-                instance.SetDigits();
+                instance.UpdateDigits();
             }
         }
         #endregion
@@ -387,7 +402,7 @@ namespace Codeplex.Dashboarding
         /// value. If the value is set first we infer the number of digits from
         /// the value
         /// </summary>
-        private void SetDigits()
+        private void UpdateDigits()
         {
             if (this.digits.Count == 0)
             {
@@ -413,7 +428,7 @@ namespace Codeplex.Dashboarding
         /// Puts the digits into their initial states, We expand the total number of
         /// digits if the amount present is not enough
         /// </summary>
-        private void SetInitialValue()
+        private void UpdateInitialValue()
         {
             double val = this.InitialValue;
             double neededDigits = (Math.Log10(this.InitialValue) + 1) / Math.Log10(10);
@@ -440,10 +455,19 @@ namespace Codeplex.Dashboarding
         /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void Odometer_Loaded(object sender, RoutedEventArgs e)
         {
+            ManifestChanges();
+            DashboardLoaded = true;
             if (this.MeterMode != Mode.Static)
             {
                 this.timer.Start();
             }
+        }
+
+        private void ManifestChanges()
+        {
+            UpdateDigits();
+            UpdateInitialValue();
+            UpdateInterval();
         }
 
         /// <summary>

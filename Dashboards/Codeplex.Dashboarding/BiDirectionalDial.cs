@@ -177,7 +177,7 @@ namespace Codeplex.Dashboarding
         private static void FaceColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 instance.UpdateFaceColor();
                 instance.OnPropertyChanged("FaceColorRange");
@@ -192,7 +192,7 @@ namespace Codeplex.Dashboarding
         private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 instance.UpdateNeedleColor();
                 instance.OnPropertyChanged("NeedleColorRange");

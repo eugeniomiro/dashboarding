@@ -59,6 +59,15 @@ namespace Casewise.Dashboarding.Tests
         }
 
         /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+        }
+
+        /// <summary>
         /// The format string for the value has changed
         /// </summary>
         protected override void UpdateTextFormat()

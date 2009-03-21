@@ -147,6 +147,18 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            this.UpdateTextColor();
+            this.UpdateTextFormat();
+            this.UpdateTextVisibility();
+        }
+
+        /// <summary>
         /// Show or hised the correct element depending on the state and then starts
         /// any animation associated with the value
         /// </summary>
@@ -157,8 +169,8 @@ namespace Codeplex.Dashboarding
         {
             if (trueControl != null || falseControl != null || sb != null)
             {
-                SetColorsFromXaml(trueControl, this.TrueColor, "true");
-                SetColorsFromXaml(falseControl, this.FalseColor, "false");
+                UpdateColorsFromXaml(trueControl, this.TrueColor, "true");
+                UpdateColorsFromXaml(falseControl, this.FalseColor, "false");
 
                 trueControl.Opacity = 0;
                 falseControl.Opacity = 0;
@@ -189,7 +201,7 @@ namespace Codeplex.Dashboarding
         private static void TrueColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BinaryDashboard instance = dependancy as BinaryDashboard;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 instance.OnPropertyChanged("TrueColor");
                 instance.Animate();
@@ -204,7 +216,7 @@ namespace Codeplex.Dashboarding
         private static void FalseColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BinaryDashboard instance = dependancy as BinaryDashboard;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 instance.OnPropertyChanged("FalseColor");
                 instance.Animate();
@@ -219,7 +231,7 @@ namespace Codeplex.Dashboarding
         private static void IsTruePropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BinaryDashboard instance = dependancy as BinaryDashboard;
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 double value = instance.IsTrue ? instance.Maximum : instance.Minimum;
                 instance.SetValue(BinaryDashboard.ValueProperty, value);
@@ -237,7 +249,7 @@ namespace Codeplex.Dashboarding
         /// <param name="el">The framework element</param>
         /// <param name="colorPoint">The colorPoint for the current value</param>
         /// <param name="id">The number of the element to set the color for</param>
-        private static void SetColorsFromXaml(FrameworkElement el, ColorPoint colorPoint, string id)
+        private static void UpdateColorsFromXaml(FrameworkElement el, ColorPoint colorPoint, string id)
         {
             if (el == null || colorPoint.HiColor == null || colorPoint.LowColor == null)
             {

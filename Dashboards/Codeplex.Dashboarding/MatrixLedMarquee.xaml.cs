@@ -170,6 +170,13 @@ namespace Codeplex.Dashboarding
         #endregion
 
         #region public properties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="MatrixLedMarquee"/> is isloaded.
+        /// </summary>
+        /// <value><c>true</c> if isloaded; otherwise, <c>false</c>.</value>
+        public bool Isloaded { get; set; }
+
         /// <summary>
         /// Gets or sets the on color of all leds in the marquee
         /// </summary>
@@ -254,9 +261,9 @@ namespace Codeplex.Dashboarding
         {
             MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
 
-            if (instance != null)
+            if (instance != null && instance.Isloaded)
             {
-                instance.TextChanged();
+                instance.UpdateText();
             }
         }
 
@@ -269,11 +276,11 @@ namespace Codeplex.Dashboarding
         {
             MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
 
-            if (instance != null)
+            if (instance != null && instance.Isloaded)
             {
                 if (instance.Text != null)
                 {
-                    instance.TextChanged();
+                    instance.UpdateText();
                 }
             }
         }
@@ -287,9 +294,9 @@ namespace Codeplex.Dashboarding
         {
             MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
 
-            if (instance != null && instance.Text != null)
+            if (instance != null && instance.Text != null && instance.Isloaded)
             {
-                instance.TextChanged();
+                instance.UpdateText();
             }
         }
 
@@ -302,9 +309,9 @@ namespace Codeplex.Dashboarding
         {
             MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
 
-            if (instance != null)
+            if (instance != null && instance.Isloaded)
             {
-                instance.InitializePanels();
+                instance.UpdatePanels();
             }
         }
 
@@ -333,9 +340,9 @@ namespace Codeplex.Dashboarding
 
             if (instance != null)
             {
-                if (instance.LedOnColor != null)
+                if (instance.LedOnColor != null && instance.Isloaded)
                 {
-                    instance.SetLedsFromState();
+                    instance.UpdateLedsFromState();
                 }
             }
         }
@@ -343,7 +350,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Sets the led on/off status
         /// </summary>
-        private void SetLedsFromState()
+        private void UpdateLedsFromState()
         {
             foreach (MatrixLedCharacter ch in this.characters)
             {
@@ -366,7 +373,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Fill the control with the required number of panels
         /// </summary>
-        private void InitializePanels()
+        private void UpdatePanels()
         {
             _stackpanel.Children.Clear();
             this.characters.Clear();
@@ -393,7 +400,16 @@ namespace Codeplex.Dashboarding
         /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void MatrixLedMarquee_Loaded(object sender, RoutedEventArgs e)
         {
+            ManifestChanges();
+            Isloaded = true;
             this.timer.Start();
+        }
+
+        private void ManifestChanges()
+        {
+            UpdatePanels();
+            UpdateText();
+            UpdateLedsFromState();
         }
 
         /// <summary>
@@ -414,7 +430,7 @@ namespace Codeplex.Dashboarding
         /// we clear the screen. For one shot we leave it as the user will
         /// want text to join on to the previous
         /// </summary>
-        private void TextChanged()
+        private void UpdateText()
         {
             if (this.Mode != MarqueeMode.SingleShot)
             {

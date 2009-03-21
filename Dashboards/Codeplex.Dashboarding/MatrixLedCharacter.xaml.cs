@@ -65,9 +65,29 @@ namespace Codeplex.Dashboarding
             this.Clear();
 
             this.LedOffColor = Color.FromArgb(0x22, 0xdd, 0x00, 0x00);
-            this.LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);    
+            this.LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);
+            Loaded += new RoutedEventHandler(MatrixLedCharacter_Loaded);
         }
 
+        void MatrixLedCharacter_Loaded(object sender, RoutedEventArgs e)
+        {
+            ManifestChanges();
+            DashboardLoaded = true;
+        }
+
+        private void ManifestChanges()
+        {
+            if (!String.IsNullOrEmpty(Text))
+            {
+                UpdateLedsFromCharacter();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is loaded.
+        /// </summary>
+        /// <value><c>true</c> if this instance is loaded; otherwise, <c>false</c>.</value>
+        public bool DashboardLoaded { get; set; }
 
         #region Text property
         /// <summary>
@@ -102,9 +122,9 @@ namespace Codeplex.Dashboarding
 
             if (instance != null)
             {
-                if (instance.Text != null)
+                if (instance.Text != null && instance.DashboardLoaded)
                 {
-                    instance.SetLedsFromCharacter();
+                    instance.UpdateLedsFromCharacter();
                 }
             }
         }
@@ -146,11 +166,11 @@ namespace Codeplex.Dashboarding
             MatrixLedCharacter instance = dependancy as MatrixLedCharacter;
 
 
-            if (instance != null)
+            if (instance != null && instance.DashboardLoaded)
             {
                 if (instance.LedOnColor != null)
                 {
-                    instance.SetLedsFromState();
+                    instance.UpdateLedsFromState();
                 }
             }
         }
@@ -186,7 +206,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Initialize all columns from a definition in the Character defintion
         /// </summary>
-        private void SetLedsFromCharacter()
+        private void UpdateLedsFromCharacter()
         {
            byte[] bytes = MatrixLedCharacterDefinitions.GetDefinition(Text);
            columns.Clear();
@@ -204,7 +224,7 @@ namespace Codeplex.Dashboarding
                 };
                columns.Add(n);
            }
-           SetLedsFromState();
+           UpdateLedsFromState();
         }
 
 
@@ -223,7 +243,7 @@ namespace Codeplex.Dashboarding
             columns.RemoveAt(0);
             columns.Add(args.Column);
             OnScrollOut(toPassOver);
-            SetLedsFromState();
+            UpdateLedsFromState();
         }
 
         /// <summary>
@@ -241,7 +261,7 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Set the leds on or off acording to the buffer state
         /// </summary>
-        private void SetLedsFromState()
+        private void UpdateLedsFromState()
         {
             for (int x = 0; x < columns.Count; x++)
             {
@@ -289,7 +309,7 @@ namespace Codeplex.Dashboarding
             {
                 columns.Add(new List<bool> { false, false, false, false, false, false, false });
             }
-            SetLedsFromState();
+            UpdateLedsFromState();
         }
     }
 
