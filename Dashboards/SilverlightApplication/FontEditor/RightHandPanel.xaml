@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="SilverlightApplication.FontEditor.RightHandPanel"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-             xmlns:msw="clr-namespace:Microsoft.Windows.Controls;assembly=Microsoft.Windows.Controls"
+             xmlns:msw="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
     >
     <Grid x:Name="LayoutRoot" Background="White">
 

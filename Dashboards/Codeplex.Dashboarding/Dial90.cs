@@ -74,14 +74,6 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Gets the shape used to highlight the grab control
-        /// </summary>
-        protected override Shape GrabHighlight
-        {
-            get { return this.grabHighlightShape; }
-        }
-
-        /// <summary>
         /// Requires that the control hounours all appearance setting as specified in the
         /// dependancy properties (at least the supported ones). No dependancy property handling
         /// is performed until all dependancy properties are set and the control is loaded.

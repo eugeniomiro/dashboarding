@@ -1,8 +1,8 @@
-﻿<UserControl xmlns:basics="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"  x:Class="SilverlightApplication.FontEditor.FontEditor"
+﻿<UserControl xmlns:basics="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  x:Class="SilverlightApplication.FontEditor.FontEditor"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:loc="clr-namespace:SilverlightApplication.FontEditor"
-    xmlns:ms="clr-namespace:Microsoft.Windows.Controls;assembly=Microsoft.Windows.Controls"
+    xmlns:ms="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
     Width="650" Height="400">
     <Grid x:Name="LayoutRoot" Background="White">
 
