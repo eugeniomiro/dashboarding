@@ -64,11 +64,11 @@
         </code>
     </p>
     <p>
-        The namespace with the prefix <code>db</code> contains all dashboard controls.
+        The namespace with the prefix <code>db</code> contains all dashboard controls.</p>
     <p>
         If you prefer using Expression Blend over hacking XAML then Blend will add a namespace
         declaration automatically for the <code>Codeplex.Dashboarding</code>
-        namespace when you drag a control on to the design surface. 
+        namespace when you drag a control on to the design surface. </p>
     <h3>
         First steps
     </h3>
@@ -254,7 +254,26 @@ car.</p>
 </td>
 </tr>
 </table>            
-<p>As usual we only show thw markup for the first one, the second is set to 2 and the third to 7.</p>            
+<p>As usual we only show thw markup for the first one, the second is set to 2 and the third to 7.</p>   
+
+<p>Controls that have text values on the face such as the Dial360 will alter their face text according
+to the mimimum and maximum values. In the example below the first dial has the Minumum and maximum values set to 
+-100 and 100 respectivly.</p>         
+            
+            
+<p>The dials normally can only show a small number of digits, if the mimimum and maximum values
+are -10000 and 10000 for example the dial is going to look awful. There are two approaches to
+fixing this: Use the FaceTextFormat property or set FaceTextVisibility = false.</p></p>            
+
+<p>The face text format property is a standard .NET format string and is applied to the face number
+as it is rendered (the parameter number 0 must be supplied). For example assuming -100 .. 100 as the range</p>            
+            
+<table align="center">
+<tr><td>Format</td><td>Displayed as</td></tr>
+<tr><td>{0}</td><td>-100, -90, -80 .. 0 .. 90 100</td></tr>
+<tr><td>{0:000}</td><td>-100, -090, -080 .. 000 .. 090 100</td></tr>
+<tr><td>{0}c</td><td>-100c, -90c, -80c .. 0c .. 90c 100c</td></tr>
+</table>            
             
 <h3>Two way data binding</h3>            
 

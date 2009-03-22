@@ -305,11 +305,14 @@ namespace Codeplex.Dashboarding
         private static void IsBidirectionalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDashboard instance = dependancy as BidirectionalDashboard;
-            if (instance != null && instance.DashboardLoaded)
+            if (instance != null)
             {
-                instance.OnPropertyChanged("IsBidirectional");
                 instance.SetGrabHandleEventsForGrabState();
-                instance.Animate();
+                if (instance.DashboardLoaded)
+                {
+                    instance.OnPropertyChanged("IsBidirectional");
+                    instance.Animate();
+                }
             }
         }
 

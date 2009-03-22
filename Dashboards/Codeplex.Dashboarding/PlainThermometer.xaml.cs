@@ -111,7 +111,6 @@ namespace Codeplex.Dashboarding
             set
             {
                 SetValue(MercuryColorRangeProperty, value);
-                Animate();
             }
         }
 
@@ -248,23 +247,16 @@ namespace Codeplex.Dashboarding
                 _grabHandle.Visibility = Visibility.Collapsed;
             }
 
-
-
             UpdateMercuryColor();
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
-                SetPointerByAnimationOverSetTime(NormalizedValue, Value, AnimationDuration);
+                SetPointerByAnimationOverSetTime(NormalizedValue, AnimationDuration);
             }
             else
             {
-                SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);              
+                SetPointerByAnimationOverSetTime(CurrentNormalizedValue, TimeSpan.Zero);              
             }
-
-          
-
-
-           
         }
 
 
@@ -273,21 +265,20 @@ namespace Codeplex.Dashboarding
         /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
         /// needle during bidirectional operation (TimeSpan.Zero)
         /// </summary>
-        /// <param name="normalizedValue">The normalized Value.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="nv">The normalized Value.</param>
         /// <param name="duration">The duration.</param>
-        private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
+        private void SetPointerByAnimationOverSetTime(double nv, TimeSpan duration)
         {
             UpdateMercuryColor();
 
             DoubleAnimationUsingKeyFrames da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_scaleContainer");
-            da.KeyFrames[0].Value = _fullScale * normalizedValue;
+            da.KeyFrames[0].Value = _fullScale * nv;
             da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
             da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_translateContainer");
-            da.KeyFrames[0].Value = _fullTranslate * normalizedValue;
+            da.KeyFrames[0].Value = _fullTranslate * nv;
             da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
             da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_animGrab");
-            da.KeyFrames[0].Value = -(normalizedValue * 100);
+            da.KeyFrames[0].Value = -(nv * 100);
             da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
             Start(AnimateIndicatorStoryboard);
         }

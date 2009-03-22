@@ -19,15 +19,19 @@
             <ColumnDefinition Width="160*"/>
         </Grid.ColumnDefinitions>
 
-        <bd:BoundData Grid.ColumnSpan="2" x:Name="_slide"/>
+        <db:Dial360  Grid.Row="1" 
+            FaceTextVisibility="{Binding Path=FaceTextVisibility}"
+            FaceTextColor="{Binding Path=FaceTextColor}"                     
+            FaceTextFormat="{Binding Path=FaceTextFormat}"                     
+                     >
 
-        <db:Dial360 Value="{Binding Path=CurrentValue, Mode=TwoWay}" Minimum="{Binding Path=MinValue}" Maximum="{Binding Path=MaxValue}"  x:Name="_dial0" Grid.Row="1" ValueTextColor="Yellow">
-            <db:Dial360.FaceColorRange>
-                <db:ColorPoint HiColor="#2A242C" LowColor="#6C0680" Value="0" />
-                <db:ColorPoint HiColor="#2A242C" LowColor="#6C0000" Value="55" />
-            </db:Dial360.FaceColorRange>
         </db:Dial360>
 
- 
+
+        
+        
+        
+        <bd:Experimenter x:Name="_exp" Grid.Row="1" Grid.Column="1"/>
+        
     </Grid>
 </UserControl>
