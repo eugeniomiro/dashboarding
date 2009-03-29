@@ -16,6 +16,9 @@ namespace WpfApplication.Demonstrators
         private double _currentValue;
         private double _minValue = 0;
         private double _maxValue = 100;
+        private bool _isBidirectional;
+        private double _animationDuration = 0.75;
+
 
         #region face text properties
         private Visibility _faceTextVisible;
@@ -52,7 +55,6 @@ namespace WpfApplication.Demonstrators
             set { _faceTextVisible = value; OnPropertyChanged("FaceTextVisibility"); }
         }
         #endregion
-
 
         #region value text properties
         private Visibility _valueTextVisible;
@@ -107,16 +109,28 @@ namespace WpfApplication.Demonstrators
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this instance is bidirectional.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance is bidirectional; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsBidirectional
+        {
+            get { return _isBidirectional; }
+            set { _isBidirectional = value; OnPropertyChanged("IsBidirectional");}
+        }
+
+        /// <summary>
         /// Gets or sets the min value.
         /// </summary>
         /// <value>The min value.</value>
-        public double MinValue
+        public double Minimum
         {
             get { return _minValue; }
             set
             {
                 _minValue = value;
-                OnPropertyChanged("MinValue");
+                OnPropertyChanged("Minimum");
             }
 
         }
@@ -125,16 +139,28 @@ namespace WpfApplication.Demonstrators
         /// Gets or sets the max value.
         /// </summary>
         /// <value>The max value.</value>
-        public double MaxValue
+        public double Maximum
         {
             get { return _maxValue; }
             set
             {
                 _maxValue = value;
-                OnPropertyChanged("MaxValue");
+                OnPropertyChanged("Maximum");
             }
 
         }
+
+        /// <summary>
+        /// Gets or sets the duration of the animation.
+        /// </summary>
+        /// <value>The duration of the animation.</value>
+        public double AnimationDuration
+        {
+            get { return _animationDuration; }
+            set { _animationDuration = value; OnPropertyChanged("AnimationDuration"); }
+        }
+     
+
 
         #region INotifyPropertyChanged Members
 

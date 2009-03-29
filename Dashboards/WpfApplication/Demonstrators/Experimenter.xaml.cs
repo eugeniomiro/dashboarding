@@ -34,5 +34,12 @@ namespace WpfApplication.Demonstrators
             BoundObject bo = DataContext as BoundObject;
             bo.FaceTextColor = Colors.Blue;
         }
+
+
+        private void _buttonClangeValueTextColor_Click(object sender, RoutedEventArgs e)
+        {
+            BoundObject bo = DataContext as BoundObject;
+            bo.ValueTextColor = Colors.Blue;
+        }
     }
 }

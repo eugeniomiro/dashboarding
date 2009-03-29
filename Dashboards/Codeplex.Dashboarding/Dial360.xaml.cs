@@ -37,8 +37,6 @@ namespace Codeplex.Dashboarding
         public Dial360()
         {
             InitializeComponent();
-            SetValue(FaceColorRangeProperty, new ColorPointCollection());
-            SetValue(NeedleColorRangeProperty, new ColorPointCollection());
             SetValue(FaceTextColorProperty, Colors.White);
             SetValue(ValueTextColorProperty, Colors.White);
             RegisterGrabHandle(_grabHandle);

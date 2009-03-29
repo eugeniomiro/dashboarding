@@ -57,7 +57,6 @@ namespace Codeplex.Dashboarding
         public PlainThermometer() : base()
         {
             InitializeComponent();
-            SetValue(MercuryColorRangeProperty, new ColorPointCollection());
             RegisterGrabHandle(_grabHandleCanvas);
            
         }
@@ -94,7 +93,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty MercuryColorRangeProperty =
-            DependencyProperty.Register("MercuryColorRange", typeof(ColorPointCollection), typeof(PlainThermometer), new PropertyMetadata(new PropertyChangedCallback(MercuryColorRangeChanged)));
+            DependencyProperty.Register("MercuryColorRange", typeof(ColorPointCollection), typeof(PlainThermometer), new PropertyMetadata(new ColorPointCollection(), new PropertyChangedCallback(MercuryColorRangeChanged)));
 
         /// <summary>
         /// The point in the range (0..100) where this color takes effect

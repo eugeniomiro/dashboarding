@@ -37,8 +37,6 @@ namespace Codeplex.Dashboarding
         public Dial180()
         {
             InitializeComponent();
-            SetValue(FaceColorRangeProperty, new ColorPointCollection());
-            SetValue(NeedleColorRangeProperty, new ColorPointCollection());
             RegisterGrabHandle(_grabHandle);
         }
 
@@ -109,6 +107,15 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextColor()
         {
+            for (int i = 0; i <= 4; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Foreground = new SolidColorBrush(FaceTextColor);
+                }
+            }
+
             _text.Foreground = new SolidColorBrush(ValueTextColor);
         }
 
@@ -117,6 +124,15 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextVisibility()
         {
+            for (int i = 0; i <= 4; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Visibility = FaceTextVisibility;
+                }
+            }
+
             _text.Visibility = ValueTextVisibility;
         }
 
@@ -125,6 +141,15 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextFormat()
         {
+            for (int i = 0; i <= 4; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null && FaceTextFormat != null)
+                {
+                    tb.Text = String.Format(FaceTextFormat, RealMinimum + (i * ((RealMaximum - RealMinimum) / 4)));
+                }
+            }
+
             if (_text != null)
             {
                 _text.Text = this.IsGrabbed ? FormattedCurrentValue : FormattedValue;

@@ -7,7 +7,11 @@
     <Grid>
         
         <StackPanel Width="200" >
-            <ot:BoundData/>
+            <StackPanel Orientation="Horizontal">
+                <Button Width="32" Click="Button_Click"></Button>
+                <ot:BoundData/>
+
+            </StackPanel>
             <db:PerformanceMonitor Margin="0,10,0,0" Value="{Binding Path=CurrentValue}" x:Name="_l" Height="140" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
             GridLine="AntiqueWhite"
             GraphLine="White"

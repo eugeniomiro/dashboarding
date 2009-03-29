@@ -46,8 +46,6 @@ namespace Codeplex.Dashboarding
         public Knob360()
         {
             InitializeComponent();
-            SetValue(FaceColorRangeProperty, new ColorPointCollection());
-            SetValue(NeedleColorRangeProperty, new ColorPointCollection());
             SetValue(FaceTextColorProperty, Colors.White);
             RegisterGrabHandle(_indicator);
         }

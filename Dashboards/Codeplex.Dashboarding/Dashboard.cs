@@ -42,19 +42,19 @@ namespace Codeplex.Dashboarding
         /// Using a DependencyProperty as the backing store for AnimationDuration.  This enables animation, styling, binding, etc...
         /// </summary>
         public static readonly DependencyProperty AnimationDurationProperty =
-            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(AnimationDurationChanged)));
+            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Dashboard), new PropertyMetadata(TimeSpan.FromSeconds(0.75) , new PropertyChangedCallback(AnimationDurationChanged)));
 
         /// <summary>
         /// Dependancy property backing the Minimum value
         /// </summary>
         public static readonly DependencyProperty MinimumProperty =
-            DependencyProperty.Register("Minimum", typeof(double), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(MinimumPropertyChanged)));
+            DependencyProperty.Register("Minimum", typeof(double), typeof(Dashboard), new PropertyMetadata(0.0, new PropertyChangedCallback(MinimumPropertyChanged)));
 
         /// <summary>
         /// Dependancy property backing the Maximim value 
         /// </summary>
         public static readonly DependencyProperty MaximumProperty =
-            DependencyProperty.Register("Maximum", typeof(double), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(MaximumPropertyChanged)));
+            DependencyProperty.Register("Maximum", typeof(double), typeof(Dashboard), new PropertyMetadata(100.0, new PropertyChangedCallback(MaximumPropertyChanged)));
 
         /// <summary>
         /// The Dependancy property for the ValueTextColor attached property
@@ -67,13 +67,13 @@ namespace Codeplex.Dashboarding
         /// The dependancy property for the ValueTextVisibility attached property
         /// </summary>
         public static readonly DependencyProperty ValueTextVisibilityProperty =
-            DependencyProperty.Register("ValueTextVisibility", typeof(Visibility), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(ValueTextVisibilityPropertyChanged)));
+            DependencyProperty.Register("ValueTextVisibility", typeof(Visibility), typeof(Dashboard), new PropertyMetadata(Visibility.Visible, new PropertyChangedCallback(ValueTextVisibilityPropertyChanged)));
 
         /// <summary>
         /// The dependancy property for ValueTextFormat attached property
         /// </summary>
         public static readonly DependencyProperty ValueTextFormatProperty =
-            DependencyProperty.Register("ValueTextFormat", typeof(string), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(ValueTextFormatPropertyChanged)));
+            DependencyProperty.Register("ValueTextFormat", typeof(string), typeof(Dashboard), new PropertyMetadata("{0:0}",new PropertyChangedCallback(ValueTextFormatPropertyChanged)));
 
         /// <summary>
         /// The Dependancy property for the FaceTextColor attached property
@@ -86,13 +86,13 @@ namespace Codeplex.Dashboarding
         /// The dependancy property for the FaceTextVisibility attached property
         /// </summary>
         public static readonly DependencyProperty FaceTextVisibilityProperty =
-            DependencyProperty.Register("FaceTextVisibility", typeof(Visibility), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(FaceTextVisibilityPropertyChanged)));
+            DependencyProperty.Register("FaceTextVisibility", typeof(Visibility), typeof(Dashboard), new PropertyMetadata(Visibility.Visible, new PropertyChangedCallback(FaceTextVisibilityPropertyChanged)));
 
         /// <summary>
         /// The dependancy property for FaceTextFormat attached property
         /// </summary>
         public static readonly DependencyProperty FaceTextFormatProperty =
-            DependencyProperty.Register("FaceTextFormat", typeof(string), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(FaceTextFormatPropertyChanged)));
+            DependencyProperty.Register("FaceTextFormat", typeof(string), typeof(Dashboard), new PropertyMetadata("{0}", new PropertyChangedCallback(FaceTextFormatPropertyChanged)));
  
         #endregion
 
@@ -103,13 +103,6 @@ namespace Codeplex.Dashboarding
         protected Dashboard()
             : base()
         {
-            this.Minimum = 0;
-            this.Maximum = 100;
-            this.ValueTextFormat = "{0:000}";
-            this.FaceTextFormat = "{0}";
-            this.FaceTextVisibility = Visibility.Visible;
-            this.ValueTextVisibility = Visibility.Visible;
-            this.AnimationDuration = TimeSpan.FromSeconds(0.75);
             Loaded += new RoutedEventHandler(this.Dashboard_Loaded);
         }
 
@@ -451,6 +444,10 @@ namespace Codeplex.Dashboarding
         /// <summary>
         /// Our dependany property has changed, deal with it and ensure the Property change notification 
         /// of INotifyPropertyChanges is triggered
+        /// <para>
+        /// This method will call value changed because changine the range will mean the position
+        /// of an indicator will be incorrect
+        /// </para>
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
@@ -459,6 +456,8 @@ namespace Codeplex.Dashboarding
             Dashboard instance = dependancy as Dashboard;
             if (instance != null && instance.DashboardLoaded)
             {
+                instance.UpdateTextFormat();
+                ValuePropertyChanged(dependancy, args);
                 instance.OnPropertyChanged("Minimum");
             }
         }
@@ -474,6 +473,7 @@ namespace Codeplex.Dashboarding
             Dashboard instance = dependancy as Dashboard;
             if (instance != null && instance.DashboardLoaded)
             {
+                instance.UpdateTextFormat();
                 instance.OnPropertyChanged("Maximum");
             }
         }

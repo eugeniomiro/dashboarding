@@ -37,7 +37,7 @@ namespace Codeplex.Dashboarding
         /// Identifies the IsBidirectional attached property
         /// </summary>
         public static readonly DependencyProperty IsBidirectionalProperty =
-            DependencyProperty.Register("IsBidirectional", typeof(bool), typeof(BidirectionalDashboard), new PropertyMetadata(new PropertyChangedCallback(IsBidirectionalPropertyChanged)));
+            DependencyProperty.Register("IsBidirectional", typeof(bool), typeof(BidirectionalDashboard), new PropertyMetadata(false, new PropertyChangedCallback(IsBidirectionalPropertyChanged)));
 
         #endregion
  
@@ -206,6 +206,7 @@ namespace Codeplex.Dashboarding
         {
             if (this.IsGrabbed)
             {
+                this.IsGrabbed = false;
                 Value = this.CurrentValue;
                 this.HideGrabHandle();
                 if (this.GrabHandle != null)
@@ -219,8 +220,6 @@ namespace Codeplex.Dashboarding
             {
                 Animate();
             }
-
-            this.IsGrabbed = false;
         }
 
         /// <summary>

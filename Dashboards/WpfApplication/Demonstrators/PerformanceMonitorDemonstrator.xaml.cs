@@ -14,6 +14,24 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
+  
+    /// <summary>
+    /// Interaction logic for PerformanceMonitorDemonstrator.xaml
+    /// </summary>
+    public partial class PerformanceMonitorDemonstrator : UserControl
+    {
+        public PerformanceMonitorDemonstrator()
+        {
+            InitializeComponent();
+            DataContext = new BoundObject() ;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _l.Value = 77;
+        }
+    }
+
     class PerfDemo : IDemonstrateDials
     {
 
@@ -30,16 +48,5 @@ namespace WpfApplication.Demonstrators
         }
 
         #endregion
-    }
-    /// <summary>
-    /// Interaction logic for PerformanceMonitorDemonstrator.xaml
-    /// </summary>
-    public partial class PerformanceMonitorDemonstrator : UserControl
-    {
-        public PerformanceMonitorDemonstrator()
-        {
-            InitializeComponent();
-            DataContext = new BoundObject() ;
-        }
     }
 }

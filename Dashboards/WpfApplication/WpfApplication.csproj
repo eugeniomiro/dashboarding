@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Demonstrators\ColorRangeExperimenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Demonstrators\Dial180Demonstrator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +148,9 @@
     </Compile>
     <Compile Include="Demonstrators\BooleanDemonstrator.xaml.cs">
       <DependentUpon>BooleanDemonstrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demonstrators\ColorRangeExperimenter.xaml.cs">
+      <DependentUpon>ColorRangeExperimenter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Demonstrators\VisibilityToBooleanConverter.cs" />
     <Compile Include="Demonstrators\BoundData.cs" />

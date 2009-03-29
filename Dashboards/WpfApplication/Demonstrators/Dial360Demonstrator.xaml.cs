@@ -46,8 +46,8 @@ namespace WpfApplication.Demonstrators
             ValueTextColor = Colors.White,
             ValueTextFormat = "{0:0}",
             ValueTextVisibility = Visibility.Visible,
-
         };
+
         public Dial360Demonstrator()
         {
             InitializeComponent();

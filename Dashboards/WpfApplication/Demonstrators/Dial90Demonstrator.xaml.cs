@@ -37,7 +37,17 @@ namespace WpfApplication.Demonstrators
     /// </summary>
     public partial class Dial90Demonstrator : UserControl
     {
-        private BoundObject _object = new BoundObject { CurrentValue = 50 };
+        private BoundObject _object = new BoundObject
+        {
+            CurrentValue = 50,
+            FaceTextColor = Colors.Black,
+            FaceTextFormat = "{0:0}",
+            FaceTextVisibility = Visibility.Visible,
+            ValueTextColor = Colors.Black,
+            ValueTextFormat = "{0:0}",
+            ValueTextVisibility = Visibility.Visible,
+        };
+
         public Dial90Demonstrator()
         {
             InitializeComponent();

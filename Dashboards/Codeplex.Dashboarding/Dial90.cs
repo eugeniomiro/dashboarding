@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+﻿ //-----------------------------------------------------------------------
 // <copyright file="Dial90.cs" company="David Black">
 //      Copyright 2008 David Black
 //  
@@ -93,8 +93,6 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected void InitializeDial90()
         {
-            SetValue(FaceColorRangeProperty, new ColorPointCollection());
-            SetValue(NeedleColorRangeProperty, new ColorPointCollection());
             this.InitialiseRefs();
             RegisterGrabHandle(this.grabHandleCanvas);
         }

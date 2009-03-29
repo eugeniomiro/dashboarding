@@ -35,14 +35,14 @@ namespace Codeplex.Dashboarding
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty FaceColorRangeProperty =
-            DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(FaceColorRangeChanged)));
+            DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new ColorPointCollection(), new PropertyChangedCallback(FaceColorRangeChanged)));
        
         /// <summary>
         /// The  Dependancy property for the NeedleColor attached property
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty NeedleColorRangeProperty =
-            DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new PropertyChangedCallback(NeedleColorRangeChanged)));
+            DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new ColorPointCollection(), new PropertyChangedCallback(NeedleColorRangeChanged)));
         
         #endregion
 
