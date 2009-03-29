@@ -189,8 +189,8 @@
                     </RadialGradientBrush.RelativeTransform>
 
 
-                    <GradientStop Color="#FFFFFFFF"/>
-                    <GradientStop Color="#4CFFFFFF" Offset="1"/>
+                    <GradientStop  Color="#4CFDFDFD" Offset="0.005"/>
+                    <GradientStop  Color="#19FFFFFF" Offset="1"/>
 
                 </RadialGradientBrush>
             </Path.Fill>

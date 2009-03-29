@@ -32,8 +32,9 @@
                             <TranslateTransform X="0.019999999552965164" Y="0.38400000333786011"/>
                         </TransformGroup>
                     </RadialGradientBrush.RelativeTransform>
-                    <GradientStop  x:Name="_colourRangeStart"  Color="#FF18527A"/>
-                    <GradientStop x:Name="_colourRangeEnd" Color="#FF4186AD" Offset="1"/>
+                    <GradientStop x:Name="_colourRangeStart" Color="#FF100F0F" Offset="0"/>
+                    <GradientStop x:Name="_colourRangeEnd" Color="#FF625454" Offset="1"/>
+
                 </RadialGradientBrush>
             </Path.Fill>
         </Path>
@@ -48,8 +49,9 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </RadialGradientBrush.RelativeTransform>
-                    <GradientStop  x:Name="_needleHighColour" Color="#FFF6F768"/>
-                    <GradientStop x:Name="_needleLowColour" Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FF615A5A" x:Name="_needleHighColour" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" x:Name="_needleLowColour"  Offset="1"/>
+
                 </RadialGradientBrush>
             </Path.Fill>
             <Path.RenderTransform>
