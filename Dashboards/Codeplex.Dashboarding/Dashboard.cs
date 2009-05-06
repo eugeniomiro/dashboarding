@@ -42,7 +42,7 @@ namespace Codeplex.Dashboarding
         /// Using a DependencyProperty as the backing store for AnimationDuration.  This enables animation, styling, binding, etc...
         /// </summary>
         public static readonly DependencyProperty AnimationDurationProperty =
-            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Dashboard), new PropertyMetadata(TimeSpan.FromSeconds(0.75) , new PropertyChangedCallback(AnimationDurationChanged)));
+            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Dashboard), new PropertyMetadata(TimeSpan.FromSeconds(0.75), new PropertyChangedCallback(AnimationDurationChanged)));
 
         /// <summary>
         /// Dependancy property backing the Minimum value
@@ -73,7 +73,7 @@ namespace Codeplex.Dashboarding
         /// The dependancy property for ValueTextFormat attached property
         /// </summary>
         public static readonly DependencyProperty ValueTextFormatProperty =
-            DependencyProperty.Register("ValueTextFormat", typeof(string), typeof(Dashboard), new PropertyMetadata("{0:0}",new PropertyChangedCallback(ValueTextFormatPropertyChanged)));
+            DependencyProperty.Register("ValueTextFormat", typeof(string), typeof(Dashboard), new PropertyMetadata("{0:0}", new PropertyChangedCallback(ValueTextFormatPropertyChanged)));
 
         /// <summary>
         /// The Dependancy property for the FaceTextColor attached property

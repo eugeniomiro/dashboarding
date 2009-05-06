@@ -1,31 +1,30 @@
-﻿/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+﻿//-----------------------------------------------------------------------
+// <copyright file="DiamondSlider.xaml.cs" company="David Black">
+//      Copyright 2008 David Black
+//  
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//     
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+
     /// <summary>
     /// A diamond slider it a progress type gauge where a diamond shaped
     /// indicator is moved across a background rectangle.
@@ -38,41 +37,122 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public partial class DiamondSlider : BidirectionalDashboard
     {
-
-        /// <summary>
-        /// Constructs a DiamondSlider
-        /// </summary>
-        public DiamondSlider()
-        {
-            InitializeComponent();
-            RegisterGrabHandle(_slider);
-            DiamondColor = new Color { A = 0xFF, R = 0x85, G = 0x8a, B = 0xf9 };
-            LeftGradient = new Color { A = 0xFF, R = 0xA0, G = 0xF0, B = 0x35 };
-            RightGradient = new Color { A = 0xFF, R = 0xf9, G = 0x1d, B = 0x09 };
-            MidGradient = new Color { A = 0xFF, R = 0xe4, G = 0xf7, B = 0x39 };
-        }
-
-
-
-        #region DiamondColorproperty
         /// <summary>
         /// The dependancy color for the DiamondColorproperty
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty DiamondColorProperty =
             DependencyProperty.Register("DiamondColor", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(DiamondColorPropertyChanged)));
+        
+        /// <summary>
+        /// The dependancy color for the LeftGradient attached property
+        /// </summary>
+        public static readonly DependencyProperty LeftGradientProperty =
+            DependencyProperty.Register("LeftGradient", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(LeftGradientPropertyChanged)));
 
         /// <summary>
-        /// Color of the Diamond
+        /// The dependancy color for the MidGradientproperty
         /// </summary>
+        public static readonly DependencyProperty MidGradientProperty =
+            DependencyProperty.Register("MidGradient", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(MidGradientPropertyChanged)));
+
+        /// <summary>
+        /// The dependancy color for the RightGradientproperty
+        /// </summary>
+        public static readonly DependencyProperty RightGradientProperty =
+            DependencyProperty.Register("RightGradient", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(RightGradientPropertyChanged)));
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DiamondSlider"/> class.
+        /// </summary>
+        public DiamondSlider()
+        {
+            InitializeComponent();
+            RegisterGrabHandle(_slider);
+            this.DiamondColor = new Color { A = 0xFF, R = 0x85, G = 0x8a, B = 0xf9 };
+            this.LeftGradient = new Color { A = 0xFF, R = 0xA0, G = 0xF0, B = 0x35 };
+            this.RightGradient = new Color { A = 0xFF, R = 0xf9, G = 0x1d, B = 0x09 };
+            this.MidGradient = new Color { A = 0xFF, R = 0xe4, G = 0xf7, B = 0x39 };
+        }
+
+
+        /// <summary>
+        /// Gets or sets the left gradient.
+        /// </summary>
+        /// <value>The left gradient.</value>
+        public Color LeftGradient
+        {
+            get
+            {
+                return (Color)GetValue(LeftGradientProperty);
+            }
+
+            set
+            {
+                SetValue(LeftGradientProperty, value);
+            }
+        }
+        /// <summary>
+        /// Gets or sets the mid gradient colr.
+        /// </summary>
+        /// <value>The mid gradient.</value>
+        public Color MidGradient
+        {
+            get
+            {
+                return (Color)GetValue(MidGradientProperty);
+            }
+
+            set
+            {
+                SetValue(MidGradientProperty, value);
+            }
+        }
+        /// <summary>
+        /// Color of the gradient fill at the right hand side
+        /// </summary>
+        public Color RightGradient
+        {
+            get 
+            { 
+                return (Color)GetValue(RightGradientProperty); 
+            }
+
+            set
+            {
+                SetValue(RightGradientProperty, value);
+            }
+        }
+
+        #region DiamondColorproperty
+
+        /// <summary>
+        /// Gets or sets the color of the diamond.
+        /// </summary>
+        /// <value>The color of the diamond.</value>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public Color DiamondColor
         {
-            get { return (Color)GetValue(DiamondColorProperty); }
+            get 
+            { 
+                return (Color)GetValue(DiamondColorProperty); 
+            }
+
             set
             {
                 SetValue(DiamondColorProperty, value);
             }
+        }
+
+        /// <summary>
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
+        /// </summary>
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
+        {
+            get { return LayoutRoot; }
         }
 
         /// <summary>
@@ -83,53 +163,36 @@ namespace Codeplex.Dashboarding
         private static void DiamondColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             DiamondSlider instance = dependancy as DiamondSlider;
-
-
             if (instance != null && instance.DashboardLoaded)
             {
                 instance.UpdateDiamondColor();
             }
         }
 
+        /// <summary>
+        /// Updates the color of the diamond.
+        /// </summary>
         private void UpdateDiamondColor()
         {
             if (_slider != null)
             {
-                _slider.Fill = new SolidColorBrush(DiamondColor);
+                this._slider.Fill = new SolidColorBrush(this.DiamondColor);
             }
         }
 
         #endregion
 
         #region LeftGradientproperty
-        /// <summary>
-        /// The dependancy color for the LeftGradient attached property
-        /// </summary>
-        public static readonly DependencyProperty LeftGradientProperty =
-            DependencyProperty.Register("LeftGradient", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(LeftGradientPropertyChanged)));
+       
 
         /// <summary>
-        /// Color of the gradient fill at the left hand side
-        /// </summary>
-        public Color LeftGradient
-        {
-            get { return (Color)GetValue(LeftGradientProperty); }
-            set
-            {
-                SetValue(LeftGradientProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// LeftGradient dependancy property changed, update the instance
+        /// Left Gradient dependancy property changed, update the instance
         /// </summary>
         /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">arguments</param>
         private static void LeftGradientPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             DiamondSlider instance = dependancy as DiamondSlider;
-
-
             if (instance != null && instance.DashboardLoaded)
             {
                 if (instance._slider != null)
@@ -139,114 +202,30 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Updates the left gradient.
+        /// </summary>
         private void UpdateLeftGradient()
         {
-            if (LeftGradient != null)
+            if (this.LeftGradient != null)
             {
-                _leftColor.Color = LeftGradient;
+                this._leftColor.Color = this.LeftGradient;
             }
         }
         #endregion
 
         #region MidGradientproperty
-        /// <summary>
-        /// The dependancy color for the MidGradientproperty
-        /// </summary>
-        public static readonly DependencyProperty MidGradientProperty =
-            DependencyProperty.Register("MidGradient", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(MidGradientPropertyChanged)));
-
-        /// <summary>
-        /// Color of the gradient fill at the mid point
-        /// </summary>
-        public Color MidGradient
-        {
-            get { return (Color)GetValue(MidGradientProperty); }
-            set
-            {
-                SetValue(MidGradientProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// MidGradient dependancy property changed, update the instance
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void MidGradientPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            DiamondSlider instance = dependancy as DiamondSlider;
+      
 
 
-            if (instance != null)
-            {
-                if (instance._slider != null)
-                {
-                    instance.UpdateMidGradient();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Updates the mid gradient color from the dependancy property.
-        /// </summary>
-        private void UpdateMidGradient()
-        {
-            if (MidGradient != null)
-            {
-                _midColor.Color = MidGradient;
-            }
-        }
 
         #endregion
 
         #region RightGradientproperty
-        /// <summary>
-        /// The dependancy color for the RightGradientproperty
-        /// </summary>
-        public static readonly DependencyProperty RightGradientProperty =
-            DependencyProperty.Register("RightGradient", typeof(Color), typeof(DiamondSlider), new PropertyMetadata(new PropertyChangedCallback(RightGradientPropertyChanged)));
 
-        /// <summary>
-        /// Color of the gradient fill at the right hand side
-        /// </summary>
-        public Color RightGradient
-        {
-            get { return (Color)GetValue(RightGradientProperty); }
-            set
-            {
-                SetValue(RightGradientProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// RightGradient dependancy property changed, update the instance
-        /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void RightGradientPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            DiamondSlider instance = dependancy as DiamondSlider;
+    
 
 
-            if (instance != null)
-            {
-                if (instance._slider != null)
-                {
-                    instance.UpdateRightGradient();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Updates the right gradient color to that specified in the dependancy property.
-        /// </summary>
-        private void UpdateRightGradient()
-        {
-            if (RightGradient != null)
-            {
-                _rightColor.Color = RightGradient;
-            }
-        }
         #endregion
 
         /// <summary>
@@ -256,12 +235,12 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void ManifestChanges()
         {
-            UpdateDiamondColor();
-            UpdateLeftGradient();
-            UpdateRightGradient();
-            UpdateTextColor();
-            UpdateTextFormat();
-            UpdateTextVisibility();
+            this.UpdateDiamondColor();
+            this.UpdateLeftGradient();
+            this.UpdateRightGradient();
+            this.UpdateTextColor();
+            this.UpdateTextFormat();
+            this.UpdateTextVisibility();
         }
 
         /// <summary>
@@ -315,8 +294,6 @@ namespace Codeplex.Dashboarding
             _slider.StrokeDashArray = new DoubleCollection { 1, 1 };
         }
 
-
-
         /// <summary>
         /// Remove the grab handle
         /// </summary>
@@ -326,8 +303,6 @@ namespace Codeplex.Dashboarding
             _slider.StrokeThickness = 1;
             _slider.StrokeDashArray = new DoubleCollection();
         }
-
-
 
         /// <summary>
         /// Mouse is moving, move the diagram
@@ -342,14 +317,58 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
-        /// neutral manner
+        /// RightGradient dependancy property changed, update the instance
         /// </summary>
-        /// <value>The resource root.</value>
-        protected override Grid ResourceRoot
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void RightGradientPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            get { return LayoutRoot; }
+            DiamondSlider instance = dependancy as DiamondSlider;
+            if (instance != null)
+            {
+                if (instance._slider != null)
+                {
+                    instance.UpdateRightGradient();
+                }
+            }
+        }
+        /// <summary>
+        /// MidGradient dependancy property changed, update the instance
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">arguments</param>
+        private static void MidGradientPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            DiamondSlider instance = dependancy as DiamondSlider;
+
+            if (instance != null)
+            {
+                if (instance._slider != null)
+                {
+                    instance.UpdateMidGradient();
+                }
+            }
         }
 
+        /// <summary>
+        /// Updates the mid gradient color from the dependancy property.
+        /// </summary>
+        private void UpdateMidGradient()
+        {
+            if (this.MidGradient != null)
+            {
+                this._midColor.Color = this.MidGradient;
+            }
+        }
+        /// <summary>
+        /// Updates the right gradient color to that specified in the dependancy property.
+        /// </summary>
+        private void UpdateRightGradient()
+        {
+            if (this.RightGradient != null)
+            {
+                this._rightColor.Color = this.RightGradient;
+            }
+        }
     }
 }

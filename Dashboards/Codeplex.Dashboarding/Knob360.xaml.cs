@@ -60,7 +60,7 @@ namespace Codeplex.Dashboarding
             UpdateFaceColor();
             UpdateNeedleColor();
 
-            _txt11.Text = String.Format("{0:000}", Value);
+            _txt11.Text = FormattedValue;
 
             if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
             {
@@ -84,7 +84,7 @@ namespace Codeplex.Dashboarding
         /// <param name="duration">The duration.</param>
         private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
         {
-            _txt11.Text = String.Format("{0:000}", value);
+            _txt11.Text = FormattedValue;
 
          
 

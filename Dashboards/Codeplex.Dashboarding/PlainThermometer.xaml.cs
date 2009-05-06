@@ -57,6 +57,7 @@ namespace Codeplex.Dashboarding
         public PlainThermometer() : base()
         {
             InitializeComponent();
+            SetValue(ValueTextColorProperty, Colors.White);
             RegisterGrabHandle(_grabHandleCanvas);
            
         }
