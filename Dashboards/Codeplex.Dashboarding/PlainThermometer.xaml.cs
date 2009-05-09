@@ -240,20 +240,20 @@ namespace Codeplex.Dashboarding
         /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
         /// needle during bidirectional operation (TimeSpan.Zero)
         /// </summary>
-        /// <param name="nv">The normalized Value.</param>
+        /// <param name="normalizedValue">The normalized Value.</param>
         /// <param name="duration">The duration.</param>
-        private void SetPointerByAnimationOverSetTime(double nv, TimeSpan duration)
+        private void SetPointerByAnimationOverSetTime(double normalizedValue, TimeSpan duration)
         {
             this.UpdateMercuryColor();
 
             DoubleAnimationUsingKeyFrames da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_scaleContainer");
-            da.KeyFrames[0].Value = this.fullScale * nv;
+            da.KeyFrames[0].Value = this.fullScale * normalizedValue;
             da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
             da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_translateContainer");
-            da.KeyFrames[0].Value = this.fullTranslate * nv;
+            da.KeyFrames[0].Value = this.fullTranslate * normalizedValue;
             da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
             da = GetChildDoubleAnimationUsingKeyFrames(AnimateIndicatorStoryboard, "_animGrab");
-            da.KeyFrames[0].Value = -(nv * 100);
+            da.KeyFrames[0].Value = -(normalizedValue * 100);
             da.KeyFrames[0].KeyTime = KeyTime.FromTimeSpan(duration);
             Start(AnimateIndicatorStoryboard);
         }

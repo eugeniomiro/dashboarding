@@ -38,7 +38,7 @@ namespace WpfApplication.Demonstrators
     /// </summary>
     public partial class PlainThermometerDemonstrator : UserControl
     {
-        private BoundObject _object = new BoundObject { CurrentValue = 50 };
+        private BoundObject _object = new BoundObject { CurrentValue = 50, FaceTextColor = Colors.Wheat, ValueTextColor = Colors.AliceBlue };
 
         public PlainThermometerDemonstrator()
         {
