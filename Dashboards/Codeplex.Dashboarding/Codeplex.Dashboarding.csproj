@@ -88,6 +88,7 @@
     <Compile Include="MatrixLedMarquee.xaml.cs">
       <DependentUpon>MatrixLedMarquee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MatrixScrollEventArgs.cs" />
     <Compile Include="Odometer.xaml.cs">
       <DependentUpon>Odometer.xaml</DependentUpon>
     </Compile>
@@ -118,6 +119,7 @@
       <DependentUpon>RoundLed.xaml</DependentUpon>
     </Compile>
     <Compile Include="SixteenSegmentLED.xaml.cs">
+      <SubType>Code</SubType>
       <DependentUpon>SixteenSegmentLED.xaml</DependentUpon>
     </Compile>
     <Compile Include="TickCross.xaml.cs">

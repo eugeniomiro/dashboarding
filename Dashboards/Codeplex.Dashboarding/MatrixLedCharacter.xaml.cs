@@ -1,37 +1,30 @@
-﻿/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Diagnostics.CodeAnalysis;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="MatrixLedCharacter.xaml.cs" company="David Black">
+//      Copyright 2008 David Black
+//
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//    
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Shapes;
+
     /// <summary>
     /// <para>
     /// In marquee mode on request the character scrolls one led left, and raises
@@ -46,18 +39,39 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public partial class MatrixLedCharacter : UserControl
     {
+        #region Fields
+
+        /// <summary>
+        /// The dependancy property for the LedOffColor
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public static readonly DependencyProperty LedOffColorProperty = 
+            DependencyProperty.Register("LedOffColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
+
+        /// <summary>
+        /// The dependancy property for the LedOn colr
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public static readonly DependencyProperty LedOnColorProperty = 
+            DependencyProperty.Register("LedOnColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
+
+        /// <summary>
+        /// The dependancy property for the Text
+        /// </summary>
+        public static readonly DependencyProperty TextProperty = 
+            DependencyProperty.Register("Text", typeof(string), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(TextPropertyChanged)));
+
         /// <summary>
         /// stores a list of columns (5 of them) which are in turn lists of row states
         /// </summary>
         private List<List<bool>> columns = new List<List<bool>>(5);
 
-        /// <summary>
-        /// This cell is scrolling out a column of data
-        /// </summary>
-        internal event EventHandler<MatrixScrollEventArgs> ScrollOut;
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
-        /// Constructs and empty character
+        /// Initializes a new instance of the <see cref="MatrixLedCharacter"/> class.
         /// </summary>
         public MatrixLedCharacter()
         {
@@ -66,90 +80,61 @@ namespace Codeplex.Dashboarding
 
             this.LedOffColor = Color.FromArgb(0x22, 0xdd, 0x00, 0x00);
             this.LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);
-            Loaded += new RoutedEventHandler(MatrixLedCharacter_Loaded);
+            this.Loaded += new RoutedEventHandler(this.MatrixLedCharacter_Loaded);
         }
 
-        void MatrixLedCharacter_Loaded(object sender, RoutedEventArgs e)
-        {
-            ManifestChanges();
-            DashboardLoaded = true;
-        }
+        #endregion Constructors
 
-        private void ManifestChanges()
-        {
-            if (!String.IsNullOrEmpty(Text))
-            {
-                UpdateLedsFromCharacter();
-            }
-        }
+        #region Events
+
+        /// <summary>
+        /// This cell is scrolling out a column of data
+        /// </summary>
+        internal event EventHandler<MatrixScrollEventArgs> ScrollOut;
+
+        #endregion Events
+
+        #region Properties
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is loaded.
         /// </summary>
         /// <value><c>true</c> if this instance is loaded; otherwise, <c>false</c>.</value>
-        public bool DashboardLoaded { get; set; }
-
-        #region Text property
-        /// <summary>
-        /// The dependancy property for the Text
-        /// </summary>
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(TextPropertyChanged)));
-
-        /// <summary>
-        /// Gets or sets the text (single character) of the control.Setting the text initializes
-        /// all leds.
-        /// </summary>
-        public string Text
+        public bool DashboardLoaded
         {
-            get { return (string)GetValue(TextProperty); }
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the when led off.
+        /// </summary>
+        /// <value>The color of the led off.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public Color LedOffColor
+        {
+            get
+            {
+                return (Color)GetValue(LedOffColorProperty);
+            }
+
             set
             {
-                SetValue(TextProperty, value);
+                SetValue(LedOffColorProperty, value);
             }
         }
 
-
         /// <summary>
-        /// The text property changed, deal with it
+        /// Gets or sets the color of the led when on.
         /// </summary>
-        /// <param name="dependancy">The dependancy.</param>
-        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void TextPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            MatrixLedCharacter instance = dependancy as MatrixLedCharacter;
-
-
-            if (instance != null)
-            {
-                if (instance.Text != null && instance.DashboardLoaded)
-                {
-                    instance.UpdateLedsFromCharacter();
-                }
-            }
-        }
-
-    
-      
-
-
-        #endregion
-
-        #region LedOnColor property
-        /// <summary>
-        /// The dependancy property for the LedOn colr
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty LedOnColorProperty =
-            DependencyProperty.Register("LedOnColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
-
-        /// <summary>
-        /// Hi colour in the blend
-        /// </summary>
+        /// <value>The color of the led on.</value>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public Color LedOnColor
         {
-            get { return (Color)GetValue(LedOnColorProperty); }
+            get
+            {
+                return (Color)GetValue(LedOnColorProperty);
+            }
+
             set
             {
                 SetValue(LedOnColorProperty, value);
@@ -157,14 +142,65 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Gets or sets the text (single character) of the control.Setting the text initializes
+        /// all leds.
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
+        public string Text
+        {
+            get
+            {
+                return (string)GetValue(TextProperty);
+            }
+
+            set
+            {
+                SetValue(TextProperty, value);
+            }
+        }
+
+        #endregion Properties
+
+        #region Methods
+
+        /// <summary>
+        /// Forces this cell to scroll one column and passes the next column. This will cascade to any connected
+        /// cells. Usually on a marquee style control this means only the right most
+        /// character gets ticked manually the rest do through chained events
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="Codeplex.Dashboarding.MatrixScrollEventArgs"/> instance containing the event data.</param>
+        [SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers", Justification = "I need this to chain the leds")]
+        public void ScrollOne(object sender, MatrixScrollEventArgs args)
+        {
+            List<bool> toPassOver = this.columns[0];
+            this.columns.RemoveAt(0);
+            this.columns.Add(args.Column);
+            this.OnScrollOut(toPassOver);
+            this.UpdateLedsFromState();
+        }
+
+        /// <summary>
+        /// Clear the control down to all leds are off
+        /// </summary>
+        internal void Clear()
+        {
+            this.columns.Clear();
+            for (int i = 0; i < 5; i++)
+            {
+                this.columns.Add(new List<bool> { false, false, false, false, false, false, false });
+            }
+
+            this.UpdateLedsFromState();
+        }
+
+        /// <summary>
+        /// The color property has changed, deal with it
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
         private static void ColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             MatrixLedCharacter instance = dependancy as MatrixLedCharacter;
-
 
             if (instance != null && instance.DashboardLoaded)
             {
@@ -175,75 +211,44 @@ namespace Codeplex.Dashboarding
             }
         }
 
-
-        #endregion
-
-        #region LedOffColor property
-
         /// <summary>
-        /// THe dependancy property for the LedOffColor
+        /// The text property changed, deal with it
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty LedOffColorProperty =
-            DependencyProperty.Register("LedOffColor", typeof(Color), typeof(MatrixLedCharacter), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
-
-        /// <summary>
-        /// Hi colour in the blend
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public Color LedOffColor
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void TextPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-            get { return (Color)GetValue(LedOffColorProperty); }
-            set
+            MatrixLedCharacter instance = dependancy as MatrixLedCharacter;
+
+            if (instance != null)
             {
-                SetValue(LedOffColorProperty, value);
+                if (instance.Text != null && instance.DashboardLoaded)
+                {
+                    instance.UpdateLedsFromCharacter();
+                }
             }
         }
 
-        #endregion
-
-        
         /// <summary>
-        /// Initialize all columns from a definition in the Character defintion
+        /// Manifests the changes to the Character.
         /// </summary>
-        private void UpdateLedsFromCharacter()
+        private void ManifestChanges()
         {
-           byte[] bytes = MatrixLedCharacterDefinitions.GetDefinition(Text);
-           columns.Clear();
-           for (int i = 0; i < bytes.Length - 1; i++)
-           {
-               List<bool> n = new List<bool> 
-                {
-                    (bytes[i] & 0x40) != 0,
-                    (bytes[i] & 0x20) != 0,
-                    (bytes[i] & 0x10) != 0,
-                    (bytes[i] & 0x08) != 0,
-                    (bytes[i] & 0x04) != 0,
-                    (bytes[i] & 0x02) != 0,
-                    (bytes[i] & 0x01) != 0,
-                };
-               columns.Add(n);
-           }
-           UpdateLedsFromState();
+            if (!String.IsNullOrEmpty(this.Text))
+            {
+                this.UpdateLedsFromCharacter();
+            }
         }
 
-
-
         /// <summary>
-        /// Forces this cell to scroll one column and passes the next column. This will cascade to any connected
-        /// cells. Usually on a marquee style control this means only the right most
-        /// character gets ticked manually the rest do through chained events
+        /// Handles the Loaded event of the MatrixLedCharacter control.
         /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="Codeplex.Dashboarding.MatrixScrollEventArgs"/> instance containing the event data.</param>
-        [SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers")]
-        public void ScrollOne(object sender, MatrixScrollEventArgs args)
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void MatrixLedCharacter_Loaded(object sender, RoutedEventArgs e)
         {
-            List<bool> toPassOver = columns[0];
-            columns.RemoveAt(0);
-            columns.Add(args.Column);
-            OnScrollOut(toPassOver);
-            UpdateLedsFromState();
+            this.ManifestChanges();
+            this.DashboardLoaded = true;
         }
 
         /// <summary>
@@ -252,20 +257,9 @@ namespace Codeplex.Dashboarding
         /// <param name="toPassOver">To pass over.</param>
         private void OnScrollOut(List<bool> toPassOver)
         {
-            if (ScrollOut != null)
+            if (this.ScrollOut != null)
             {
-                ScrollOut(this, new MatrixScrollEventArgs(toPassOver));
-            }
-        }
-
-        /// <summary>
-        /// Set the leds on or off acording to the buffer state
-        /// </summary>
-        private void UpdateLedsFromState()
-        {
-            for (int x = 0; x < columns.Count; x++)
-            {
-                ProcessColumn(x);
+                this.ScrollOut(this, new MatrixScrollEventArgs(toPassOver));
             }
         }
 
@@ -275,12 +269,11 @@ namespace Codeplex.Dashboarding
         /// <param name="x">the column number</param>
         private void ProcessColumn(int x)
         {
-            for (int y = 0; y < columns[x].Count; y++)
+            for (int y = 0; y < this.columns[x].Count; y++)
             {
-                bool on = columns[x][y];
+                bool on = this.columns[x][y];
                 Ellipse el = LayoutRoot.FindName(String.Format("_l{0}_{1}", x, y)) as Ellipse;
-                TureLedOnOrOff(on, el);
-
+                this.TureLedOnOrOff(on, el);
             }
         }
 
@@ -289,53 +282,50 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="on">true if the led is on false otherwise</param>
         /// <param name="el">The ellipse repesesenting the led</param>
-        private  void TureLedOnOrOff(bool on, Ellipse el)
+        private void TureLedOnOrOff(bool on, Ellipse el)
         {
             if (el != null)
             {
-                el.Fill = new SolidColorBrush((on) ? LedOnColor : LedOffColor);
+                el.Fill = new SolidColorBrush(on ? this.LedOnColor : this.LedOffColor);
             }
         }
 
-
-
         /// <summary>
-        /// Clear the control down to all leds are off
+        /// Initialize all columns from a definition in the Character defintion
         /// </summary>
-        internal void Clear()
+        private void UpdateLedsFromCharacter()
         {
-            columns.Clear();
-            for (int i = 0; i < 5; i++)
+            byte[] bytes = MatrixLedCharacterDefinitions.GetDefinition(this.Text);
+            this.columns.Clear();
+            for (int i = 0; i < bytes.Length - 1; i++)
             {
-                columns.Add(new List<bool> { false, false, false, false, false, false, false });
+                List<bool> n = new List<bool>
+                {
+                    (bytes[i] & 0x40) != 0,
+                    (bytes[i] & 0x20) != 0,
+                    (bytes[i] & 0x10) != 0,
+                    (bytes[i] & 0x08) != 0,
+                    (bytes[i] & 0x04) != 0,
+                    (bytes[i] & 0x02) != 0,
+                    (bytes[i] & 0x01) != 0,
+                };
+                this.columns.Add(n);
             }
-            UpdateLedsFromState();
-        }
-    }
 
-    /// <summary>
-    /// Event args describing the scroll of a matrix
-    /// </summary>
-    public class MatrixScrollEventArgs : EventArgs
-    {
+            this.UpdateLedsFromState();
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatrixScrollEventArgs"/> class.
+        /// Set the leds on or off acording to the buffer state
         /// </summary>
-        /// <param name="column">The column.</param>
-        [SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
-        public MatrixScrollEventArgs(List<bool> column)
+        private void UpdateLedsFromState()
         {
-            Column = column;
+            for (int x = 0; x < this.columns.Count; x++)
+            {
+                this.ProcessColumn(x);
+            }
         }
 
-
-        /// <summary>
-        /// Gets column of incomming data.
-        /// </summary>
-        /// <value>The column.</value>
-        [SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
-        public List<bool> Column { get; private set; }
+        #endregion Methods
     }
-
 }

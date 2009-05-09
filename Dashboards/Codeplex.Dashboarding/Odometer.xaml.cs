@@ -1,11 +1,11 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Odometer.xaml.cs" company="David Black">
 //      Copyright 2008 David Black
-//  
+//
 //      Licensed under the Apache License, Version 2.0 (the "License");
 //      you may not use this file except in compliance with the License.
 //      You may obtain a copy of the License at
-//     
+//    
 //          http://www.apache.org/licenses/LICENSE-2.0
 //    
 //      Unless required by applicable law or agreed to in writing, software
@@ -15,7 +15,6 @@
 //      limitations under the License.
 // </copyright>
 //-----------------------------------------------------------------------
-
 namespace Codeplex.Dashboarding
 {
     using System;
@@ -32,53 +31,51 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public partial class Odometer : PlatformIndependentDashboard
     {
-        #region public static fields
+        #region Fields
+
+        /// <summary>
+        /// Dependancy property for our Digits property
+        /// </summary>
+        public static readonly DependencyProperty DigitsProperty = 
+            DependencyProperty.Register("Digits", typeof(double), typeof(Odometer), new PropertyMetadata(new PropertyChangedCallback(DigitsPropertyChanged)));
+
+        /// <summary>
+        /// Dependancy property for the FinalValue
+        /// </summary>
+        public static readonly DependencyProperty FinalValueProperty = 
+            DependencyProperty.Register("FinalValue", typeof(int), typeof(Odometer), null);
 
         /// <summary>
         /// Dependancy property for the InitialValue of the Odeometer
         /// </summary>
-        public static readonly DependencyProperty InitialValueProperty =
+        public static readonly DependencyProperty InitialValueProperty = 
             DependencyProperty.Register("InitialValue", typeof(int), typeof(Odometer), new PropertyMetadata(new PropertyChangedCallback(InitialValuePropertyChanged)));
-        
-        /// <summary>
-        /// Dependancy property for the FinalValue
-        /// </summary>
-        public static readonly DependencyProperty FinalValueProperty =
-            DependencyProperty.Register("FinalValue", typeof(int), typeof(Odometer), null);
-        
-        /// <summary>
-        /// Dependancy property for our Digits property
-        /// </summary>
-        public static readonly DependencyProperty DigitsProperty =
-            DependencyProperty.Register("Digits", typeof(double), typeof(Odometer), new PropertyMetadata(new PropertyChangedCallback(DigitsPropertyChanged)));
 
         /// <summary>
         /// The dependancy property for the Interval property
         /// </summary>
-        public static readonly DependencyProperty IntervalProperty =
+        public static readonly DependencyProperty IntervalProperty = 
             DependencyProperty.Register("Interval", typeof(double), typeof(Odometer), new PropertyMetadata(new PropertyChangedCallback(IntervalPropertyChanged)));
 
         /// <summary>
         /// The dependancy property for the MeterModelColor property
         /// </summary>
-        public static readonly DependencyProperty MeterModeProperty =
+        public static readonly DependencyProperty MeterModeProperty = 
             DependencyProperty.Register("MeterMode", typeof(Mode), typeof(Odometer), null);
-
-        #endregion
-
-        #region private members
-
-        /// <summary>
-        /// storyboard to act as a timer
-        /// </summary>
-        private DispatcherTimer timer = new DispatcherTimer();
 
         /// <summary>
         /// All digits for the number in the order most significant to least
         /// </summary>
         private List<OdometerDigit> digits = new List<OdometerDigit>();
 
-        #endregion
+        /// <summary>
+        /// storyboard to act as a timer
+        /// </summary>
+        private DispatcherTimer timer = new DispatcherTimer();
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Odometer"/> class.
@@ -91,43 +88,9 @@ namespace Codeplex.Dashboarding
             this.timer.Tick += new EventHandler(this.Timer_Tick);
         }
 
-        #region Mode enum
-        /// <summary>
-        /// The type of update required
-        /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible", Justification = "Its tied to the implementation and not generic")]
-        public enum Mode
-        { 
-            /// <summary>
-            /// Preventative enumerand for possible serialization issues is this is ever serialized
-            /// </summary>
-            Error = 0,
-            
-            /// <summary>
-            /// Start from InitialValue and add one every Interval Seconds
-            /// </summary>
-            AutoIncrement, 
-            
-            /// <summary>
-            /// Start from InitialValue and subtract one every Interval Seconds
-            /// </summary>
-            AutoDecrement, 
-            
-            /// <summary>
-            /// Start from initial value and increment or decrement until we reach FinalValue then stop
-            /// </summary>
-            InitialToFinal, 
-            
-            /// <summary>
-            /// Initialize all digits to a staic value and leave well alone. In future we might
-            /// have a initial value animation to make this less boring.
-            /// </summary>
-            Static 
-        }
+        #endregion Constructors
 
-        #endregion
-
-        #region IncrementDigit enum
+        #region Enumerations
 
         /// <summary>
         /// Used to specifc which digit within the Odometer the user wishes
@@ -187,23 +150,66 @@ namespace Codeplex.Dashboarding
             HundredsOfMillions = 9,
 
             /// <summary>
-            /// Increment the value by 10000000000, the control will automatically roll over 
+            /// Increment the value by 10000000000, the control will automatically roll over
             /// if necessary. Pleas note: We are based on an Int32 at the moment so the tenth
             /// digit can  only be 0,1 or 2
             /// </summary>
             Billions = 10
         }
 
-        #endregion
-
-        #region public properties
         /// <summary>
-        /// Gets or sets the initial value for the Odometer when executing in the MeterMode.InitialToFinal.
+        /// The type of update required
         /// </summary>
-        public int InitialValue
+        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible", Justification = "Its tied to the implementation and not generic")]
+        public enum Mode
         {
-            get { return (int)GetValue(InitialValueProperty); }
-            set { SetValue(InitialValueProperty, value); }
+            /// <summary>
+            /// Preventative enumerand for possible serialization issues is this is ever serialized
+            /// </summary>
+            Error = 0,
+
+            /// <summary>
+            /// Start from InitialValue and add one every Interval Seconds
+            /// </summary>
+            AutoIncrement,
+
+            /// <summary>
+            /// Start from InitialValue and subtract one every Interval Seconds
+            /// </summary>
+            AutoDecrement,
+
+            /// <summary>
+            /// Start from initial value and increment or decrement until we reach FinalValue then stop
+            /// </summary>
+            InitialToFinal,
+
+            /// <summary>
+            /// Initialize all digits to a staic value and leave well alone. In future we might
+            /// have a initial value animation to make this less boring.
+            /// </summary>
+            Static
+        }
+
+        #endregion Enumerations
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the dashboard is loaded.
+        /// </summary>
+        /// <value><c>true</c> if [dashboard loaded]; otherwise, <c>false</c>.</value>
+        public bool DashboardLoaded
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets number of digits to display
+        /// </summary>
+        public double Digits
+        {
+            get { return (double)GetValue(DigitsProperty); }
+            set { SetValue(DigitsProperty, value); }
         }
 
         /// <summary>
@@ -217,22 +223,12 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Gets or sets the meter mode.
+        /// Gets or sets the initial value for the Odometer when executing in the MeterMode.InitialToFinal.
         /// </summary>
-        /// <value>The meter mode.</value>
-        public Mode MeterMode
+        public int InitialValue
         {
-            get { return (Mode)GetValue(MeterModeProperty); }
-            set { SetValue(MeterModeProperty, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets number of digits to display
-        /// </summary>
-        public double Digits
-        {
-            get { return (double)GetValue(DigitsProperty); }
-            set { SetValue(DigitsProperty, value); }
+            get { return (int)GetValue(InitialValueProperty); }
+            set { SetValue(InitialValueProperty, value); }
         }
 
         /// <summary>
@@ -245,13 +241,15 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the dashboard is loaded.
+        /// Gets or sets the meter mode.
         /// </summary>
-        /// <value><c>true</c> if [dashboard loaded]; otherwise, <c>false</c>.</value>
-        public bool DashboardLoaded { get; set; }
-        #endregion
+        /// <value>The meter mode.</value>
+        public Mode MeterMode
+        {
+            get { return (Mode)GetValue(MeterModeProperty); }
+            set { SetValue(MeterModeProperty, value); }
+        }
 
-        #region protected properties
         /// <summary>
         /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
         /// neutral manner
@@ -261,9 +259,6 @@ namespace Codeplex.Dashboarding
         {
             get { return LayoutRoot; }
         }
-        #endregion
-
-        #region Private properties
 
         /// <summary>
         /// Gets the current value.
@@ -289,33 +284,9 @@ namespace Codeplex.Dashboarding
             }
         }
 
-        #endregion
+        #endregion Properties
 
-        #region public methods
-        /// <summary>
-        /// Adds one to the value of the whole odometer, this is the equivilent to
-        /// calling Increment(IncrementDigit.Ones);
-        /// </summary>
-        public void Increment()
-        {
-            this.Increment(IncrementDecrementDigit.Units);
-        }
-
-        /// <summary>
-        /// When writing games and using the Odometer as a score control, you
-        /// may wish to increment the score by a thousand rather than 1.This
-        /// method allows you to pass in an IncrementDigit specifying which
-        /// digit to rollover.
-        /// </summary>
-        /// <param name="digit">the digit to move</param>
-        public void Increment(IncrementDecrementDigit digit)
-        {
-            int theDigit = ((int)digit);
-            if (this.digits.Count > theDigit - 1)
-            {
-                this.digits[this.digits.Count - theDigit].Increment();
-            }
-        }
+        #region Methods
 
         /// <summary>
         /// Subtracts one from the value of the whole odometer
@@ -334,37 +305,50 @@ namespace Codeplex.Dashboarding
         /// <param name="digit">the digit to move</param>
         public void Decrement(IncrementDecrementDigit digit)
         {
-            int theDigit = ((int)digit);
+            int theDigit = (int)digit;
             if (this.digits.Count > theDigit - 1)
             {
-                this.digits[digits.Count - theDigit].Decrement();
+                this.digits[this.digits.Count - theDigit].Decrement();
             }
         }
-        #endregion
-
-        #region private static methods
 
         /// <summary>
-        /// The interval dependany property changed. 
+        /// Adds one to the value of the whole odometer, this is the equivilent to
+        /// calling Increment(IncrementDigit.Ones);
         /// </summary>
-        /// <param name="dependancy">The dependancy.</param>
+        public void Increment()
+        {
+            this.Increment(IncrementDecrementDigit.Units);
+        }
+
+        /// <summary>
+        /// When writing games and using the Odometer as a score control, you
+        /// may wish to increment the score by a thousand rather than 1.This
+        /// method allows you to pass in an IncrementDigit specifying which
+        /// digit to rollover.
+        /// </summary>
+        /// <param name="digit">the digit to move</param>
+        public void Increment(IncrementDecrementDigit digit)
+        {
+            int theDigit = (int)digit;
+            if (this.digits.Count > theDigit - 1)
+            {
+                this.digits[this.digits.Count - theDigit].Increment();
+            }
+        }
+
+        /// <summary>
+        /// Our Digits dependany property has changed, deal with it
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
         /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void IntervalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        private static void DigitsPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             Odometer instance = dependancy as Odometer;
             if (instance != null && instance.DashboardLoaded)
             {
-                instance.UpdateInterval();
+                instance.UpdateDigits();
             }
-        }
-
-        /// <summary>
-        /// Updates the interval.
-        /// </summary>
-        private void UpdateInterval()
-        {
-            this.timer.Interval = TimeSpan.FromSeconds(this.Interval);
-
         }
 
         /// <summary>
@@ -382,21 +366,88 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our Digits dependany property has changed, deal with it
+        /// The interval dependany property changed. 
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="dependancy">The dependancy.</param>
         /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void DigitsPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        private static void IntervalPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             Odometer instance = dependancy as Odometer;
             if (instance != null && instance.DashboardLoaded)
             {
-                instance.UpdateDigits();
+                instance.UpdateInterval();
             }
         }
-        #endregion
 
-        #region private methods
+        /// <summary>
+        /// Manifests the changes.
+        /// </summary>
+        private void ManifestChanges()
+        {
+            this.UpdateDigits();
+            this.UpdateInitialValue();
+            this.UpdateInterval();
+        }
+
+        /// <summary>
+        /// Calculates an changes the value from initial to final in singa increments or decrements
+        /// </summary>
+        private void MoveFromInitialToFinal()
+        {
+            if (this.InitialValue < this.FinalValue)
+            {
+                if (this.CurrentValue < this.FinalValue)
+                {
+                    this.Increment();
+                }
+            }
+            else if (this.FinalValue < this.InitialValue)
+            {
+                if (this.CurrentValue > this.FinalValue)
+                {
+                    this.Decrement();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the Loaded event of the Odometer control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void Odometer_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.ManifestChanges();
+            this.DashboardLoaded = true;
+            if (this.MeterMode != Mode.Static)
+            {
+                this.timer.Start();
+            }
+        }
+
+        /// <summary>
+        /// Handles the Tick event of the timer control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            switch (this.MeterMode)
+            {
+                case Mode.Static:
+                    break;
+                case Mode.AutoIncrement:
+                    this.Increment();
+                    break;
+                case Mode.AutoDecrement:
+                    this.Decrement();
+                    break;
+                case Mode.InitialToFinal:
+                    this.MoveFromInitialToFinal();
+                    break;
+            }
+        }
+
         /// <summary>
         /// Set up the digits, we only do this if the digits are set before the
         /// value. If the value is set first we infer the number of digits from
@@ -449,70 +500,13 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Handles the Loaded event of the Odometer control.
+        /// Updates the interval.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
-        private void Odometer_Loaded(object sender, RoutedEventArgs e)
+        private void UpdateInterval()
         {
-            ManifestChanges();
-            DashboardLoaded = true;
-            if (this.MeterMode != Mode.Static)
-            {
-                this.timer.Start();
-            }
+            this.timer.Interval = TimeSpan.FromSeconds(this.Interval);
         }
 
-        private void ManifestChanges()
-        {
-            UpdateDigits();
-            UpdateInitialValue();
-            UpdateInterval();
-        }
-
-        /// <summary>
-        /// Handles the Tick event of the timer control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            switch (this.MeterMode)
-            {
-                case Mode.Static:
-                    break;
-                case Mode.AutoIncrement:
-                    this.Increment();
-                    break;
-                case Mode.AutoDecrement:
-                    this.Decrement();
-                    break;
-                case Mode.InitialToFinal:
-                    this.MoveFromInitialToFinal();
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Calculates an changes the value from initial to final in singa increments or decrements
-        /// </summary>
-        private void MoveFromInitialToFinal()
-        {
-            if (this.InitialValue < this.FinalValue)
-            {
-                if (this.CurrentValue < this.FinalValue)
-                {
-                    this.Increment();
-                }
-            }
-            else if (this.FinalValue < this.InitialValue)
-            {
-                if (this.CurrentValue > this.FinalValue)
-                {
-                    this.Decrement();
-                }
-            }
-        }
-        #endregion
+        #endregion Methods
     }
 }

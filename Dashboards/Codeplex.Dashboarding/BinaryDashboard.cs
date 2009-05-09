@@ -1,11 +1,11 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="BinaryDashboard.cs" company="David Black">
 //      Copyright 2008 David Black
-//  
+//
 //      Licensed under the Apache License, Version 2.0 (the "License");
 //      you may not use this file except in compliance with the License.
 //      You may obtain a copy of the License at
-//     
+//    
 //          http://www.apache.org/licenses/LICENSE-2.0
 //    
 //      Unless required by applicable law or agreed to in writing, software
@@ -15,7 +15,6 @@
 //      limitations under the License.
 // </copyright>
 //-----------------------------------------------------------------------
-
 namespace Codeplex.Dashboarding
 {
     using System;
@@ -31,59 +30,46 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public abstract class BinaryDashboard : Dashboard
     {
-        #region public static fields
-        /// <summary>
-        /// Identifies the TrueColor attached property
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty TrueColorProperty =
-            DependencyProperty.Register("TrueColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(TrueColorPropertyChanged)));
+        #region Fields
 
         /// <summary>
         /// Identifies our FalseColor attached property
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty FalseColorProperty =
+        public static readonly DependencyProperty FalseColorProperty = 
             DependencyProperty.Register("FalseColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(FalseColorPropertyChanged)));
 
         /// <summary>
         /// Identifies the IsTrue attached property
         /// </summary>
-        public static readonly DependencyProperty IsTrueProperty =
+        public static readonly DependencyProperty IsTrueProperty = 
             DependencyProperty.Register("IsTrue", typeof(bool), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(IsTruePropertyChanged)));
-        #endregion
+
+        /// <summary>
+        /// Identifies the TrueColor attached property
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public static readonly DependencyProperty TrueColorProperty = 
+            DependencyProperty.Register("TrueColor", typeof(ColorPoint), typeof(BinaryDashboard), new PropertyMetadata(new PropertyChangedCallback(TrueColorPropertyChanged)));
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BinaryDashboard"/> class.
         /// </summary>
-        protected BinaryDashboard() : base()
-        {   
+        protected BinaryDashboard()
+            : base()
+        {
             SetValue(TrueColorProperty, new ColorPoint { HiColor = Color.FromArgb(0xFF, 0x6C, 0xFA, 0x20), LowColor = Color.FromArgb(0xFF, 0xDC, 0xF9, 0xD4) });
             SetValue(FalseColorProperty, new ColorPoint { HiColor = Color.FromArgb(0xFF, 0xFA, 0x65, 0x65), LowColor = Color.FromArgb(0xFF, 0xFC, 0xD5, 0xD5) });
             PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.PropertyHasChanged);
         }
 
-        #region public properties
-        /// <summary>
-        /// Gets or sets the colour range for the boolean indicator when the underlying value is true.
-        /// Note in some instances (in english) true is good (green) in some circumstances
-        /// bad (red). Hearing a judge say Guilty to you would I think be 
-        /// a red indicator for true :-)
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public ColorPoint TrueColor
-        {
-            get
-            {
-                ColorPoint res = (ColorPoint)GetValue(TrueColorProperty);
-                return res;
-            }
+        #endregion Constructors
 
-            set
-            {
-                SetValue(TrueColorProperty, value);
-            }
-        }
+        #region Properties
 
         /// <summary>
         /// Gets or sets the  color range for when the value is false. Please see the definition of
@@ -121,30 +107,31 @@ namespace Codeplex.Dashboarding
                 SetValue(IsTrueProperty, value);
             }
         }
-        #endregion
-
-        #region protected methods
 
         /// <summary>
-        /// Update your text colors to that of the TextColor dependancy property
+        /// Gets or sets the colour range for the boolean indicator when the underlying value is true.
+        /// Note in some instances (in english) true is good (green) in some circumstances
+        /// bad (red). Hearing a judge say Guilty to you would I think be 
+        /// a red indicator for true :-)
         /// </summary>
-        protected override void UpdateTextColor()
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public ColorPoint TrueColor
         {
+            get
+            {
+                ColorPoint res = (ColorPoint)GetValue(TrueColorProperty);
+                return res;
+            }
+
+            set
+            {
+                SetValue(TrueColorProperty, value);
+            }
         }
 
-        /// <summary>
-        /// Set the visibiity of your text according to that of the TextVisibility property
-        /// </summary>
-        protected override void UpdateTextVisibility()
-        {
-        }
+        #endregion Properties
 
-        /// <summary>
-        /// The format string for the value has changed
-        /// </summary>
-        protected override void UpdateTextFormat()
-        {
-        }
+        #region Methods
 
         /// <summary>
         /// Requires that the control hounours all appearance setting as specified in the
@@ -189,23 +176,25 @@ namespace Codeplex.Dashboarding
             }
         }
 
-        #endregion
-
-        #region private static methods
+        /// <summary>
+        /// Update your text colors to that of the TextColor dependancy property
+        /// </summary>
+        protected override void UpdateTextColor()
+        {
+        }
 
         /// <summary>
-        /// The true property changed,update
+        /// The format string for the value has changed
         /// </summary>
-        /// <param name="dependancy">The dependancy.</param>
-        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void TrueColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        protected override void UpdateTextFormat()
         {
-            BinaryDashboard instance = dependancy as BinaryDashboard;
-            if (instance != null && instance.DashboardLoaded)
-            {
-                instance.OnPropertyChanged("TrueColor");
-                instance.Animate();
-            }
+        }
+
+        /// <summary>
+        /// Set the visibiity of your text according to that of the TextVisibility property
+        /// </summary>
+        protected override void UpdateTextVisibility()
+        {
         }
 
         /// <summary>
@@ -238,9 +227,21 @@ namespace Codeplex.Dashboarding
                 instance.OnPropertyChanged("IsTrue");
             }
         }
-        #endregion
-        
-        #region private methods
+
+        /// <summary>
+        /// The true property changed,update
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void TrueColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            BinaryDashboard instance = dependancy as BinaryDashboard;
+            if (instance != null && instance.DashboardLoaded)
+            {
+                instance.OnPropertyChanged("TrueColor");
+                instance.Animate();
+            }
+        }
 
         /// <summary>
         /// Finds the true and false representaions and dets the
@@ -275,7 +276,7 @@ namespace Codeplex.Dashboarding
         {
             if (e.PropertyName == "Value")
             {
-                bool toBe = (NormalizedValue >= 0.5);
+                bool toBe = NormalizedValue >= 0.5;
                 if (this.IsTrue != toBe)
                 {
                     SetValue(IsTrueProperty, toBe);
@@ -283,6 +284,6 @@ namespace Codeplex.Dashboarding
             }
         }
 
-        #endregion
+        #endregion Methods
     }
 }

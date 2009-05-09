@@ -1,47 +1,38 @@
-﻿#region Copyright 2008 David Black
-
-/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-#endregion
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="Knob360.xaml.cs" company="David Black">
+//      Copyright 2008 David Black
+//
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//    
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+    using System.Windows.Shapes;
+
     /// <summary>
     /// Dial 360 with a control knob to drag not a needle
     /// </summary>
     public partial class Knob360 : BidirectionalDial
     {
+        #region Constructors
+
         /// <summary>
-        /// Constructs a Knob360
+        /// Initializes a new instance of the <see cref="Knob360"/> class.
         /// </summary>
         public Knob360()
         {
@@ -50,159 +41,9 @@ namespace Codeplex.Dashboarding
             RegisterGrabHandle(_indicator);
         }
 
-        #region Animate
+        #endregion Constructors
 
-        /// <summary>
-        /// Animates the dial moving the grab knob and needle
-        /// </summary>
-        protected override void Animate()
-        {
-            UpdateFaceColor();
-            UpdateNeedleColor();
-
-            _txt11.Text = FormattedValue;
-
-            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
-            {
-                SetPointerByAnimationOverSetTime(NormalizedValue, Value, AnimationDuration);
-            }
-            else
-            {
-                SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);
-            }
-
-        }
-
-
-        /// <summary>
-        /// Sets the pointer animation to execute and sets the time to animate. This allow the same
-        /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
-        /// needle during bidirectional operation (TimeSpan.Zero)
-        /// </summary>
-        /// <param name="normalizedValue">The normalized Value.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="duration">The duration.</param>
-        private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
-        {
-            _txt11.Text = FormattedValue;
-
-         
-
-            SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, (-150 + (300 * normalizedValue)) - 2);
-            needle.KeyTime = KeyTime.FromTimeSpan(duration);
-            Start(AnimateIndicatorStoryboard);
-
-            SplineDoubleKeyFrame handle = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, (300 * normalizedValue) - 10);
-            handle.KeyTime = KeyTime.FromTimeSpan(duration);
-            Start(AnimateGrabHandleStoryboard);
-
-        }
-
-
-
-
-        #endregion
-
-        #region abstract BiDirectionalDial implementation
-        /// <summary>
-        /// Requires that the control hounours all appearance setting as specified in the
-        /// dependancy properties (at least the supported ones). No dependancy property handling
-        /// is performed until all dependancy properties are set and the control is loaded.
-        /// </summary>
-        protected override void ManifestChanges()
-        {
-            UpdateFaceColor();
-            UpdateNeedleColor();
-            UpdateTextColor();
-            UpdateTextFormat();
-            UpdateTextVisibility();
-        }
-
-        /// <summary>
-        /// Set the face color from the range
-        /// </summary>
-        protected override void UpdateFaceColor()
-        {
-
-            ColorPoint c = FaceColorRange.GetColor(Value);
-            if (c != null)
-            {
-                _colourRangeStart.Color = c.HiColor;
-                _colourRangeEnd.Color = c.LowColor;
-            }
-        }
-
-        /// <summary>
-        /// Set the needle color from the range
-        /// </summary>
-        protected override void UpdateNeedleColor()
-        {
-            ColorPoint c = NeedleColorRange.GetColor(Value);
-            if (c != null)
-            {
-                _needle.Fill = new SolidColorBrush(c.HiColor);
-            }
-        }
-
-        /// <summary>
-        /// The format string for the value has changed
-        /// </summary>
-        protected override void UpdateTextFormat()
-        {
-            for (int i = 0; i <= 10; i++)
-            {
-                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
-                if (tb != null && FaceTextFormat != null)
-                {
-                    tb.Text = String.Format(FaceTextFormat, RealMinimum + (i * ((RealMaximum - RealMinimum) / 10)));
-                }
-            }
-
-            if (_txt11 != null)
-            {
-                _txt11.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
-            }
-        }
-
-        /// <summary>
-        /// Set our text color to that of the TextColor property
-        /// </summary>
-        protected override void UpdateTextColor()
-        {
-            for (int i = 0; i <= 10; i++)
-            {
-                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
-                if (tb != null)
-                {
-                    tb.Foreground = new SolidColorBrush(FaceTextColor);
-                }
-            }
-
-            if (_txt11 != null)
-            {
-                _txt11.Foreground = new SolidColorBrush(ValueTextColor);
-            }
-        }
-
-        /// <summary>
-        /// Sets the text visibility to that of the TextVisibility property
-        /// </summary>
-        protected override void UpdateTextVisibility()
-        {
-            for (int i = 0; i <= 10; i++)
-            {
-                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
-                if (tb != null)
-                {
-                    tb.Visibility = FaceTextVisibility;
-                }
-            }
-
-            if (_txt11 != null)
-            {
-                _txt11.Visibility = ValueTextVisibility;
-            }
-        }
+        #region Properties
 
         /// <summary>
         /// Return the shape used to highlight the grab control
@@ -213,16 +54,37 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Based on the rotation angle, set the normalized current value
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
         /// </summary>
-        /// <param name="cv">rotation angle</param>
-        protected override void SetCurrentNormalizedValue(double cv)
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
         {
-            if (cv < -150)
-                cv = -150;
-            if (cv > 150)
-                cv = 150;
-            CurrentNormalizedValue = (cv + 150) / 300;
+            get { return LayoutRoot; }
+        }
+
+        #endregion Properties
+
+        #region Methods
+
+        /// <summary>
+        /// Animates the dial moving the grab knob and needle
+        /// </summary>
+        protected override void Animate()
+        {
+            this.UpdateFaceColor();
+            this.UpdateNeedleColor();
+
+            _txt11.Text = FormattedValue;
+
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+                this.SetPointerByAnimationOverSetTime(NormalizedValue, Value, AnimationDuration);
+            }
+            else
+            {
+                this.SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);
+            }
         }
 
         /// <summary>
@@ -254,21 +116,150 @@ namespace Codeplex.Dashboarding
             {
                 // no-op
             }
+
             angleInDegrees = (angleInDegrees - 90) % 360;
             return angleInDegrees;
         }
 
-
-        #endregion
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            this.UpdateFaceColor();
+            this.UpdateNeedleColor();
+            this.UpdateTextColor();
+            this.UpdateTextFormat();
+            this.UpdateTextVisibility();
+        }
 
         /// <summary>
-        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
-        /// neutral manner
+        /// Based on the rotation angle, set the normalized current value
         /// </summary>
-        /// <value>The resource root.</value>
-        protected override Grid ResourceRoot
+        /// <param name="cv">rotation angle</param>
+        protected override void SetCurrentNormalizedValue(double cv)
         {
-            get { return LayoutRoot; }
+            if (cv < -150)
+            {
+                cv = -150;
+            }
+
+            if (cv > 150)
+            {
+                cv = 150;
+            }
+
+            CurrentNormalizedValue = (cv + 150) / 300;
         }
+
+        /// <summary>
+        /// Set the face color from the range
+        /// </summary>
+        protected override void UpdateFaceColor()
+        {
+            ColorPoint c = FaceColorRange.GetColor(Value);
+            if (c != null)
+            {
+                this._colourRangeStart.Color = c.HiColor;
+                this._colourRangeEnd.Color = c.LowColor;
+            }
+        }
+
+        /// <summary>
+        /// Set the needle color from the range
+        /// </summary>
+        protected override void UpdateNeedleColor()
+        {
+            ColorPoint c = this.NeedleColorRange.GetColor(Value);
+            if (c != null)
+            {
+                this._needle.Fill = new SolidColorBrush(c.HiColor);
+            }
+        }
+
+        /// <summary>
+        /// Set our text color to that of the TextColor property
+        /// </summary>
+        protected override void UpdateTextColor()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Foreground = new SolidColorBrush(FaceTextColor);
+                }
+            }
+
+            if (_txt11 != null)
+            {
+                _txt11.Foreground = new SolidColorBrush(ValueTextColor);
+            }
+        }
+
+        /// <summary>
+        /// The format string for the value has changed
+        /// </summary>
+        protected override void UpdateTextFormat()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null && FaceTextFormat != null)
+                {
+                    tb.Text = String.Format(FaceTextFormat, RealMinimum + (i * ((RealMaximum - RealMinimum) / 10)));
+                }
+            }
+
+            if (_txt11 != null)
+            {
+                _txt11.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
+            }
+        }
+
+        /// <summary>
+        /// Sets the text visibility to that of the TextVisibility property
+        /// </summary>
+        protected override void UpdateTextVisibility()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Visibility = FaceTextVisibility;
+                }
+            }
+
+            if (_txt11 != null)
+            {
+                _txt11.Visibility = ValueTextVisibility;
+            }
+        }
+
+        /// <summary>
+        /// Sets the pointer animation to execute and sets the time to animate. This allow the same
+        /// code to handle normal operation using the Dashboard.AnimationDuration or for dragging the
+        /// needle during bidirectional operation (TimeSpan.Zero)
+        /// </summary>
+        /// <param name="normalizedValue">The normalized Value.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="duration">The duration.</param>
+        private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
+        {
+            _txt11.Text = FormattedValue;
+
+            SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, (-150 + (300 * normalizedValue)) - 2);
+            needle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateIndicatorStoryboard);
+
+            SplineDoubleKeyFrame handle = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, (300 * normalizedValue) - 10);
+            handle.KeyTime = KeyTime.FromTimeSpan(duration);
+            Start(AnimateGrabHandleStoryboard);
+        }
+
+        #endregion Methods
     }
 }

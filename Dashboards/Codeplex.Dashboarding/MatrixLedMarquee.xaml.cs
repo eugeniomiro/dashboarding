@@ -1,11 +1,11 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="MatrixLedMarquee.xaml.cs" company="David Black">
 //      Copyright 2008 David Black
-//  
+//
 //      Licensed under the Apache License, Version 2.0 (the "License");
 //      you may not use this file except in compliance with the License.
 //      You may obtain a copy of the License at
-//     
+//    
 //          http://www.apache.org/licenses/LICENSE-2.0
 //    
 //      Unless required by applicable law or agreed to in writing, software
@@ -15,7 +15,6 @@
 //      limitations under the License.
 // </copyright>
 //-----------------------------------------------------------------------
-
 namespace Codeplex.Dashboarding
 {
     using System;
@@ -37,60 +36,56 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public partial class MatrixLedMarquee : UserControl
     {
-        #region public static fields
-
-        /// <summary>
-        /// The dependancy property for the MarqueeMode property
-        /// </summary>
-        public static readonly DependencyProperty MarqueeModeProperty =
-            DependencyProperty.Register("Mode", typeof(MarqueeMode), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(ModePropertyChanged)));
-
-        /// <summary>
-        /// The dependancy property for the TextAlign property
-        /// </summary>
-        public static readonly DependencyProperty TextAlignProperty =
-            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(TextAlignPropertyChanged)));
-
-        /// <summary>
-        /// The dependancy property for the Text property
-        /// </summary>
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(TextPropertyChanged)));
-
-        /// <summary>
-        /// The dependancy property for the Panels properties
-        /// </summary>
-        public static readonly DependencyProperty PanelsProperty =
-            DependencyProperty.Register("Panels", typeof(int), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(PanelsPropertyChanged)));
-
-        /// <summary>
-        /// The dependancy property for the TimerDuration property
-        /// </summary>
-        public static readonly DependencyProperty TimerDurationProperty =
-            DependencyProperty.Register("TimerDuration", typeof(Duration), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(TimerDurationPropertyChanged)));
+        #region Fields
 
         /// <summary>
         /// THe dependancy property for the LedOffColor
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty LedOffColorProperty =
+        public static readonly DependencyProperty LedOffColorProperty = 
             DependencyProperty.Register("LedOffColor", typeof(Color), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
         /// <summary>
         /// The dependancy property for the LedOnColor
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty LedOnColorProperty =
+        public static readonly DependencyProperty LedOnColorProperty = 
             DependencyProperty.Register("LedOnColor", typeof(Color), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(ColorPropertyChanged)));
 
-        #endregion
-
-        #region private fields
+        /// <summary>
+        /// The dependancy property for the MarqueeMode property
+        /// </summary>
+        public static readonly DependencyProperty MarqueeModeProperty = 
+            DependencyProperty.Register("Mode", typeof(MarqueeMode), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(ModePropertyChanged)));
 
         /// <summary>
-        /// Do we have text to animate
+        /// The dependancy property for the Panels properties
         /// </summary>
-        private bool textExists;
+        public static readonly DependencyProperty PanelsProperty = 
+            DependencyProperty.Register("Panels", typeof(int), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(PanelsPropertyChanged)));
+
+        /// <summary>
+        /// The dependancy property for the TextAlign property
+        /// </summary>
+        public static readonly DependencyProperty TextAlignProperty = 
+            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(TextAlignPropertyChanged)));
+
+        /// <summary>
+        /// The dependancy property for the Text property
+        /// </summary>
+        public static readonly DependencyProperty TextProperty = 
+            DependencyProperty.Register("Text", typeof(string), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(TextPropertyChanged)));
+
+        /// <summary>
+        /// The dependancy property for the TimerDuration property
+        /// </summary>
+        public static readonly DependencyProperty TimerDurationProperty = 
+            DependencyProperty.Register("TimerDuration", typeof(Duration), typeof(MatrixLedMarquee), new PropertyMetadata(new PropertyChangedCallback(TimerDurationPropertyChanged)));
+
+        /// <summary>
+        /// The character in play in the marquee
+        /// </summary>
+        private List<MatrixLedCharacter> characters = new List<MatrixLedCharacter>();
 
         /// <summary>
         /// Current led to render
@@ -103,6 +98,11 @@ namespace Codeplex.Dashboarding
         private int offset;
 
         /// <summary>
+        /// Do we have text to animate
+        /// </summary>
+        private bool textExists;
+
+        /// <summary>
         /// Current offset within the text
         /// </summary>
         private int textOffset;
@@ -112,11 +112,9 @@ namespace Codeplex.Dashboarding
         /// </summary>
         private DispatcherTimer timer = new DispatcherTimer();
 
-        /// <summary>
-        /// The character in play in the marquee
-        /// </summary>
-        private List<MatrixLedCharacter> characters = new List<MatrixLedCharacter>();        
-        #endregion
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MatrixLedMarquee"/> class. Representing scrolling 
@@ -134,6 +132,10 @@ namespace Codeplex.Dashboarding
             Loaded += new RoutedEventHandler(this.MatrixLedMarquee_Loaded);
         }
 
+        #endregion Constructors
+
+        #region Events
+
         /// <summary>
         /// Event raised when the last character of a marquee is completely
         /// on the surface of the display. It is an indicator to tell you that
@@ -141,7 +143,9 @@ namespace Codeplex.Dashboarding
         /// </summary>
         public event EventHandler<EventArgs> MarqueeFinished;
 
-        #region MarqueeMode enum
+        #endregion Events
+
+        #region Enumerations
 
         /// <summary>
         /// Specifies the render mode of the MatrixLedMarquee
@@ -156,35 +160,28 @@ namespace Codeplex.Dashboarding
             SingleShot,
 
             /// <summary>
-            /// Text is wrapped.When the last letter is 
+            /// Text is wrapped.When the last letter is
             /// rendered, we start agin with the first
             /// </summary>
             Continuous,
 
             /// <summary>
-            /// Just display the text, don't scroll (see TextAlign) 
+            /// Just display the text, don't scroll (see TextAlign)
             /// </summary>
             Motionless
         }
 
-        #endregion
+        #endregion Enumerations
 
-        #region public properties
+        #region Properties
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="MatrixLedMarquee"/> is isloaded.
         /// </summary>
         /// <value><c>true</c> if isloaded; otherwise, <c>false</c>.</value>
-        public bool Isloaded { get; set; }
-
-        /// <summary>
-        /// Gets or sets the on color of all leds in the marquee
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public Color LedOnColor
+        public bool Isloaded
         {
-            get { return (Color)GetValue(LedOnColorProperty); }
-            set { SetValue(LedOnColorProperty, value); }
+            get; set;
         }
 
         /// <summary>
@@ -198,12 +195,22 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Gets or sets timer duration between scroll steps
+        /// Gets or sets the on color of all leds in the marquee
         /// </summary>
-        public Duration TimerDuration
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public Color LedOnColor
         {
-            get { return (Duration)GetValue(TimerDurationProperty); }
-            set { SetValue(TimerDurationProperty, value); }
+            get { return (Color)GetValue(LedOnColorProperty); }
+            set { SetValue(LedOnColorProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the MarqueeMode of the MatrixLedMarquee
+        /// </summary>
+        public MarqueeMode Mode
+        {
+            get { return (MarqueeMode)GetValue(MarqueeModeProperty); }
+            set { SetValue(MarqueeModeProperty, value); }
         }
 
         /// <summary>
@@ -240,47 +247,32 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Gets or sets the MarqueeMode of the MatrixLedMarquee
+        /// Gets or sets timer duration between scroll steps
         /// </summary>
-        public MarqueeMode Mode
+        public Duration TimerDuration
         {
-            get { return (MarqueeMode)GetValue(MarqueeModeProperty); }
-            set { SetValue(MarqueeModeProperty, value); }
+            get { return (Duration)GetValue(TimerDurationProperty); }
+            set { SetValue(TimerDurationProperty, value); }
         }
 
-        #endregion
+        #endregion Properties
 
-        #region private members
+        #region Methods
 
         /// <summary>
-        /// The value of the Text property has changed, deal with it.
+        /// The value of the LedOnColor or LedOffColor property has changed, deal with it.
         /// </summary>
         /// <param name="dependancy">The dependancy.</param>
         /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void TextPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        private static void ColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
 
-            if (instance != null && instance.Isloaded)
+            if (instance != null)
             {
-                instance.UpdateText();
-            }
-        }
-
-        /// <summary>
-        /// The value of the TextAlign property has changed, deal with it.
-        /// </summary>
-        /// <param name="dependancy">The dependancy.</param>
-        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void TextAlignPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
-
-            if (instance != null && instance.Isloaded)
-            {
-                if (instance.Text != null)
+                if (instance.LedOnColor != null && instance.Isloaded)
                 {
-                    instance.UpdateText();
+                    instance.UpdateLedsFromState();
                 }
             }
         }
@@ -316,6 +308,39 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
+        /// The value of the TextAlign property has changed, deal with it.
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void TextAlignPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
+
+            if (instance != null && instance.Isloaded)
+            {
+                if (instance.Text != null)
+                {
+                    instance.UpdateText();
+                }
+            }
+        }
+
+        /// <summary>
+        /// The value of the Text property has changed, deal with it.
+        /// </summary>
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void TextPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
+
+            if (instance != null && instance.Isloaded)
+            {
+                instance.UpdateText();
+            }
+        }
+
+        /// <summary>
         /// The value of the TimerDuration property has changed, deal with it.
         /// </summary>
         /// <param name="dependancy">The dependancy.</param>
@@ -330,123 +355,111 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// The value of the LedOnColor or LedOffColor property has changed, deal with it.
+        /// Aligns the text centered.
         /// </summary>
-        /// <param name="dependancy">The dependancy.</param>
-        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void ColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        /// <returns>The text aligned center in a string </returns>
+        private string AlignTextCenter()
         {
-            MatrixLedMarquee instance = dependancy as MatrixLedMarquee;
-
-            if (instance != null)
-            {
-                if (instance.LedOnColor != null && instance.Isloaded)
-                {
-                    instance.UpdateLedsFromState();
-                }
-            }
+            string start = String.Empty.PadLeft(this.characters.Count) + this.Text + String.Empty.PadRight(this.characters.Count);
+            return start.Substring((start.Length - this.characters.Count) / 2, this.characters.Count);
         }
 
         /// <summary>
-        /// Sets the led on/off status
+        /// Align our Text property Left in a string of _characters.Count chars
         /// </summary>
-        private void UpdateLedsFromState()
+        /// <returns>A justified string</returns>
+        private string AlignTextLeft()
         {
-            foreach (MatrixLedCharacter ch in this.characters)
+            string formatted = String.Empty;
+            if (this.Text.Length > this.characters.Count)
             {
-                ch.LedOffColor = this.LedOffColor;
-                ch.LedOnColor = this.LedOnColor;
-            }
-        }
-
-        /// <summary>
-        /// raises the MarqueeFinishedEvent if any one is listening
-        /// </summary>
-        private void OnMarqueeFinished()
-        {
-            if (this.MarqueeFinished != null)
-            {
-                this.MarqueeFinished(this, EventArgs.Empty);
-            }
-        }
-
-        /// <summary>
-        /// Fill the control with the required number of panels
-        /// </summary>
-        private void UpdatePanels()
-        {
-            _stackpanel.Children.Clear();
-            this.characters.Clear();
-            for (int i = 0; i < this.Panels; i++)
-            {
-                MatrixLedCharacter ch = new MatrixLedCharacter();
-                ch.LedOnColor = this.LedOnColor;
-                ch.LedOffColor = this.LedOffColor;
-                this.characters.Add(ch);
-                _stackpanel.Children.Add(ch);
-
-                if (this.characters.Count > 1)
-                {
-                    MatrixLedCharacter prev = this.characters[i - 1];
-                    ch.ScrollOut += new EventHandler<MatrixScrollEventArgs>(prev.ScrollOne);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Handles the Loaded event of the MatrixLedMarquee control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
-        private void MatrixLedMarquee_Loaded(object sender, RoutedEventArgs e)
-        {
-            ManifestChanges();
-            Isloaded = true;
-            this.timer.Start();
-        }
-
-        private void ManifestChanges()
-        {
-            UpdatePanels();
-            UpdateText();
-            UpdateLedsFromState();
-        }
-
-        /// <summary>
-        /// Handles the Completed event of the timer control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TimerCompleted(object sender, EventArgs e)
-        {
-            if (this.characters.Count > 0)
-            {
-                this.Animate();
-            }
-        }
-
-        /// <summary>
-        /// The text has changed. for continious and motionless operation
-        /// we clear the screen. For one shot we leave it as the user will
-        /// want text to join on to the previous
-        /// </summary>
-        private void UpdateText()
-        {
-            if (this.Mode != MarqueeMode.SingleShot)
-            {
-                foreach (MatrixLedCharacter ch in this.characters)
-                {
-                    ch.Clear();
-                }
-            }
-
-            if (this.Mode == MarqueeMode.Motionless)
-            {
-                this.InitializeMotionlessText();
+                formatted = this.Text.Substring(0, this.characters.Count);
             }
             else
             {
-                this.InitializeAnimatedText();
+                formatted = this.Text.PadRight(this.characters.Count);
+            }
+
+            return formatted;
+        }
+
+        /// <summary>
+        /// Align our Text property right in a string of _characters.Count chars
+        /// we throw away any extras
+        /// </summary>
+        /// <returns>A justified string</returns>
+        private string AlignTextRight()
+        {
+            string formatted = String.Empty;
+            if (this.Text.Length > this.characters.Count)
+            {
+                formatted = this.Text.Substring(this.Text.Length - this.characters.Count);
+            }
+            else
+            {
+                formatted = this.Text.PadLeft(this.characters.Count);
+            }
+
+            return formatted;
+        }
+
+        /// <summary>
+        /// We know we are not motionless so we animate
+        /// </summary>
+        private void AnimanteNonMotionless()
+        {
+            MatrixLedCharacter first = this.characters[this.characters.Count - 1];
+            if (!this.textExists)
+            {
+                first.ScrollOne(null, new MatrixScrollEventArgs(new List<bool> { false, false, false, false, false, false }));
+            }
+            else
+            {
+                first.ScrollOne(null, this.GetNextVerticalStrip());
+            }
+        }
+
+        /// <summary>
+        /// Animate the marquee, if we need a new character from the string we get one
+        /// otherwise we access the next vertical strip of leds from the current. To keep performance uniform
+        /// a control with no text animates off leds. This is a noop for motionless output
+        /// </summary>
+        private void Animate()
+        {
+            if (this.Mode != MarqueeMode.Motionless)
+            {
+                this.AnimanteNonMotionless();
+            }
+        }
+
+        /// <summary>
+        /// Gets the next vertical strip of LEDS and scrolls the current point on. If a new 
+        /// character is required it is brought into play
+        /// </summary>
+        /// <returns>a MatrixScrollEventArgs representing the next column of leds to scroll into the marquee</returns>
+        private MatrixScrollEventArgs GetNextVerticalStrip()
+        {
+            byte b = this.ledStates[this.offset];
+            MatrixScrollEventArgs args = new MatrixScrollEventArgs(new List<bool> { (b & 0x40) != 0, (b & 0x20) != 0, (b & 0x10) != 0, (b & 0x08) != 0, (b & 0x04) != 0, (b & 0x02) != 0, (b & 0x01) != 0 });
+            this.RackCharacter();
+            return args;
+        }
+
+        /// <summary>
+        /// Initialize a text string that is to be animated
+        /// </summary>
+        private void InitializeAnimatedText()
+        {
+            this.offset = 0;
+            this.textOffset = 0;
+            if (this.Text.Length > 0)
+            {
+                this.ledStates = MatrixLedCharacterDefinitions.GetDefinition(String.Empty + this.Text[this.textOffset]);
+                this.textExists = true;
+            }
+            else
+            {
+                this.textExists = false;
             }
         }
 
@@ -473,128 +486,37 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Aligns the text centered.
+        /// Manifests the changes.
         /// </summary>
-        /// <returns>The text aligned center in a string </returns>
-        private string AlignTextCenter()
+        private void ManifestChanges()
         {
-            string start = String.Empty.PadLeft(this.characters.Count) + this.Text + String.Empty.PadRight(this.characters.Count);
-            return start.Substring((start.Length - this.characters.Count) / 2, this.characters.Count);
+            this.UpdatePanels();
+            this.UpdateText();
+            this.UpdateLedsFromState();
         }
 
         /// <summary>
-        /// Align our Text property right in a string of _characters.Count chars
-        /// we throw away any extras
+        /// Handles the Loaded event of the MatrixLedMarquee control.
         /// </summary>
-        /// <returns>A justified string</returns>
-        private string AlignTextRight()
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void MatrixLedMarquee_Loaded(object sender, RoutedEventArgs e)
         {
-            string formatted = String.Empty;
-            if (this.Text.Length > this.characters.Count)
-            {
-                formatted = this.Text.Substring(this.Text.Length - this.characters.Count);
-            }
-            else
-            {
-                formatted = this.Text.PadLeft(this.characters.Count);
-            }
-
-            return formatted;
+            this.ManifestChanges();
+            this.Isloaded = true;
+            this.timer.Start();
         }
 
         /// <summary>
-        /// Align our Text property Left in a string of _characters.Count chars
+        /// raises the MarqueeFinishedEvent if any one is listening
         /// </summary>
-        /// <returns>A justified string</returns>
-        private string AlignTextLeft()
+        private void OnMarqueeFinished()
         {
-            string formatted = String.Empty;
-            if (this.Text.Length > this.characters.Count)
+            if (this.MarqueeFinished != null)
             {
-                formatted = this.Text.Substring(0, this.characters.Count);
-            }
-            else
-            {
-                formatted = this.Text.PadRight(this.characters.Count);
-            }
-
-            return formatted;
-        }
-
-        /// <summary>
-        /// Sets the static text of the marquee to a fixed value
-        /// </summary>
-        /// <param name="text">Sets the already aligned text into the marquee this is LTR</param>
-        private void SetAlignedText(string text)
-        {
-            for (int i = 0; i < this.characters.Count; i++)
-            {
-                if (i < text.Length)
-                {
-                    this.characters[i].Text = String.Empty + text[i];
-                }
+                this.MarqueeFinished(this, EventArgs.Empty);
             }
         }
-
-        /// <summary>
-        /// Initialize a text string that is to be animated
-        /// </summary>
-        private void InitializeAnimatedText()
-        {
-            this.offset = 0;
-            this.textOffset = 0;
-            if (this.Text.Length > 0)
-            {
-                this.ledStates = MatrixLedCharacterDefinitions.GetDefinition(String.Empty + this.Text[this.textOffset]);
-                this.textExists = true;
-            }
-            else
-            {
-                this.textExists = false;
-            }
-        }
-
-        /// <summary>
-        /// Animate the marquee, if we need a new character from the string we get one
-        /// otherwise we access the next vertical strip of leds from the current. To keep performance uniform
-        /// a control with no text animates off leds. This is a noop for motionless output
-        /// </summary>
-        private void Animate()
-        {
-            if (this.Mode != MarqueeMode.Motionless)
-            {
-                this.AnimanteNonMotionless();
-            }
-        }
-
-        /// <summary>
-        /// We know we are not motionless so we animate
-        /// </summary>
-        private void AnimanteNonMotionless()
-        {
-            MatrixLedCharacter first = this.characters[this.characters.Count - 1];
-            if (!this.textExists)
-            {
-                first.ScrollOne(null, new MatrixScrollEventArgs(new List<bool> { false, false, false, false, false, false }));
-            }
-            else
-            {
-                first.ScrollOne(null, this.GetNextVerticalStrip());
-            }
-        }
-
-        /// <summary>
-        /// Gets the next vertical strip of LEDS and scrolls the current point on. If a new 
-        /// character is required it is brought into play
-        /// </summary>
-        /// <returns>a MatrixScrollEventArgs representing the next column of leds to scroll into the marquee</returns>
-        private MatrixScrollEventArgs GetNextVerticalStrip()
-        {
-            byte b = this.ledStates[this.offset];
-            MatrixScrollEventArgs args = new MatrixScrollEventArgs(new List<bool> { (b & 0x40) != 0, (b & 0x20) != 0, (b & 0x10) != 0, (b & 0x08) != 0, (b & 0x04) != 0, (b & 0x02) != 0, (b & 0x01) != 0 });
-            this.RackCharacter();
-            return args;
-            }
 
         /// <summary>
         /// Goto the next character in the string. Usually not so tricky except when we run 
@@ -631,6 +553,95 @@ namespace Codeplex.Dashboarding
                 }
             }
         }
-        #endregion
+
+        /// <summary>
+        /// Sets the static text of the marquee to a fixed value
+        /// </summary>
+        /// <param name="text">Sets the already aligned text into the marquee this is LTR</param>
+        private void SetAlignedText(string text)
+        {
+            for (int i = 0; i < this.characters.Count; i++)
+            {
+                if (i < text.Length)
+                {
+                    this.characters[i].Text = String.Empty + text[i];
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the Completed event of the timer control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void TimerCompleted(object sender, EventArgs e)
+        {
+            if (this.characters.Count > 0)
+            {
+                this.Animate();
+            }
+        }
+
+        /// <summary>
+        /// Sets the led on/off status
+        /// </summary>
+        private void UpdateLedsFromState()
+        {
+            foreach (MatrixLedCharacter ch in this.characters)
+            {
+                ch.LedOffColor = this.LedOffColor;
+                ch.LedOnColor = this.LedOnColor;
+            }
+        }
+
+        /// <summary>
+        /// Fill the control with the required number of panels
+        /// </summary>
+        private void UpdatePanels()
+        {
+            _stackpanel.Children.Clear();
+            this.characters.Clear();
+            for (int i = 0; i < this.Panels; i++)
+            {
+                MatrixLedCharacter ch = new MatrixLedCharacter();
+                ch.LedOnColor = this.LedOnColor;
+                ch.LedOffColor = this.LedOffColor;
+                this.characters.Add(ch);
+                _stackpanel.Children.Add(ch);
+
+                if (this.characters.Count > 1)
+                {
+                    MatrixLedCharacter prev = this.characters[i - 1];
+                    ch.ScrollOut += new EventHandler<MatrixScrollEventArgs>(prev.ScrollOne);
+                }
+            }
+        }
+
+        /// <summary>
+        /// The text has changed. for continious and motionless operation
+        /// we clear the screen. For one shot we leave it as the user will
+        /// want text to join on to the previous
+        /// </summary>
+        private void UpdateText()
+        {
+            if (this.Mode != MarqueeMode.SingleShot)
+            {
+                foreach (MatrixLedCharacter ch in this.characters)
+                {
+                    ch.Clear();
+                }
+            }
+
+            if (this.Mode == MarqueeMode.Motionless)
+            {
+                this.InitializeMotionlessText();
+            }
+            else
+            {
+                this.InitializeAnimatedText();
+            }
+        }
+
+        #endregion Methods
     }
 }

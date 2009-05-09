@@ -129,6 +129,9 @@
       <Link>MatrixLedMarquee.xaml.cs</Link>
       <DependentUpon>MatrixLedMarquee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\MatrixScrollEventArgs.cs">
+      <Link>MatrixScrollEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Codeplex.Dashboarding\Odometer.xaml.cs">
       <Link>Odometer.xaml.cs</Link>
       <DependentUpon>Odometer.xaml</DependentUpon>

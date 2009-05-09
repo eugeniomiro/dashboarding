@@ -1,32 +1,29 @@
-﻿/* -------------------------------------------------------------------------
- *     
- *  Copyright 2008 David Black
- *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *     
- *     http://www.apache.org/licenses/LICENSE-2.0
- *    
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *  -------------------------------------------------------------------------
- */
-
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="FiveStarRanking.xaml.cs" company="David Black">
+//      Copyright 2008 David Black
+//
+//      Licensed under the Apache License, Version 2.0 (the "License");
+//      you may not use this file except in compliance with the License.
+//      You may obtain a copy of the License at
+//    
+//          http://www.apache.org/licenses/LICENSE-2.0
+//    
+//      Unless required by applicable law or agreed to in writing, software
+//      distributed under the License is distributed on an "AS IS" BASIS,
+//      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//      See the License for the specific language governing permissions and
+//      limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Codeplex.Dashboarding
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+
     /// <summary>
     /// A five star ranking is a sliding scale of stars, hearts etc. The character dispayed is
     /// set by the Character property.
@@ -34,31 +31,48 @@ namespace Codeplex.Dashboarding
     /// </summary>
     public partial class FiveStarRanking : BidirectionalDashboard
     {
+        #region Fields
+
         /// <summary>
-        /// Constructs a FiveStarRanking
+        /// Dependancy Property for the InRankColor property
         /// </summary>
-        public FiveStarRanking() 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public static readonly DependencyProperty InRankColorProperty = 
+            DependencyProperty.Register("InRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(InRankColorPropertyChanged)));
+
+        /// <summary>
+        /// Dependancy Property for the OutRankColor
+        /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank", Justification = "It is out-rank not outrank!")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
+        public static readonly DependencyProperty OutRankColorProperty = 
+            DependencyProperty.Register("OutRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(OutRankColorPropertyChanged)));
+
+        #endregion Fields
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FiveStarRanking"/> class.
+        /// </summary>
+        public FiveStarRanking()
         {
             InitializeComponent();
             RegisterGrabHandle(LayoutRoot);
             RegisterGrabHandle(_grabHandleCanvas);
         }
 
-        #region InRankColor property
+        #endregion Constructors
+
+        #region Properties
 
         /// <summary>
-        /// Dependancy Property for the InRankColor property
-        /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty InRankColorProperty =
-            DependencyProperty.Register("InRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(InRankColorPropertyChanged)));
-
-        /// <summary>
-        /// The colour range for the boolean indicator when the underlying value is true.
+        /// Gets or sets colour range for the boolean indicator when the underlying value is true.
         /// Note in some instances (in english) true is good (green) in some circumstances
         /// bad (red). Hearing a judge say Guilty to you would I think be 
         /// a red indicator for true :-)
         /// </summary>
+        /// <value>The color of the in rank.</value>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public ColorPoint InRankColor
         {
@@ -67,6 +81,7 @@ namespace Codeplex.Dashboarding
                 ColorPoint res = (ColorPoint)GetValue(InRankColorProperty);
                 return res;
             }
+
             set
             {
                 SetValue(InRankColorProperty, value);
@@ -74,62 +89,11 @@ namespace Codeplex.Dashboarding
             }
         }
 
-
-
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Gets or sets the out of rank color.
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void InRankColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
-        {
-            FiveStarRanking instance = dependancy as FiveStarRanking;
-            if (instance != null)
-            {
-                instance.UpdateInRankColor();
-            }
-        }
-
-        /// <summary>
-        /// Updates the color of the in rank.
-        /// </summary>
-        private void UpdateInRankColor()
-        {
-            if (InRankColor != null)
-            {
-                _highEnabled0.Color = InRankColor.HiColor;
-                _highEnabled1.Color = InRankColor.HiColor;
-                _highEnabled2.Color = InRankColor.HiColor;
-                _highEnabled3.Color = InRankColor.HiColor;
-                _highEnabled4.Color = InRankColor.HiColor;
-                _lowEnabled0.Color = InRankColor.LowColor;
-                _lowEnabled1.Color = InRankColor.LowColor;
-                _lowEnabled2.Color = InRankColor.LowColor;
-                _lowEnabled3.Color = InRankColor.LowColor;
-                _lowEnabled4.Color = InRankColor.LowColor;
-            }
-        }
-
-        #endregion
-
-        #region OutRankColor property
-
-        /// <summary>
-        /// Dependancy Property for the OutRankColor
-        /// </summary>
-
-
-        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty OutRankColorProperty =
-            DependencyProperty.Register("OutRankColor", typeof(ColorPoint), typeof(FiveStarRanking), new PropertyMetadata(new PropertyChangedCallback(OutRankColorPropertyChanged)));
-
-        /// <summary>
-        /// Sets the color range for when the value is false. Please see the definition of
-        /// TrueColor range for a vacuous example of when ths may be needed
-        /// </summary>
-
-        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank")]
+        /// <value>The out rank color.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "OutRank", Justification = "It is out-rank not outrank!")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public ColorPoint OutRankColor
         {
@@ -138,6 +102,7 @@ namespace Codeplex.Dashboarding
                 ColorPoint res = (ColorPoint)GetValue(OutRankColorProperty);
                 return res;
             }
+
             set
             {
                 SetValue(OutRankColorProperty, value);
@@ -146,47 +111,45 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Our dependany property has changed, deal with it
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
         /// </summary>
-        /// <param name="dependancy">the dependancy object</param>
-        /// <param name="args">arguments</param>
-        private static void OutRankColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
         {
-            FiveStarRanking instance = dependancy as FiveStarRanking;
-            if (instance != null)
-            {
-                instance.UpdateOutRankColor();
-            }
+            get { return LayoutRoot; }
         }
 
-        private void UpdateOutRankColor()
-        {
-            if (OutRankColor != null)
-            {
-                _highDisabled0.Color = OutRankColor.HiColor;
-                _highDisabled1.Color = OutRankColor.HiColor;
-                _highDisabled2.Color = OutRankColor.HiColor;
-                _highDisabled3.Color = OutRankColor.HiColor;
-                _highDisabled4.Color = OutRankColor.HiColor;
-                _lowDisabled0.Color = OutRankColor.LowColor;
-                _lowDisabled1.Color = OutRankColor.LowColor;
-                _lowDisabled2.Color = OutRankColor.LowColor;
-                _lowDisabled3.Color = OutRankColor.LowColor;
-                _lowDisabled4.Color = OutRankColor.LowColor;
-            }
-        }
-        #endregion
+        #endregion Properties
 
+        #region Methods
 
-        #region BiDirection
         /// <summary>
-        /// Highlight the grab handle as the mouse is in
+        /// Display the control according the the current value
         /// </summary>
-        protected override void ShowGrabHandle()
+        protected override void Animate()
         {
-            base.ShowGrabHandle();
-            _grabHandle.StrokeDashArray = new DoubleCollection { 1, 1 };
-            _grabHandleCanvas.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+            if (IsBidirectional)
+            {
+                this._grabHandleCanvas.Visibility = Visibility.Visible;
+                this._grabHandle.Visibility = Visibility.Visible;
+                this.UpdateCurrentTextFormat();
+            }
+            else
+            {
+                this._grabHandleCanvas.Visibility = Visibility.Collapsed;
+                this._grabHandle.Visibility = Visibility.Collapsed;
+                this.UpdateTextFormat();
+            }
+
+            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
+            {
+                this.SetPointerByAnimationOverSetTime(NormalizedValue, AnimationDuration);
+            }
+            else
+            {
+                this.SetPointerByAnimationOverSetTime(CurrentNormalizedValue, TimeSpan.Zero);
+            }
         }
 
         /// <summary>
@@ -199,6 +162,19 @@ namespace Codeplex.Dashboarding
             _grabHandleCanvas.Background = new SolidColorBrush(Colors.Transparent);
         }
 
+        /// <summary>
+        /// Requires that the control hounours all appearance setting as specified in the
+        /// dependancy properties (at least the supported ones). No dependancy property handling
+        /// is performed until all dependancy properties are set and the control is loaded.
+        /// </summary>
+        protected override void ManifestChanges()
+        {
+            this.UpdateInRankColor();
+            this.UpdateOutRankColor();
+            this.UpdateTextColor();
+            this.UpdateTextFormat();
+            this.UpdateTextVisibility();
+        }
 
         /// <summary>
         /// Mouse is moving, move the diagram
@@ -212,21 +188,25 @@ namespace Codeplex.Dashboarding
             this.Animate();
         }
 
-
-        #endregion
+        /// <summary>
+        /// Highlight the grab handle as the mouse is in
+        /// </summary>
+        protected override void ShowGrabHandle()
+        {
+            base.ShowGrabHandle();
+            _grabHandle.StrokeDashArray = new DoubleCollection { 1, 1 };
+            _grabHandleCanvas.Background = new SolidColorBrush(Color.FromArgb(0x4c, 0xde, 0xf0, 0xf6));
+        }
 
         /// <summary>
-        /// Requires that the control hounours all appearance setting as specified in the
-        /// dependancy properties (at least the supported ones). No dependancy property handling
-        /// is performed until all dependancy properties are set and the control is loaded.
+        /// The format string for the value has changed
         /// </summary>
-        protected override void ManifestChanges()
+        protected void UpdateCurrentTextFormat()
         {
-            UpdateInRankColor();
-            UpdateOutRankColor();
-            UpdateTextColor();
-            UpdateTextFormat();
-            UpdateTextVisibility();
+            if (_text != null)
+            {
+                _text.Text = FormattedCurrentValue;
+            }
         }
 
         /// <summary>
@@ -237,17 +217,6 @@ namespace Codeplex.Dashboarding
             if (_text != null)
             {
                 _text.Foreground = new SolidColorBrush(ValueTextColor);
-            }
-        }
-
-        /// <summary>
-        /// Set the visibiity of your text according to that of the TextVisibility property
-        /// </summary>
-        protected override void UpdateTextVisibility()
-        {
-            if (_text != null)
-            {
-                _text.Visibility = ValueTextVisibility;
             }
         }
 
@@ -263,47 +232,43 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// The format string for the value has changed
+        /// Set the visibiity of your text according to that of the TextVisibility property
         /// </summary>
-        protected void UpdateCurrentTextFormat()
+        protected override void UpdateTextVisibility()
         {
             if (_text != null)
             {
-                _text.Text = FormattedCurrentValue;
+                _text.Visibility = ValueTextVisibility;
             }
         }
 
         /// <summary>
-        /// Display the control according the the current value
+        /// The in-rank color property changed.
         /// </summary>
-        protected override void Animate()
+        /// <param name="dependancy">The dependancy.</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void InRankColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
-
-            if (IsBidirectional)
+            FiveStarRanking instance = dependancy as FiveStarRanking;
+            if (instance != null)
             {
-                _grabHandleCanvas.Visibility = Visibility.Visible;
-                _grabHandle.Visibility = Visibility.Visible;
-                UpdateCurrentTextFormat();
+                instance.UpdateInRankColor();
             }
-            else
-            {
-                _grabHandleCanvas.Visibility = Visibility.Collapsed;
-                _grabHandle.Visibility = Visibility.Collapsed;
-                UpdateTextFormat();
-            }
-
-
-            if (!IsBidirectional || (IsBidirectional && !IsGrabbed))
-            {
-                SetPointerByAnimationOverSetTime(NormalizedValue, AnimationDuration);
-            }
-            else
-            {
-                SetPointerByAnimationOverSetTime(CurrentNormalizedValue, TimeSpan.Zero);
-            }
-        
         }
 
+        /// <summary>
+        /// Our dependany property has changed, deal with it
+        /// </summary>
+        /// <param name="dependancy">the dependancy object</param>
+        /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void OutRankColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        {
+            FiveStarRanking instance = dependancy as FiveStarRanking;
+            if (instance != null)
+            {
+                instance.UpdateOutRankColor();
+            }
+        }
 
         /// <summary>
         /// Sets the pointer animation to execute and sets the time to animate. This allow the same
@@ -329,20 +294,48 @@ namespace Codeplex.Dashboarding
             SplineDoubleKeyFrame s = SetFirstChildSplineDoubleKeyFrameTime(AnimateGrabHandleStoryboard, pos);
             s.KeyTime = KeyTime.FromTimeSpan(duration);
             Start(AnimateGrabHandleStoryboard);
-
         }
-
-
-  
 
         /// <summary>
-        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
-        /// neutral manner
+        /// Updates the color of the in rank.
         /// </summary>
-        /// <value>The resource root.</value>
-        protected override Grid ResourceRoot
+        private void UpdateInRankColor()
         {
-            get { return LayoutRoot; }
+            if (this.InRankColor != null)
+            {
+                this._highEnabled0.Color = this.InRankColor.HiColor;
+                this._highEnabled1.Color = this.InRankColor.HiColor;
+                this._highEnabled2.Color = this.InRankColor.HiColor;
+                this._highEnabled3.Color = this.InRankColor.HiColor;
+                this._highEnabled4.Color = this.InRankColor.HiColor;
+                this._lowEnabled0.Color = this.InRankColor.LowColor;
+                this._lowEnabled1.Color = this.InRankColor.LowColor;
+                this._lowEnabled2.Color = this.InRankColor.LowColor;
+                this._lowEnabled3.Color = this.InRankColor.LowColor;
+                this._lowEnabled4.Color = this.InRankColor.LowColor;
+            }
         }
+
+        /// <summary>
+        /// Updates the color of the out rank.
+        /// </summary>
+        private void UpdateOutRankColor()
+        {
+            if (this.OutRankColor != null)
+            {
+                this._highDisabled0.Color = this.OutRankColor.HiColor;
+                this._highDisabled1.Color = this.OutRankColor.HiColor;
+                this._highDisabled2.Color = this.OutRankColor.HiColor;
+                this._highDisabled3.Color = this.OutRankColor.HiColor;
+                this._highDisabled4.Color = this.OutRankColor.HiColor;
+                this._lowDisabled0.Color = this.OutRankColor.LowColor;
+                this._lowDisabled1.Color = this.OutRankColor.LowColor;
+                this._lowDisabled2.Color = this.OutRankColor.LowColor;
+                this._lowDisabled3.Color = this.OutRankColor.LowColor;
+                this._lowDisabled4.Color = this.OutRankColor.LowColor;
+            }
+        }
+
+        #endregion Methods
     }
 }
