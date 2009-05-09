@@ -154,6 +154,22 @@ namespace Codeplex.Dashboarding
         protected override void UpdateTextColor()
         {
             _delegate.ValueTextColor = ValueTextColor;
+
+            for (int i = 0; i < 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_tl" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Foreground = new SolidColorBrush(FaceTextColor);
+                }
+
+                tb = LayoutRoot.FindName("_tr" + i) as TextBlock;
+                
+                if (tb != null)
+                {
+                    tb.Foreground = new SolidColorBrush(FaceTextColor);
+                }
+            }
         }
 
         /// <summary>
@@ -161,6 +177,21 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected override void UpdateTextFormat()
         {
+            for (int i = 0; i < 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_tl" + i) as TextBlock;
+                if (tb != null && FaceTextFormat != null)
+                {
+                    tb.Text = String.Format(FaceTextFormat, RealMinimum + ((i + 1) * ((RealMaximum - RealMinimum) / 10)));
+                }
+
+                tb = LayoutRoot.FindName("_tr" + i) as TextBlock;
+                
+                if (tb != null && FaceTextFormat != null)
+                {
+                    tb.Text = String.Format(FaceTextFormat, RealMinimum + ((i + 1) * ((RealMaximum - RealMinimum) / 10)));
+                }
+            }
         }
 
         /// <summary>
@@ -170,6 +201,22 @@ namespace Codeplex.Dashboarding
         {
             _delegate.ValueTextVisibility = ValueTextVisibility;
             _wood.Height = (ValueTextVisibility == Visibility.Visible) ? 142 : 128;
+
+            for (int i = 0; i < 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_tl" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Visibility = FaceTextVisibility;
+                }
+
+                tb = LayoutRoot.FindName("_tr" + i) as TextBlock;
+
+                if (tb != null)
+                {
+                    tb.Visibility = FaceTextVisibility;
+                }
+            }
         }
 
         /// <summary>
@@ -233,24 +280,45 @@ namespace Codeplex.Dashboarding
                     }
 
                     break;
-                case "TextColor":
+                case "ValueTextColor":
                     if (_delegate.ValueTextColor != ValueTextColor)
                     {
                         _delegate.ValueTextColor = ValueTextColor;
                     }
 
                     break;
-                case "TextVisibility":
+                case "ValueTextVisibility":
                     if (_delegate.ValueTextVisibility != ValueTextVisibility)
                     {
                         _delegate.ValueTextVisibility = ValueTextVisibility;
                     }
 
                     break;
-                case "TextFormat":
+                case "ValueTextFormat":
                     if (_delegate.ValueTextFormat != ValueTextFormat)
                     {
                         _delegate.ValueTextFormat = ValueTextFormat;
+                    }
+
+                    break;
+                case "FaceTextColor":
+                    if (_delegate.FaceTextColor != FaceTextColor)
+                    {
+                        _delegate.FaceTextColor = FaceTextColor;
+                    }
+
+                    break;
+                case "FaceTextVisibility":
+                    if (_delegate.FaceTextVisibility != FaceTextVisibility)
+                    {
+                        _delegate.FaceTextVisibility = FaceTextVisibility;
+                    }
+
+                    break;
+                case "FaceTextFormat":
+                    if (_delegate.FaceTextFormat != FaceTextFormat)
+                    {
+                        _delegate.FaceTextFormat = FaceTextFormat;
                     }
 
                     break;

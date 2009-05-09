@@ -71,7 +71,7 @@
                 </LinearGradientBrush>
             </Path.Fill>
         </Path>
-        <TextBlock x:Name="_text" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Center"  VerticalAlignment="Top" Text="000" TextWrapping="NoWrap" Foreground="#FFFFFFFF" TextAlignment="Center"   />
+        <TextBlock x:Name="_text" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  VerticalAlignment="Top" Text="000" TextWrapping="NoWrap" Foreground="#FFFFFFFF" TextAlignment="Center" Margin="0.01,0,0.261,0" Height="14"   />
 
         <Canvas Height="7.167" Margin="-4,0,-4,12.167" Visibility="Collapsed" x:Name="_grabHandleCanvas" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Bottom" Grid.Column="1" RenderTransformOrigin="0.5,0.5" >
             <Canvas.RenderTransform>
