@@ -40,7 +40,7 @@ namespace WpfApplication.Demonstrators
         private BoundObject _object = new BoundObject
         {
             CurrentValue = 50,
-            FaceTextColor = Colors.Black,
+            FaceTextColor = Colors.White,
             FaceTextFormat = "{0:0}",
             FaceTextVisibility = Visibility.Visible,
             ValueTextColor = Colors.Black,

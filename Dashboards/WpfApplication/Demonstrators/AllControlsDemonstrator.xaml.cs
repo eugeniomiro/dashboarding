@@ -142,8 +142,8 @@ namespace WpfApplication.Demonstrators
             FaceTextVisibility = Visibility.Visible;
             TextVisibility = Visibility.Visible;
             TextColor = Colors.Black;
-            Format = "{0:000}";
-            FaceFormat = "{0:000}";
+            Format = "{0:0}";
+            FaceFormat = "{0:0}";
             FaceTextColor = Colors.BlanchedAlmond;
         }
 

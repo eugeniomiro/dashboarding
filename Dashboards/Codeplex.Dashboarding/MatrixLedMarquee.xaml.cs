@@ -452,7 +452,7 @@ namespace Codeplex.Dashboarding
         {
             this.offset = 0;
             this.textOffset = 0;
-            if (this.Text.Length > 0)
+            if (!String.IsNullOrEmpty(this.Text))
             {
                 this.ledStates = MatrixLedCharacterDefinitions.GetDefinition(String.Empty + this.Text[this.textOffset]);
                 this.textExists = true;

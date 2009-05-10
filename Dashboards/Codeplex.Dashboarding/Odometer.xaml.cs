@@ -488,6 +488,7 @@ namespace Codeplex.Dashboarding
             {
                 this.digits.Clear();
                 this.Digits = neededDigits;
+                UpdateDigits();
             }
 
             for (int i = this.digits.Count; i > 0; i--)

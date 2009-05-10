@@ -95,6 +95,7 @@ namespace Codeplex.Dashboarding
         {
             this.InitialiseRefs();
             RegisterGrabHandle(this.grabHandleCanvas);
+            FaceTextColor = Colors.White;
         }
 
         /// <summary>
@@ -103,6 +104,14 @@ namespace Codeplex.Dashboarding
         protected override void UpdateTextVisibility()
         {
             this.textBlock.Visibility = ValueTextVisibility;
+            for (int i = 0; i < 5; i++)
+            {
+                TextBlock tb = ResourceRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Visibility = FaceTextVisibility;
+                }
+            }
         }
 
         /// <summary>
@@ -111,6 +120,14 @@ namespace Codeplex.Dashboarding
         protected override void UpdateTextColor()
         {
             this.textBlock.Foreground = new SolidColorBrush(ValueTextColor);
+            for (int i = 0; i < 5; i++)
+            {
+                TextBlock tb = ResourceRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Foreground = new SolidColorBrush(FaceTextColor);
+                }
+            }
         }
 
         /// <summary>
@@ -121,6 +138,14 @@ namespace Codeplex.Dashboarding
             if (this.textBlock != null)
             {
                 this.textBlock.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                TextBlock tb = ResourceRoot.FindName("_txt" + i) as TextBlock;
+                if (tb != null)
+                {
+                    tb.Text = String.Format(FaceTextFormat, RealMinimum + (i * ((RealMaximum - RealMinimum) / 4)));
+                }
             }
         }
 

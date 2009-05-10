@@ -64,6 +64,7 @@ namespace Codeplex.Dashboarding
             : base()
         {
             InitializeComponent();
+            ValueTextColor = Colors.Black;
             _delegate.ValueTextColor = Colors.Black;
             PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.OneOfMyPropertiesChanged);
             _delegate.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.OneOfTheDelegatesPropertiesChanged);

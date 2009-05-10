@@ -36,17 +36,17 @@
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
 
                 <db:Dial180 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}"   />
-                <db:Dial360 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}"   FaceTextColor="{Binding Path=FaceTextColor}"   />
-                <db:Knob360 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}"  />
+                <db:Dial360 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}"   FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}"   />
+                <db:Knob360 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
 
             </StackPanel>
 
             <!-- second row -->
             <StackPanel Orientation="Horizontal">
-                <db:Dial90NorthWest Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
-                <db:Dial90NorthEast Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
-                <db:Dial90SouthWest Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
-                <db:Dial90SouthEast Margin="0,-6,0,0" Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}" ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
+                <db:Dial90NorthWest Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
+                <db:Dial90NorthEast Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
+                <db:Dial90SouthWest Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
+                <db:Dial90SouthEast Margin="0,-6,0,0" Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}" ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
                 <StackPanel  Orientation="Vertical">
                     <db:DiamondSlider  Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
                     <db:FiveStarRanking Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
@@ -59,8 +59,8 @@
 
                 </StackPanel>
 
-                <db:PlainThermometer Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
-                <db:WallThermometer  Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" />
+                <db:PlainThermometer Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
+                <db:WallThermometer  Value="{Binding CurrentValue, Mode=TwoWay}"  ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
 
             </StackPanel>
 

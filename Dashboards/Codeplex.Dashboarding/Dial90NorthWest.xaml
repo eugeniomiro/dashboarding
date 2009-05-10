@@ -3,25 +3,37 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
              xmlns:db="clr-namespace:Codeplex.Dashboarding"
      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-     Height="100" Width="90"
-    >
-   <Grid x:Name="LayoutRoot" Height="90" Width="162"  >
-    <Grid.Resources>
-        <Storyboard x:Name="_swipe" x:Key="_swipe" >
-            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <SplineDoubleKeyFrame x:Name="_value" KeyTime="00:00:0.75" Value="89.574"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
 
-        <Storyboard x:Name="_moveGrab" x:Key="_moveGrab"  >
-            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <SplineDoubleKeyFrame KeyTime="00:00:0.75" Value="150" x:Name="_grabPos"/>
-            </DoubleAnimationUsingKeyFrames>
+      Height="100" Width="95"
 
-        </Storyboard>
+     >
+    <Grid x:Name="LayoutRoot" Height="90" Width="162"  >
+        <Grid.Resources>
+            <Storyboard x:Name="_swipe" x:Key="_swipe" >
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                    <SplineDoubleKeyFrame x:Name="_value" KeyTime="00:00:0.75" Value="89.574"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
-    </Grid.Resources>
-         <Path Margin="2,2.75,70,-4.75" Stretch="Fill" Stroke="#FF080808" Data="M79.407196,0.5 C82.130905,0.50000119 84.82238,0.63823223 87.475014,0.90807277 L89.5,1.2176405 L89.5,84.964088 L89.470062,84.964088 L89.253441,85.665771 C88.292,87.951469 86.470955,89.782562 84.19783,90.749329 C83.061264,91.232697 81.811676,91.5 80.5,91.5 C79.188324,91.5 77.938736,91.232697 76.80217,90.749329 C74.529037,89.782547 72.708,87.951462 71.746559,85.665771 L71.529938,84.964088 L0.68560737,84.964088 L0.68560737,83.222229 L0.5,79.540283 C0.5,35.887482 35.828163,0.50001907 79.407196,0.5 z" StrokeThickness="3">
+            <Storyboard x:Name="_moveGrab" x:Key="_moveGrab"  >
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:0.75" Value="150" x:Name="_grabPos"/>
+                </DoubleAnimationUsingKeyFrames>
+
+            </Storyboard>
+
+        </Grid.Resources>
+
+
+        <Path x:Name="_face" Margin="1.417,-0.416,66.583,-5.584" Opacity="1"  Stretch="Fill" Stroke="#FF080808" StrokeThickness="3" Data="M21.5,1.5 C60.712212,1.5000011 92.5,37.765324 92.5,82.50087 C92.5,85.296844 92.375824,88.059731 92.133438,90.782738 L91.636017,94.500999 L1.5,94.500999 L1.5,4.8150806 L7.1910248,3.1456494 C11.812954,2.0666466 16.598473,1.5000008 21.5,1.5 z" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
             <Path.Fill>
                 <RadialGradientBrush GradientOrigin="0.5,1.038">
                     <RadialGradientBrush.RelativeTransform>
@@ -38,7 +50,9 @@
                 </RadialGradientBrush>
             </Path.Fill>
         </Path>
-        <Path Height="72.816" HorizontalAlignment="Left" Margin="77.95,8.58,0,0" x:Name="path" VerticalAlignment="Top" Width="8.5" RenderTransformOrigin="0.463,1.007" Stretch="Fill" Stroke="#FF000000" Data="M99.875,41.875 L95.916512,115.45777 L103.27318,115.45777 z">
+
+
+        <Path Height="72.816" HorizontalAlignment="Left" Margin="79.787,11.25,0,0" x:Name="path" VerticalAlignment="Top" Width="8.5" RenderTransformOrigin="0.463,1.007" Stretch="Fill" Stroke="#FF000000" Data="M99.875,41.875 L95.916512,115.45777 L103.27318,115.45777 z">
             <Path.Fill>
                 <RadialGradientBrush GradientOrigin="-0.076,1.25">
                     <RadialGradientBrush.RelativeTransform>
@@ -88,7 +102,7 @@
             </Path.Fill>
         </Path>
 
-        <Canvas x:Name="_grabHandle" Width="24" RenderTransformOrigin="0.5,0.968" Canvas.Top="20" Canvas.Left="68" Margin="71,1,75,7">
+        <Canvas x:Name="_grabHandle" Width="24" RenderTransformOrigin="0.5,0.968" Canvas.Top="20" Canvas.Left="68" Margin="72.5,-0.667,65.5,8.667" d:IsLocked="True">
             <Canvas.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -113,7 +127,7 @@
 
 
 
-        <Ellipse Height="15" Margin="74.25,0,71.75,-3" VerticalAlignment="Bottom" Width="15" Stroke="#FF080808">
+        <Ellipse Height="15" Margin="76.25,0,70.75,-1.333" VerticalAlignment="Bottom" Width="15" Stroke="#FF080808">
             <Ellipse.Fill>
                 <RadialGradientBrush GradientOrigin="0.5,1.038">
                     <RadialGradientBrush.RelativeTransform>
@@ -129,7 +143,7 @@
                 </RadialGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <Path Margin="0,0,79.045,2.93" x:Name="rectangle_Copy" Width="5.125" RenderTransformOrigin="0.500137692650726,1.09214091256486" Stretch="Fill" StrokeThickness="2" Data="M72.414833,0 L73.638824,0.056706857 L72.585091,4.5880527 C72.025078,7.4218774 71.55117,10.315413 71.168198,13.261077 L70.803513,17.021933 L65.928589,17.247784 C46.453621,19.062395 29.260002,27.957361 17.453804,41.082958 C11.55071,47.64571 6.9944811,55.26614 4.1733632,63.588009 C3.4680884,65.668472 2.8712578,67.79277 2.3889415,69.955353 L2.2151721,71 L0.17033465,71 L0.17033465,69.535797 L7.0877603E-14,66.440781 C-1.7504098E-06,29.746408 32.421394,5.4836314E-06 72.414833,0 z" VerticalAlignment="Bottom" Height="6.794" HorizontalAlignment="Right">
+        <Path Margin="0,0,77.545,4.597" x:Name="rectangle_Copy" Width="5.125" RenderTransformOrigin="0.500137692650726,1.09214091256486" Stretch="Fill" StrokeThickness="2" Data="M72.414833,0 L73.638824,0.056706857 L72.585091,4.5880527 C72.025078,7.4218774 71.55117,10.315413 71.168198,13.261077 L70.803513,17.021933 L65.928589,17.247784 C46.453621,19.062395 29.260002,27.957361 17.453804,41.082958 C11.55071,47.64571 6.9944811,55.26614 4.1733632,63.588009 C3.4680884,65.668472 2.8712578,67.79277 2.3889415,69.955353 L2.2151721,71 L0.17033465,71 L0.17033465,69.535797 L7.0877603E-14,66.440781 C-1.7504098E-06,29.746408 32.421394,5.4836314E-06 72.414833,0 z" VerticalAlignment="Bottom" Height="6.794" HorizontalAlignment="Right">
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -153,7 +167,48 @@
                 </RadialGradientBrush>
             </Path.Fill>
         </Path>
-        <TextBlock x:Name="_text" Text="000" Margin="76.782,0,73.218,-0.25" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="6" d:LayoutOverrides="Height" />
+        <TextBlock x:Name="_text" Text="000" Margin="78.282,0,71.718,1.417" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="6" d:LayoutOverrides="Height" />
+        <TextBlock Height="9.834" HorizontalAlignment="Left" Margin="4.5,0,0,1.833" VerticalAlignment="Bottom" Width="24.333" TextWrapping="Wrap" Text="1234" FontSize="7" Foreground="White" x:Name="_txt0"></TextBlock>
+        <TextBlock Height="9.231" HorizontalAlignment="Left" Margin="1.159,0,0,30.655" VerticalAlignment="Bottom" Width="24.05" TextWrapping="Wrap" Text="0000" FontSize="7" Foreground="White" x:Name="_txt1" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-68"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Height="9.231" HorizontalAlignment="Left" Margin="17.176,24.302,0,0" VerticalAlignment="Top" Width="24.05" TextWrapping="Wrap" Text="0000" FontSize="7" Foreground="White" x:Name="_txt2" RenderTransformOrigin="0.5,0.5" TextAlignment="Center">
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-45"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Height="9.231" HorizontalAlignment="Left" Margin="42.708,6.018,0,0" Width="24.05" TextWrapping="Wrap" Text="0000" FontSize="7" Foreground="White" x:Name="_txt3" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" VerticalAlignment="Top">
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-22.5"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Height="9.231" Margin="72.5,1.75,65.5,0" Width="24.05" TextWrapping="Wrap" Text="0000" FontSize="7" Foreground="White" x:Name="_txt4" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" VerticalAlignment="Top">
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="0"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
 
     </Grid>
 </db:Dial90>
