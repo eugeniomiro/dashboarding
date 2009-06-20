@@ -63,6 +63,7 @@ namespace Codeplex.Dashboarding
         protected BidirectionalDashboard()
         {
             this.IsGrabbed = false;
+            
         }
 
         #region public properties

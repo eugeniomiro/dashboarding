@@ -180,11 +180,10 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
                 <db:Dial90SouthEast x:Name="_d4" Value="{Binding CurrentValue, Mode=TwoWay}" />
             </controls:Viewbox>
 
-
+   
         </Grid>
 
 
-
-
+ 
     </Grid>
 </UserControl>

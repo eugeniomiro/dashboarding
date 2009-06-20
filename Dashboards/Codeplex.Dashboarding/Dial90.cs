@@ -139,6 +139,7 @@ namespace Codeplex.Dashboarding
             {
                 this.textBlock.Text = IsGrabbed ? FormattedCurrentValue : FormattedValue;
             }
+
             for (int i = 0; i < 5; i++)
             {
                 TextBlock tb = ResourceRoot.FindName("_txt" + i) as TextBlock;

@@ -220,7 +220,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
-    <None Include="sandcastle.shfb" />
+    <None Include="ExtraDocs\Content Layout.content" />
+    <None Include="ExtraDocs\Welcome.aml" />
+    <None Include="NewSandcastle.shfbproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f001_allControls.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f002_Dial360MinMaxAndFormat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\BidirectionalDashboard\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v2.0\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

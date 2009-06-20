@@ -18,7 +18,7 @@
             <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="160*"/>
         </Grid.ColumnDefinitions>
-
+<!--
         <bd:BoundData Grid.ColumnSpan="2" x:Name="_slide"/>
 
         <db:DecadeVuMeter Width="24" Height="100"  Value="{Binding Path=CurrentValue, Mode=TwoWay}" x:Name="_dial0" Grid.Row="1" >          
@@ -33,6 +33,11 @@
         </db:DecadeVuMeter>
 
         <TextBlock Grid.Row="2" Grid.Column="1" Foreground="AntiqueWhite">Styled</TextBlock>
+
+
+        -->
+        
+        <db:Dial360 Grid.Row="1" Value="-0.123" Minimum="-1" Maximum="1" FaceTextFormat="{}{0:0.0}" ValueTextFormat="{}{0:0.000}"/>
 
 
     </Grid>

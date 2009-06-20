@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Reflection;
 using WpfApplication.Demonstrators;
+using WpfApplication.Util;
 
 namespace WpfApplication
 {
@@ -30,6 +31,7 @@ namespace WpfApplication
             InitializeComponent();
             FindDemonstrators();
             InitializeDemonstaratorSelection();
+            PopupColorPicker.Instance = _colorPicker;
         }
 
         /// <summary>

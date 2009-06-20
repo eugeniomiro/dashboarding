@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows.Media;
 using System.Windows;
+using Codeplex.Dashboarding;
 
 namespace WpfApplication.Demonstrators
 {
@@ -18,7 +19,8 @@ namespace WpfApplication.Demonstrators
         private double _maxValue = 100;
         private bool _isBidirectional;
         private double _animationDuration = 0.75;
-
+        private ColorPointCollection _faceColorRange;
+        private ColorPointCollection _needleColorRange;
 
         #region face text properties
         private Visibility _faceTextVisible;
@@ -159,8 +161,20 @@ namespace WpfApplication.Demonstrators
             get { return _animationDuration; }
             set { _animationDuration = value; OnPropertyChanged("AnimationDuration"); }
         }
-     
 
+
+
+        public ColorPointCollection FaceColorRange
+        {
+            get { return _faceColorRange; }
+            set { _faceColorRange = value; OnPropertyChanged("FaceColorRange"); }
+        }
+        
+        public ColorPointCollection NeedleColorRange
+        {
+            get { return _needleColorRange; }
+            set { _needleColorRange = value; OnPropertyChanged("NeedleColorRange"); }
+        }
 
         #region INotifyPropertyChanged Members
 

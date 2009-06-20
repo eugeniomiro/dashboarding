@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Codeplex.Dashboarding;
 
 namespace WpfApplication.Demonstrators
 {
@@ -49,6 +50,8 @@ namespace WpfApplication.Demonstrators
             ValueTextColor = Colors.White,
             ValueTextFormat = "{0:0}",
             ValueTextVisibility = Visibility.Visible,
+            FaceColorRange = new ColorPointCollection(),
+            NeedleColorRange = new ColorPointCollection()
         };
 
 

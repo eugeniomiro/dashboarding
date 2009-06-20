@@ -189,7 +189,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">The dependancy.</param>
         /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-        private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+            private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
             if (instance != null && instance.DashboardLoaded)

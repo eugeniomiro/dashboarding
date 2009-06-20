@@ -27,7 +27,23 @@ namespace Codeplex.Dashboarding
     using System.Windows.Shapes;
 
     /// <summary>
-    /// A needle and dial face control where the needle sweeps a 180 degree path. 
+    /// A needle and dial face control where the needle sweeps a 180 degree path. A Dial180 can be instantiated
+    /// in XAML or in code. The XAML to create a simple Dial180 looks like
+    /// 
+    /// <pre lang="cs" numberLines="true" outlining="true" title="Example of Syntax Highlighting">
+    ///     <db:Dial180>
+    ///        <db:Dial180.FaceColorRange>
+    ///           <db:ColorPoint HiColor="#2A242C" LowColor="#6C0680" Value="0" />
+    ///           <db:ColorPoint HiColor="#2A242C" LowColor="#220000" Value="55" />
+    ///       </db:Dial180.FaceColorRange>
+    ///       <db:Dial180.NeedleColorRange>
+    ///           <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
+    ///           <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />
+    ///           <db:ColorPoint HiColor="#660000" LowColor="#BB3300" Value="66" />
+    ///        </db:Dial180.NeedleColorRange>
+    ///    </db:Dial180>
+    /// </pre>
+    /// 
     /// </summary>
     public partial class Dial180 : BidirectionalDial
     {
@@ -87,7 +103,7 @@ namespace Codeplex.Dashboarding
                 _colourRangeEnd.Color = c.LowColor;
             }
         }
-       
+
         /// <summary>
         /// Sets the needle color from the color range
         /// </summary>
@@ -192,7 +208,7 @@ namespace Codeplex.Dashboarding
             {
                 angleInDegrees = 180 + angleInDegrees;
             }
-            
+
             return angleInDegrees;
         }
 
@@ -212,7 +228,7 @@ namespace Codeplex.Dashboarding
             }
             else
             {
-                this.SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);            
+                this.SetPointerByAnimationOverSetTime(CurrentNormalizedValue, CurrentValue, TimeSpan.Zero);
             }
         }
         #endregion

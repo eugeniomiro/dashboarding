@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:WpfApplication.Demonstrators"
-    Height="500" Width="200" Loaded="UserControl_Loaded">
+    xmlns:cp="clr-namespace:ColorPickerControl"
+    Height="Auto" Width="230" >
     <UserControl.Resources>
         <local:ConvertColorToBrush x:Key="_convertColorToBrush" />
         <local:VisibilityToBooleanConverter x:Key="_convertBoolToVisibility" />
@@ -13,7 +14,9 @@
             <RowDefinition Height="108" />
             <RowDefinition Height="108" />
             <RowDefinition Height="200" />
+            <RowDefinition Height="200" />
         </Grid.RowDefinitions>
+
         <Rectangle Stroke="Black" RadiusX="10" RadiusY="10" Fill="Black" Grid.RowSpan="4" />
         <TextBlock Text="Modify common properties" Foreground="AntiqueWhite" FontWeight="bold" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" Width="148.03" />
         
@@ -77,6 +80,7 @@
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
             </Grid.RowDefinitions>
             <TextBlock  Margin="5,0,5,0" Grid.Row="0" Background="#FF101010"  Foreground="AntiqueWhite" Text="Miscellaneous" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center"  />
 
@@ -104,5 +108,9 @@
         </Grid>
 
 
+        <local:ColorRangeExperimenter Title="FaceColorRange" Points="{Binding Path=FaceColorRange, Mode=TwoWay}"  Grid.Row="4"/>
+
+        <local:ColorRangeExperimenter Title="NeedleColorRange" Points="{Binding Path=NeedleColorRange, Mode=TwoWay}"  Grid.Row="5"/>
+    
     </Grid>
 </UserControl>

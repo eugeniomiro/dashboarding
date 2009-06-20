@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections;
+using WpfApplication.Util;
 
 namespace WpfApplication.Demonstrators
 {
@@ -22,24 +24,37 @@ namespace WpfApplication.Demonstrators
         public Experimenter()
         {
             InitializeComponent();
+            
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void _buttonClangeFaceTextColor_Click(object sender, RoutedEventArgs e)
         {
             BoundObject bo = DataContext as BoundObject;
-            bo.FaceTextColor = Colors.Blue;
+            PopupColorPicker.Instance.SelectedColor = bo.FaceTextColor;
+            PopupColorPicker.Instance.ColorChanged += new PopupColorPicker.ColorChangedEventHandler(FaceColorChanged);
+            PopupColorPicker.Instance.Show();
+        }
+
+        void FaceColorChanged(object sender, ColorSelectedEventargs e)
+        {
+            BoundObject bo = DataContext as BoundObject;
+            bo.FaceTextColor = e.Color;
         }
 
 
         private void _buttonClangeValueTextColor_Click(object sender, RoutedEventArgs e)
         {
             BoundObject bo = DataContext as BoundObject;
-            bo.ValueTextColor = Colors.Blue;
+            PopupColorPicker.Instance.SelectedColor = bo.ValueTextColor;
+            PopupColorPicker.Instance.ColorChanged += new PopupColorPicker.ColorChangedEventHandler(ValueColorChanged);
+            PopupColorPicker.Instance.Show();
+        }
+
+        void ValueColorChanged(object sender, ColorSelectedEventargs e)
+        {
+            BoundObject bo = DataContext as BoundObject;
+            bo.ValueTextColor = e.Color;
         }
     }
 }
