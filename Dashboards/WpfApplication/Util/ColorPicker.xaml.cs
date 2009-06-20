@@ -1,4 +1,13 @@
-﻿using System;
+﻿
+/* •——————————————————————————————————————————————————————————————————————————————————————————•
+   | This really useful color picker was sourced from the blog:                               |
+   |    Matthias Shapiro’s WPF & Silverlight Blog - Because Developers Get All The Good Blogs |
+   |    at: http://www.designerwpf.com/category/colorpicker/                                  |
+   | and is copyright 2008-2009 Matthias Shapiro.                                             |
+   •——————————————————————————————————————————————————————————————————————————————————————————• */
+
+
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
