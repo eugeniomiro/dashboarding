@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace WpfApplication.Demonstrators
 {
 
-    class MarqueDemo : IDemonstrateDials
+    public class MarqueDemo : IDemonstrateDials
     {
 
         #region IDemonstrateDials Members

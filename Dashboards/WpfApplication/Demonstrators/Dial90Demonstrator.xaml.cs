@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
-    class Dial90Demo : IDemonstrateDials
+    public class Dial90Demo : IDemonstrateDials
     {
 
 

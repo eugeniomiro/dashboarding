@@ -5,6 +5,7 @@ using System.Windows.Threading;
 using System.Windows.Media;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Codeplex.Dashboarding;
 
 namespace WpfApplication.Demonstrators
 {
@@ -18,7 +19,7 @@ namespace WpfApplication.Demonstrators
         BoundObject bo = new BoundObject();
         private Random _random = new Random();
         private DispatcherTimer _timer = new DispatcherTimer();
-        private Foo foo = new Foo();
+
 
         private List<Color> randomColors = new List<Color>() {
             Colors.Blue, 
@@ -40,10 +41,21 @@ namespace WpfApplication.Demonstrators
             _timer.Interval = TimeSpan.FromSeconds(2);
             _timer.Tick += new EventHandler(_timer_Elapsed);
             Loaded += new RoutedEventHandler(IAmLoaded);
-            bo = new BoundObject { CurrentValue = 0 };
+            bo = new BoundObject
+            {
+                CurrentValue = 50,
+                FaceTextColor = Colors.White,
+                FaceTextFormat = "{0:0}",
+                FaceTextVisibility = Visibility.Visible,
+                ValueTextColor = Colors.White,
+                ValueTextFormat = "{0:0}",
+                ValueTextVisibility = Visibility.Visible,
+                FaceColorRange = new ColorPointCollection(),
+                NeedleColorRange = new ColorPointCollection()
+            };
             DataContext = bo;
             _timer.Start();
-            DataContext = this.foo;
+ 
         }
         /// <summary>
         /// On load show value
@@ -89,139 +101,14 @@ namespace WpfApplication.Demonstrators
         }
 
         private Random random = new Random();
-        private void _cb_Checked(object sender, RoutedEventArgs e)
-        {
-            this.foo.TextVisibility = Visibility.Visible;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var col = randomColors[this.random.Next(randomColors.Count)];
-            this.foo.TextColor = col;
-        }
-
-        private void _cb_Unchecked(object sender, RoutedEventArgs e)
-        {
-            this.foo.TextVisibility = Visibility.Collapsed;
-        }
-
-      
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            foo.Format = _format.Text;
-        }
+     
 
 
-        private void Button_Click_FFormat(object sender, RoutedEventArgs e)
-        {
-            foo.FaceFormat = _txtFF.Text;
-        }
-
-        private void _cbf_Checked(object sender, RoutedEventArgs e)
-        {
-            this.foo.FaceTextVisibility = Visibility.Visible;
-        }
-        private void _cbf_Unchecked(object sender, RoutedEventArgs e)
-        {
-            this.foo.FaceTextVisibility = Visibility.Collapsed;
-        }
-
-        private void Button_ClickFColor(object sender, RoutedEventArgs e)
-        {
-            var col = randomColors[this.random.Next(randomColors.Count)];
-            this.foo.FaceTextColor = col;
-
-        }
-   
-    }
-
-    class Foo : INotifyPropertyChanged
-    {
-        public Foo()
-        {
-            FaceTextVisibility = Visibility.Visible;
-            TextVisibility = Visibility.Visible;
-            TextColor = Colors.Black;
-            Format = "{0:0}";
-            FaceFormat = "{0:0}";
-            FaceTextColor = Colors.BlanchedAlmond;
-        }
-
-        private Visibility textVisibility;
-
-        public Visibility TextVisibility
-        {
-            get { return textVisibility; }
-            set { textVisibility = value; OnPropertyChanged("TextVisibility"); }
-        }
-
-        private Visibility faceTextVisibility;
-        public Visibility FaceTextVisibility                         
-        {
-            get { return faceTextVisibility; }
-            set { faceTextVisibility = value; OnPropertyChanged("FaceTextVisibility"); }
-        }
-
-        private Color _textColor;
-
-        public Color TextColor
-        {
-            get { return _textColor; }
-            set { _textColor = value; OnPropertyChanged("TextColor"); OnPropertyChanged("AsBrush"); }
-        }
-
-        private Color _ftextColor;
-
-        public Color FaceTextColor
-        {
-            get { return _ftextColor; }
-            set { _ftextColor = value; OnPropertyChanged("FaceTextColor"); OnPropertyChanged("FaceAsBrush"); }
-        }
-
-
-        private string _format;
-
-        public string Format
-        {
-            get { return _format; }
-            set { _format = value; OnPropertyChanged("Format"); }
-        }
-
-        private string _fformat;
-
-        public string FaceFormat
-        {
-            get { return _fformat; }
-            set { _fformat = value; OnPropertyChanged("FaceFormat"); }
-        }
-
-        public Brush AsBrush { get { return new SolidColorBrush(TextColor); } }
-        public Brush FaceAsBrush { get { return new SolidColorBrush(FaceTextColor); } }
-
-        #region INotifyPropertyChanged Members
-
-        /// <summary>
-        /// One of my properties has changed
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notify any listeners that a property has changed
-        /// </summary>
-        /// <param name="propName">Name of the property</param>
-        protected virtual void OnPropertyChanged(string propName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
-        }
-
-        #endregion
     }
 
 
-    class AllControlsDemo : IDemonstrateDials
+
+    public class AllControlsDemo : IDemonstrateDials
     {
 
 

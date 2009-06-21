@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
-    class ProgressbarDemo : IDemonstrateDials
+    public class ProgressbarDemo : IDemonstrateDials
     {
 
         #region IDemonstrateDials Members

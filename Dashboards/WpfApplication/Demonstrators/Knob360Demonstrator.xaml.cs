@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
-    class Knob360Demo : IDemonstrateDials
+    public class Knob360Demo : IDemonstrateDials
     {
 
         /// <summary>

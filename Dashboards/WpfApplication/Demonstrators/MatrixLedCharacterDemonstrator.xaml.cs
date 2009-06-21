@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
-    class MatrixCharacterDemo : IDemonstrateDials
+    public class MatrixCharacterDemo : IDemonstrateDials
     {
 
         #region IDemonstrateDials Members

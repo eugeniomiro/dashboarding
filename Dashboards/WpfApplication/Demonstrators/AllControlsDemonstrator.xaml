@@ -5,31 +5,7 @@
     >
     <Grid>
         <StackPanel Orientation="Vertical">
-            <!-- value Text visibility color and format controls-->
-            <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="True" x:Name="_cb" Unchecked="_cb_Unchecked" Checked="_cb_Checked" Margin="0,0,10,0" Foreground="AntiqueWhite">Value text visible</CheckBox>
-                <Button Click="Button_Click">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,10,0" >
-                        <Rectangle Width="12" Height="12" Fill="{Binding Path=AsBrush}" Margin="0,0,5,0"/>
-                        <TextBlock Text="Set value text color" Focusable="True"></TextBlock>
-                    </StackPanel>
-                </Button>
-                <TextBox Foreground="Black" Text="{Binding Path=Format}" x:Name="_format" Width="100" Margin="20,0,0,0"></TextBox>
-                <Button  Click="Button_Click_1">Set value format string</Button>
-            </StackPanel>
-            <!-- face Text visibility color and format controls-->
-            <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="True" Unchecked="_cbf_Unchecked" Checked="_cbf_Checked" Margin="0,0,10,0" Foreground="AntiqueWhite">Face text visible</CheckBox>
-                <Button Click="Button_ClickFColor">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,10,0" >
-                        <Rectangle Width="12" Height="12" Fill="{Binding Path=FaceAsBrush}" Margin="0,0,5,0"/>
-                        <TextBlock Text="Set face text color" Focusable="True"></TextBlock>
-                    </StackPanel>
-                </Button>
-                <TextBox Foreground="Black" x:Name="_txtFF" Text="{Binding Path=FaceFormat}"  Width="100" Margin="20,0,0,0"></TextBox>
-                <Button  Click="Button_Click_FFormat">Set face format string</Button>
-            </StackPanel>
-
+                
 
 
             <!-- first row -->

@@ -18,7 +18,7 @@
             <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="160*"/>
         </Grid.ColumnDefinitions>
-<!--
+
         <bd:BoundData Grid.ColumnSpan="2" x:Name="_slide"/>
 
         <db:DecadeVuMeter Width="24" Height="100"  Value="{Binding Path=CurrentValue, Mode=TwoWay}" x:Name="_dial0" Grid.Row="1" >          
@@ -35,17 +35,7 @@
         <TextBlock Grid.Row="2" Grid.Column="1" Foreground="AntiqueWhite">Styled</TextBlock>
 
 
-        -->
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
-            <db:Dial360 />
-            <db:Knob360 />
-            <db:Dial180 />
-            <db:Dial90NorthEast />
-            <db:Dial90NorthWest />
-            <db:Dial90SouthEast />
-            <db:Dial90SouthWest />
-        </StackPanel>
+ 
         
         
     </Grid>

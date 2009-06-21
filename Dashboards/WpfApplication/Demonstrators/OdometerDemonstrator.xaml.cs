@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
-    class OdoDemo : IDemonstrateDials
+    public class OdoDemo : IDemonstrateDials
     {
 
         #region IDemonstrateDials Members

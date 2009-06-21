@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
-    class PlainThermometerDemo : IDemonstrateDials
+    public class PlainThermometerDemo : IDemonstrateDials
     {
 
         #region IDemonstrateDials Members

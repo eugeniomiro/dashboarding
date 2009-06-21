@@ -28,11 +28,15 @@ namespace WpfApplication.Demonstrators
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _l.Value = 77;
+            BoundObject bo = DataContext as BoundObject;
+            if (bo != null)
+            {
+                bo.CurrentValue = 77;
+            }
         }
     }
 
-    class PerfDemo : IDemonstrateDials
+    public class PerfDemo : IDemonstrateDials
     {
 
         #region IDemonstrateDials Members

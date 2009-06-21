@@ -6,7 +6,7 @@
              >
     <Grid>
         
-        <StackPanel Width="200" >
+        <StackPanel Width="340" >
             <StackPanel Orientation="Horizontal">
                 <Button Width="32" Click="Button_Click"></Button>
                 <ot:BoundData/>

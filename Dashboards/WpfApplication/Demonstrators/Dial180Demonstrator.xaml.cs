@@ -16,7 +16,7 @@ using Codeplex.Dashboarding;
 namespace WpfApplication.Demonstrators
 {
     
-    class Dial180Demo: IDemonstrateDials
+    public class Dial180Demo: IDemonstrateDials
     {
 
         #region IDemonstrateDials Members

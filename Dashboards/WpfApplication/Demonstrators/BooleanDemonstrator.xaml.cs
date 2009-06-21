@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication.Demonstrators
 {
-    class BooleansDemo : IDemonstrateDials
+    public class BooleansDemo : IDemonstrateDials
     {
 
         #region IDemonstrateDials Members
