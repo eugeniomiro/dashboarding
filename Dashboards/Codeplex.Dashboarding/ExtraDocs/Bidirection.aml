@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="43e1b7e4-461b-4d6a-9d5d-14962ea583f7" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      
+
+      <para>In modern dashboards it is increasingly becomming the norm for
+      controls not just to show changes in data, but modify the values of that 
+      data.</para>
+      <para>In the Silverlight and WPF Dashboard library we support the concept of
+      Bidirection. A bidirectional control in addition to rendering the value
+      also renders grab handles that can be moved to set the value. In iTunes
+      you see this type of behaviour when you rank you tracks using the stars.</para>
+    </introduction>
+    
+    
+    <section address="Section1">
+      <title>Bidirection in the Codeplex.Dashboarding library</title>
+      <content>
+      </content>
+    </section>
+
+    <relatedTopics>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

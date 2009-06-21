@@ -19,7 +19,7 @@
             </db:Dial180.FaceColorRange>
         </db:Dial180>
 
-        <db:Dial180 x:Name="_dial1" Grid.Row="2"  ValueTextVisibility="Collapsed">
+        <db:Dial180 x:Name="_dial1" Grid.Row="2" Value="1" ValueTextVisibility="Collapsed">
             <db:Dial180.NeedleColorRange>
                 <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                 <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />

@@ -37,8 +37,16 @@
 
         -->
         
-        <db:Dial360 Grid.Row="1" Value="-0.123" Minimum="-1" Maximum="1" FaceTextFormat="{}{0:0.0}" ValueTextFormat="{}{0:0.000}"/>
-
-
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
+            <db:Dial360 />
+            <db:Knob360 />
+            <db:Dial180 />
+            <db:Dial90NorthEast />
+            <db:Dial90NorthWest />
+            <db:Dial90SouthEast />
+            <db:Dial90SouthWest />
+        </StackPanel>
+        
+        
     </Grid>
 </UserControl>

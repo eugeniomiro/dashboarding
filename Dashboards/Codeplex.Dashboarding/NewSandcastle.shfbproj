@@ -22,6 +22,10 @@
     </DocumentationSources>
     <PresentationStyle>vs2005</PresentationStyle>
     <ProjectLinkType>Local</ProjectLinkType>
+    <HelpTitle>David Blacks Silverlight and WPF Dashboard coltrols</HelpTitle>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="Codeplex.Dashboarding" isDocumented="True" xmlns="">&lt;para&gt;Silverlight and WPF dashbaord and gauges controls&lt;/para&gt;</NamespaceSummaryItem>
+    </NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these two groups but they need to appear in
        order for Visual Studio to perform the build. -->
@@ -54,6 +58,9 @@
     <Folder Include="ExtraDocs\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ExtraDocs\ScrollingLedMarquee.aml" />
+    <None Include="ExtraDocs\Dials.aml" />
+    <None Include="ExtraDocs\Bidirection.aml" />
     <None Include="ExtraDocs\Welcome.aml" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +75,58 @@
     <Image Include="ExtraDocs\images\f002_Dial360MinMaxAndFormat.png">
       <ImageId>31d6d8e4-a22b-4a8e-b89e-18e4245dea09</ImageId>
       <AlternateText>Dial 2360 with face and value text formats specified</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f003_PetrolGauge.png">
+      <ImageId>d20c48e5-80c0-4f47-9f95-2201d668cbf8</ImageId>
+      <AlternateText>Retro gauge</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f004_facecolor.png">
+      <ImageId>42f0c01e-ef75-45b6-a9d5-576a23a4f212</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f005_facteTextVisibility.png">
+      <ImageId>18796502-567c-4cc8-9198-85ebc0e92696</ImageId>
+      <AlternateText>A dial with no text</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f006_FaceTextColor.png">
+      <ImageId>c3422981-b9ef-4d67-8831-ba68e26c1a92</ImageId>
+      <AlternateText>A dial with different text colors</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f007_minAndMax.png">
+      <ImageId>f3f162a9-f709-4651-b8e8-37a68d18d820</ImageId>
+      <AlternateText>A dial with the minimum and maximum set</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f008_AllDials.png">
+      <ImageId>644e1677-0b2c-4cab-a886-01f6f4432db5</ImageId>
+      <AlternateText>All dials in the collection</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f012_AllCharsMat.png">
+      <ImageId>4bd49e98-e969-4a12-836a-420b5b943f05</ImageId>
+    </Image>
+    <Image Include="ExtraDocs\images\f011_justMat.png">
+      <ImageId>61744e47-eebf-48be-8081-3cf4e9ebc91f</ImageId>
+      <AlternateText>Marquee with different static alignments</AlternateText>
+    </Image>
+    <Image Include="ExtraDocs\images\f010_ColoredMat.png">
+      <ImageId>d612082e-d742-48b4-9df4-fc764ecd4fff</ImageId>
+      <AlternateText>A colorful matrix marquee</AlternateText>
+    </Image>
+    <Image Include="ExtraDocs\images\f009_PlainMat.png">
+      <ImageId>46bfe7e8-c827-4a9b-b672-c663c7c1155a</ImageId>
+      <AlternateText>Out of the box LED Marquee</AlternateText>
     </Image>
   </ItemGroup>
   <!-- Import the SHFB build targets -->

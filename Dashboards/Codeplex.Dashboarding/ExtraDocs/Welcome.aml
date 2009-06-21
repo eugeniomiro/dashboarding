@@ -7,11 +7,8 @@
     </summary>
     -->
     <introduction>
-      <!-- Uncomment this to generate an outline of the section and sub-section
-           titles.  Specify a numeric value as the inner text to limit it to
-           a specific number of sub-topics when creating the outline.  Specify
-           zero (0) to limit it to top-level sections only.  -->
-      <!-- <autoOutline /> -->
+     
+      <autoOutline />
 
       <para>
         Welcome to the Silverlight and WPF Dashboard control library. The goal of the project
@@ -59,148 +56,24 @@
         <codeInline>Dial180 </codeInline> control. Not at all difficult (just remember to add a reference to the <codeInline>Codeplex.Dashboarding.dll</codeInline> assembly in your project..
       </para>
 
+      <alert class="note">
+        <para>
+          From here on in the examples will omitt the namespace declaration and surrounding
+          UserControl etc and just show the control XAML
+        </para>
+      </alert>
 
 
     </introduction>
-    <!-- Add one or more top-level section elements.  These are collapsible.
-         If using <autoOutline />, add an address attribute to identify it
-         and specify a title so that it can be jumped to with a hyperlink. -->
-    <section address="Section1">
-      <title>Common settings</title>
-      <content>
-
-        <para>
-          There are common settings for most of the gauges and progress bars. These settings are detailed
-          here to prevent the need for duplication.
-        </para>
-
-        <section address="Section2">
-          <title>Minimum and maximum value</title>
-          <content>
-
-            <para>
-              The default minimum and maximum value range of a dial is 0 &lt;= n &lt;= 100, which is
-              fine for some cases not so for others. The base Dashboard class supports the
-              properties Minimum and Maximum which allow you to specify the range of acceptable values.
-            </para>
-
-            <code language="xml" title="Setting the minimum and maximum" numberLines="true" >
-              <![CDATA[              
-<UserControl x:Class="SilverlightApplication.SingleGuages.Dial180_1"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding">
-  <Grid x:Name="LayoutRoot" >
-   <db:Dial180 Minimum="-10" Maximum="10" Value="-7" />
-  </Grid>
-</UserControl>]]>
-            </code>
-
-            <para>The minimum and maximum values can be positive, neagtive or a mix of the two.
-            If the Maximum and minimum are swapped the underlying classes detect this
-           and silently fix the issue.</para>
-            
-          </content>
-        </section>
-
-        <section address="Section3">
-          <title>Face and value text format</title>
-          <content>
-
-            <para>
-               If you change the minimum and maximum values you will notice that the text on the
-               face of the dials is updated to reflect the new values. However space is limited,
-               and each piece of text can only display ~ 4 characters. In addition to limited space
-               the automatic calculation of the interim values can throw up some surprises
-               with fractional values being displayed.
-            </para>
-            <para>
-              The properties <codeInline>FaceTextFormat</codeInline> and <codeInline>ValueTextFormat</codeInline> were introduced to give you a finer
-              degree of control over how the text is rendered. They allow you to specify the
-              <codeInline>String.Format()</codeInline>, format string used to render the text.  
-            </para>
-
-            <para>If the range of you dial is -1 ... +1 and you want to display the face text using
-            one digit and two decimal points you would specify the format string <codeInline>"{0:0.00}"</codeInline>
-          (the zero'th format parameter {0} must be used)</para>
-
-            <code language="xml" title="Setting the face and value text format" numberLines="true" >
-              <![CDATA[              
-<UserControl x:Class="SilverlightApplication.SingleGuages.Dial180_1"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding">
-  <Grid x:Name="LayoutRoot" >
-        <db:Dial360 Value="-0.123" Minimum="-1" Maximum="1" 
-          FaceTextFormat="{}{0:0.0}" 
-          ValueTextFormat="{}{0:0.000}"/>
-  </Grid>
-</UserControl>]]>
-            </code>
-
-            <para>But <legacyItalic>hold on</legacyItalic> I hear you cry!, what's that on lines 7 &amp; 8? 
-            
-            
-            <tip>When declaring the format
-            statement in XAML you have to prefix it with {} to escape the following curly brackets or
-          silverlight will attempt interpret the string as a binding statement,
-          and the render will fail. </tip>
-              
-        </para>
-            <para>If you are setting the format string in code the prefixed braces are not needed,
-            and indeed will cause the format to fail. It's a classic darned if you do, darned if you don't
-          scenario!</para>
-            <para>If all is well you should get the following dial. Notice there is quite a bit more
-            space to show the value text.
-            </para>
-
-            <mediaLink>
-              <image placement="center" xlink:href="31d6d8e4-a22b-4a8e-b89e-18e4245dea09"/>
-            </mediaLink>
-            
-          </content>
-        </section>
-
-      </content>
-
-
-    </section>
+   
+    
     <relatedTopics>
-      <!-- One or more of the following:
-           - A local link
-           - An external link
-           - A code entity reference
-
-      <link xlink:href="Other Topic's ID"/>
-      <link xlink:href="Other Topic's ID">Link inner text</link>
-
-      <externalLink>
-          <linkText>Link text</linkText>
-          <linkAlternateText>Optional alternate link text</linkAlternateText>
-          <linkUri>URI</linkUri>
-      </externalLink>
-
-      <codeEntityReference>API member ID</codeEntityReference>
-
-      Examples:
-
-      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
-      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
-
-      <externalLink>
-          <linkText>SHFB on CodePlex</linkText>
-          <linkAlternateText>Go to CodePlex</linkAlternateText>
-          <linkUri>http://shfb.codeplex.com</linkUri>
-      </externalLink>
-
-      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
-      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
-      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
-      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
-      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
-      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
-      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
-      -->
+      <!-- Bi direction -->    
+      <link xlink:href="43e1b7e4-461b-4d6a-9d5d-14962ea583f7" />
+      
+      <!-- Dials -->
+      <link xlink:href="44a3aa0a-afed-4c84-8b22-48e87ef8fae7" />
+      
     </relatedTopics>
   </developerConceptualDocument>
 </topic>
