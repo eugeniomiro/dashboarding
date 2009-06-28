@@ -26,8 +26,8 @@ namespace Codeplex.Dashboarding
     using System.Windows.Shapes;
 
     /// <summary>
-    /// A Dial360  displays as a traditional circular guage with numbers from 0 to 100. The
-    /// needle sweep through aproximately 240 degrees
+    /// A Dial360  displays as a traditional circular gauge with numbers from 0 to 100. The
+    /// needle sweeps through approximately 240 degrees.
     /// </summary>
     public partial class Dial360 : BidirectionalDial
     {

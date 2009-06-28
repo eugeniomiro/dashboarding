@@ -5,7 +5,8 @@
     Width="160" Height="150">
     <Grid x:Name="LayoutRoot" >
         <StackPanel Orientation="Horizontal" >
-            <db:WallThermometer x:Name="_ther2"  Value="22" Margin="4,0,0,0">
+            <db:WallThermometer x:Name="_ther2"  Value="88" Margin="4,0,0,0" ValueTextColor="DarkBlue"
+                ValueTextFormat="{}{0}c" FaceTextColor="DarkGreen" >
                 <db:WallThermometer.MercuryColorRange>
                     <db:ColorPoint HiColor="#009900" LowColor="#44DD00" Value="0" />
                     <db:ColorPoint HiColor="#9DC800" LowColor="#DDCC00" Value="33" />

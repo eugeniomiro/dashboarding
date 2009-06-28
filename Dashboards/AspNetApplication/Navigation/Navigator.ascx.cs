@@ -22,21 +22,21 @@ namespace AspNetApplication.Navigation
         List<NavigationItem> controlPages = new List<NavigationItem> 
         {
             new NavigationItem("DecadeVuMeter","~/Pages/DecadeVuMeter.aspx"),
-            new NavigationItem("Dial360", "~/Pages/Dial360.aspx"),
-            new NavigationItem("Dial180", "~/Pages/Dial180.aspx"),
+//            new NavigationItem("Dial360", "~/Pages/Dial360.aspx"),
+//            new NavigationItem("Dial180", "~/Pages/Dial180.aspx"),
             new NavigationItem("RoundLed","~/Pages/RoundLed.aspx"),
             new NavigationItem("TickCross","~/Pages/TickCross.aspx"),
             new NavigationItem("PerformanceMonitor", "~/Pages/PerformanceMonitor.aspx"),
-            new NavigationItem("FiveStarRanking", "~/Pages/FiveStarRanking.aspx"),
+//            new NavigationItem("FiveStarRanking", "~/Pages/FiveStarRanking.aspx"),
             new NavigationItem("SixteenSegmentLED", "~/Pages/SixteenSegmentLED.aspx"),
             new NavigationItem("Odometer", "~/Pages/Odometer.aspx"),
-            new NavigationItem("PlainThermometer", "~/Pages/PlainThermometer.aspx"),
-            new NavigationItem("WallThermometer", "~/Pages/WallThermometer.aspx"),
-            new NavigationItem("ProgressBar", "~/Pages/ProgressBar.aspx"),
-            new NavigationItem("DiamondSlider", "~/Pages/DiamondSlider.aspx"),
-            new NavigationItem("MatrixLedMarquee", "~/Pages/MatrixLedMarquee.aspx"),
-            new NavigationItem("Knob360", "~/Pages/Knob360.aspx"),
-            new NavigationItem("Dial90", "~/Pages/Dial90.aspx"),
+//            new NavigationItem("PlainThermometer", "~/Pages/PlainThermometer.aspx"),
+//            new NavigationItem("WallThermometer", "~/Pages/WallThermometer.aspx"),
+//            new NavigationItem("ProgressBar", "~/Pages/ProgressBar.aspx"),
+//            new NavigationItem("DiamondSlider", "~/Pages/DiamondSlider.aspx"),
+//            new NavigationItem("MatrixLedMarquee", "~/Pages/MatrixLedMarquee.aspx"),
+//            new NavigationItem("Knob360", "~/Pages/Knob360.aspx"),
+//            new NavigationItem("Dial90", "~/Pages/Dial90.aspx"),
 
         };
         
@@ -46,9 +46,9 @@ namespace AspNetApplication.Navigation
 
         List<NavigationItem> extrasPages = new List<NavigationItem> 
         {
-            new NavigationItem("Contacts and pages","~/Extras/Contacts.aspx"),
+//            new NavigationItem("Contacts and pages","~/Extras/Contacts.aspx"),
             new NavigationItem("Matrix font editor","~/Extras/FontEditor.aspx"),
-            new NavigationItem("Bidirectional operation","~/Extras/Bidirection.aspx"),
+//            new NavigationItem("Bidirectional operation","~/Extras/Bidirection.aspx"),
 
         };
 

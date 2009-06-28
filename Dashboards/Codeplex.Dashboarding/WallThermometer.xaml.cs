@@ -50,7 +50,7 @@ namespace Codeplex.Dashboarding
         /// Dependancy property for out MercuryColor property
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
-        public static readonly DependencyProperty MercuryColorRangeProperty = 
+        public static readonly DependencyProperty MercuryColorRangeProperty =
             DependencyProperty.Register("MercuryColorRange", typeof(ColorPointCollection), typeof(WallThermometer), new PropertyMetadata(new ColorPointCollection(), new PropertyChangedCallback(MercuryColorRangeChanged)));
 
         #endregion Fields
@@ -65,6 +65,7 @@ namespace Codeplex.Dashboarding
         {
             InitializeComponent();
             ValueTextColor = Colors.Black;
+            FaceTextColor = Colors.Black;
             _delegate.ValueTextColor = Colors.Black;
             PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.OneOfMyPropertiesChanged);
             _delegate.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.OneOfTheDelegatesPropertiesChanged);

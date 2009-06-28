@@ -4,6 +4,8 @@
               xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding"    
 >
     <Grid x:Name="LayoutRoot" >
-        <db:SixteenSegmentLED DisplayCharacter="8"     LedOnColor= "#FF614B8D" LedOffColor="#33614b8d" />            
+        <db:SixteenSegmentLED DisplayCharacter="8"     
+            LedOnColor= "#FF614B8D" 
+            LedOffColor="#33614b8d" />            
     </Grid>
 </UserControl>  

@@ -221,9 +221,12 @@
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
     <None Include="ExtraDocs\Bidirection.aml" />
+    <None Include="ExtraDocs\BooleanControls.aml" />
     <None Include="ExtraDocs\Content Layout.content" />
     <None Include="ExtraDocs\Dials.aml" />
     <None Include="ExtraDocs\ScrollingLedMarquee.aml" />
+    <None Include="ExtraDocs\SixteenSegmentLED.aml" />
+    <None Include="ExtraDocs\Sliders.aml" />
     <None Include="ExtraDocs\Welcome.aml" />
     <None Include="Help\Documentation.chm" />
     <None Include="NewSandcastle.shfbproj" />
@@ -255,6 +258,29 @@
     <Resource Include="ExtraDocs\images\f010_ColoredMat.png" />
     <Resource Include="ExtraDocs\images\f011_justMat.png" />
     <Resource Include="ExtraDocs\images\f012_AllCharsMat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f014_allBidirectional.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f015_DiamondSlider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f016_FiveStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f017_progressBar.png" />
+    <Resource Include="ExtraDocs\images\f019_DiamondSlider.png" />
+    <Resource Include="ExtraDocs\images\f020_DiamodSliderColors.png" />
+    <Resource Include="ExtraDocs\images\fg018_ProgressBarColors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f021_ThermsPlain.png" />
+    <Resource Include="ExtraDocs\images\f022_plainMerc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExtraDocs\images\f023_16Seg.png" />
+    <Resource Include="ExtraDocs\images\f024_16SegColors.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\BidirectionalDashboard\" />

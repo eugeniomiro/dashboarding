@@ -23,7 +23,7 @@ bar</p>
 </td>
 <td>
 
-<object type="application/x-silverlight" height="20" width="120">
+<object type="application/x-silverlight" height="40" width="120">
                     <param name="source" value="../ClientBin/SilverlightApplication.xap" />
                     <param name="initParams" value="demo=Prog1,IsRandom=true" />
                     <param name="background" value="Transparent" />
@@ -89,7 +89,7 @@ is deliberately garish to highlight what color effects what visuals</p>
 </td>
 <td>
 
-<object type="application/x-silverlight" height="300" width="120">
+<object type="application/x-silverlight" height="350" width="120">
                     <param name="source" value="../ClientBin/SilverlightApplication.xap" />
                     <param name="initParams" value="demo=Prog2,IsRandom=true" />
                     <param name="background" value="Transparent" />

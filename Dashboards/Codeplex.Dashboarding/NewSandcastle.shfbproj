@@ -58,6 +58,9 @@
     <Folder Include="ExtraDocs\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ExtraDocs\BooleanControls.aml" />
+    <None Include="ExtraDocs\SixteenSegmentLED.aml" />
+    <None Include="ExtraDocs\Sliders.aml" />
     <None Include="ExtraDocs\ScrollingLedMarquee.aml" />
     <None Include="ExtraDocs\Dials.aml" />
     <None Include="ExtraDocs\Bidirection.aml" />
@@ -127,6 +130,55 @@
     <Image Include="ExtraDocs\images\f009_PlainMat.png">
       <ImageId>46bfe7e8-c827-4a9b-b672-c663c7c1155a</ImageId>
       <AlternateText>Out of the box LED Marquee</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f014_allBidirectional.png">
+      <ImageId>f724e048-f64e-4533-9944-5392a6c7644f</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f015_DiamondSlider.png">
+      <ImageId>67b36cad-1c2a-4488-a9e6-fa8e96e4c899</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f016_FiveStar.png">
+      <ImageId>67b36cad-1c2a-34568-a9e6-fa8e96e4c899</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f017_progressBar.png">
+      <ImageId>67d55cad-1c2a-4488-a9e6-fa8346e4c899</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\fg018_ProgressBarColors.png">
+      <ImageId>67b36cad-1c2a-fedee-a9e6-fa8e96e4c899</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f020_DiamodSliderColors.png">
+      <ImageId>67d55cad-1c2a-4488-a9e6-fa2566e4c496</ImageId>
+    </Image>
+    <Image Include="ExtraDocs\images\f019_DiamondSlider.png">
+      <ImageId>67d55cad-1c2a-4488-a9e6-fa2566e4c899</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f022_plainMerc.png">
+      <ImageId>b5ef4371-993a-44d3-89f6-dc08d2836d1c</ImageId>
+    </Image>
+    <Image Include="ExtraDocs\images\f021_ThermsPlain.png">
+      <ImageId>aad1e6a3-949d-4967-9a29-37053f7c462c</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ExtraDocs\images\f024_16SegColors.png">
+      <ImageId>b5ef4372-993a-ffd3-89f6-dc08d2836d1c</ImageId>
+    </Image>
+    <Image Include="ExtraDocs\images\f023_16Seg.png">
+      <ImageId>b5ef4372-993a-44d3-89f6-dc08d2836d1c</ImageId>
     </Image>
   </ItemGroup>
   <!-- Import the SHFB build targets -->
