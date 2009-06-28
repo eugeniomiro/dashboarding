@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Codeplex.Dashboarding;
-using WpfApplication.Util;
+using Demos.Common.Util;
 
-namespace WpfApplication.Demonstrators
+namespace Demos.Common.Demonstrators
 {
     /// <summary>
     /// Interaction logic for ColorRangeExperimenter.xaml

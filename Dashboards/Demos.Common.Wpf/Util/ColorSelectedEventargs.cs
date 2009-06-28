@@ -1,7 +1,7 @@
 using System.Windows.Media;
 using System;
 
-namespace WpfApplication.Util
+namespace Demos.Common.Util
 {
     /// <summary>
     /// The result of a color selection event

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding.Wpf", "Codeplex.Dashboarding.Wpf\Codeplex.Dashboarding.Wpf.csproj", "{60E35411-C181-42A7-A438-58013A7EA455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication", "WpfApplication\WpfApplication.csproj", "{2063757F-6E52-4D2F-A721-4882F821FD96}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{50703928-6F54-468B-B531-19D8776F5641}"
 	ProjectSection(SolutionItems) = preProject
 		fxcoping.FxCop = fxcoping.FxCop
@@ -19,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Common.Wpf", "Demos.Common.Wpf\Demos.Common.Wpf.csproj", "{4D125E58-0B67-4BF6-83E1-A0BA1587E241}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.App.Wpf", "Demo.App.Wpf\Demo.App.Wpf.csproj", "{E065ADE1-7201-42E6-8DA5-44D255121363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Common.Silverlight", "Demos.Common.Silverlight\Demos.Common.Silverlight.csproj", "{703E22CA-78BF-4394-9E36-64E5F26AE5B5}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -38,15 +38,15 @@ Global
 		SccProjectUniqueName4 = Codeplex.Dashboarding.Wpf\\Codeplex.Dashboarding.Wpf.csproj
 		SccProjectName4 = Codeplex.Dashboarding.Wpf
 		SccLocalPath4 = Codeplex.Dashboarding.Wpf
-		SccProjectUniqueName5 = WpfApplication\\WpfApplication.csproj
-		SccProjectName5 = WpfApplication
-		SccLocalPath5 = WpfApplication
-		SccProjectUniqueName6 = Demos.Common.Wpf\\Demos.Common.Wpf.csproj
-		SccProjectName6 = Demos.Common.Wpf
-		SccLocalPath6 = Demos.Common.Wpf
-		SccProjectUniqueName7 = Demo.App.Wpf\\Demo.App.Wpf.csproj
-		SccProjectName7 = Demo.App.Wpf
-		SccLocalPath7 = Demo.App.Wpf
+		SccProjectUniqueName5 = Demos.Common.Wpf\\Demos.Common.Wpf.csproj
+		SccProjectName5 = Demos.Common.Wpf
+		SccLocalPath5 = Demos.Common.Wpf
+		SccProjectUniqueName6 = Demo.App.Wpf\\Demo.App.Wpf.csproj
+		SccProjectName6 = Demo.App.Wpf
+		SccLocalPath6 = Demo.App.Wpf
+		SccProjectUniqueName7 = Demos.Common.Silverlight\\Demos.Common.Silverlight.csproj
+		SccProjectName7 = Demos.Common.Silverlight
+		SccLocalPath7 = Demos.Common.Silverlight
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,10 +69,6 @@ Global
 		{60E35411-C181-42A7-A438-58013A7EA455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60E35411-C181-42A7-A438-58013A7EA455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60E35411-C181-42A7-A438-58013A7EA455}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2063757F-6E52-4D2F-A721-4882F821FD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2063757F-6E52-4D2F-A721-4882F821FD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2063757F-6E52-4D2F-A721-4882F821FD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2063757F-6E52-4D2F-A721-4882F821FD96}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D125E58-0B67-4BF6-83E1-A0BA1587E241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D125E58-0B67-4BF6-83E1-A0BA1587E241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D125E58-0B67-4BF6-83E1-A0BA1587E241}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{E065ADE1-7201-42E6-8DA5-44D255121363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E065ADE1-7201-42E6-8DA5-44D255121363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E065ADE1-7201-42E6-8DA5-44D255121363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703E22CA-78BF-4394-9E36-64E5F26AE5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703E22CA-78BF-4394-9E36-64E5F26AE5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703E22CA-78BF-4394-9E36-64E5F26AE5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703E22CA-78BF-4394-9E36-64E5F26AE5B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

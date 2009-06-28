@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="WpfApplication.Demonstrators.Knob360Demonstrator"
+﻿<UserControl x:Class="Demos.Common.Demonstrators.Knob360Demonstrator"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding.Wpf"
-    xmlns:bd="clr-namespace:WpfApplication.Demonstrators" Height="433.16" Width="Auto">
+    xmlns:bd="clr-namespace:Demos.Common.Demonstrators" Height="433.16" Width="Auto">
 
     <Grid x:Name="LayoutRoot" >
         <Grid.RowDefinitions>

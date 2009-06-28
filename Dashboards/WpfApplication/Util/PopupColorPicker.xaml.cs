@@ -43,7 +43,7 @@ namespace WpfApplication.Util
             }
         }
 
-        void PickerColorChanged(object sender, ColorPickerControl.ColorChangedEventArgs e)
+        void PickerColorChanged(object sender, Demos.ColorChangedEventArgs e)
         {
             _selectedColor = e.newColor.Color;
         }

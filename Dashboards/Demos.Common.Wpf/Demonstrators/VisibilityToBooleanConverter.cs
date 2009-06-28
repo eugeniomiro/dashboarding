@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Data;
 using System.Windows;
 
-namespace WpfApplication.Demonstrators
+namespace Demos.Common.Demonstrators
 {
     public class VisibilityToBooleanConverter : IValueConverter
     {

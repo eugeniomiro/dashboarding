@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Codeplex.Dashboarding;
 
-namespace WpfApplication.Demonstrators
+namespace Demos.Common.Demonstrators
 {
    
 

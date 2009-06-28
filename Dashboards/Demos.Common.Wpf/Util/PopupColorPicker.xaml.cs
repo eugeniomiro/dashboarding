@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApplication.Util
+namespace Demos.Common.Util
 {
     /// <summary>
     /// Interaction logic for PopupColorPicker.xaml

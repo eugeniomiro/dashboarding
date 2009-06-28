@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="WpfApplication.Demonstrators.VduMeterDemonstrator"
+﻿<UserControl x:Class="Demos.Common.Demonstrators.VduMeterDemonstrator"
    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding.Wpf"
-    xmlns:bd="clr-namespace:WpfApplication.Demonstrators"
+    xmlns:bd="clr-namespace:Demos.Common.Demonstrators"
     >
 
     <Grid x:Name="LayoutRoot" >

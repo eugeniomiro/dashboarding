@@ -12,9 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections;
-using WpfApplication.Util;
+using Demos.Common.Util;
 
-namespace WpfApplication.Demonstrators
+namespace Demos.Common.Demonstrators
 {
     /// <summary>
     /// Interaction logic for Experimenter.xaml

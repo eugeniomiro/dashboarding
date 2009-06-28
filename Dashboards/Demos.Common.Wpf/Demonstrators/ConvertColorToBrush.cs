@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace WpfApplication.Demonstrators
+namespace Demos.Common.Demonstrators
 {
     public class ConvertColorToBrush : IValueConverter
     {

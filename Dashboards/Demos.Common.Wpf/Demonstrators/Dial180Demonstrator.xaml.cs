@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Codeplex.Dashboarding;
 
-namespace WpfApplication.Demonstrators
+namespace Demos.Common.Demonstrators
 {
     
     public class Dial180Demo: IDemonstrateDials

@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Windows;
 using Codeplex.Dashboarding;
 
-namespace WpfApplication.Demonstrators
+namespace Demos.Common.Demonstrators
 {
     /// <summary>
     /// Class to do an example binding

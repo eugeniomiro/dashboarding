@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfApplication.Demonstrators.AllControlsDemonstrator"
+﻿<UserControl x:Class="Demos.Common.Demonstrators.AllControlsDemonstrator"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:db="clr-namespace:Codeplex.Dashboarding;assembly=Codeplex.Dashboarding.Wpf"
@@ -11,7 +11,7 @@
             <!-- first row -->
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
 
-                <db:Dial180 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}"   />
+                <db:Dial180North Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}"   />
                 <db:Dial360 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}"   FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}"   />
                 <db:Knob360 Value="{Binding CurrentValue, Mode=TwoWay}" ValueTextColor="{Binding Path=TextColor}"  ValueTextVisibility="{Binding Path=TextVisibility}" ValueTextFormat="{Binding Format}" FaceTextVisibility="{Binding Path=FaceTextVisibility}" FaceTextColor="{Binding Path=FaceTextColor}" FaceTextFormat="{Binding Path=FaceFormat}" />
 
