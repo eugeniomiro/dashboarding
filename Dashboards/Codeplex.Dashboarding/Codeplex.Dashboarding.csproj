@@ -59,8 +59,12 @@
     <Compile Include="ColorPointCollection.cs" />
     <Compile Include="Dashboard.cs" />
     <Compile Include="DashboardValueChangedEventArgs.cs" />
-    <Compile Include="Dial180.xaml.cs">
-      <DependentUpon>Dial180.xaml</DependentUpon>
+    <Compile Include="Dial180.cs" />
+    <Compile Include="Dial180East.xaml.cs">
+      <DependentUpon>Dial180East.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dial180North.xaml.cs">
+      <DependentUpon>Dial180North.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dial90.cs" />
     <Compile Include="Dial90NorthEast.xaml.cs">
@@ -130,8 +134,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Dial180.xaml">
+    <Page Include="Dial180East.xaml">
       <SubType>Page</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Dial180North.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
     <Page Include="Dial90NorthEast.xaml">

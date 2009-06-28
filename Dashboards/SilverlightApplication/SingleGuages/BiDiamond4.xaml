@@ -41,8 +41,8 @@
             <db:Dial360 IsBidirectional="True" Value="{Binding CurrentValue, Mode=TwoWay}"  Grid.Column="0"  Grid.Row="2" />
             <TextBlock Text="Dial360" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" Grid.Row="3" Grid.Column="0" />
 
-            <db:Dial180 IsBidirectional="True" Value="{Binding CurrentValue, Mode=TwoWay}"  Grid.Column="1"  Grid.Row="2" />
-            <TextBlock Text="Dial180" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" Grid.Row="3" Grid.Column="1" />
+            <db:Dial180East IsBidirectional="True" Value="{Binding CurrentValue, Mode=TwoWay}"  Grid.Column="1"  Grid.Row="2" />
+            <TextBlock Text="Dial180North" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" Grid.Row="3" Grid.Column="1" />
 
             <db:Knob360 IsBidirectional="True" Value="{Binding CurrentValue, Mode=TwoWay}"  Grid.Column="2"  Grid.Row="2" />
             <TextBlock Text="Knob360" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="AntiqueWhite" Grid.Row="3" Grid.Column="2" />

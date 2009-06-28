@@ -56,7 +56,7 @@
     <relatedTopics>
 
       <codeEntityReference>T:Codeplex.Dashboarding.Dial360</codeEntityReference>
-      <codeEntityReference>T:Codeplex.Dashboarding.Dial180</codeEntityReference>
+      <codeEntityReference>T:Codeplex.Dashboarding.Dial180North</codeEntityReference>
       <codeEntityReference>T:Codeplex.Dashboarding.Dial90NorthEast</codeEntityReference>
       <codeEntityReference>T:Codeplex.Dashboarding.Dial90NorthWest</codeEntityReference>
       <codeEntityReference>T:Codeplex.Dashboarding.Dial90SouthEast</codeEntityReference>

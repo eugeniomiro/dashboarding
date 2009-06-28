@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightApplication", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding", "Codeplex.Dashboarding\Codeplex.Dashboarding.csproj", "{4AC50D91-3409-41EC-B09B-4B15F82F731A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casewise.Dashboarding.Tests", "Casewise.Dashboarding.Tests\Casewise.Dashboarding.Tests.csproj", "{992FBC01-8F3F-45D2-9107-9077D26BD608}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeplex.Dashboarding.Wpf", "Codeplex.Dashboarding.Wpf\Codeplex.Dashboarding.Wpf.csproj", "{60E35411-C181-42A7-A438-58013A7EA455}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication", "WpfApplication\WpfApplication.csproj", "{2063757F-6E52-4D2F-A721-4882F821FD96}"
@@ -18,9 +16,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		fxcoping.FxCop = fxcoping.FxCop
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Common.Wpf", "Demos.Common.Wpf\Demos.Common.Wpf.csproj", "{4D125E58-0B67-4BF6-83E1-A0BA1587E241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.App.Wpf", "Demo.App.Wpf\Demo.App.Wpf.csproj", "{E065ADE1-7201-42E6-8DA5-44D255121363}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 8
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs05.codeplex.com/
 		SccLocalPath0 = .
@@ -33,15 +35,18 @@ Global
 		SccProjectUniqueName3 = Codeplex.Dashboarding\\Codeplex.Dashboarding.csproj
 		SccProjectName3 = Codeplex.Dashboarding
 		SccLocalPath3 = Codeplex.Dashboarding
-		SccProjectUniqueName4 = Casewise.Dashboarding.Tests\\Casewise.Dashboarding.Tests.csproj
-		SccProjectName4 = Casewise.Dashboarding.Tests
-		SccLocalPath4 = Casewise.Dashboarding.Tests
-		SccProjectUniqueName5 = Codeplex.Dashboarding.Wpf\\Codeplex.Dashboarding.Wpf.csproj
-		SccProjectName5 = Codeplex.Dashboarding.Wpf
-		SccLocalPath5 = Codeplex.Dashboarding.Wpf
-		SccProjectUniqueName6 = WpfApplication\\WpfApplication.csproj
-		SccProjectName6 = WpfApplication
-		SccLocalPath6 = WpfApplication
+		SccProjectUniqueName4 = Codeplex.Dashboarding.Wpf\\Codeplex.Dashboarding.Wpf.csproj
+		SccProjectName4 = Codeplex.Dashboarding.Wpf
+		SccLocalPath4 = Codeplex.Dashboarding.Wpf
+		SccProjectUniqueName5 = WpfApplication\\WpfApplication.csproj
+		SccProjectName5 = WpfApplication
+		SccLocalPath5 = WpfApplication
+		SccProjectUniqueName6 = Demos.Common.Wpf\\Demos.Common.Wpf.csproj
+		SccProjectName6 = Demos.Common.Wpf
+		SccLocalPath6 = Demos.Common.Wpf
+		SccProjectUniqueName7 = Demo.App.Wpf\\Demo.App.Wpf.csproj
+		SccProjectName7 = Demo.App.Wpf
+		SccLocalPath7 = Demo.App.Wpf
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,10 +65,6 @@ Global
 		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AC50D91-3409-41EC-B09B-4B15F82F731A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{992FBC01-8F3F-45D2-9107-9077D26BD608}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60E35411-C181-42A7-A438-58013A7EA455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60E35411-C181-42A7-A438-58013A7EA455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60E35411-C181-42A7-A438-58013A7EA455}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,6 +73,14 @@ Global
 		{2063757F-6E52-4D2F-A721-4882F821FD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2063757F-6E52-4D2F-A721-4882F821FD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2063757F-6E52-4D2F-A721-4882F821FD96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D125E58-0B67-4BF6-83E1-A0BA1587E241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D125E58-0B67-4BF6-83E1-A0BA1587E241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D125E58-0B67-4BF6-83E1-A0BA1587E241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D125E58-0B67-4BF6-83E1-A0BA1587E241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E065ADE1-7201-42E6-8DA5-44D255121363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E065ADE1-7201-42E6-8DA5-44D255121363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E065ADE1-7201-42E6-8DA5-44D255121363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E065ADE1-7201-42E6-8DA5-44D255121363}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

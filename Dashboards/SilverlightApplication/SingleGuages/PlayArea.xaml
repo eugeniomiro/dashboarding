@@ -116,15 +116,15 @@
 			<db:DecadeVuMeter x:Name="_c12" Width="16"  HorizontalAlignment="Left" VerticalAlignment="Stretch" />
 			<db:DecadeVuMeter x:Name="_c13" Width="16"  HorizontalAlignment="Left" VerticalAlignment="Stretch" />
 		</StackPanel>
-		<db:Dial180  Margin="404,41.042,0,0" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.5,0.5" Height="113.334" x:Name="_dial180">
-			<db:Dial180.RenderTransform>
+		<db:Dial180North  Margin="404,41.042,0,0" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Width="168" RenderTransformOrigin="0.5,0.5" Height="113.334" x:Name="_dial180">
+			<db:Dial180North.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
 					<SkewTransform/>
 					<RotateTransform/>
 					<TranslateTransform/>
 				</TransformGroup>
-			</db:Dial180.RenderTransform>
-		</db:Dial180>
+			</db:Dial180North.RenderTransform>
+		</db:Dial180North>
 	</Grid>
 </UserControl>

@@ -5,6 +5,9 @@
              
     >
     <Grid x:Name="LayoutRoot" >
-        <db:Dial180 />
+        <StackPanel Orientation="Horizontal">
+        <db:Dial180North />
+            <db:Dial180East Margin="10,0,0,0" />
+        </StackPanel>
     </Grid>
 </UserControl>

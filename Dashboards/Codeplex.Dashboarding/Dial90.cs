@@ -1,4 +1,4 @@
-﻿ //-----------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------
 // <copyright file="Dial90.cs" company="David Black">
 //      Copyright 2008 David Black
 //  
@@ -74,9 +74,9 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Requires that the control hounours all appearance setting as specified in the
-        /// dependancy properties (at least the supported ones). No dependancy property handling
-        /// is performed until all dependancy properties are set and the control is loaded.
+        /// Requires that the control honors all appearance setting as specified in the
+        /// dependency properties (at least the supported ones). No dependency property handling
+        /// is performed until all dependency properties are set and the control is loaded.
         /// </summary>
         protected override void ManifestChanges()
         {
@@ -88,7 +88,7 @@ namespace Codeplex.Dashboarding
         }
  
         /// <summary>
-        /// Set the defaults for our dependancy properties and register the
+        /// Set the defaults for our dependency properties and register the
         /// grab handle
         /// </summary>
         protected void InitializeDial90()

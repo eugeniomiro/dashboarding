@@ -80,7 +80,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty FaceTextColorProperty =
-            DependencyProperty.Register("FaceTextColor", typeof(Color), typeof(Dashboard), new PropertyMetadata(new PropertyChangedCallback(FaceTextColorChanged)));
+            DependencyProperty.Register("FaceTextColor", typeof(Color), typeof(Dashboard), new PropertyMetadata(Colors.White, new PropertyChangedCallback(FaceTextColorChanged)));
 
         /// <summary>
         /// The dependancy property for the FaceTextVisibility attached property

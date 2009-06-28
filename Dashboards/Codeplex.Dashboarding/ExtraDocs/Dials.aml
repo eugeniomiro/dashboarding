@@ -39,7 +39,7 @@
 
             <code language="xml" title="Setting the minimum and maximum" numberLines="true" >
               <![CDATA[              
-  <db:Dial180 Minimum="-10" Maximum="10" Value="-7" />
+  <db:Dial180North Minimum="-10" Maximum="10" Value="-7" />
   ]]>
             </code>
 
@@ -248,7 +248,7 @@
     <relatedTopics>
 
       <codeEntityReference>T:Codeplex.Dashboarding.Dial360</codeEntityReference>
-      <codeEntityReference>T:Codeplex.Dashboarding.Dial180</codeEntityReference>
+      <codeEntityReference>T:Codeplex.Dashboarding.Dial180North</codeEntityReference>
       <codeEntityReference>T:Codeplex.Dashboarding.Dial90NorthEast</codeEntityReference>
       <codeEntityReference>T:Codeplex.Dashboarding.Dial90NorthWest</codeEntityReference>
       <codeEntityReference>T:Codeplex.Dashboarding.Dial90SouthEast</codeEntityReference>

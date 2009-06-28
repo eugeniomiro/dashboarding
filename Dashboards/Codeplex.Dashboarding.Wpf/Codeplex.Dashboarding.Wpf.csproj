@@ -79,9 +79,16 @@
       <Link>DecadeVuMeter.xaml.cs</Link>
       <DependentUpon>DecadeVuMeter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Codeplex.Dashboarding\Dial180.xaml.cs">
-      <Link>Dial180.xaml.cs</Link>
-      <DependentUpon>Dial180.xaml</DependentUpon>
+    <Compile Include="..\Codeplex.Dashboarding\Dial180.cs">
+      <Link>Dial180.cs</Link>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial180East.xaml.cs">
+      <Link>Dial180East.xaml.cs</Link>
+      <DependentUpon>Dial180East.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial180North.xaml.cs">
+      <Link>Dial180North.xaml.cs</Link>
+      <DependentUpon>Dial180North.xaml</DependentUpon>
     </Compile>
     <Compile Include="..\Codeplex.Dashboarding\Dial360.xaml.cs">
       <Link>Dial360.xaml.cs</Link>
@@ -200,8 +207,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Codeplex.Dashboarding\Dial180.xaml">
-      <Link>Dial180.xaml</Link>
+    <Page Include="..\Codeplex.Dashboarding\Dial180East.xaml">
+      <Link>Dial180East.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial180North.xaml">
+      <Link>Dial180North.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

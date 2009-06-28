@@ -31,7 +31,7 @@
         The above example shows the following controls:</p>
     <ul>
         <li>Scrolling MetrixLedMarquee</li>
-        <li>Dial360, Dial180, Knob360, Dial90NorthWest, Dial90NorthEast, Dial90SouthWest, Dial90SouthEast</li>
+        <li>Dial360, Dial180North, Knob360, Dial90NorthWest, Dial90NorthEast, Dial90SouthWest, Dial90SouthEast</li>
         <li>DecadeVuMeter</li>
         <li>RoundLed, TickCross</li>
         <li>PerformanceMonitor</li>

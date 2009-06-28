@@ -62,8 +62,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         protected BidirectionalDashboard()
         {
-            this.IsGrabbed = false;
-            
+            this.IsGrabbed = false; 
         }
 
         #region public properties

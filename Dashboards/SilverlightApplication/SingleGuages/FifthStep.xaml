@@ -6,7 +6,7 @@
     <Grid x:Name="LayoutRoot" >
 <StackPanel Orientation="Horizontal">
     
-<db:Dial180 
+<db:Dial180North 
     Minimum="-10" 
     Maximum="10" 
     Value="-7" 
@@ -14,8 +14,8 @@
 
     
     
-    <db:Dial180 Minimum="-10" Maximum="10" Value="2" />
-    <db:Dial180 Minimum="-10" Maximum="10" Value="7" />
+    <db:Dial180North Minimum="-10" Maximum="10" Value="2" />
+    <db:Dial180North Minimum="-10" Maximum="10" Value="7" />
 </StackPanel>
     </Grid>
 </UserControl>
