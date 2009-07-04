@@ -240,55 +240,55 @@
     <None Include="NewSandcastle.shfbproj" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f001_allControls.png" />
+    <None Include="ExtraDocs\images\f001_allControls.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f002_Dial360MinMaxAndFormat.png" />
+    <None Include="ExtraDocs\images\f002_Dial360MinMaxAndFormat.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f003_PetrolGauge.png" />
+    <None Include="ExtraDocs\images\f003_PetrolGauge.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f004_facecolor.png" />
+    <None Include="ExtraDocs\images\f004_facecolor.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f005_facteTextVisibility.png" />
-    <Resource Include="ExtraDocs\images\f006_FaceTextColor.png" />
+    <None Include="ExtraDocs\images\f005_facteTextVisibility.png" />
+    <None Include="ExtraDocs\images\f006_FaceTextColor.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f007_minAndMax.png" />
+    <None Include="ExtraDocs\images\f007_minAndMax.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f008_AllDials.png" />
+    <None Include="ExtraDocs\images\f008_AllDials.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f009_PlainMat.png" />
-    <Resource Include="ExtraDocs\images\f010_ColoredMat.png" />
-    <Resource Include="ExtraDocs\images\f011_justMat.png" />
-    <Resource Include="ExtraDocs\images\f012_AllCharsMat.png" />
+    <None Include="ExtraDocs\images\f009_PlainMat.png" />
+    <None Include="ExtraDocs\images\f010_ColoredMat.png" />
+    <None Include="ExtraDocs\images\f011_justMat.png" />
+    <None Include="ExtraDocs\images\f012_AllCharsMat.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f014_allBidirectional.png" />
+    <None Include="ExtraDocs\images\f014_allBidirectional.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f015_DiamondSlider.png" />
+    <None Include="ExtraDocs\images\f015_DiamondSlider.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f016_FiveStar.png" />
+    <None Include="ExtraDocs\images\f016_FiveStar.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f017_progressBar.png" />
-    <Resource Include="ExtraDocs\images\f019_DiamondSlider.png" />
-    <Resource Include="ExtraDocs\images\f020_DiamodSliderColors.png" />
-    <Resource Include="ExtraDocs\images\fg018_ProgressBarColors.png" />
+    <None Include="ExtraDocs\images\f017_progressBar.png" />
+    <None Include="ExtraDocs\images\f019_DiamondSlider.png" />
+    <None Include="ExtraDocs\images\f020_DiamodSliderColors.png" />
+    <None Include="ExtraDocs\images\fg018_ProgressBarColors.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f021_ThermsPlain.png" />
-    <Resource Include="ExtraDocs\images\f022_plainMerc.png" />
+    <None Include="ExtraDocs\images\f021_ThermsPlain.png" />
+    <None Include="ExtraDocs\images\f022_plainMerc.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExtraDocs\images\f023_16Seg.png" />
-    <Resource Include="ExtraDocs\images\f024_16SegColors.png" />
+    <None Include="ExtraDocs\images\f023_16Seg.png" />
+    <None Include="ExtraDocs\images\f024_16SegColors.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\BidirectionalDashboard\" />
