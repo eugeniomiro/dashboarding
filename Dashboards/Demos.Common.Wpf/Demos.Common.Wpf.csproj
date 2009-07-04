@@ -54,132 +54,186 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Demonstrators\AllControlsDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\AllControlsDemonstrator.xaml">
+      <Link>Demonstrators\AllControlsDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\BooleanDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\BooleanDemonstrator.xaml">
+      <Link>Demonstrators\BooleanDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\BoundData.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\BoundData.xaml">
+      <Link>Demonstrators\BoundData.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\ColorRangeExperimenter.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\ColorRangeExperimenter.xaml">
+      <Link>Demonstrators\ColorRangeExperimenter.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\Dial180Demonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\Dial180Demonstrator.xaml">
+      <Link>Demonstrators\Dial180Demonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\Dial360Demonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\Dial360Demonstrator.xaml">
+      <Link>Demonstrators\Dial360Demonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\Dial90Demonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\Dial90Demonstrator.xaml">
+      <Link>Demonstrators\Dial90Demonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\Experimenter.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\Experimenter.xaml">
+      <Link>Demonstrators\Experimenter.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\Knob360Demonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\Knob360Demonstrator.xaml">
+      <Link>Demonstrators\Knob360Demonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\LedMarqueeDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\LedMarqueeDemonstrator.xaml">
+      <Link>Demonstrators\LedMarqueeDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\MatrixLedCharacterDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\MatrixLedCharacterDemonstrator.xaml">
+      <Link>Demonstrators\MatrixLedCharacterDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\OdometerDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\OdometerDemonstrator.xaml">
+      <Link>Demonstrators\OdometerDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\PerformanceMonitorDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\PerformanceMonitorDemonstrator.xaml">
+      <Link>Demonstrators\PerformanceMonitorDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\PlainThermometerDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\PlainThermometerDemonstrator.xaml">
+      <Link>Demonstrators\PlainThermometerDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\ProgressbarDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\ProgressbarDemonstrator.xaml">
+      <Link>Demonstrators\ProgressbarDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demonstrators\VduMeterDemonstrator.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Demonstrators\VduMeterDemonstrator.xaml">
+      <Link>Demonstrators\VduMeterDemonstrator.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Util\PopupColorPicker.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Util\ColorPicker.xaml">
+      <Link>Util\ColorPicker.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Util\ColorPicker.xaml">
+    <Page Include="..\Demos.Common.Silverlight\Util\PopupColorPicker.xaml">
+      <Link>Util\PopupColorPicker.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demonstrators\AllControlsDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\AllControlsDemonstrator.xaml.cs">
+      <Link>Demonstrators\AllControlsDemonstrator.xaml.cs</Link>
       <DependentUpon>AllControlsDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\BooleanDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\BooleanDemonstrator.xaml.cs">
+      <Link>Demonstrators\BooleanDemonstrator.xaml.cs</Link>
       <DependentUpon>BooleanDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\BoundData.cs" />
-    <Compile Include="Demonstrators\BoundData.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\BoundData.cs">
+      <Link>Demonstrators\BoundData.cs</Link>
+    </Compile>
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\BoundData.xaml.cs">
+      <Link>Demonstrators\BoundData.xaml.cs</Link>
       <DependentUpon>BoundData.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\ColorRangeExperimenter.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\ColorRangeExperimenter.xaml.cs">
+      <Link>Demonstrators\ColorRangeExperimenter.xaml.cs</Link>
       <DependentUpon>ColorRangeExperimenter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\ConvertColorToBrush.cs" />
-    <Compile Include="Demonstrators\Dial180Demonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\ConvertColorToBrush.cs">
+      <Link>Demonstrators\ConvertColorToBrush.cs</Link>
+    </Compile>
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\Dial180Demonstrator.xaml.cs">
+      <Link>Demonstrators\Dial180Demonstrator.xaml.cs</Link>
       <DependentUpon>Dial180Demonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\Dial360Demonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\Dial360Demonstrator.xaml.cs">
+      <Link>Demonstrators\Dial360Demonstrator.xaml.cs</Link>
       <DependentUpon>Dial360Demonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\Dial90Demonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\Dial90Demonstrator.xaml.cs">
+      <Link>Demonstrators\Dial90Demonstrator.xaml.cs</Link>
       <DependentUpon>Dial90Demonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\Experimenter.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\Experimenter.xaml.cs">
+      <Link>Demonstrators\Experimenter.xaml.cs</Link>
       <DependentUpon>Experimenter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\IDemonstrateDials.cs" />
-    <Compile Include="Demonstrators\Knob360Demonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\IDemonstrateDials.cs">
+      <Link>Demonstrators\IDemonstrateDials.cs</Link>
+    </Compile>
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\Knob360Demonstrator.xaml.cs">
+      <Link>Demonstrators\Knob360Demonstrator.xaml.cs</Link>
       <DependentUpon>Knob360Demonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\LedMarqueeDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\LedMarqueeDemonstrator.xaml.cs">
+      <Link>Demonstrators\LedMarqueeDemonstrator.xaml.cs</Link>
       <DependentUpon>LedMarqueeDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\MatrixLedCharacterDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\MatrixLedCharacterDemonstrator.xaml.cs">
+      <Link>Demonstrators\MatrixLedCharacterDemonstrator.xaml.cs</Link>
       <DependentUpon>MatrixLedCharacterDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\OdometerDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\OdometerDemonstrator.xaml.cs">
+      <Link>Demonstrators\OdometerDemonstrator.xaml.cs</Link>
       <DependentUpon>OdometerDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\PerformanceMonitorDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\PerformanceMonitorDemonstrator.xaml.cs">
+      <Link>Demonstrators\PerformanceMonitorDemonstrator.xaml.cs</Link>
       <DependentUpon>PerformanceMonitorDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\PlainThermometerDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\PlainThermometerDemonstrator.xaml.cs">
+      <Link>Demonstrators\PlainThermometerDemonstrator.xaml.cs</Link>
       <DependentUpon>PlainThermometerDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\ProgressbarDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\ProgressbarDemonstrator.xaml.cs">
+      <Link>Demonstrators\ProgressbarDemonstrator.xaml.cs</Link>
       <DependentUpon>ProgressbarDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\VduMeterDemonstrator.xaml.cs">
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\VduMeterDemonstrator.xaml.cs">
+      <Link>Demonstrators\VduMeterDemonstrator.xaml.cs</Link>
       <DependentUpon>VduMeterDemonstrator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demonstrators\VisibilityToBooleanConverter.cs" />
+    <Compile Include="..\Demos.Common.Silverlight\Demonstrators\VisibilityToBooleanConverter.cs">
+      <Link>Demonstrators\VisibilityToBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Demos.Common.Silverlight\Util\ColorPicker.xaml.cs">
+      <Link>Util\ColorPicker.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\Demos.Common.Silverlight\Util\ColorSelectedEventargs.cs">
+      <Link>Util\ColorSelectedEventargs.cs</Link>
+    </Compile>
+    <Compile Include="..\Demos.Common.Silverlight\Util\DemonstratorDiscovery.cs">
+      <Link>Util\DemonstratorDiscovery.cs</Link>
+    </Compile>
+    <Compile Include="..\Demos.Common.Silverlight\Util\PopupColorPicker.xaml.cs">
+      <Link>Util\PopupColorPicker.xaml.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -193,18 +247,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Util\ColorPicker.xaml.cs">
-      <DependentUpon>ColorPicker.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Util\ColorSelectedEventargs.cs" />
-    <Compile Include="Util\PopupColorPicker.xaml.cs">
-      <DependentUpon>PopupColorPicker.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Demonstrators\Classes.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

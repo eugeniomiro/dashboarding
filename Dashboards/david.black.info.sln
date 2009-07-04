@@ -20,9 +20,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.App.Wpf", "Demo.App.Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Common.Silverlight", "Demos.Common.Silverlight\Demos.Common.Silverlight.csproj", "{703E22CA-78BF-4394-9E36-64E5F26AE5B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.App.Silverlight", "Demo.App.Silverlight\Demo.App.Silverlight.csproj", "{9A7EA242-24FC-44C6-8E43-D9E7A1F63D96}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs05.codeplex.com/
 		SccLocalPath0 = .
@@ -47,6 +49,9 @@ Global
 		SccProjectUniqueName7 = Demos.Common.Silverlight\\Demos.Common.Silverlight.csproj
 		SccProjectName7 = Demos.Common.Silverlight
 		SccLocalPath7 = Demos.Common.Silverlight
+		SccProjectUniqueName8 = Demo.App.Silverlight\\Demo.App.Silverlight.csproj
+		SccProjectName8 = Demo.App.Silverlight
+		SccLocalPath8 = Demo.App.Silverlight
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +86,10 @@ Global
 		{703E22CA-78BF-4394-9E36-64E5F26AE5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{703E22CA-78BF-4394-9E36-64E5F26AE5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{703E22CA-78BF-4394-9E36-64E5F26AE5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A7EA242-24FC-44C6-8E43-D9E7A1F63D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A7EA242-24FC-44C6-8E43-D9E7A1F63D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A7EA242-24FC-44C6-8E43-D9E7A1F63D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A7EA242-24FC-44C6-8E43-D9E7A1F63D96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

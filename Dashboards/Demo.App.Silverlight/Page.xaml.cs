@@ -1,38 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Demos.Common.Demonstrators;
 using Demos.Common.Util;
-using System.Reflection;
 
-namespace Demo.App.Wpf
+namespace Demo.App.Silverlight
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
-    public partial class Window1 : Window
+    public partial class Page : UserControl
     {
-        List<IDemonstrateDials> _demonstrations = new List<IDemonstrateDials>();
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Window1"/> class.
-        /// </summary>
-        public Window1()
+        List<IDemonstrateDials> _demonstrations = new List<IDemonstrateDials>();
+        public Page()
         {
             InitializeComponent();
             _demonstrations = DemonstratorDiscovery.FindDemonstrators();
             InitializeDemonstaratorSelection();
             PopupColorPicker.Instance = _colorPicker;
+            PopupColorPicker.Instance.Show();
         }
 
         /// <summary>
@@ -58,6 +50,5 @@ namespace Demo.App.Wpf
                 _contentPanel.Children.Add(((IDemonstrateDials)e.AddedItems[0]).Create());
             }
         }
-
     }
 }

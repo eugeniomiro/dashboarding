@@ -11,7 +11,7 @@
     <RootNamespace>AspNetApplication</RootNamespace>
     <AssemblyName>AspNetApplication</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SilverlightApplicationList>{E1A474A1-9984-44C8-A7DF-4760B33B3D68}|..\SilverlightApplication\SilverlightApplication.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>{E1A474A1-9984-44C8-A7DF-4760B33B3D68}|..\SilverlightApplication\SilverlightApplication.csproj|ClientBin|False,{9A7EA242-24FC-44C6-8E43-D9E7A1F63D96}|..\Demo.App.Silverlight\Demo.App.Silverlight.csproj|ClientBin|False</SilverlightApplicationList>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -231,8 +231,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientBin\Demo.App.Silverlight.xap" />
     <Content Include="ClientBin\SilverlightApplication.xap" />
     <Content Include="Default.aspx" />
+    <Content Include="Demo.App.SilverlightTestPage.aspx" />
+    <Content Include="Demo.App.SilverlightTestPage.html" />
     <Content Include="dove2.png" />
     <Content Include="Extras\Bidirection.aspx" />
     <Content Include="Extras\Contacts.aspx" />
@@ -253,6 +256,7 @@
     <Content Include="Pages\SixteenSegmentLED.aspx" />
     <Content Include="Pages\TickCross.aspx" />
     <Content Include="Pages\WallThermometer.aspx" />
+    <Content Include="Silverlight.js" />
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
