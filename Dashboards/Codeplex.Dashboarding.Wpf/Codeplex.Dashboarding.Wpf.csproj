@@ -90,6 +90,14 @@
       <Link>Dial180North.xaml.cs</Link>
       <DependentUpon>Dial180North.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial180South.xaml.cs">
+      <Link>Dial180South.xaml.cs</Link>
+      <DependentUpon>Dial180South.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial180West.xaml.cs">
+      <Link>Dial180West.xaml.cs</Link>
+      <DependentUpon>Dial180West.xaml</DependentUpon>
+    </Compile>
     <Compile Include="..\Codeplex.Dashboarding\Dial360.xaml.cs">
       <Link>Dial360.xaml.cs</Link>
       <DependentUpon>Dial360.xaml</DependentUpon>
@@ -214,6 +222,16 @@
     </Page>
     <Page Include="..\Codeplex.Dashboarding\Dial180North.xaml">
       <Link>Dial180North.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial180South.xaml">
+      <Link>Dial180South.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial180West.xaml">
+      <Link>Dial180West.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

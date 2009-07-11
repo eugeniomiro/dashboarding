@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Dial180East.xaml.cs" company="David Black">
+// <copyright file="Dial180West.xaml.cs" company="David Black">
 //      Copyright 2008 David Black
 //  
 //      Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +23,14 @@ namespace Codeplex.Dashboarding
     using System.Windows.Controls;
 
     /// <summary>
-    /// A 180 degree right facing dial where the pointer sweeps from North to south
+    /// A 180 degree left facing dial where the pointer sweeps from North to south
     /// </summary>
-    public partial class Dial180East : Dial180
+    public partial class Dial180West : Dial180
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Dial180East"/> class.
+        /// Initializes a new instance of the <see cref="Dial180West"/> class.
         /// </summary>
-        public Dial180East()
+        public Dial180West()
         {
             InitializeComponent();
             InitializeDial180();
@@ -54,15 +54,14 @@ namespace Codeplex.Dashboarding
         /// <returns>The angle in degrees</returns>
         protected override double CalculateRotationAngle(Point currentPoint)
         {
-            double opposite = (162 / 2) - (currentPoint.Y );
-            double adjacent = currentPoint.X - 8;
-            adjacent = adjacent < 0 ? 0 : adjacent;
+            double opposite = ((162 / 2) - (currentPoint.Y )) ;
+            double adjacent = (ActualWidth - currentPoint.X)-6 * 2;
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
             angleInDegrees = Math.Abs(angleInDegrees - 90);
 
-           ////_debug.Text = String.Format("{0:0.00}, {1:0.00} {2:0.00}", opposite, adjacent, opposite);
+            ////_debug.Text = String.Format(" {0:0.0} {1:0.0} {2:0.0}", opposite, adjacent, angleInDegrees);
 
             return angleInDegrees;
         }
@@ -75,7 +74,7 @@ namespace Codeplex.Dashboarding
         /// </returns>
         protected override double CalculatePointFromNormalisedValue()
         {
-            return NormalizedValue * 180;
+            return -(NormalizedValue * 180);
         }
 
         /// <summary>
@@ -86,7 +85,7 @@ namespace Codeplex.Dashboarding
         /// </returns>
         protected override double CalculatePointFromCurrentNormalisedValue()
         {
-            return CurrentNormalizedValue * 180;
+            return -(CurrentNormalizedValue * 180);
         }
     }
 }

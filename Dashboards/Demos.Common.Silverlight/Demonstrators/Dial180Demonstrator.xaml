@@ -15,8 +15,9 @@
             <ColumnDefinition Width="470"/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle RadiusX="10" RadiusY="10" Fill="Black"/>
+        <Rectangle RadiusX="10" RadiusY="10" />
         <StackPanel Orientation="Vertical">
+
             <db:Dial180North  Grid.Row="1" 
             FaceTextVisibility="{Binding Path=FaceTextVisibility}"
             FaceTextColor="{Binding Path=FaceTextColor}"                     
@@ -34,12 +35,57 @@
             AnimationDuration="{Binding Path=AnimationDuration}"
               
             Value="{Binding CurrentValue, Mode=TwoWay}"
-                     >
+                              >
 
             </db:Dial180North>
 
+            <db:Dial180South  Grid.Row="1" Margin="0,4,0,0" 
+            FaceTextVisibility="{Binding Path=FaceTextVisibility}"
+            FaceTextColor="{Binding Path=FaceTextColor}"                     
+            FaceTextFormat="{Binding Path=FaceTextFormat}"                     
+                     
+            ValueTextVisibility="{Binding Path=ValueTextVisibility}"
+            ValueTextColor="{Binding Path=ValueTextColor}"                     
+            ValueTextFormat="{Binding Path=ValueTextFormat}"                     
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
+            IsBidirectional="{Binding Path=IsBidirectional}"
+            Minimum="{Binding Path=Minimum}"                     
+            Maximum="{Binding Path=Maximum}"     
+            AnimationDuration="{Binding Path=AnimationDuration}"
+              
+            Value="{Binding CurrentValue, Mode=TwoWay}"
+                              >
 
-            <db:Dial180East  Grid.Row="1" 
+            </db:Dial180South>
+
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                <db:Dial180West  
+            FaceTextVisibility="{Binding Path=FaceTextVisibility}"
+            FaceTextColor="{Binding Path=FaceTextColor}"                     
+            FaceTextFormat="{Binding Path=FaceTextFormat}"                     
+                     
+            ValueTextVisibility="{Binding Path=ValueTextVisibility}"
+            ValueTextColor="{Binding Path=ValueTextColor}"                     
+            ValueTextFormat="{Binding Path=ValueTextFormat}"                     
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
+            IsBidirectional="{Binding Path=IsBidirectional}"
+            Minimum="{Binding Path=Minimum}"                     
+            Maximum="{Binding Path=Maximum}"     
+            AnimationDuration="{Binding Path=AnimationDuration}"
+              
+            Value="{Binding CurrentValue, Mode=TwoWay}"
+                >
+
+                </db:Dial180West>
+
+
+                <db:Dial180East Margin="4,0,0,0" 
             FaceTextVisibility="{Binding Path=FaceTextVisibility}"
             FaceTextColor="{Binding Path=FaceTextColor}"                     
             FaceTextFormat="{Binding Path=FaceTextFormat}"                     
@@ -60,7 +106,10 @@
 
             </db:Dial180East>
 
-
+</StackPanel>
+            
+            
+            
         </StackPanel>
 
 

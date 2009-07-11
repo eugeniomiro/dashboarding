@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Codeplex.Dashboarding.Wpf")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Codeplex.Dashboarding")]
+[assembly: AssemblyDescription("Open source dashboard controls for Silverlight")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Codeplex.Dashboarding.Wpf")]
-[assembly: AssemblyCopyright("Copyright ©  2009")]
+[assembly: AssemblyCompany("David black")]
+[assembly: AssemblyProduct("Codeplex.Dashboarding")]
+[assembly: AssemblyCopyright("Copyright © David Black 2008 - 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

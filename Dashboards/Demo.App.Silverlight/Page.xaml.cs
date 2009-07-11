@@ -24,7 +24,6 @@ namespace Demo.App.Silverlight
             _demonstrations = DemonstratorDiscovery.FindDemonstrators();
             InitializeDemonstaratorSelection();
             PopupColorPicker.Instance = _colorPicker;
-            PopupColorPicker.Instance.Show();
         }
 
         /// <summary>
