@@ -244,7 +244,7 @@ namespace Codeplex.Dashboarding
         /// <param name="duration">The duration.</param>
         private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
         {
-            _txt11.Text = FormattedValue;
+            this.UpdateTextFormat();
 
             double point = -150 + (3 * (normalizedValue * 100));
 

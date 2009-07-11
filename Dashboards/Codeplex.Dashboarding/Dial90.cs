@@ -94,8 +94,9 @@ namespace Codeplex.Dashboarding
         protected void InitializeDial90()
         {
             this.InitialiseRefs();
+            SetValue(FaceTextColorProperty, Colors.White);
+            SetValue(ValueTextColorProperty, Colors.Black);
             RegisterGrabHandle(this.grabHandleCanvas);
-            FaceTextColor = Colors.White;
         }
 
         /// <summary>

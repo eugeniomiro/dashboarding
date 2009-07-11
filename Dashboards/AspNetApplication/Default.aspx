@@ -100,6 +100,7 @@
                     <param name="initParams" value="demo=FirstStep" />
                     <param name="background" value="Transparent" />
                     <param name="windowless" value="True" />
+                    <param name="EnableFrameRateCounter" value="True" />
                 </object>
             </td>
         </tr>

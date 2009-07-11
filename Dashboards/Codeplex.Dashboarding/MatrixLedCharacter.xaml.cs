@@ -37,7 +37,7 @@ namespace Codeplex.Dashboarding
     /// columns cou;ld represent an extremely low resolution picture!
     /// </para>
     /// </summary>
-    public partial class MatrixLedCharacter : UserControl
+    public partial class MatrixLedCharacter : PlatformIndependentDashboard
     {
         #region Fields
 
@@ -78,8 +78,8 @@ namespace Codeplex.Dashboarding
             InitializeComponent();
             this.Clear();
 
-            this.LedOffColor = Color.FromArgb(0x22, 0xdd, 0x00, 0x00);
-            this.LedOnColor = Color.FromArgb(0xFF, 0xdd, 0x00, 0x00);
+            this.LedOffColor = Color.FromArgb(0x22, 0xFF, 0x00, 0x00);
+            this.LedOnColor = Color.FromArgb(0xFF, 0xFF, 0x00, 0x00);
             this.Loaded += new RoutedEventHandler(this.MatrixLedCharacter_Loaded);
         }
 
@@ -159,6 +159,27 @@ namespace Codeplex.Dashboarding
         }
 
         #endregion Properties
+        /// <summary>
+        /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
+        /// neutral manner
+        /// </summary>
+        /// <value>The resource root.</value>
+        protected override Grid ResourceRoot
+        {
+            get { return LayoutRoot; }
+        }
+
+        /// <summary>
+        /// Gets or sets the led on brush, cached for efficiency (Cheers Inferno).
+        /// </summary>
+        /// <value>The led on brush.</value>
+        private SolidColorBrush LedOnBrush { get; set; }
+
+        /// <summary>
+        /// Gets or sets the led off brush, cached for efficiency (Cheers Inferno).
+        /// </summary>
+        /// <value>The led on brush.</value>
+        private SolidColorBrush LedOffBrush { get; set; }
 
         #region Methods
 
@@ -201,6 +222,7 @@ namespace Codeplex.Dashboarding
         private static void ColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             MatrixLedCharacter instance = dependancy as MatrixLedCharacter;
+            instance.LedColorChanged();
 
             if (instance != null && instance.DashboardLoaded)
             {
@@ -286,7 +308,7 @@ namespace Codeplex.Dashboarding
         {
             if (el != null)
             {
-                el.Fill = new SolidColorBrush(on ? this.LedOnColor : this.LedOffColor);
+                el.Fill = on ? this.LedOnBrush : this.LedOffBrush;
             }
         }
 
@@ -313,6 +335,24 @@ namespace Codeplex.Dashboarding
             }
 
             this.UpdateLedsFromState();
+        }
+
+        /// <summary>
+        /// One of the LED colors changed update the cached brushes
+        /// </summary>
+        private void LedColorChanged()
+        {
+            if (this.LedOnBrush == null || (this.LedOnBrush != null && this.LedOnBrush.Color != this.LedOnColor))
+            {
+                this.LedOnBrush = new SolidColorBrush(this.LedOnColor);
+                Freeze(this.LedOnBrush);
+            }
+
+            if (this.LedOffBrush == null || (this.LedOffBrush != null && this.LedOffBrush.Color != this.LedOffColor))
+            {
+                this.LedOffBrush = new SolidColorBrush(this.LedOffColor);
+                Freeze(this.LedOffBrush);
+            }
         }
 
         /// <summary>

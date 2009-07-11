@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Dial180North.xaml.cs" company="David Black">
+// <copyright file="Dial180South.xaml.cs" company="David Black">
 //      Copyright 2008 David Black
 //  
 //      Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,21 +30,17 @@ namespace Codeplex.Dashboarding
     /// A needle and dial face control where the needle sweeps a 180 degree path from west to east. A Dial180 can be instantiated
     /// in XAML or in code. 
     /// </summary>
-    public partial class Dial180North : Dial180
+    public partial class Dial180South : Dial180
     {
         /// <summary>
-        /// Width of the facia band
+        /// Initializes a new instance of the <see cref="Dial180South"/> class.
         /// </summary>
-        private const int FaciaWidth = 6;
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dial180North"/> class.
-        /// </summary>
-        public Dial180North()
+        public Dial180South()
         {
             InitializeComponent();
             InitializeDial180();
         }
-    
+
         /// <summary>
         /// Gets the resource root. This allow us to access the Storyboards in a Silverlight/WPf
         /// neutral manner
@@ -63,26 +59,18 @@ namespace Codeplex.Dashboarding
         /// <returns>The angle in degrees</returns>
         protected override double CalculateRotationAngle(Point currentPoint)
         {
-            double opposite = (currentPoint.Y + FaciaWidth) - (172 / 2);
-            double adjacent = currentPoint.X - (ActualWidth / 2);
+            double opposite = currentPoint.Y -6 ;
+            opposite = opposite > 0 ? opposite : 0;
+            double adjacent = (ActualWidth / 2) - currentPoint.X;
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
-            if (currentPoint.X >= (ActualWidth / 2) && currentPoint.Y <= (172 / 2))
+            if (angleInDegrees < 0)
             {
                 angleInDegrees = 180 + angleInDegrees;
             }
-            else if (currentPoint.X < (ActualWidth / 2) && currentPoint.Y <= (172 / 2))
-            {
-                // already done
-            }
-            else if (currentPoint.X >= (ActualWidth / 2) && currentPoint.Y > (172 / 2))
-            {
-                angleInDegrees = 180 + angleInDegrees;
-            }
-
-            ////_debug.Text = String.Format("{0:0.00}, {1:0.00} {2:0.00}", opposite, adjacent, angleInDegrees);
-
+            ////_debug.Text = String.Format("{0:0.0} {1:0.0} {2:0.0}", opposite, adjacent, angleInDegrees);
+            
             return angleInDegrees;
         }
 
@@ -94,7 +82,7 @@ namespace Codeplex.Dashboarding
         /// </returns>
         protected override double CalculatePointFromNormalisedValue()
         {
-            return -90 + (NormalizedValue * 180);
+            return 90 - (NormalizedValue * 180);
         }
 
         /// <summary>
@@ -105,7 +93,7 @@ namespace Codeplex.Dashboarding
         /// </returns>
         protected override double CalculatePointFromCurrentNormalisedValue()
         {
-            return -90 + (CurrentNormalizedValue * 180);
+            return 90 - (CurrentNormalizedValue * 180);
         }
     }
 }

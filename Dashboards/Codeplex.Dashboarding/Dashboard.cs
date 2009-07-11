@@ -474,6 +474,7 @@ namespace Codeplex.Dashboarding
             if (instance != null && instance.DashboardLoaded)
             {
                 instance.UpdateTextFormat();
+                ValuePropertyChanged(dependancy, args);
                 instance.OnPropertyChanged("Maximum");
             }
         }

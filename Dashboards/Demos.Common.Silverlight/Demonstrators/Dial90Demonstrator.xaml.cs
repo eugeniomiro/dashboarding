@@ -10,7 +10,7 @@ namespace Demos.Common.Demonstrators
 
         public string DemoName
         {
-            get { return "Dial90"; }
+            get { return "* Dial90"; }
         }
 
 
@@ -27,16 +27,7 @@ namespace Demos.Common.Demonstrators
     /// </summary>
     public partial class Dial90Demonstrator : UserControl
     {
-        private BoundObject _object = new BoundObject
-        {
-            CurrentValue = 50,
-            FaceTextColor = Colors.White,
-            FaceTextFormat = "{0:0}",
-            FaceTextVisibility = Visibility.Visible,
-            ValueTextColor = Colors.Black,
-            ValueTextFormat = "{0:0}",
-            ValueTextVisibility = Visibility.Visible,
-        };
+        private BoundObject _object = BoundObject.Create(Colors.White);
 
         public Dial90Demonstrator()
         {

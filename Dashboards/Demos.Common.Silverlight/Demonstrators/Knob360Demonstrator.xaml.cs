@@ -14,7 +14,7 @@ namespace Demos.Common.Demonstrators
         /// <value>The name.</value>
         public string DemoName
         {
-            get { return "Knob360"; }
+            get { return "* Knob360"; }
         }
 
         /// <summary>
@@ -32,16 +32,7 @@ namespace Demos.Common.Demonstrators
     /// </summary>
     public partial class Knob360Demonstrator : UserControl
     {
-        private BoundObject _object = new BoundObject
-        {
-            CurrentValue = 50,
-            FaceTextColor = Colors.White,
-            FaceTextFormat = "{0:0}",
-            FaceTextVisibility = Visibility.Visible,
-            ValueTextColor = Colors.White,
-            ValueTextFormat = "{0:0}",
-            ValueTextVisibility = Visibility.Visible,
-        };
+        private BoundObject _object = BoundObject.Create(Colors.White);
 
 
         public Knob360Demonstrator()

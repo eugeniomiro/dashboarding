@@ -54,6 +54,7 @@ namespace Demo.App.Wpf
         {
             if (e.AddedItems.Count > 0)
             {
+
                 _contentPanel.Children.Clear();
                 _contentPanel.Children.Add(((IDemonstrateDials)e.AddedItems[0]).Create());
             }

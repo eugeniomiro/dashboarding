@@ -13,7 +13,7 @@ namespace Demos.Common.Demonstrators
 
         public string DemoName
         {
-            get { return "Dial180"; }
+            get { return "* Dial180"; }
         }
 
         public UserControl Create()
@@ -31,18 +31,7 @@ namespace Demos.Common.Demonstrators
     public partial class Dial180Demonstrator : UserControl
     {
 
-        private BoundObject _object = new BoundObject
-        {
-            CurrentValue = 50,
-            FaceTextColor = Colors.White,
-            FaceTextFormat = "{0:0}",
-            FaceTextVisibility = Visibility.Visible,
-            ValueTextColor = Colors.White,
-            ValueTextFormat = "{0:0}",
-            ValueTextVisibility = Visibility.Visible,
-            FaceColorRange = new ColorPointCollection(),
-            NeedleColorRange = new ColorPointCollection()
-        };
+        private BoundObject _object = BoundObject.Create(Colors.White);
 
 
         public Dial180Demonstrator()

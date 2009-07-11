@@ -14,7 +14,7 @@ namespace Demos.Common.Demonstrators
     /// <summary>
     /// Interaction logic for AllControlsDemonstrator.xaml
     /// </summary>
-    public partial class AllControlsDemonstrator : UserControl
+    public partial class AllControlsDemonstrator : UserControl, IDisposable
     {
         BoundObject bo = new BoundObject();
         private Random _random = new Random();
@@ -89,9 +89,17 @@ namespace Demos.Common.Demonstrators
         }
 
         private Random random = new Random();
-     
 
 
+
+
+        #region IDisposable Members
+
+        public void Dispose()
+        {
+        }
+
+        #endregion
     }
 
 
@@ -102,7 +110,7 @@ namespace Demos.Common.Demonstrators
 
         public string DemoName
         {
-            get { return "All controls"; }
+            get { return "* All controls"; }
         }
 
 

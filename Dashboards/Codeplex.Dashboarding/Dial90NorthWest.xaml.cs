@@ -30,6 +30,10 @@ namespace Codeplex.Dashboarding
     public partial class Dial90NorthWest : Dial90
     {
         /// <summary>
+        /// Width of the dial face band
+        /// </summary>
+        private const int FaciaWidth = 8;
+        /// <summary>
         /// Initializes a new instance of the <see cref="Dial90NorthWest"/> class.
         /// </summary>
         public Dial90NorthWest()
@@ -56,15 +60,15 @@ namespace Codeplex.Dashboarding
         /// <returns>The angle in degrees</returns>
         protected override double CalculateRotationAngle(Point currentPoint)
         {
-            double opposite = currentPoint.Y - ActualHeight;
-            double adjacent = currentPoint.X - ActualWidth;
+            double opposite = (currentPoint.Y + FaciaWidth * 2) - ActualHeight;
+            double adjacent = (currentPoint.X + FaciaWidth * 2) - ActualWidth ;
+            adjacent = adjacent >= 0 ? -0.1 : adjacent ;
+
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);
 
-            if (currentPoint.X >= ActualWidth && currentPoint.Y <= ActualHeight)
-            {
-                angleInDegrees = 180 + angleInDegrees;
-            }  
+            _debug.Text = String.Format("{0:0.00} {1:0.00} {2:0.00}", opposite, adjacent, angleInDegrees);
+
   
             return angleInDegrees;
         }

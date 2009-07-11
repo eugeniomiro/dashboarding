@@ -113,6 +113,8 @@ namespace Codeplex.Dashboarding
         protected void InitializeDial180()
         {
             this.InitialiseRefs();
+            SetValue(FaceTextColorProperty, Colors.White);
+            SetValue(ValueTextColorProperty, Colors.Black);
             RegisterGrabHandle(this.grabHandleCanvas);
         }
 

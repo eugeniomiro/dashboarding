@@ -18,20 +18,23 @@
         <Rectangle RadiusX="10" RadiusY="10" Fill="Black"/>
         <StackPanel Orientation="Vertical">
             <db:Knob360  Grid.Row="1" 
-            FaceTextVisibility="{Binding Path=FaceTextVisibility}"
+           FaceTextVisibility="{Binding Path=FaceTextVisibility}"
             FaceTextColor="{Binding Path=FaceTextColor}"                     
             FaceTextFormat="{Binding Path=FaceTextFormat}"                     
                      
             ValueTextVisibility="{Binding Path=ValueTextVisibility}"
             ValueTextColor="{Binding Path=ValueTextColor}"                     
             ValueTextFormat="{Binding Path=ValueTextFormat}"                     
-
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
             IsBidirectional="{Binding Path=IsBidirectional}"
             Minimum="{Binding Path=Minimum}"                     
             Maximum="{Binding Path=Maximum}"     
             AnimationDuration="{Binding Path=AnimationDuration}"
               
             Value="{Binding CurrentValue, Mode=TwoWay}"
+                              
                      >
 
             </db:Knob360>

@@ -504,6 +504,7 @@ namespace Codeplex.Dashboarding
         {
             this.ManifestChanges();
             this.Isloaded = true;
+            this.timer.Interval = this.TimerDuration.TimeSpan;
             this.timer.Start();
         }
 
@@ -604,6 +605,7 @@ namespace Codeplex.Dashboarding
             for (int i = 0; i < this.Panels; i++)
             {
                 MatrixLedCharacter ch = new MatrixLedCharacter();
+                ch.DashboardLoaded = true;
                 ch.LedOnColor = this.LedOnColor;
                 ch.LedOffColor = this.LedOffColor;
                 this.characters.Add(ch);

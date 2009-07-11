@@ -167,7 +167,7 @@ namespace Codeplex.Dashboarding
         #endregion
 
         #region private methods
-       
+
         /// <summary>
         /// The FaceColorRange property changed, update the visuals
         /// </summary>
@@ -177,6 +177,7 @@ namespace Codeplex.Dashboarding
         private static void FaceColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
+            instance.RegisterFaceColorRangeEvent();
             if (instance != null && instance.DashboardLoaded)
             {
                 instance.UpdateFaceColor();
@@ -192,12 +193,55 @@ namespace Codeplex.Dashboarding
             private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
+            instance.RegisterNeedleColorRangeEvent();
             if (instance != null && instance.DashboardLoaded)
             {
                 instance.UpdateNeedleColor();
                 instance.OnPropertyChanged("NeedleColorRange");
             }
         }
+
+            /// <summary>
+            /// Registers an event allowing us to update the display of the dial as the face color range changes.
+            /// </summary>
+            private void RegisterFaceColorRangeEvent()
+            {
+                if (this.FaceColorRange != null)
+                {
+                    this.FaceColorRange.CollectionChanged += this.FaceColorRange_CollectionChanged;
+                }
+            }
+
+            /// <summary>
+            /// Handles the CollectionChanged event of the FaceColorRange control, updating the visuals to match the new values in the collection.
+            /// </summary>
+            /// <param name="sender">The source of the event.</param>
+            /// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+            private void FaceColorRange_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+            {
+                this.UpdateFaceColor();
+            }
+
+            /// <summary>
+            /// Registers an event to handle updates on the needle color range.
+            /// </summary>
+            private void RegisterNeedleColorRangeEvent()
+            {
+                if (this.NeedleColorRange != null)
+                {
+                    this.NeedleColorRange.CollectionChanged += this.NeedleColorRange_CollectionChanged;
+                }
+            }
+
+            /// <summary>
+            /// Handles the CollectionChanged event of the NeedleColorRange control, updating the visuals to match the new values in the collection.
+            /// </summary>
+            /// <param name="sender">The source of the event.</param>
+            /// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+            private void NeedleColorRange_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+            {
+                this.UpdateNeedleColor();
+            }
         #endregion
     }
 }

@@ -122,6 +122,27 @@ namespace Codeplex.Dashboarding
 
         #endregion
 
+        #region Private properties
+        /// <summary>
+        /// Gets or sets the led on brush, cached for efficiency (Cheers Inferno).
+        /// </summary>
+        /// <value>The led on brush.</value>
+        private SolidColorBrush LedOnBrush { get; set; }
+
+        /// <summary>
+        /// Gets or sets the led off brush, cached for efficiency (Cheers Inferno).
+        /// </summary>
+        /// <value>The led on brush.</value>
+        private SolidColorBrush LedOffBrush { get; set; }
+
+        /// <summary>
+        /// Gets or sets the led off brush, cached for efficiency (Cheers Inferno).
+        /// </summary>
+        /// <value>The led on brush.</value>
+        private SolidColorBrush MeterBorderBrush { get; set; }
+
+        #endregion
+
         #region protected methods
         /// <summary>
         /// Display the control according the the current value. That means
@@ -143,7 +164,7 @@ namespace Codeplex.Dashboarding
                     else
                     {
                         sb.Stop();
-                        sb.Seek(new TimeSpan(0, 0, 0));
+                        sb.Seek(TimeSpan.Zero);
                     }
                 }
             }
@@ -185,6 +206,7 @@ namespace Codeplex.Dashboarding
         #endregion
 
         #region private methods
+
         /// <summary>
         /// BorderColor property has changed, deal with it
         /// </summary>
@@ -193,10 +215,35 @@ namespace Codeplex.Dashboarding
         private static void ColorPropertyChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             DecadeVuMeter instance = dependancy as DecadeVuMeter;
+            instance.LedColorChanged();
 
             if (instance != null && instance.DashboardLoaded)
             {
                 instance.SetAllLedColors();
+            }
+        }
+
+        /// <summary>
+        /// A Leds color changed, update the brushes used to render them.
+        /// </summary>
+        private void LedColorChanged()
+        {
+            if (this.LedOnBrush == null || (this.LedOnBrush != null && this.LedOnBrush.Color != this.LedOnColor))
+            {
+                this.LedOnBrush = new SolidColorBrush(this.LedOnColor);
+                Freeze(this.LedOnBrush);
+            }
+
+            if (this.LedOffBrush == null || (this.LedOffBrush != null && this.LedOffBrush.Color != this.LedOffColor))
+            {
+                this.LedOffBrush = new SolidColorBrush(this.LedOffColor);
+                Freeze(this.LedOffBrush);
+            }
+
+            if (this.MeterBorderBrush == null || (this.MeterBorderBrush != null && this.MeterBorderBrush.Color != this.BorderColor))
+            {
+                this.MeterBorderBrush = new SolidColorBrush(this.BorderColor);
+                Freeze(this.MeterBorderBrush);
             }
         }
 
@@ -268,8 +315,8 @@ namespace Codeplex.Dashboarding
             Rectangle led = LayoutRoot.FindName("_led" + i) as Rectangle;
             if (led != null)
             {
-                led.Stroke = new SolidColorBrush(this.BorderColor);
-                led.Fill = new SolidColorBrush(this.LedOffColor);
+                led.Stroke = this.MeterBorderBrush;
+                led.Fill = this.LedOffBrush;
             }
         }
         #endregion

@@ -21,6 +21,7 @@ namespace Codeplex.Dashboarding
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
     using System.Windows.Media.Animation;
 
     /// <summary>
@@ -176,7 +177,7 @@ namespace Codeplex.Dashboarding
 
         /// <summary>
         /// Starts the specified story board, this differs between Silverlight and
-        /// WPF because under WPF we have to specify the animation is controlable
+        /// WPF because under WPF we have to specify the animation is controllable
         /// because a value change may force us to alter the animation endpoint.
         /// </summary>
         /// <param name="sb">The storyboard.</param>
@@ -204,6 +205,17 @@ namespace Codeplex.Dashboarding
             return (Storyboard)this.ResourceRoot.Resources[name];
 #else
             return (Storyboard)this.ResourceRoot.FindName(name);
+#endif
+        }
+
+        /// <summary>
+        /// Freezes the specified brush, in WPF and performs a noop in silverlight.
+        /// </summary>
+        /// <param name="brush">The brush.</param>
+        protected void Freeze(Brush brush)
+        {
+#if WPF
+            brush.Freeze();
 #endif
         }
     }

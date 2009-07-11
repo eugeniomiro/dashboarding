@@ -25,14 +25,16 @@
             ValueTextVisibility="{Binding Path=ValueTextVisibility}"
             ValueTextColor="{Binding Path=ValueTextColor}"                     
             ValueTextFormat="{Binding Path=ValueTextFormat}"                     
-
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
             IsBidirectional="{Binding Path=IsBidirectional}"
             Minimum="{Binding Path=Minimum}"                     
             Maximum="{Binding Path=Maximum}"     
             AnimationDuration="{Binding Path=AnimationDuration}"
               
             Value="{Binding CurrentValue, Mode=TwoWay}"
-                     >
+                              >
 
             </db:Dial90NorthEast>
 
@@ -44,7 +46,9 @@
             ValueTextVisibility="{Binding Path=ValueTextVisibility}"
             ValueTextColor="{Binding Path=ValueTextColor}"                     
             ValueTextFormat="{Binding Path=ValueTextFormat}"                     
-
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
             IsBidirectional="{Binding Path=IsBidirectional}"
             Minimum="{Binding Path=Minimum}"                     
             Maximum="{Binding Path=Maximum}"     
@@ -62,7 +66,9 @@
             ValueTextVisibility="{Binding Path=ValueTextVisibility}"
             ValueTextColor="{Binding Path=ValueTextColor}"                     
             ValueTextFormat="{Binding Path=ValueTextFormat}"                     
-
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
             IsBidirectional="{Binding Path=IsBidirectional}"
             Minimum="{Binding Path=Minimum}"                     
             Maximum="{Binding Path=Maximum}"     
@@ -80,7 +86,9 @@
             ValueTextVisibility="{Binding Path=ValueTextVisibility}"
             ValueTextColor="{Binding Path=ValueTextColor}"                     
             ValueTextFormat="{Binding Path=ValueTextFormat}"                     
-
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
             IsBidirectional="{Binding Path=IsBidirectional}"
             Minimum="{Binding Path=Minimum}"                     
             Maximum="{Binding Path=Maximum}"     

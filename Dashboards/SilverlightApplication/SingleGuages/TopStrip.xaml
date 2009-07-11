@@ -139,7 +139,7 @@ xmlns:demo="clr-namespace:SilverlightApplication.SingleGuages"
 
         <db:MatrixLedMarquee HorizontalAlignment="Left" Margin="12,0,0,7"  VerticalAlignment="Bottom"
             Panels="20" 
-            TimerDuration="00:00:0.1"
+            TimerDuration="00:00:0.01"
             LedOnColor="#FF00FF00"
             LedOffColor="#2200FF00"
             Mode="Continuous"                             

@@ -113,9 +113,9 @@
         </Grid>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="5">
-            <local:ColorRangeExperimenter Title="FaceColorRange" Points="{Binding Path=FaceColorRange, Mode=TwoWay}"  Grid.Row="4"/>
+            <local:ColorRangeExperimenter x:Name="_colorRange1" Title="FaceColorRange" Points="{Binding Path=FaceColorRange, Mode=TwoWay}"  Grid.Row="4"/>
 
-            <local:ColorRangeExperimenter Title="NeedleColorRange" Points="{Binding Path=NeedleColorRange, Mode=TwoWay}"  Grid.Row="5"/>
+            <local:ColorRangeExperimenter x:Name="_colorRange2" Title="NeedleColorRange" Points="{Binding Path=NeedleColorRange, Mode=TwoWay}"  Grid.Row="5"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -10,7 +10,7 @@ namespace Demos.Common.Demonstrators
 
         public string DemoName
         {
-            get { return "Thermometers"; }
+            get { return "* Thermometers"; }
         }
 
         public UserControl Create()
@@ -27,7 +27,7 @@ namespace Demos.Common.Demonstrators
     /// </summary>
     public partial class PlainThermometerDemonstrator : UserControl
     {
-        private BoundObject _object = new BoundObject { CurrentValue = 50, FaceTextColor = Colors.White, ValueTextColor = Colors.Yellow};
+        private BoundObject _object = BoundObject.Create(Colors.Blue);
 
         public PlainThermometerDemonstrator()
         {

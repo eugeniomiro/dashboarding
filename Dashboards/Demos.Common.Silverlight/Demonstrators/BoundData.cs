@@ -18,7 +18,7 @@ namespace Demos.Common.Demonstrators
         private double _minValue = 0;
         private double _maxValue = 100;
         private bool _isBidirectional;
-        private double _animationDuration = 0.75;
+        private TimeSpan _animationDuration = new TimeSpan(0,0,0,0,750);
         private ColorPointCollection _faceColorRange;
         private ColorPointCollection _needleColorRange;
 
@@ -156,7 +156,7 @@ namespace Demos.Common.Demonstrators
         /// Gets or sets the duration of the animation.
         /// </summary>
         /// <value>The duration of the animation.</value>
-        public double AnimationDuration
+        public TimeSpan AnimationDuration
         {
             get { return _animationDuration; }
             set { _animationDuration = value; OnPropertyChanged("AnimationDuration"); }
@@ -196,5 +196,21 @@ namespace Demos.Common.Demonstrators
         }
 
         #endregion
+
+        internal static BoundObject Create(Color textColor)
+        {
+            return new BoundObject
+            {
+                CurrentValue = 50,
+                FaceTextColor = textColor,
+                FaceTextFormat = "{0:0}",
+                FaceTextVisibility = Visibility.Visible,
+                ValueTextColor = textColor,
+                ValueTextFormat = "{0:0}",
+                ValueTextVisibility = Visibility.Visible,
+                FaceColorRange = new ColorPointCollection(),
+                NeedleColorRange = new ColorPointCollection()
+            };
+        }
     }
 }

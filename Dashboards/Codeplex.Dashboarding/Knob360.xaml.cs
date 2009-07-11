@@ -37,7 +37,7 @@ namespace Codeplex.Dashboarding
         public Knob360()
         {
             InitializeComponent();
-            SetValue(FaceTextColorProperty, Colors.White);
+            SetValue(ValueTextColorProperty, Colors.White);
             RegisterGrabHandle(_indicator);
         }
 
@@ -249,7 +249,7 @@ namespace Codeplex.Dashboarding
         /// <param name="duration">The duration.</param>
         private void SetPointerByAnimationOverSetTime(double normalizedValue, double value, TimeSpan duration)
         {
-            _txt11.Text = FormattedValue;
+            this.UpdateTextFormat();
 
             SplineDoubleKeyFrame needle = SetFirstChildSplineDoubleKeyFrameTime(AnimateIndicatorStoryboard, (-150 + (300 * normalizedValue)) - 2);
             needle.KeyTime = KeyTime.FromTimeSpan(duration);

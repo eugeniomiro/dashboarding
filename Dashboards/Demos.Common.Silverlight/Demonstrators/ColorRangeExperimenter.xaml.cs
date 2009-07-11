@@ -87,5 +87,12 @@ namespace Demos.Common.Demonstrators
         {   
             _editingColorPoint.HiColor = e.Color;
         }
+
+        private void _deletePoint_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            _editingColorPoint = b.DataContext as ColorPoint;
+            Points.Remove(_editingColorPoint);
+        }
     }
 }
