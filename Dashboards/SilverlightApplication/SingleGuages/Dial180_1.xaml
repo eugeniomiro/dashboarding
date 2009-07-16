@@ -6,8 +6,24 @@
     >
     <Grid x:Name="LayoutRoot" >
         <StackPanel Orientation="Horizontal">
-        <db:Dial180North />
-            <db:Dial180East Margin="10,0,0,0" />
+            <StackPanel Orientation="Vertical">
+                <db:Dial180North Value="32" />
+                <db:Dial180South Value="32"  Margin="0,4,0,0"/>
+            </StackPanel>
+            <db:Dial180West Value="32"  Margin="4,0,0,0" />
+            <db:Dial180East Value="32"  Margin="4,0,0,0" />
+
+            <StackPanel Orientation="Vertical">
+                <db:Dial90NorthWest Value="32"  />
+                <db:Dial90SouthWest Value="32" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <db:Dial90NorthEast Value="32"  />
+                <db:Dial90SouthEast Value="32" />
+            </StackPanel>
+
+            <db:Dial360  Value="32" />
+            <db:Knob360  Value="32" />
         </StackPanel>
     </Grid>
 </UserControl>

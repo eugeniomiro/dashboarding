@@ -66,12 +66,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="DefaultOld.aspx.cs">
+      <DependentUpon>DefaultOld.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="DefaultOld.aspx.designer.cs">
+      <DependentUpon>DefaultOld.aspx</DependentUpon>
     </Compile>
     <Compile Include="Extras\Bidirection.aspx.cs">
       <DependentUpon>Bidirection.aspx</DependentUpon>
@@ -233,9 +233,8 @@
   <ItemGroup>
     <Content Include="ClientBin\Demo.App.Silverlight.xap" />
     <Content Include="ClientBin\SilverlightApplication.xap" />
+    <Content Include="DefaultOld.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Demo.App.SilverlightTestPage.aspx" />
-    <Content Include="Demo.App.SilverlightTestPage.html" />
     <Content Include="dove2.png" />
     <Content Include="Extras\Bidirection.aspx" />
     <Content Include="Extras\Contacts.aspx" />
