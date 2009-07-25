@@ -232,6 +232,7 @@ namespace Codeplex.Dashboarding
             this.UpdateTextColor();
             this.UpdateTextFormat();
             this.UpdateTextVisibility();
+            this.UpdateFontStyle();
         }
 
         /// <summary>
@@ -242,6 +243,16 @@ namespace Codeplex.Dashboarding
             _lowWaterMark.Foreground = new SolidColorBrush(ValueTextColor);
             _highWaterMark.Foreground = new SolidColorBrush(ValueTextColor);
         }
+
+        /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected override void UpdateFontStyle()
+        {
+            CopyFontDetails(_lowWaterMark);
+            CopyFontDetails(_highWaterMark);
+        }
+
 
         /// <summary>
         /// The format string for the value has changed

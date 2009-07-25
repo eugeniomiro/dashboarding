@@ -12,40 +12,108 @@
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
 
                 <StackPanel Orientation="Vertical">
-                    <db:Dial180North Value="{Binding CurrentValue, Mode=TwoWay}" />
-                    <db:Dial180South Value="{Binding CurrentValue, Mode=TwoWay}" Margin="0,4,0,0" />
+                    <db:Dial180North FontFamily="Arial Black" FontSize="12" Value="{Binding CurrentValue, Mode=TwoWay}" >
+                    	<db:Dial180North.Effect>
+                    		<DropShadowEffect/>
+                    	</db:Dial180North.Effect>
+                    </db:Dial180North>
+                    <db:Dial180South FontSize="11" Value="{Binding CurrentValue, Mode=TwoWay}" Margin="0,8,0,0" >
+                    	<db:Dial180South.Effect>
+                    		<DropShadowEffect/>
+                    	</db:Dial180South.Effect>
+                    </db:Dial180South>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="3,0,0,0">
-                    <db:Dial180West Value="{Binding CurrentValue, Mode=TwoWay}" />
-                    <db:Dial180East Value="{Binding CurrentValue, Mode=TwoWay}" Margin="4,0,0,0"/>
+                    <db:Dial180West FontSize="12" Value="{Binding CurrentValue, Mode=TwoWay}" >
+                    	<db:Dial180West.Effect>
+                    		<DropShadowEffect/>
+                    	</db:Dial180West.Effect>
+                    </db:Dial180West>
+                    <db:Dial180East FontSize="13" Value="{Binding CurrentValue, Mode=TwoWay}" Margin="8,0,0,0">
+                    	<db:Dial180East.Effect>
+                    		<DropShadowEffect/>
+                    	</db:Dial180East.Effect>
+                    </db:Dial180East>
                 </StackPanel>
 
-                <db:Dial360 Value="{Binding CurrentValue, Mode=TwoWay}"    />
-                <db:Knob360 Value="{Binding CurrentValue, Mode=TwoWay}"  />
+                <db:Dial360 Value="{Binding CurrentValue, Mode=TwoWay}"    >
+                	<db:Dial360.Effect>
+                		<DropShadowEffect/>
+                	</db:Dial360.Effect>
+                </db:Dial360>
+                <db:Knob360 Value="{Binding CurrentValue, Mode=TwoWay}"  >
+                	<db:Knob360.Effect>
+                		<DropShadowEffect/>
+                	</db:Knob360.Effect>
+                </db:Knob360>
 
             </StackPanel>
 
             <!-- second row -->
             <StackPanel Orientation="Horizontal">
-                <db:Dial90NorthWest Value="{Binding CurrentValue, Mode=TwoWay}"  />
-                <db:Dial90NorthEast Value="{Binding CurrentValue, Mode=TwoWay}"  />
-                <db:Dial90SouthWest Value="{Binding CurrentValue, Mode=TwoWay}"  />
-                <db:Dial90SouthEast  Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <db:Dial90NorthWest Value="{Binding CurrentValue, Mode=TwoWay}"  >
+                	<db:Dial90NorthWest.Effect>
+                		<DropShadowEffect/>
+                	</db:Dial90NorthWest.Effect>
+                </db:Dial90NorthWest>
+                <db:Dial90NorthEast Value="{Binding CurrentValue, Mode=TwoWay}" Margin="4,0,0,0"  >
+                	<db:Dial90NorthEast.Effect>
+                		<DropShadowEffect/>
+                	</db:Dial90NorthEast.Effect>
+                </db:Dial90NorthEast>
+                <db:Dial90SouthWest Value="{Binding CurrentValue, Mode=TwoWay}"  >
+                	<db:Dial90SouthWest.Effect>
+                		<DropShadowEffect/>
+                	</db:Dial90SouthWest.Effect>
+                </db:Dial90SouthWest>
+                <db:Dial90SouthEast  Value="{Binding CurrentValue, Mode=TwoWay}" Margin="4,0,0,0" >
+                	<db:Dial90SouthEast.Effect>
+                		<DropShadowEffect/>
+                	</db:Dial90SouthEast.Effect>
+                </db:Dial90SouthEast>
                 <StackPanel  Orientation="Vertical">
-                    <db:DiamondSlider  Value="{Binding CurrentValue, Mode=TwoWay}"   />
-                    <db:FiveStarRanking Value="{Binding CurrentValue, Mode=TwoWay}"  />
-                    <db:ProgressBar Value="{Binding CurrentValue, Mode=TwoWay}"      />
+                    <db:DiamondSlider  Value="{Binding CurrentValue, Mode=TwoWay}"   >
+                    	<db:DiamondSlider.Effect>
+                    		<DropShadowEffect/>
+                    	</db:DiamondSlider.Effect>
+                    </db:DiamondSlider>
+                    <db:FiveStarRanking Value="{Binding CurrentValue, Mode=TwoWay}"  >
+                    	<db:FiveStarRanking.Effect>
+                    		<DropShadowEffect/>
+                    	</db:FiveStarRanking.Effect>
+                    </db:FiveStarRanking>
+                    <db:ProgressBar Value="{Binding CurrentValue, Mode=TwoWay}"      >
+                    	<db:ProgressBar.Effect>
+                    		<DropShadowEffect/>
+                    	</db:ProgressBar.Effect>
+                    </db:ProgressBar>
 
                     <StackPanel Orientation="Horizontal">
-                        <db:TickCross Width="24" Height="24"   Value="{Binding CurrentValue, Mode=TwoWay}"  />
-                        <db:RoundLed Width="24" Height="24"    Value="{Binding CurrentValue, Mode=TwoWay}"  />
+                        <db:TickCross Width="24" Height="24"   Value="{Binding CurrentValue, Mode=TwoWay}"  >
+                        	<db:TickCross.Effect>
+                        		<DropShadowEffect/>
+                        	</db:TickCross.Effect>
+                        </db:TickCross>
+                        <db:RoundLed Width="24" Height="24"    Value="{Binding CurrentValue, Mode=TwoWay}"  >
+                        	<db:RoundLed.Effect>
+                        		<DropShadowEffect/>
+                        	</db:RoundLed.Effect>
+                        </db:RoundLed>
                     </StackPanel>
 
                 </StackPanel>
 
-                <db:PlainThermometer Value="{Binding CurrentValue, Mode=TwoWay}" />
-                <db:WallThermometer  Value="{Binding CurrentValue, Mode=TwoWay}" />
+                <db:PlainThermometer Value="{Binding CurrentValue, Mode=TwoWay}" >
+                	<db:PlainThermometer.Effect>
+                		<DropShadowEffect/>
+                	</db:PlainThermometer.Effect>
+                </db:PlainThermometer>
+                <db:WallThermometer  Value="{Binding CurrentValue, Mode=TwoWay}" >
+                	<db:WallThermometer.Effect>
+                		<DropShadowEffect/>
+                	</db:WallThermometer.Effect>
+                </db:WallThermometer>
 
             </StackPanel>
 

@@ -23,6 +23,7 @@ namespace Codeplex.Dashboarding
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using System.Windows.Media;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Common base class for all dashboard controls. Contains the Minimum, Maximum
@@ -104,6 +105,7 @@ namespace Codeplex.Dashboarding
             : base()
         {
             Loaded += new RoutedEventHandler(this.Dashboard_Loaded);
+            PropertyChanged += Dashboard_PropertyChanged;
         }
 
         #region events
@@ -380,6 +382,11 @@ namespace Codeplex.Dashboarding
         protected abstract void UpdateTextFormat();
 
         /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected abstract void UpdateFontStyle();
+
+        /// <summary>
         /// Requires that the control hounours all appearance setting as specified in the 
         /// dependancy properties (at least the supported ones). No dependancy property handling
         /// is performed until all dependancy properties are set and the control is loaded.
@@ -395,6 +402,22 @@ namespace Codeplex.Dashboarding
             if (this.PropertyChanged != null && this.DashboardLoaded)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
+
+        /// <summary>
+        /// Copies the font details form this control to the text box.
+        /// </summary>
+        /// <param name="tb">The text box to clone font details to.</param>
+        protected void CopyFontDetails(TextBlock tb)
+        {
+            if (tb != null)
+            {
+                tb.FontFamily = this.FontFamily;
+                tb.FontSize = this.FontSize;
+                tb.FontStretch = this.FontStretch;
+                tb.FontStyle = this.FontStyle;
+                tb.FontWeight = this.FontWeight;
             }
         }
 
@@ -576,6 +599,20 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
+        /// Handles the PropertyChanged event of the Dashboard control, used
+        /// to pick up changes to the font style settings
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        private void Dashboard_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.StartsWith("Font", StringComparison.InvariantCultureIgnoreCase))
+            {
+                UpdateFontStyle();
+            }
+        }
+
+        /// <summary>
         /// The value has changed, if anyone is listening let em know
         /// </summary>
         /// <param name="old">The initial value</param>
@@ -598,6 +635,7 @@ namespace Codeplex.Dashboarding
         {
             this.ManifestChanges();
             this.DashboardLoaded = true;
+
             this.Animate();
         }
         #endregion

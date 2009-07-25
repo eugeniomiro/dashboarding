@@ -139,15 +139,16 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
-        /// Requires that the control hounours all appearance setting as specified in the
-        /// dependancy properties (at least the supported ones). No dependancy property handling
-        /// is performed until all dependancy properties are set and the control is loaded.
+        /// Requires that the control honors all appearance setting as specified in the
+        /// dependency properties (at least the supported ones). No dependency property handling
+        /// is performed until all dependency properties are set and the control is loaded.
         /// </summary>
         protected override void ManifestChanges()
         {
             this.UpdateTextVisibility();
             this.UpdateTextColor();
             this.UpdateTextFormat();
+            this.UpdateFontStyle();
         }
 
         /// <summary>
@@ -193,6 +194,20 @@ namespace Codeplex.Dashboarding
                 {
                     tb.Text = String.Format(FaceTextFormat, RealMinimum + ((i + 1) * ((RealMaximum - RealMinimum) / 10)));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected override void UpdateFontStyle()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                TextBlock tb = LayoutRoot.FindName("_tl" + i) as TextBlock;
+                CopyFontDetails(tb);
+                tb = LayoutRoot.FindName("_tr" + i) as TextBlock;
+                CopyFontDetails(tb);
             }
         }
 

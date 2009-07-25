@@ -115,6 +115,7 @@ namespace Codeplex.Dashboarding
             this.InitialiseRefs();
             SetValue(FaceTextColorProperty, Colors.White);
             SetValue(ValueTextColorProperty, Colors.Black);
+            SetValue(FontSizeProperty, 10.0);
             RegisterGrabHandle(this.grabHandleCanvas);
         }
 
@@ -164,6 +165,19 @@ namespace Codeplex.Dashboarding
         }
 
         /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected override void UpdateFontStyle()
+        {
+            for (int i = 0; i <= 4; i++)
+            {
+                TextBlock tb = ResourceRoot.FindName("_txt" + i) as TextBlock;
+                CopyFontDetails(tb);
+            }
+            CopyFontDetails(textBlock);
+        }
+
+        /// <summary>
         /// The format string for the value has changed
         /// </summary>
         protected override void UpdateTextFormat()
@@ -195,6 +209,7 @@ namespace Codeplex.Dashboarding
             this.UpdateTextColor();
             this.UpdateTextFormat();
             this.UpdateTextVisibility();
+            this.UpdateFontStyle();
         }
 
         /// <summary>

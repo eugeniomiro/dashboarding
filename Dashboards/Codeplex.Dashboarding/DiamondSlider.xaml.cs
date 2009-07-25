@@ -209,6 +209,7 @@ namespace Codeplex.Dashboarding
             this.UpdateTextColor();
             this.UpdateTextFormat();
             this.UpdateTextVisibility();
+            this.UpdateFontStyle();
         }
 
         /// <summary>
@@ -251,6 +252,13 @@ namespace Codeplex.Dashboarding
         /// Set the visibiity of your text according to that of the TextVisibility property
         /// </summary>
         protected override void UpdateTextVisibility()
+        {
+        }
+
+        /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected override void UpdateFontStyle()
         {
         }
 

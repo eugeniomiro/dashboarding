@@ -59,7 +59,7 @@ namespace Codeplex.Dashboarding
         /// <returns>The angle in degrees</returns>
         protected override double CalculateRotationAngle(Point currentPoint)
         {
-            double opposite = currentPoint.Y -6 ;
+            double opposite = currentPoint.Y -6;
             opposite = opposite > 0 ? opposite : 0;
             double adjacent = (ActualWidth / 2) - currentPoint.X;
             double tan = opposite / adjacent;

@@ -54,7 +54,7 @@ namespace Codeplex.Dashboarding
         /// <returns>The angle in degrees</returns>
         protected override double CalculateRotationAngle(Point currentPoint)
         {
-            double opposite = ((162 / 2) - (currentPoint.Y )) ;
+            double opposite = ((162 / 2) - (currentPoint.Y ));
             double adjacent = (ActualWidth - currentPoint.X)-6 * 2;
             double tan = opposite / adjacent;
             double angleInDegrees = Math.Atan(tan) * (180.0 / Math.PI);

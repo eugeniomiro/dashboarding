@@ -85,6 +85,7 @@ namespace Codeplex.Dashboarding
             this.UpdateTextColor();
             this.UpdateTextFormat();
             this.UpdateTextVisibility();
+            this.UpdateFontStyle();
         }
  
         /// <summary>
@@ -96,6 +97,7 @@ namespace Codeplex.Dashboarding
             this.InitialiseRefs();
             SetValue(FaceTextColorProperty, Colors.White);
             SetValue(ValueTextColorProperty, Colors.Black);
+            SetValue(FontSizeProperty, 7.0);
             RegisterGrabHandle(this.grabHandleCanvas);
         }
 
@@ -113,6 +115,19 @@ namespace Codeplex.Dashboarding
                     tb.Visibility = FaceTextVisibility;
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected override void UpdateFontStyle()
+        {
+            for (int i = 0; i <= 4; i++)
+            {
+                TextBlock tb = ResourceRoot.FindName("_txt" + i) as TextBlock;
+                CopyFontDetails(tb);
+            }
+            CopyFontDetails(textBlock);
         }
 
         /// <summary>

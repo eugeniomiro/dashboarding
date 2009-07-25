@@ -174,6 +174,7 @@ namespace Codeplex.Dashboarding
             this.UpdateTextColor();
             this.UpdateTextFormat();
             this.UpdateTextVisibility();
+            this.UpdateFontStyle();
         }
 
         /// <summary>
@@ -229,6 +230,14 @@ namespace Codeplex.Dashboarding
             {
                 _text.Text = FormattedValue;
             }
+        }
+
+        /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected override void UpdateFontStyle()
+        {
+            CopyFontDetails(_text);
         }
 
         /// <summary>

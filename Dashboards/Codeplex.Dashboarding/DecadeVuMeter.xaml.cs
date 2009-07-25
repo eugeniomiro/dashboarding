@@ -203,6 +203,13 @@ namespace Codeplex.Dashboarding
             this.SetAllLedColors();
         }
 
+        /// <summary>
+        /// Updates the font style for both face and value text.
+        /// </summary>
+        protected override void UpdateFontStyle()
+        {
+        }
+
         #endregion
 
         #region private methods

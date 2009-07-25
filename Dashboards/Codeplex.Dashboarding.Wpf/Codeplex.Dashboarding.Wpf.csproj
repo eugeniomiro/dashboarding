@@ -336,6 +336,83 @@
       <Link>odometerStrip.png</Link>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\DecadeVuMeter.Icon.png">
+      <Link>Codeplex.Dashboarding\DecadeVuMeter.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial180East.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial180East.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial180North.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial180North.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial180South.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial180South.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial180West.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial180West.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial360.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial360.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial90NorthEast.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial90NorthEast.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial90NorthWest.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial90NorthWest.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial90SouthEast.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial90SouthEast.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial90SouthWe-st.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial90SouthWe-st.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Dial90SouthWest.Icon.png">
+      <Link>Codeplex.Dashboarding\Dial90SouthWest.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\DiamondSlider.Icon.png">
+      <Link>Codeplex.Dashboarding\DiamondSlider.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\FiveStarRanking.Icon.png">
+      <Link>Codeplex.Dashboarding\FiveStarRanking.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Knob360.Icon.png">
+      <Link>Codeplex.Dashboarding\Knob360.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\MatrixLedCharacter.Icon.png">
+      <Link>Codeplex.Dashboarding\MatrixLedCharacter.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\MatrixLedMarquee.Icon.png">
+      <Link>Codeplex.Dashboarding\MatrixLedMarquee.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\Odometer.Icon.png">
+      <Link>Codeplex.Dashboarding\Odometer.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\OdometerDigit.Icon.png">
+      <Link>Codeplex.Dashboarding\OdometerDigit.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\PerformanceMonitor.Icon.png">
+      <Link>Codeplex.Dashboarding\PerformanceMonitor.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\PlainThermometer.Icon.png">
+      <Link>Codeplex.Dashboarding\PlainThermometer.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\ProgressBar.Icon.png">
+      <Link>Codeplex.Dashboarding\ProgressBar.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\RoundLed.Icon.png">
+      <Link>Codeplex.Dashboarding\RoundLed.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\SixteenSegmentLED.Icon.png">
+      <Link>Codeplex.Dashboarding\SixteenSegmentLED.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\TickCross.Icon.png">
+      <Link>Codeplex.Dashboarding\TickCross.Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Codeplex.Dashboarding\Codeplex.Dashboarding\WallThermometer.Icon.png">
+      <Link>Codeplex.Dashboarding\WallThermometer.Icon.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
