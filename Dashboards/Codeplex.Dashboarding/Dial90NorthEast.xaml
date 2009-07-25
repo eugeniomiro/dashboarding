@@ -79,6 +79,9 @@
         	</TextBlock.RenderTransform>
         </TextBlock>
         <Path Height="72.816" HorizontalAlignment="Left" Margin="7.583,13.546,0,0" x:Name="path" VerticalAlignment="Top" Width="8.5" RenderTransformOrigin="0.463,1.007" Stretch="Fill" Stroke="#FF000000" Data="M99.875,41.875 L95.916512,115.45777 L103.27318,115.45777 z" >
+            <Path.Effect>
+                <DropShadowEffect />
+            </Path.Effect>
             <Path.Fill>
                 <RadialGradientBrush GradientOrigin="-0.076,1.25">
                     <RadialGradientBrush.RelativeTransform>

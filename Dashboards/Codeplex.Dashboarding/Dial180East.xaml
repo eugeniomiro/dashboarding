@@ -44,7 +44,7 @@ Width="92" Height="162"  >
                 </RadialGradientBrush>
             </Path.Fill>
         </Path>
-        <TextBlock HorizontalAlignment="Left" Margin="-10.49,30.009,0,0" x:Name="_txt0" VerticalAlignment="Top" Width="43.001" Height="12.021" FontSize="10" Foreground="#FFFFFFFF" Text="0" TextWrapping="Wrap" RenderTransformOrigin="0.504,0.472">
+        <TextBlock  HorizontalAlignment="Left" Margin="-10.49,30.009,0,0" x:Name="_txt0" VerticalAlignment="Top" Width="43.001" Height="12.021" FontSize="10" Foreground="#FFFFFFFF" Text="0" TextWrapping="Wrap" RenderTransformOrigin="0.504,0.472">
         	<TextBlock.RenderTransform>
         		<TransformGroup>
         			<ScaleTransform/>
@@ -157,6 +157,9 @@ Width="92" Height="162"  >
         </Path>
         <Rectangle Height="0.8" HorizontalAlignment="Left" Margin="159.5,131,0,0" VerticalAlignment="Top" Width="11" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0.5"/>
         <Path Height="72.816" x:Name="path" Width="8.5" RenderTransformOrigin="0.463,1.007" Stretch="Fill" Stroke="#FF000000" Data="M99.875,41.875 L95.916512,115.45777 L103.27318,115.45777 z" Canvas.Top="49" Canvas.Left="47.5" VerticalAlignment="Bottom" Margin="47.083,0,0,-29.921" HorizontalAlignment="Left">
+            <Path.Effect>
+                <DropShadowEffect />
+            </Path.Effect>
             <Path.Fill>
                 <RadialGradientBrush GradientOrigin="-0.076,1.25">
                     <RadialGradientBrush.RelativeTransform>

@@ -138,6 +138,9 @@
         <Rectangle Height="0.8" HorizontalAlignment="Left" Margin="143.75,8.75,0,0" VerticalAlignment="Top" Width="11" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0.5" d:LayoutOverrides="VerticalAlignment"/>
         <Rectangle Height="0.8" HorizontalAlignment="Left" Margin="9.25,11.25,0,0" VerticalAlignment="Top" Width="11" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0.5" d:LayoutOverrides="VerticalAlignment"/>
         <Path Height="72.816" HorizontalAlignment="Left" Margin="78.333,-62.537,0,0" x:Name="path" VerticalAlignment="Top" Width="8.5" RenderTransformOrigin="0.463,1.007" Stretch="Fill" Stroke="#FF000000" Data="M99.875,41.875 L95.916512,115.45777 L103.27318,115.45777 z" d:LayoutOverrides="VerticalAlignment">
+            <Path.Effect>
+                <DropShadowEffect />
+            </Path.Effect>
             <Path.Fill>
                 <RadialGradientBrush GradientOrigin="-0.076,1.25">
                     <RadialGradientBrush.RelativeTransform>

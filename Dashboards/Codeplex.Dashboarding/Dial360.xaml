@@ -176,6 +176,9 @@
                         <GradientStop Color="#FFFFFFFF" x:Name="_needleLowColour"  Offset="1"/>
                     </LinearGradientBrush>
                 </Path.Fill>
+                <Path.Effect>
+                    <DropShadowEffect />
+                </Path.Effect>
                 <Path.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>

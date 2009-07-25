@@ -36,8 +36,11 @@
         <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,78.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="30" TextAlignment="Left" x:Name="_tr2"/>
         <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,98.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="10" TextAlignment="Left" x:Name="_tr1"/>
         <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,88.333,0,0" VerticalAlignment="Top" Width="15.5" TextAlignment="Left" TextWrapping="Wrap" FontSize="6" Text="20" x:Name="_tr0"/>
-        <Codeplex_Dashboarding:PlainThermometer Value="0" x:Name="_delegate"  HorizontalAlignment="Left" Margin="8.667,3.333,0,0" VerticalAlignment="Top"  d:LayoutOverrides="VerticalAlignment" IsEnabled="True" />
-
+        <Codeplex_Dashboarding:PlainThermometer Value="0" x:Name="_delegate"  HorizontalAlignment="Left" Margin="8.667,3.333,0,0" VerticalAlignment="Top"  d:LayoutOverrides="VerticalAlignment" IsEnabled="True" >
+            <Codeplex_Dashboarding:PlainThermometer.Effect>
+                <DropShadowEffect/>
+            </Codeplex_Dashboarding:PlainThermometer.Effect>
+        </Codeplex_Dashboarding:PlainThermometer> 
         <Rectangle IsHitTestVisible="False"  Height="4.75" HorizontalAlignment="Left" Margin="13.667,107.333,0,0" VerticalAlignment="Top" Width="19.5" d:LayoutOverrides="Height">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="1.025,0.6" StartPoint="-0.025,0.55">
