@@ -12,12 +12,12 @@
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
 
                 <StackPanel Orientation="Vertical">
-                    <db:Dial180North FontFamily="Arial Black" FontSize="12" Value="{Binding CurrentValue, Mode=TwoWay}" >
+                    <db:Dial180North Value="{Binding CurrentValue, Mode=TwoWay}" >
                     	<db:Dial180North.Effect>
                     		<DropShadowEffect/>
                     	</db:Dial180North.Effect>
                     </db:Dial180North>
-                    <db:Dial180South FontSize="11" Value="{Binding CurrentValue, Mode=TwoWay}" Margin="0,8,0,0" >
+                    <db:Dial180South Value="{Binding CurrentValue, Mode=TwoWay}" Margin="0,8,0,0" >
                     	<db:Dial180South.Effect>
                     		<DropShadowEffect/>
                     	</db:Dial180South.Effect>
@@ -25,12 +25,12 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="3,0,0,0">
-                    <db:Dial180West FontSize="12" Value="{Binding CurrentValue, Mode=TwoWay}" >
+                    <db:Dial180West Value="{Binding CurrentValue, Mode=TwoWay}" >
                     	<db:Dial180West.Effect>
                     		<DropShadowEffect/>
                     	</db:Dial180West.Effect>
                     </db:Dial180West>
-                    <db:Dial180East FontSize="13" Value="{Binding CurrentValue, Mode=TwoWay}" Margin="8,0,0,0">
+                    <db:Dial180East  Value="{Binding CurrentValue, Mode=TwoWay}" Margin="8,0,0,0">
                     	<db:Dial180East.Effect>
                     		<DropShadowEffect/>
                     	</db:Dial180East.Effect>
@@ -72,6 +72,13 @@
                 		<DropShadowEffect/>
                 	</db:Dial90SouthEast.Effect>
                 </db:Dial90SouthEast>
+
+                <db:Dial90North  Value="{Binding CurrentValue, Mode=TwoWay}" Margin="4,0,0,0" >
+                    <db:Dial90.Effect>
+                        <DropShadowEffect/>
+                    </db:Dial90.Effect>
+                </db:Dial90North>
+                
                 <StackPanel  Orientation="Vertical">
                     <db:DiamondSlider  Value="{Binding CurrentValue, Mode=TwoWay}"   >
                     	<db:DiamondSlider.Effect>

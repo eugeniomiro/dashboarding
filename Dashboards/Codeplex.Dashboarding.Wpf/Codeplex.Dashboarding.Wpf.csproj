@@ -27,6 +27,7 @@
     <DefineConstants>TRACE;DEBUG;WPF</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>1607</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,6 +55,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Codeplex.Dashboarding\AssemblyVersion.cs">
+      <Link>AssemblyVersion.cs</Link>
+    </Compile>
     <Compile Include="..\Codeplex.Dashboarding\BidirectionalDashboard.cs">
       <Link>BidirectionalDashboard.cs</Link>
     </Compile>
@@ -105,6 +109,14 @@
     <Compile Include="..\Codeplex.Dashboarding\Dial90.cs">
       <Link>Dial90.cs</Link>
     </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90East.xaml.cs">
+      <Link>Dial90East.xaml.cs</Link>
+      <DependentUpon>Dial90East.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90North.xaml.cs">
+      <Link>Codeplex.Dashboarding\Dial90North.xaml.cs</Link>
+      <DependentUpon>Dial90North.xaml</DependentUpon>
+    </Compile>
     <Compile Include="..\Codeplex.Dashboarding\Dial90NorthEast.xaml.cs">
       <Link>Dial90NorthEast.xaml.cs</Link>
       <DependentUpon>Dial90NorthEast.xaml</DependentUpon>
@@ -113,6 +125,10 @@
       <Link>Dial90NorthWest.xaml.cs</Link>
       <DependentUpon>Dial90NorthWest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90South.xaml.cs">
+      <Link>Codeplex.Dashboarding\Dial90South.xaml.cs</Link>
+      <DependentUpon>Dial90South.xaml</DependentUpon>
+    </Compile>
     <Compile Include="..\Codeplex.Dashboarding\Dial90SouthEast.xaml.cs">
       <Link>Dial90SouthEast.xaml.cs</Link>
       <DependentUpon>Dial90SouthEast.xaml</DependentUpon>
@@ -120,6 +136,10 @@
     <Compile Include="..\Codeplex.Dashboarding\Dial90SouthWest.xaml.cs">
       <Link>Dial90SouthWest.xaml.cs</Link>
       <DependentUpon>Dial90SouthWest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Dial90West.xaml.cs">
+      <Link>Dial90West.xaml.cs</Link>
+      <DependentUpon>Dial90West.xaml</DependentUpon>
     </Compile>
     <Compile Include="..\Codeplex.Dashboarding\DiamondSlider.xaml.cs">
       <Link>DiamondSlider.xaml.cs</Link>
@@ -240,6 +260,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90East.xaml">
+      <Link>Dial90East.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90North.xaml">
+      <Link>Codeplex.Dashboarding\Dial90North.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="..\Codeplex.Dashboarding\Dial90NorthEast.xaml">
       <Link>Dial90NorthEast.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
@@ -250,6 +280,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90South.xaml">
+      <Link>Codeplex.Dashboarding\Dial90South.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="..\Codeplex.Dashboarding\Dial90SouthEast.xaml">
       <Link>Dial90SouthEast.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +292,11 @@
     </Page>
     <Page Include="..\Codeplex.Dashboarding\Dial90SouthWest.xaml">
       <Link>Dial90SouthWest.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Dial90West.xaml">
+      <Link>Dial90West.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
