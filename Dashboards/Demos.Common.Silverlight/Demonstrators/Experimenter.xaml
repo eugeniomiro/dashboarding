@@ -106,7 +106,7 @@
 
             <StackPanel Margin="10,0,0,0"  Orientation="Vertical" Grid.Row="5" >
                 <TextBlock Text="Value"  Foreground="AntiqueWhite" VerticalAlignment="Top"/>
-                <Slider Maximum="{Binding Path=Maximum}" Minimum="{Binding Path=Minimum}" Value="{Binding Path=CurrentValue, Mode=TwoWay}"/>
+                <Slider  Maximum="{Binding Path=Maximum}" Minimum="{Binding Path=Minimum}" Value="{Binding Path=CurrentValue, Mode=TwoWay}"/>
             </StackPanel>
 
 
