@@ -194,6 +194,10 @@
       <Link>RoundLed.xaml.cs</Link>
       <DependentUpon>RoundLed.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\Codeplex.Dashboarding\Scale.xaml.cs">
+      <Link>Scale.xaml.cs</Link>
+      <DependentUpon>Scale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="..\Codeplex.Dashboarding\SixteenSegmentLED.xaml.cs">
       <Link>SixteenSegmentLED.xaml.cs</Link>
       <DependentUpon>SixteenSegmentLED.xaml</DependentUpon>
@@ -352,6 +356,11 @@
     </Page>
     <Page Include="..\Codeplex.Dashboarding\RoundLed.xaml">
       <Link>RoundLed.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Codeplex.Dashboarding\Scale.xaml">
+      <Link>Scale.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

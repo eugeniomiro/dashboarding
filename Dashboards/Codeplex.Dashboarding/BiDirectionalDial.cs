@@ -36,14 +36,19 @@ namespace Codeplex.Dashboarding
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty FaceColorRangeProperty =
             DependencyProperty.Register("FaceColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new ColorPointCollection(), new PropertyChangedCallback(FaceColorRangeChanged)));
-       
+
         /// <summary>
         /// The  Dependancy property for the NeedleColor attached property
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Color", Justification = "We support U.S. naming in a British project")]
         public static readonly DependencyProperty NeedleColorRangeProperty =
             DependencyProperty.Register("NeedleColorRange", typeof(ColorPointCollection), typeof(BidirectionalDial), new PropertyMetadata(new ColorPointCollection(), new PropertyChangedCallback(NeedleColorRangeChanged)));
-        
+
+        /// <summary>
+        /// Dependency property for the Mark
+        /// </summary>
+        public static readonly DependencyProperty MarkProperty = DependencyProperty.Register("Mark", typeof(Scale.TickMark), typeof(BidirectionalDial), new PropertyMetadata(Codeplex.Dashboarding.Scale.TickMark.Line, MarkChanged));
+
         #endregion
 
         #region public Properties
@@ -90,6 +95,15 @@ namespace Codeplex.Dashboarding
             }
         }
 
+        /// <summary>
+        /// Gets or sets the shape of the tick mark.
+        /// </summary>
+        /// <value>The mark.</value>
+        public Scale.TickMark Mark
+        {
+            get { return (Scale.TickMark)GetValue(MarkProperty); }
+            set { SetValue(MarkProperty, value); }
+        }
         #endregion
 
         #region protected properties
@@ -155,7 +169,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="cv">rotation angle</param>
         protected abstract void SetCurrentNormalizedValue(double cv);
-    
+
         /// <summary>
         /// Based on the current position calculates what angle the current mouse
         /// position represents relative to the rotation point of the needle
@@ -190,7 +204,7 @@ namespace Codeplex.Dashboarding
         /// </summary>
         /// <param name="dependancy">The dependancy.</param>
         /// <param name="args">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
-            private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
+        private static void NeedleColorRangeChanged(DependencyObject dependancy, DependencyPropertyChangedEventArgs args)
         {
             BidirectionalDial instance = dependancy as BidirectionalDial;
             instance.RegisterNeedleColorRangeEvent();
@@ -201,47 +215,74 @@ namespace Codeplex.Dashboarding
             }
         }
 
-            /// <summary>
-            /// Registers an event allowing us to update the display of the dial as the face color range changes.
-            /// </summary>
-            private void RegisterFaceColorRangeEvent()
+        /// <summary>
+        /// The type of Mark has changed, show the new look.
+        /// </summary>
+        /// <param name="dependency">The dependency.</param>
+        /// <param name="e">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void MarkChanged(DependencyObject dependency, DependencyPropertyChangedEventArgs e)
+        {
+            BidirectionalDial instance = dependency as BidirectionalDial;
+            if (instance != null)
             {
-                if (this.FaceColorRange != null)
-                {
-                    this.FaceColorRange.CollectionChanged += this.FaceColorRange_CollectionChanged;
-                }
+                instance.UpdateScaleMark();
+                instance.OnPropertyChanged("Mark");
             }
+        }
 
-            /// <summary>
-            /// Handles the CollectionChanged event of the FaceColorRange control, updating the visuals to match the new values in the collection.
-            /// </summary>
-            /// <param name="sender">The source of the event.</param>
-            /// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
-            private void FaceColorRange_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        /// <summary>
+        /// Updates the mark on the scale object.
+        /// </summary>
+        private void UpdateScaleMark()
+        {
+            Scale s = ResourceRoot.FindName("_scale") as Scale;
+            if (s != null)
             {
-                this.UpdateFaceColor();
+                s.Mark = Mark;
             }
+        }
 
-            /// <summary>
-            /// Registers an event to handle updates on the needle color range.
-            /// </summary>
-            private void RegisterNeedleColorRangeEvent()
+        /// <summary>
+        /// Registers an event allowing us to update the display of the dial as the face color range changes.
+        /// </summary>
+        private void RegisterFaceColorRangeEvent()
+        {
+            if (this.FaceColorRange != null)
             {
-                if (this.NeedleColorRange != null)
-                {
-                    this.NeedleColorRange.CollectionChanged += this.NeedleColorRange_CollectionChanged;
-                }
+                this.FaceColorRange.CollectionChanged += this.FaceColorRange_CollectionChanged;
             }
+        }
 
-            /// <summary>
-            /// Handles the CollectionChanged event of the NeedleColorRange control, updating the visuals to match the new values in the collection.
-            /// </summary>
-            /// <param name="sender">The source of the event.</param>
-            /// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
-            private void NeedleColorRange_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        /// <summary>
+        /// Handles the CollectionChanged event of the FaceColorRange control, updating the visuals to match the new values in the collection.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+        private void FaceColorRange_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            this.UpdateFaceColor();
+        }
+
+        /// <summary>
+        /// Registers an event to handle updates on the needle color range.
+        /// </summary>
+        private void RegisterNeedleColorRangeEvent()
+        {
+            if (this.NeedleColorRange != null)
             {
-                this.UpdateNeedleColor();
+                this.NeedleColorRange.CollectionChanged += this.NeedleColorRange_CollectionChanged;
             }
+        }
+
+        /// <summary>
+        /// Handles the CollectionChanged event of the NeedleColorRange control, updating the visuals to match the new values in the collection.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+        private void NeedleColorRange_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            this.UpdateNeedleColor();
+        }
         #endregion
     }
 }
