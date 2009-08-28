@@ -71,12 +71,11 @@ namespace Demos.Common.Demonstrators
 
             if (_sH1 != null)
             {
-                _sH1.DisplayCharacter = "" + t[0];
-                _sH2.DisplayCharacter = "" + t[1];
-                _sM1.DisplayCharacter = "" + t[2];
-                _sM2.DisplayCharacter = "" + t[3];
-                _sS1.DisplayCharacter = "" + t[4];
-                _sS2.DisplayCharacter = "" + t[5];
+                _sH1.DisplayCharacter = "" + t[2];
+                _sH2.DisplayCharacter = "" + t[3];
+                _sM1.DisplayCharacter = "" + t[4];
+                _sM2.DisplayCharacter = "" + t[5];
+              
 
                 _odometer.Increment();
                 _mon.Value = _random.Next(100);
