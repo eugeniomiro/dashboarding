@@ -6,12 +6,12 @@
     mc:Ignorable="d"
     >
     <Canvas Height="480"  Width="720">
-		<db:Dial180West Value="{Binding CurrentValue, Mode=TwoWay}" Mark="Square" Canvas.Left="388" Canvas.Top="67">
+		<db:Dial180West  Value="{Binding CurrentValue, Mode=TwoWay}" Mark="Square" Canvas.Left="388" Canvas.Top="67">
 			<db:Dial180West.Effect>
 				<DropShadowEffect/>
 			</db:Dial180West.Effect>
 		</db:Dial180West>
-		<db:Dial180East  Value="{Binding CurrentValue, Mode=TwoWay}" Margin="0" Mark="Triangle" Canvas.Left="489" Canvas.Top="67">
+		<db:Dial180East  Value="{Binding CurrentValue, Mode=TwoWay}" Margin="0"  Canvas.Left="489" Canvas.Top="67">
 			<db:Dial180East.Effect>
 				<DropShadowEffect/>
 			</db:Dial180East.Effect>

@@ -57,7 +57,7 @@ namespace Codeplex.Dashboarding
         /// neutral manner
         /// </summary>
         /// <value>The resource root.</value>
-        protected override Grid ResourceRoot
+        protected override FrameworkElement ResourceRoot
         {
             get { return LayoutRoot; }
         }

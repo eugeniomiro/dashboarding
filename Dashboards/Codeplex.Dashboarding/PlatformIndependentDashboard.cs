@@ -56,7 +56,7 @@ namespace Codeplex.Dashboarding
         /// neutral manner
         /// </summary>
         /// <value>The resource root.</value>
-        protected abstract Grid ResourceRoot { get; }
+        protected abstract FrameworkElement ResourceRoot { get; }
 
         /// <summary>
         /// Gets a PointAnimation from the children of a storyboard by name
